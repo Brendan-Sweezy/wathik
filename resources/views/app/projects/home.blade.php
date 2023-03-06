@@ -76,22 +76,22 @@
                         <!--end::Table head-->
                         <!--begin::Table body-->
                         <tbody class="fw-semibold text-gray-600">
-                            @php
-                                if ($project->threats->isEmpty()) {
-                                    $project->progress = 25;
-                                    $project->url = url('projects/addThreats/' . $project->id);
-                                } elseif ($project->participants->isEmpty()) {
-                                    $project->progress = 50;
-                                    $project->url = url('projects/addParticipants/' . $project->id);
-                                } elseif ($project->events->isEmpty()) {
-                                    $project->progress = 75;
-                                    $project->url = url('projects/addEvents/' . $project->id);
-                                } else {
-                                    $project->progress = 100;
-                                    $project->url = url('projects/view/' . $project->id);
-                                }
-                            @endphp
                             @foreach ($projects as $project)
+                                @php
+                                    if ($project->threats->isEmpty()) {
+                                        $project->progress = 25;
+                                        $project->url = url('projects/addThreats/' . $project->id);
+                                    } elseif ($project->participants->isEmpty()) {
+                                        $project->progress = 50;
+                                        $project->url = url('projects/addParticipants/' . $project->id);
+                                    } elseif ($project->events->isEmpty()) {
+                                        $project->progress = 75;
+                                        $project->url = url('projects/addEvents/' . $project->id);
+                                    } else {
+                                        $project->progress = 100;
+                                        $project->url = url('projects/view/' . $project->id);
+                                    }
+                                @endphp
                                 <tr>
                                     <td>
                                         {{ $project->name }}
