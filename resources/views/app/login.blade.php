@@ -54,8 +54,8 @@
                                 <!--begin::Heading-->
                                 <!--begin::Input group=-->
                                 <div class="fv-row mb-8">
-                                    <input type="text" placeholder="رقم الهاتف" id="phone" autocomplete="off"
-                                        required class="form-control form-control-solid" />
+                                    <input type="text" placeholder="رقم الهاتف" id="phone" autocomplete="off" 
+                                        required class="form-control form-control-solid" /> <!--phone number-->
                                 </div>
                                 <!--end::Input group=-->
                                 <div class="fv-row mb-7" id="password" style="display: none;">
@@ -252,7 +252,7 @@
                             $('#code_1').focus();
                         } else {
                             Swal.fire({
-                                text: 'يرجى التأكد ان الرقم المدخل يمتلك حساب على تطبيق واتساب',
+                                text: 'يرجى التأكد ان الرقم المدخل يمتلك حساب على تطبيق واتساب', //Please make sure that the entered number has an account on the WhatsApp application.
                                 icon: "error",
                                 buttonsStyling: false,
                                 confirmButtonText: "متابعه",
@@ -266,7 +266,7 @@
 
             } else {
                 Swal.fire({
-                    text: 'يرجى التأكد ان الرقم المدخل صحيح',
+                    text: 'يرجى التأكد ان الرقم المدخل صحيح', //Please make sure that the entered number is correct.
                     icon: "error",
                     buttonsStyling: false,
                     confirmButtonText: "متابعه",

@@ -57,7 +57,7 @@
                                         data-kt-drawer-dismiss="true">Home</a>
                                 </div>
                                 <div class="menu-item">
-                                    <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="{{ url('') }}#about"
+                                    <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="{{ url('') }}/about"
                                         data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">About Us</a>
                                 </div>
                                 <div class="menu-item">

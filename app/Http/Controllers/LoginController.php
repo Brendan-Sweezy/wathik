@@ -16,7 +16,8 @@ class LoginController extends Controller
         if (session('user_id')) {
             return redirect()->route('home');
         }
-        return view('app.login');
+        return view('app.login_temporary');
+        //return view('app.login');
     }
     public function authenticate(Request $request)
     {
