@@ -8,18 +8,50 @@ use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Twilio\Rest\Client;
+use Illuminate\Support\Facades\Hash;
+
 
 class LoginController extends Controller
 {
-    public function login(Request $request)
+    
+    public function login() {
+        if (session('user_id')) {
+            //return redirect()->route('home');
+        }
+        return view('app.login_temporary');
+    }
+
+    public function authenticate(Request $request) {
+        $user = User::where('username', $request->username)->get();
+        if(count($user)) {
+            $input = $request->password . $user[0]->salt;
+            
+            if(Hash::check($input, $user[0]->password)) {
+                Session::put('user_id', $user[0]->id);
+                return redirect('home');
+                //return json_encode(['status' => true]);
+            } else {
+                return json_encode(['status' => false, 'msg' => 'الرمز المدخل غير صحيح']);
+            }
+        } else {
+            echo 'no user found';
+        }
+    }
+    
+    
+    
+    /*public function login(Request $request)
     {
         if (session('user_id')) {
             return redirect()->route('home');
         }
-        return view('app.login_temporary');
-        //return view('app.login');
-    }
-    public function authenticate(Request $request)
+        return view('app.login');
+    }*/
+
+
+
+    
+    /*public function authenticate(Request $request)
     {
         $user = User::where('mobile', $request->phone)->first();
         if (empty($user)) {
@@ -58,12 +90,12 @@ class LoginController extends Controller
         } else {
             return json_encode(['status' => false, 'msg' => 'الرمز المدخل غير صحيح']);
         }
-    }
+    }*/
 
-    public function logout(Request $request)
+    /*public function logout(Request $request)
     {
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/login');
-    }
+    }*/
 }
