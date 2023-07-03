@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="menu-item">
                                     <a class="menu-link nav-link py-3 px-4 px-xxl-6"
-                                        href="{{ url('') }}#contactus" data-kt-scroll-toggle="true"
+                                        href="{{ url('') }}/contactUs" data-kt-scroll-toggle="true"
                                         data-kt-drawer-dismiss="true">Contact Us</a>
                                 </div>
                             </div>
