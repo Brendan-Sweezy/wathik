@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 @include('app.common.head')
@@ -41,7 +40,7 @@
                     <!--begin::Wrapper-->
                     <div class="w-lg-500px p-10">
                         <form class="form w-100" novalidate="novalidate" id="loginForm"
-                        method='POST' action="{{ url('/authenticate')}}" encrypt='multipart/form-data'>
+                        method='POST' action="{{ url('/createAccountAuthenticate')}}" encrypt='multipart/form-data'>
                             <!--begin::Body-->
                             {{ csrf_field()}}
                             <div class="card-body text-center">
@@ -51,20 +50,36 @@
                                 <!--begin::Heading-->
                                 <div class="text-end mb-10">
                                     <!--begin::Title-->
-                                    <h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">تسجيل الدخول</h1>
+                                    <h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">Create Account</h1>
                                     <!--end::Title-->
                                 </div>
                                 <!--begin::Heading-->
                                 <!--begin::Input group=-->
-                                <div class="fv-row mb-6">
+                                <div class="fv-row mb-2">
                                     <input type="string" placeholder="Username" id="username" autocomplete="off" 
                                         required class="form-control form-control-solid" name='username'/> <!--username-->
                                 </div>
 
-                                <div class="fv-row mb-6">
+                                <div class="fv-row mb-2">
+                                    <input type="email" placeholder="Email" id="email" autocomplete="off" 
+                                        required class="form-control form-control-solid" name='email'/> <!--password-->
+                                </div>
+
+                                <div class="fv-row mb-2">
+                                    <input type="tel" placeholder="Phone Number" id="phone_number" autocomplete="off" 
+                                        required class="form-control form-control-solid" name='phone_number'/> <!--password-->
+                                </div>
+
+                                <div class="fv-row mb-2">
                                     <input type="password" placeholder="Password" id="password" autocomplete="off" 
                                         required class="form-control form-control-solid" name='password'/> <!--password-->
                                 </div>
+
+                                <div class="fv-row mb-2">
+                                    <input type="password" placeholder="Confirm Password" id="password_confirm" autocomplete="off" 
+                                        required class="form-control form-control-solid" name='password_confirm'/> <!--password-->
+                                </div>
+
                                 <!--end::Input group=-->
                                 
                                 
@@ -78,7 +93,7 @@
                                     <button type="Submit" id="login_button"
                                         class="btn btn-primary btn-block me-2 flex-shrink-0">
                                         <!--begin::Indicator label-->
-                                        <span class="indicator-label" data-kt-translate="sign-in-submit">Sign in</span>
+                                        <span class="indicator-label" data-kt-translate="sign-in-submit">Create Account</span>
                                         <!--end::Indicator label-->
                                     </button>
                                     <!--end::Submit-->
@@ -86,21 +101,13 @@
 
                                 <div class="d-grid gap-2">
                                     <!--begin::Submit-->
-                                    
-                                      <a href="/createAccount" id="create_account_button" class="btn btn-secondary btn-block me-2 flex-shrink-0"
-                                        >
-                                        <!--begin::Indicator label-->
-                                        <span class="indicator-label" data-kt-translate="sign-in-submit">Create Account</span>
-                                        
-                                        <!--end::Indicator label-->
-                                      </a>
-
-                                    <button type='button' id="forgot_password__button"
+                                    <a href='/login' id="create_account_button"
                                         class="btn btn-secondary btn-block me-2 flex-shrink-0">
                                         <!--begin::Indicator label-->
-                                        <span class="indicator-label" data-kt-translate="sign-in-submit">Forgot Password</span>
+                                        <span class="indicator-label" data-kt-translate="sign-in-submit">Sign in with Existing Account</span>
                                         <!--end::Indicator label-->
-                                    </button>
+                                    </a>
+                                    
                                     <!--end::Submit-->
                                 </div>
                                 <!--end::Actions-->

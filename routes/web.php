@@ -47,7 +47,10 @@ Route::controller(LoginController::class)->group(function () {
     Route::post("authenticate", 'authenticate');
     Route::post("otp", 'otplogin');
     Route::get("logout", 'logout');
+    Route::get("createAccount", 'createAccountView');
+    Route::post("createAccountAuthenticate", 'authenticateNewAccount');
 });
+
 Route::middleware(['userSession'])
     ->controller(HomeController::class)
     ->group(function () {
@@ -96,6 +99,11 @@ Route::middleware(['userSession'])
     ->group(function () {
         Route::get("/", 'home')->name('reports');
     });
+
+Route::controller(ReportsController::class)->group(function () {
+    Route::get("/reports/generate", 'generate')->name('generate');
+});
+
 
 // WhatsApp Recive Api
 Route::post('/receive', function () {

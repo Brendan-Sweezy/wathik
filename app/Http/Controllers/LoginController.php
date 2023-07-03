@@ -15,29 +15,58 @@ class LoginController extends Controller
 {
     
     public function login() {
-        if (session('user_id')) {
-            //return redirect()->route('home');
-        }
+        //Allows it so user is always prompted to sign in
+        /*if (session('user_id')) {
+            return redirect()->route('home');
+        }*/
         return view('app.login_temporary');
     }
 
     public function authenticate(Request $request) {
+        //TODO: Error messages
         $user = User::where('username', $request->username)->get();
         if(count($user)) {
-            $input = $request->password . $user[0]->salt;
-            
-            if(Hash::check($input, $user[0]->password)) {
+            if(password_verify($request->password, $user[0]->password)) {
                 Session::put('user_id', $user[0]->id);
                 return redirect('home');
-                //return json_encode(['status' => true]);
             } else {
-                return json_encode(['status' => false, 'msg' => 'الرمز المدخل غير صحيح']);
+                echo "incorrect password";
             }
         } else {
             echo 'no user found';
         }
     }
-    
+
+    public function createAccountView() {
+        //Allows it so user is always prompted to sign in
+        /*if (session('user_id')) {
+            return redirect()->route('home');
+        }*/
+        return view('app.create_account');
+    }
+
+    public function authenticateNewAccount(Request $request) {
+        $username = User::where('username', $request->username)->get();
+        if(count($username)) {
+            echo "Username Taken";
+        } else if($request->password != $request->password_confirm) {
+            echo "Passwords do not match";
+        } else {
+            $password = password_hash($request->password, PASSWORD_DEFAULT);        
+            User::create([
+                'username' => $request->username,
+                'password' => $password,
+                'email' => $request->email,
+                'phone' => $request->phone_number
+            ]);
+            return redirect('/login');
+        }
+    }
+
+    //TODO: implement logging out
+    public function logout() {
+        
+    }
     
     
     /*public function login(Request $request)
