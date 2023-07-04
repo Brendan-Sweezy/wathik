@@ -102,11 +102,10 @@ Route::middleware(['userSession'])
     ->prefix('reports')
     ->group(function () {
         Route::get("/", 'home')->name('reports');
+        Route::get("/generate", 'generate')->name('generate');
     });
 
-Route::controller(ReportsController::class)->group(function () {
-    Route::get("/reports/generate", 'generate')->name('generate');
-});
+
 
 
 // WhatsApp Recive Api
