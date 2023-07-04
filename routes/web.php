@@ -53,6 +53,8 @@ Route::controller(LoginController::class)->group(function () {
     Route::get("logout", 'logout');
     Route::get("createAccount", 'createAccountView');
     Route::post("createAccountAuthenticate", 'authenticateNewAccount');
+    //Adding a route that checks if the new user wants to join an existing org
+    Route::get("existingOrg", 'joinOrgView');
 });
 
 Route::middleware(['userSession'])

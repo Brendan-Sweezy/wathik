@@ -14,11 +14,13 @@ use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
+    
+
     public function home(Request $request)
     {
         $user = User::with(['orgnization'])->find(session('user_id'));
         if (empty($user->orgnization)) {
-            return redirect()->to('wizard');
+            return redirect()->to('existingOrg');
         }
         Session::put('orgnization_id', $user->orgnization->orgnization_id);
         return view('app.home', ['user' => $user, 'projects' => Project::where('orgnization_id', $user->orgnization->orgnization_id)->get()]);
@@ -29,6 +31,8 @@ class HomeController extends Controller
     }
     public function saveWizard(Request $request)
     {
+        
+
         $orgnization = Orgnization::create([
             'name' => $request->orgnization_name,
             'national_id' => $request->orgnization_national_id,

@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    
+    //allow a new user to join existing org
+    public function joinOrgView() {
+        return view('app.existingOrg');
+    }
+
     public function login() {
         //Allows it so user is always prompted to sign in
         /*if (session('user_id')) {
@@ -62,6 +66,7 @@ class LoginController extends Controller
             return redirect('/login');
         }
     }
+
 
     //TODO: implement logging out
     public function logout() {
