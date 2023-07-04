@@ -3,20 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\Pdf;
-use App\Models\Orgnization;
-use App\Models\OrgnizationContact;
-use App\Models\OrgnizationAddress;
+//use Barryvdh\DomPDF\Facade\Pdf;
+use Setasign\Fpdi\Fpdi;
+//use App\Models\Orgnization;
+//use App\Models\OrgnizationContact;
+//use App\Models\OrgnizationAddress;
 
 class ReportsController extends Controller
 {
+    public function generate() {
+        $pdf = new Fpdi();
+        dd($pdf);
+    }
+}  
+    
+  /*  
     public function home(Request $request)
     {
         return view('app.reports.home');
     }
 
-    public function generate(Request $request) {
-        $organization = Orgnization::find(session('orgnization_id'));
+    //public function generate(Request $request) {
+        /*$organization = Orgnization::find(session('orgnization_id'));
         $mobile_number = OrgnizationContact::where('orgnization_id', $organization->id)->where('type', 'mobile')->value('contact');
         $landline_number = OrgnizationContact::where('orgnization_id', $organization->id)->where('type', 'phone')->value('contact');
         $mailbox = OrgnizationContact::where('orgnization_id', $organization->id)->where('type', 'mail')->value('contact');
@@ -28,9 +36,11 @@ class ReportsController extends Controller
         $district = OrgnizationAddress::where('orgnization_id', $organization->id)->value('district');
         $residential_type = OrgnizationAddress::where('orgnization_id', $organization->id)->value('residential_type');
         $neighborhood = OrgnizationAddress::where('orgnization_id', $organization->id)->value('neighborhood');
+*/
 
+        
 
-        $pdf = Pdf::loadView('pdf.report', [
+        /*$pdf = Pdf::loadView('pdf.report', [
             'national_id' => $organization->national_id,
             'cbo_name' => $organization->name,
             'founding_date' => $organization->founding_date,
@@ -46,6 +56,6 @@ class ReportsController extends Controller
             'residential_type' => $residential_type,
             'neighborhood' => $neighborhood
         ]);
-        return $pdf->download('report.pdf');
-    }
-}
+        return $pdf->download('report.pdf');*/
+    //}
+//}
