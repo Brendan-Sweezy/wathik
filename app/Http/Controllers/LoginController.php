@@ -69,8 +69,10 @@ class LoginController extends Controller
 
 
     //TODO: implement logging out
-    public function logout() {
-        
+    public function logout(Request $request) {
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
     }
     
     
