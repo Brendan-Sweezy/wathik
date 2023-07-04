@@ -31,11 +31,8 @@
                         <!--end::Mobile menu toggle-->
                         <!--begin::Logo image-->
                         <a href="{{ url('') }}">
-                            {{-- <img alt="Logo" src="{{ asset('assets/media/logos/landing.svg') }}"
-                                class="logo-default h-25px h-lg-30px" />
-                            <img alt="Logo" src="{{ asset('assets/media/logos/landing-dark.svg') }}"
-                                class="logo-sticky h-20px h-lg-25px" /> --}}
-                            <h1 style="color: white">Wathik</h1>
+                            <img alt="Logo" src="{{ asset('assets/media/wathikLogo.png') }}"
+                                class="logo-default h-75px h-lg-100px p-1" />
                         </a>
                         <!--end::Logo image-->
                     </div>
