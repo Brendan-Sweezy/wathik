@@ -64,13 +64,14 @@ Route::middleware(['userSession'])
         Route::get("wizard", 'wizard');
         Route::post("saveWizard", 'saveWizard');
     });
-
+    
 Route::middleware(['userSession'])
     ->controller(OrgnizationController::class)
     ->prefix('orgnization')
     ->group(function () {
         Route::get("/", 'home')->name('orgnization');
         Route::get("/{target}", 'view')->name('orgnization');
+        Route::post("/amendManager", 'amendManager');
     });
 
 Route::middleware(['userSession'])
@@ -86,6 +87,7 @@ Route::middleware(['userSession'])
         Route::get("view/{id}", 'view');
     });
 
+//app.projects.participants...
 Route::middleware(['userSession'])
     ->controller(ParticipantsController::class)
     ->prefix('participants')
@@ -99,6 +101,7 @@ Route::middleware(['userSession'])
     ->group(function () {
         Route::post("add", 'add');
     });
+
 Route::middleware(['userSession'])
     ->controller(ReportsController::class)
     ->prefix('reports')

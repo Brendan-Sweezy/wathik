@@ -1,6 +1,9 @@
+<!-- begin: Button to open "add participants" popup -->
 <button type="button" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal"
     data-bs-target="#kt_modal_add_customer">اضافة مشاركين</button>
 <hr />
+<!-- end: Button... -->
+
 <table class="table align-middle table-row-dashed fs-6 gy-5" dir="rtl">
     <!--begin::Table head-->
     <thead>
