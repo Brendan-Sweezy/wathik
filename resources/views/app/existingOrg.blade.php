@@ -70,6 +70,13 @@
                                         <span class="indicator-label" data-kt-translate="sign-in-submit">Yes, join an existing organization</span>
                                         <!--end::Indicator label-->
                                     </button>
+                                    <script>
+                                        const loginButton = document.getElementById("login_button");
+                                        loginButton.addEventListener("click", function() {
+                                            // Navigate to another route or URL
+                                            window.location.href = "/orgAuth";
+                                        });
+                                    </script>
                                     
                                     
                                     <!--end::Submit-->

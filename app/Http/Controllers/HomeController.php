@@ -37,7 +37,7 @@ class HomeController extends Controller
             'name' => $request->orgnization_name,
             'national_id' => $request->orgnization_national_id,
             'ministry' => $request->orgnization_ministry,
-            'founding_date' => $request->orgnization_founding_date
+            'founding_date' => $request->orgnization_founding_date,
         ]);
         UserOrgnization::create([
             'user_id' => session('user_id'),
