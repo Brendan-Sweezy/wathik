@@ -19,10 +19,9 @@ class LoginController extends Controller
     }
 
     public function login() {
-        //Allows it so user is always prompted to sign in
-        /*if (session('user_id')) {
+        if (session('user_id')) {
             return redirect()->route('home');
-        }*/
+        }
         return view('app.login_temporary');
     }
 
@@ -42,10 +41,9 @@ class LoginController extends Controller
     }
 
     public function createAccountView() {
-        //Allows it so user is always prompted to sign in
-        /*if (session('user_id')) {
+        if (session('user_id')) {
             return redirect()->route('home');
-        }*/
+        }
         return view('app.create_account');
     }
 
@@ -67,8 +65,6 @@ class LoginController extends Controller
         }
     }
 
-
-    //TODO: implement logging out
     public function logout(Request $request) {
         $request->session()->invalidate();
         $request->session()->regenerateToken();
