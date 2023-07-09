@@ -1,7 +1,7 @@
-<form class="form" action="{{ url('orgnization/amendManager') }}" method="POST">
+<form class="form" action="{{ url('orgnization/amendInfo') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">Amend Management Information</h2>
+        <h2 class="fw-bold">Amend Organization Information</h2>
         <div onclick="$('#kt_modal_add_customer').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <!-- Modal body: Amend management info -->
+    <!-- Modal body: Amend organization info -->
     <div class="modal-body py-10 px-lg-17" dir="rtl">
         <div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true"
             data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto"
@@ -23,28 +23,28 @@
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
             
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Name of association president</label>
+                <label class="required fs-6 fw-semibold mb-2">Organization name</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter name" name="name" required 
-                    value="{{ $orgnization->manager->name }}"/>
+                    value="{{ $orgnization->name }}"/>
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">ID number</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter ID number" name="national_id" required 
-                    value="{{ $orgnization->manager->national_id }}"/>
+                    value="{{ $orgnization->national_id }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Cell phone number</label>
+                <label class="required fs-6 fw-semibold mb-2">Ministry</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter phone number" name="phone" required 
-                    value="{{ $orgnization->manager->phone }}"/>
+                    placeholder="Enter ministry" name="ministry" required 
+                    value="{{ $orgnization->ministry }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Email</label>
+                <label class="required fs-6 fw-semibold mb-2">Founding date</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter email" name="email" required 
-                    value="{{ $orgnization->manager->email }}"/>
+                    placeholder="Enter founding date" name="founding_date" required 
+                    value="{{ $orgnization->founding_date }}"/>
             </div>
         </div>
     </div>
