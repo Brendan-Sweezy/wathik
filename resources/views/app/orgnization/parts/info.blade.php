@@ -5,12 +5,21 @@
                 المعلومات
             </div>
 
+            <!-- MODAL -->
+            <div class="modal fade" id="infoModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered mw-650px">
+                    <div class="modal-content">
+                        @include('app.orgnization.modals.information')
+                    </div>
+                </div>
+            </div>
             <div class="card-toolbar">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-                    data-bs-target="#kt_modal_add_customer">تعديل</button>
+                    data-bs-target="#infoModal">تعديل</button>
             </div>
         </div>
 
+        <!-- CONTENT -->
         <div class="card-body pt-1">
             <div class="row">
                 <div class="col-3">اسم الجمعية</div>
@@ -34,15 +43,3 @@
         </div>
     </div>
 </div>
-
-@section('modals')
-    <div class="modal fade" id="kt_modal_add_customer" tabindex="-1" aria-hidden="true">
-        <!--begin::Modal dialog-->
-        <div class="modal-dialog modal-dialog-centered mw-650px">
-            <!--begin::Modal content-->
-            <div class="modal-content">
-                @include('app.orgnization.modals.information')
-            </div>
-        </div>
-    </div>
-@stop

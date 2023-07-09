@@ -3,10 +3,22 @@
         <div class="card-title pt-3 mb-0 gap-4 gap-lg-10 gap-xl-15 nav nav-tabs border-bottom-0">
             إدارة الجمعية
         </div>
-        <div class="card-toolbar">
-            <button type="button" class="btn btn-primary">تعديل</button>
+
+        <!-- MODAL -->
+        <div class="modal fade" id="kt_modal_add_customer" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered mw-650px">
+                <div class="modal-content">
+                    @include('app.orgnization.modals.boardPresident')
+                </div>
+            </div>
         </div>
+        <div class="card-toolbar">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
+                data-bs-target="#kt_modal_add_customer">تعديل</button>
+        </div> 
     </div>
+
+    <!-- CONTENT -->
     <div class="card-body pt-1">
         <div class="row">
             <div class="col-3">الرئيس الفخري</div>
@@ -22,12 +34,14 @@
         <div class="row">
             <div class="col-3">الرقم الوطني</div>
             <div class="col">
-                @foreach ($orgnization->contacts as $contact)
-                    @if ($contact->type == 'president_national_id')
-                        {{ $contact->contact }}
+                @foreach ($orgnization->info as $info)
+                    @if ($info->type == 'president_national_id')
+                        {{ $info->info }}
                     @endif
                 @endforeach
             </div>
         </div>
     </div>
 </div>
+
+
