@@ -72,6 +72,7 @@ Route::middleware(['userSession'])
         Route::get("/", 'home')->name('orgnization');
         Route::get("/{target}", 'view')->name('orgnization');
         Route::post("/amendManager", 'amendManager');
+        Route::post("/amendInfo", 'amendInfo');
     });
 
 Route::middleware(['userSession'])
@@ -87,7 +88,6 @@ Route::middleware(['userSession'])
         Route::get("view/{id}", 'view');
     });
 
-//app.projects.participants...
 Route::middleware(['userSession'])
     ->controller(ParticipantsController::class)
     ->prefix('participants')

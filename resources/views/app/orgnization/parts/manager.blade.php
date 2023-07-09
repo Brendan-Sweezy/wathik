@@ -7,20 +7,12 @@
 
             <!-- button to amend manager information -->
             <div class="card-toolbar">
-            
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
                     data-bs-target="#kt_modal_add_customer">تعديل</button>
-                    <!-- (see modal section below) -->
-                    
-                <!-- 
-                    /** OLD (non-functional) button: **/
-                    <button type="button" class="btn btn-primary">تعديل</button>
-                -->
-
             </div> 
              <!-- end button -->
-
         </div>
+        
         <div class="card-body pt-1">
             <div class="row">
                 <div class="col-3">اسم رئيس الجمعية</div>
