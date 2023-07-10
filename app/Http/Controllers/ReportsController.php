@@ -35,6 +35,12 @@ class ReportsController extends Controller
         $manager = OrgnizationManager::where('orgnization_id', $organization->id)->first();
         $website = OrgnizationContact::where('orgnization_id', $organization->id)->where('type', 'website')->value('contact');
 
+        $president = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'president')->value('info');
+        $president_id = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'president_national_id')->value('info');
+        $president_phone = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'president_phone')->value('info');
+        $president_email = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'president_email')->value('info');
+        /*
+        
         //SQL Queries Second Page
         $projects = Project::where('orgnization_id', $organization->id)->get();
         $project_names = array_fill(0, 9, '');
@@ -68,8 +74,7 @@ class ReportsController extends Controller
 
         //SQL Queries Third Page 
         //President is manager?????? TODODOODODOD
-        $president = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'president')->value('info');
-        $president_id = OrgnizationContact::where('orgnization_id', $organization->id)->where('type', 'president_national_id')->value('info');
+       
 
         $board_members = Member::where('orgnization_id', $organization->id)->get();
 
@@ -208,7 +213,7 @@ class ReportsController extends Controller
         $budget_expenses_others5 = [];
         $budget_expenses_totals = [];
 
-        $budget_balanes = [];
+        $budget_balances = [];
 
         $auditor = '';
 
@@ -218,17 +223,46 @@ class ReportsController extends Controller
         $upcoming_project_budgets = [];
 
 
-
+*/
         
         
 
         $pdf = new Pdf('/assets/template.pdf');
         $result = $pdf->fillForm([
             'CBO Name' => $organization->name,
+            'Text_1' => $id[0],
+            '90id' => $id[1],
+            'id9' => $id[2],
+            'id8' => $id[3],
+            'ity' => $id[4],
+            'hi' => $id[5],
+            'hello' => $id[6],
+            'id0' => $id[7],
+            'id1' => $id[8],
+            'id5' => $id[9],
+            'id10' => $id[10],
+            'id11' => $id[11],
+            'id90' => $id[12],
             'Competent Ministry' => $organization->ministry,
-            
-            'Full Name' => $board_names[0],
-            'fill_23_3' => $board_names[1]
+            'Date of Establishment' => $organization->founding_date,
+            'Landline Number' => $landline_number,
+            'Mobile' => $mobile_number,
+            'Email_0' => $email,
+            'Postal Code' => $mailbox,
+            'P.O. Box' => $zipcode,
+            'Governate' => $address->governorate,
+            'District' => $address->provenance,
+            'Constituency' => $address->district,
+            'Area' => $address->area,
+            'Neighborhood' => $address->neighborhood,
+
+            'Name of CBO President' => $president,
+            'ID Number_0' => $president_id,
+            'Mobile Number' => $president_phone,
+            'Email' => $president_email,
+            'CBO\'s Website' => $website
+
+           
         ])->send('report.pdf');
     }
 

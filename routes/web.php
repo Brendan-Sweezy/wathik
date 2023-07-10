@@ -8,6 +8,7 @@ use App\Http\Controllers\ParticipantsController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\WhatsAppController;
+use App\Http\Controllers\BudgetController;
 use Illuminate\Support\Facades\Route;
 use Twilio\Rest\Client;
 
@@ -79,6 +80,14 @@ Route::middleware(['userSession'])
         Route::get("/managment/members/delete/{id}", 'deleteMember');
         Route::post("/managment/amendMember/{id}", 'amendMember');
         
+    });
+
+    Route::middleware(['userSession'])
+    ->controller(BudgetController::class)
+    ->prefix('budget')
+    ->group(function () {
+        Route::get("/", 'home')->name('budget');
+        Route::get("/{target}", 'view')->name('budget');
     });
 
 Route::middleware(['userSession'])
