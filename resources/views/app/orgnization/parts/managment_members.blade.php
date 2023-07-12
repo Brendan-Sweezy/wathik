@@ -5,7 +5,7 @@
         </div>
 
         <!-- MODAL -->
-        <div class="modal fade" id="kt_modal_add_customer" tabindex="-1" aria-hidden="true">
+        <div class="modal fade" id="boardInfo" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered mw-650px">
                 <div class="modal-content">
                     @include('app.orgnization.modals.boardInfo')
@@ -14,7 +14,7 @@
         </div>
         <div class="card-toolbar">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-                data-bs-target="#kt_modal_add_customer">add</button>
+                data-bs-target="#boardInfo">add</button>
         </div> 
         
     </div>

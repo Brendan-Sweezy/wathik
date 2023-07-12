@@ -79,6 +79,7 @@ Route::middleware(['userSession'])
         Route::post("/managment/addMember", 'addMember');
         Route::get("/managment/members/delete/{id}", 'deleteMember');
         Route::post("/managment/amendMember/{id}", 'amendMember');
+        Route::post("/managment/amendAdminInfo", 'amendAdminInfo');
         
     });
 

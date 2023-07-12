@@ -55,12 +55,11 @@ class OrgnizationController extends Controller
             'degree' => $request->degree,
             'major' => $request->major,
             'phone' => $request->phone,
-            'election_date' => $request->election_date
+            'election_date' => $request->election_date,
         ]);
          return redirect('orgnization/managment');
     }
 
-    //TODO: amendMember
     public function amendMember(Request $request, $id)
     {
         $member = Member::find($id);
@@ -77,7 +76,6 @@ class OrgnizationController extends Controller
         return redirect('orgnization/managment');
     }
 
-    //TODO: deleteMember
     public function deleteMember($id)
     {
         $member = Member::find($id);
@@ -133,6 +131,142 @@ class OrgnizationController extends Controller
                     'info' => $request->national_id
                 ]);
                 $id->save();
+            }
+        }
+        return redirect('orgnization/managment');
+    }
+
+    public function amendAdminInfo(Request $request)
+    {
+        if (OrgnizationInfo::find(1) == NULL) {
+            $num_members = OrgnizationInfo::create([
+                'orgnization_id' => session('orgnization_id'),
+                'type' => 'num_members',
+                'info' => $request->num_members
+            ]);
+            $mentioned_members = OrgnizationInfo::create([
+                'orgnization_id' => session('orgnization_id'),
+                'type' => 'mentioned_members',
+                'info' => $request->mentioned_members
+            ]);
+            $male = OrgnizationInfo::create([
+                'orgnization_id' => session('orgnization_id'),
+                'type' => 'male',
+                'info' => $request->male
+            ]);
+            $female = OrgnizationInfo::create([
+                'orgnization_id' => session('orgnization_id'),
+                'type' => 'female',
+                'info' => $request->female
+            ]);
+            $quorum = OrgnizationInfo::create([
+                'orgnization_id' => session('orgnization_id'),
+                'type' => 'quorum',
+                'info' => $request->quorum
+            ]);
+            $election_date = OrgnizationInfo::create([
+                'orgnization_id' => session('orgnization_id'),
+                'type' => 'election_date',
+                'info' => $request->election_date
+            ]);
+        }
+
+
+
+        
+        else {
+            $counter = 1;
+            $numHits = 0;
+            $mentionedHits = 0;
+            $maleHits = 0;
+            $femaleHits = 0;
+            $quorumHits = 0;
+            $dateHits = 0;
+            while (OrgnizationInfo::find($counter)) {
+                $info = OrgnizationInfo::find($counter);
+                if ($info->type == 'num_members') {
+                    $numHits++;
+                    $info->info = $request->num_members;
+                    $info->save();
+                }
+                else if($info->type == 'mentioned_members') {
+                    $mentionedHits++;
+                    $info->info = $request->mentioned_members;
+                    $info->save();
+                }
+                else if($info->type == 'male') {
+                    $maleHits++;
+                    $info->info = $request->male;
+                    $info->save();
+                }
+                else if($info->type == 'female') {
+                    $femaleHits++;
+                    $info->info = $request->female;
+                    $info->save();
+                }
+                else if($info->type == 'quorum') {
+                    $quorumHits++;
+                    $info->info = $request->quorum;
+                    $info->save();
+                }
+                else if($info->type == 'election_date') {
+                    $dateHits++;
+                    $info->info = $request->election_date;
+                    $info->save();
+                }
+                $counter++;
+            }
+
+
+
+
+            if ($numHits==0) {
+                $num_members = OrgnizationInfo::create([
+                    'orgnization_id' => session('orgnization_id'),
+                    'type' => 'num_members',
+                    'info' => $request->num_members
+                ]);
+                $num_members->save();
+            }
+            if ($mentionedHits==0) {
+                $mentioned_members = OrgnizationInfo::create([
+                    'orgnization_id' => session('orgnization_id'),
+                    'type' => 'mentioned_members',
+                    'info' => $request->mentioned_members
+                ]);
+                $mentioned_members->save();
+            }
+            if ($maleHits==0) {
+                $male = OrgnizationInfo::create([
+                    'orgnization_id' => session('orgnization_id'),
+                    'type' => 'male',
+                    'info' => $request->male
+                ]);
+                $male->save();
+            }
+            if ($femaleHits==0) {
+                $female = OrgnizationInfo::create([
+                    'orgnization_id' => session('orgnization_id'),
+                    'type' => 'female',
+                    'info' => $request->female
+                ]);
+                $female->save();
+            }
+            if ($quorumHits==0) {
+                $quorum = OrgnizationInfo::create([
+                    'orgnization_id' => session('orgnization_id'),
+                    'type' => 'quorum',
+                    'info' => $request->quorum
+                ]);
+                $quorum->save();
+            }
+            if ($dateHits==0) {
+                $election_date = OrgnizationInfo::create([
+                    'orgnization_id' => session('orgnization_id'),
+                    'type' => 'election_date',
+                    'info' => $request->election_date
+                ]);
+                $election_date->save();
             }
         }
         return redirect('orgnization/managment');
