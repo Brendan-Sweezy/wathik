@@ -34,7 +34,7 @@ class OrgnizationController extends Controller
 
     public function amendInfo(Request $request)
     {
-        $info = Orgnization::find(1);
+        $info = Orgnization::find(session('orgnization_id'));
         $info->name = $request->name;
         $info->national_id = $request->national_id;
         $info->ministry = $request->ministry;
