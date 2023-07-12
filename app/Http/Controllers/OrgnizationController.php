@@ -23,7 +23,7 @@ class OrgnizationController extends Controller
 
     public function amendManager(Request $request)
     {
-        $manager = OrgnizationManager::find(1);
+        $manager = OrgnizationManager::find(session('orgnization_id'));
         $manager->name = $request->name;
         $manager->national_id = $request->national_id;
         $manager->phone = $request->phone;
