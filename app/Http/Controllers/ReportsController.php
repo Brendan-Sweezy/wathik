@@ -39,7 +39,7 @@ class ReportsController extends Controller
         $president_id = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'president_national_id')->value('info');
         $president_phone = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'president_phone')->value('info');
         $president_email = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'president_email')->value('info');
-        /*
+        
         
         //SQL Queries Second Page
         $projects = Project::where('orgnization_id', $organization->id)->get();
@@ -90,6 +90,8 @@ class ReportsController extends Controller
         $association_male_size = '';
         $association_female_size = '';
 
+        
+
         $employees_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'total_employees')->value('info');
         $employees_male_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'female_employees')->value('info');
         $employees_female_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'female_employees')->value('info');
@@ -97,6 +99,8 @@ class ReportsController extends Controller
         $volunteers_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'total_volunteers')->value('info');
         $volunteers_male_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'male_volunteers')->value('info');
         $volunteers_female_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'female_volunteers')->value('info');
+
+        
 
         $board_names = array_fill(0, 9, '');
         $board_ids = array_fill(0, 9, '');
@@ -119,10 +123,10 @@ class ReportsController extends Controller
             //$board_election_dates[$i] = TODO;
         }
 
-        $employee_names = array_fill(0, 9, '');
-        $employee_qualifications = array_fill(0, 9, '');
-        $employee_titles = array_fill(0, 9, '');
-        $employee_genders = array_fill(0, 9, '');
+        $employee_names = array_fill(0, 10, '');
+        $employee_qualifications = array_fill(0, 10, '');
+        $employee_titles = array_fill(0, 10, '');
+        $employee_genders = array_fill(0, 10, '');
 
         $employees = Employee::where('organization_id', $organization->id)->get();
         for($i = 0; $i < 9 && $i < count($employees); $i++) {
@@ -134,6 +138,8 @@ class ReportsController extends Controller
                 $employee_genders[$i] = "female";
             }
         }
+
+        
 
         $meeting_nums = array_fill(0, 4, '');
         $meeting_dates = array_fill(0, 4, '');
@@ -223,7 +229,7 @@ class ReportsController extends Controller
         $upcoming_project_budgets = [];
 
 
-*/
+
         
         
 
@@ -260,7 +266,294 @@ class ReportsController extends Controller
             'ID Number_0' => $president_id,
             'Mobile Number' => $president_phone,
             'Email' => $president_email,
-            'CBO\'s Website' => $website
+            'CBO\'s Website' => $website,
+
+            'p4_0' => $project_names[0],
+            'p4' => $project_names[1],
+            'p4_2' => $project_names[2],
+            'p4_3' => $project_names[3],
+            'p4_4' => $project_names[4],
+            'p4_5' => $project_names[5],
+            'p4_6' => $project_names[6],
+            'p4_7' => $project_names[7],
+            'p4_8' => $project_names[8],
+
+            'p3_0' => '',
+            'p3' => '',
+            'p3_2' => '',
+            'p3_3' => '',
+            'p3_4' => '',
+            'p3_5' => '',
+            'p3_6' => '',
+            'p3_7' => '',
+            'p3_8' => '',
+
+            'p2_0' => $project_statuses[0],
+            'p2' => $project_statuses[1],
+            'p2_2' => $project_statuses[2],
+            'p2_3' => $project_statuses[3],
+            'p2_4' => $project_statuses[4],
+            'p2_5' => $project_statuses[5],
+            'p2_6' => $project_statuses[6],
+            'p2_7' => $project_statuses[7],
+            'p2_8' => $project_statuses[8],
+
+            'p1_0' => $project_beneficiaries[0],
+            'p1' => $project_beneficiaries[1],
+            'p1_2' => $project_beneficiaries[2],
+            'p1_3' => $project_beneficiaries[3],
+            'p1_4' => $project_beneficiaries[4],
+            'p1_5' => $project_beneficiaries[5],
+            'p1_6' => $project_beneficiaries[6],
+            'p1_7' => $project_beneficiaries[7],
+            'p1_8' => $project_beneficiaries[8],
+
+            '1' => $threats[0],
+            '2' => $threats[1],
+            '3' => $threats[2],
+            '4' => $threats[3],
+            '5' => $threats[4],
+            '6' => $threats[5],
+            'Other Reasons' => '',
+
+            'Name' => $president,
+            'ID Number' =>$president_id,
+
+            '#_1' => $board_size,
+            '#_4' => $board_size_articles,
+            '#_5' => $board_male_size,
+            '#_6' => $board_female_size,
+            '#_2' => $board_quorum,
+            '#_7' => $board_term,
+            '#_3' => $board_election_date,
+
+            '# of Current, Participating Members of the CBO' => $association_size,
+            '# of Male Members' => $association_male_size,
+            '# of Female Members' => $association_female_size,
+
+            'Male_1' => $employees_male_size,
+            'Female_1' => $employees_female_size,
+            'Total_1' => $employees_size,
+
+            'Male_2' => $volunteers_male_size,
+            'Female_2' => $volunteers_female_size,
+            'Total_2' => $volunteers_size,
+
+            'Full Name' => $board_names[0],
+            'fill_23_3' => $board_names[1],
+            'fill_30_2' => $board_names[2],
+            'fill_37_2' => $board_names[3],
+            'fill_44' => $board_names[4],
+            'fill_51' => $board_names[5],
+            'fill_58_a' => $board_names[6],
+            'fill_58_b' => $board_names[7],
+            'fill_58_c' => $board_names[8],
+
+            'Employee ID #' => $board_ids[0],
+            'fill_22_3' => $board_ids[1],
+            'fill_29_2' => $board_ids[2],
+            'fill_36_2' => $board_ids[3],
+            'fill_43_2' => $board_ids[4],
+            'fill_50' => $board_ids[5],
+            'fill_57_a' => $board_ids[6],
+            'fill_57_b' => $board_ids[7],
+            'fill_57_c' => $board_ids[8],
+
+            'Date of Birth' => $board_birthdays[0],
+            'fill_21_3' => $board_birthdays[1],
+            'fill_28_3' => $board_birthdays[2],
+            'fill_35_2' => $board_birthdays[3],
+            'fill_42_2' => $board_birthdays[4],
+            'fill_49' => $board_birthdays[5],
+            'fill_56_a' => $board_birthdays[6],
+            'fill_56_b' => $board_birthdays[7],
+            'fill_56_c' => $board_birthdays[8],
+
+            'Work/Profession' => $board_professions[0],
+            'fill_20_3' => $board_professions[1],
+            'fill_27_3' => $board_professions[2],
+            'fill_34_2' => $board_professions[3],
+            'fill_41_2' => $board_professions[4],
+            'fill_48' => $board_professions[5],
+            'fill_55_a' => $board_professions[6],
+            'fill_55_b' => $board_professions[7],
+            'fill_55_c' => $board_professions[8],
+
+            'Academic Degree and Specialty' => $board_degrees[0],
+            'fill_19_3' => $board_degrees[1],
+            'fill_26_3' => $board_degrees[2],
+            'fill_33_2' => $board_degrees[3],
+            'fill_40_2' => $board_degrees[4],
+            'fill_47' => $board_degrees[5],
+            'fill_54_a' => $board_degrees[6],
+            'fill_54_b' => $board_degrees[7],
+            'fill_54_c' => $board_degrees[8],
+
+            'Mobile #' => $board_phones[0],
+            'fill_18_3' => $board_phones[1],
+            'fill_25_3' => $board_phones[2],
+            'fill_32_2' => $board_phones[3],
+            'fill_39_2' => $board_phones[4],
+            'fill_46' => $board_phones[5],
+            'fill_53_a' => $board_phones[6],
+            'fill_53_b' => $board_phones[7],
+            'fill_53_c' => $board_phones[8],
+
+            'Date of election to the administration' => $board_election_dates[0],
+            'fill_17_3' => $board_election_dates[1],
+            'fill_24_3' => $board_election_dates[2],
+            'fill_31_2' => $board_election_dates[3],
+            'fill_38_2' => $board_election_dates[4],
+            'fill_45' => $board_election_dates[5],
+            'fill_52_a' => $board_election_dates[6],
+            'fill_52_a' => $board_election_dates[7],
+            'fill_52_a' => $board_election_dates[8],
+
+            'Name_1' => $employee_names[0],
+            'fill_10_5' => $employee_names[1],
+            'fill_14_4' => $employee_names[2],
+            'fill_18_4' => $employee_names[3],
+            'fill_22_4' => $employee_names[4],
+            'fill_26_4' => $employee_names[5],
+            'fill_30_3' => $employee_names[6],
+            'fill_34_3' => $employee_names[7],
+            'fill_38_3' => $employee_names[8],
+            'fill_42_3' => $employee_names[9],
+
+            'Professional_1' => $employee_qualifications[0],
+            'fill_9_5' => $employee_qualifications[1],
+            'fill_13_5' => $employee_qualifications[2],
+            'fill_17_4' => $employee_qualifications[3],
+            'fill_21_4' => $employee_qualifications[4],
+            'fill_25_4' => $employee_qualifications[5],
+            'fill_29_3' => $employee_qualifications[6],
+            'fill_33_3' => $employee_qualifications[7],
+            'fill_37_3' => $employee_qualifications[8],
+            'fill_41_3' => $employee_qualifications[9],
+
+            'Job_1' => $employee_titles[0],
+            'fill_8_5' => $employee_titles[1],
+            'fill_12_5' => $employee_titles[2],
+            'fill_16_4' => $employee_titles[3],
+            'fill_20_4' => $employee_titles[4],
+            'fill_24_4' => $employee_titles[5],
+            'fill_28_4' => $employee_titles[6],
+            'fill_32_3' => $employee_titles[7],
+            'fill_36_3' => $employee_titles[8],
+            'fill_40_3' => $employee_titles[9],
+
+            'Gender_1' => $employee_genders[0],
+            'fill_7_5' => $employee_genders[1],
+            'fill_11_5' => $employee_genders[2],
+            'fill_15_4' => $employee_genders[3],
+            'fill_19_4' => $employee_genders[4],
+            'fill_23_4' => $employee_genders[5],
+            'fill_27_4' => $employee_genders[6],
+            'fill_31_3' => $employee_genders[7],
+            'fill_35_3' => $employee_genders[8],
+            'fill_39_3' => $employee_genders[9],
+
+            'Date of Meeting' => $meeting_dates[0],
+            'fill_51_2' => $meeting_dates[1],
+            'fill_57_3' => $meeting_dates[2],
+            'fill_63' => $meeting_dates[3],
+
+            'Meeting Type' => $meeting_types[0],
+            'fill_50_2' => $meeting_types[1],
+            'fill_56_3' => $meeting_types[2],
+            'fill_62' => $meeting_types[3],
+
+            '# of Attendees' => $meeting_attendees[0],
+            'fill_49_2' => $meeting_attendees[1],
+            'fill_55_3' => $meeting_attendees[2],
+            'fill_61_2' => $meeting_attendees[3],
+
+            '# of Deputies' => $meeting_deputies[0],
+            'fill_48_2' => $meeting_deputies[1],
+            'fill_54_3' => $meeting_deputies[2],
+            'fill_60_2' => $meeting_deputies[3],
+
+            'Decisions' => $meeting_decisions[0],
+            'fill_47_2' => $meeting_decisions[1],
+            'fill_53_3' => $meeting_decisions[2],
+            'fill_59_2' => $meeting_decisions[3],
+
+            'Date of Registration' => $branch_dates[0],
+            'fill_76' => $branch_dates[1],
+            'fill_82' => $branch_dates[2],
+            'Text18_0' => $branch_dates[3],
+
+            'Branch Name' => $branch_names[0],
+            'fill_75' => $branch_names[1],
+            'fill_81' => $branch_names[2],
+            'Text18_1' => $branch_names[3],
+
+            'Governorate' => $branch_governorates[0],
+            'fill_74' => $branch_governorates[1],
+            'fill_80' => $branch_governorates[2],
+            'Text18_2' => $branch_governorates[3],
+
+            'Area_1' => $branch_major_generals[0],
+            'fill_73' => $branch_major_generals[1],
+            'fill_79' => $branch_major_generals[2],
+            'Text18_3' => $branch_major_generals[3],
+
+            'Address' => $branch_eleminates[0],
+            'fill_72_2' => $branch_eleminates[1],
+            'fill_78' => $branch_eleminates[2],
+            'Text18_4' => $branch_eleminates[3],
+
+            'Population' => $branch_populations[0],
+            'fill_71_2' => $branch_populations[1],
+            'fill_77' => $branch_populations[2],
+            'Text18_5' => $branch_populations[3],
+
+            'Donor' => $funding_donors[0],
+            'fill_14_5' => $funding_donors[1],
+            'fill_20_5' => $funding_donors[2],
+            'fill_26_5' => $funding_donors[3],
+            'fill_32_4' => $funding_donors[4],
+            'fill_38_4' => $funding_donors[5],
+
+            'Nationality of Donor' => $funding_nationalities[0],
+            'fill_13_6' => $funding_nationalities[1],
+            'fill_19_5' => $funding_nationalities[2],
+            'fill_25_5' => $funding_nationalities[3],
+            'fill_31_4' => $funding_nationalities[4],
+            'fill_37_4' => $funding_nationalities[5],
+
+            'Governmental/non-governmental' => $funding_type[0],
+            'fill_12_6' => $funding_type[1],
+            'fill_18_5' => $funding_type[2],
+            'fill_24_5' => $funding_type[3],
+            'fill_30_4' => $funding_type[4],
+            'fill_36_4' => $funding_type[5],
+
+            'Financing Status' => $funding_statuses[0],
+            'fill_11_6' => $funding_statuses[1],
+            'fill_17_5' => $funding_statuses[2],
+            'fill_23_5' => $funding_statuses[3],
+            'fill_29_4' => $funding_statuses[4],
+            'fill_35_4' => $funding_statuses[5],
+
+            'Funding Approval Date' => $funding_dates[0],
+            'fill_10_6' => $funding_dates[1],
+            'fill_16_5' => $funding_dates[2],
+            'fill_22_5' => $funding_dates[3],
+            'fill_28_5' => $funding_dates[4],
+            'fill_34_4' => $funding_dates[5],
+
+            'Value (JD)' => $funding_values[0],
+            'fill_9_6' => $funding_values[1],
+            'fill_15_5' => $funding_values[2],
+            'fill_21_5' => $funding_values[3],
+            'fill_27_5' => $funding_values[4],
+            'fill_33_4' => $funding_values[5],
+
+            'fill_43_4' => $balance_beginning,
+            'fill_39_4' => $revenue,
+            'fill_40_4' => $expenses,
+            'fill_41_4' => $balance_ending
 
            
         ])->send('report.pdf');
