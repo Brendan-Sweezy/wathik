@@ -84,6 +84,11 @@ Route::middleware(['userSession'])
         Route::post("/authority/addMeeting", 'addMeeting');
         Route::post("/authority/amendMeeting/{id}", 'amendMeeting');
         Route::get("/authority/delete/{id}", 'deleteMeeting');
+        Route::post("/employees/amendEmployees", 'amendEmployees');
+        Route::post("/employees/amendVolunteers", 'amendVolunteers');
+        Route::post("/funding/addDonor", 'addDonor');
+        Route::post("/funding/amendDonor/{id}", 'amendDonor');
+        Route::get("/funding/delete/{id}", 'deleteDonor');
         
     });
 
