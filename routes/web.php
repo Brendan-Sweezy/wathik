@@ -89,6 +89,7 @@ Route::middleware(['userSession'])
     ->group(function () {
         Route::get("/", 'home')->name('budget');
         Route::get("/{target}", 'view')->name('budget');
+        Route::post("/amendInfo", 'amendInfo');
     });
 
 Route::middleware(['userSession'])

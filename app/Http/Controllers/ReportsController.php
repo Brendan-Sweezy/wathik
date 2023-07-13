@@ -198,35 +198,35 @@ class ReportsController extends Controller
         $expenses = '';
         $balance_ending = '';
 
-        $budget_local_financing = [];
-        $budget_foreign_financing = [];
-        $budget_project_profits = [];
-        $budget_subscriptions = [];
-        $budget_bank_interests = [];
-        $budget_immovable_properties = [];
-        $budget_revenue_others = [];
-        $budget_revenue_totals = [];
+        $budget_local_financing = array_fill(0, 4, '');
+        $budget_foreign_financing = array_fill(0, 4, '');
+        $budget_project_profits = array_fill(0, 4, '');
+        $budget_subscriptions = array_fill(0, 4, '');
+        $budget_bank_interests = array_fill(0, 4, '');
+        $budget_immovable_properties = array_fill(0, 4, '');
+        $budget_revenue_others = array_fill(0, 4, '');
+        $budget_revenue_totals = array_fill(0, 4, '');
 
-        $budget_salaries = [];
-        $budget_depreciations = [];
-        $budget_office_expenses = [];
-        $budget_rents = [];
-        $budget_maintenances = [];
-        $budget_expenses_others1 = [];
-        $budget_expenses_others2 = [];
-        $budget_expenses_others3 = [];
-        $budget_expenses_others4 = [];
-        $budget_expenses_others5 = [];
-        $budget_expenses_totals = [];
+        $budget_salaries = array_fill(0, 4, '');
+        $budget_depreciations = array_fill(0, 4, '');
+        $budget_office_expenses = array_fill(0, 4, '');
+        $budget_rents = array_fill(0, 4, '');
+        $budget_maintenances = array_fill(0, 4, '');
+        $budget_expenses_others1 = array_fill(0, 4, '');
+        $budget_expenses_others2 = array_fill(0, 4, '');
+        $budget_expenses_others3 = array_fill(0, 4, '');
+        $budget_expenses_others4 = array_fill(0, 4, '');
+        $budget_expenses_others5 = array_fill(0, 4, '');
+        $budget_expenses_totals = array_fill(0, 4, '');
 
-        $budget_balances = [];
+        $budget_balances = array_fill(0, 4, '');
 
         $auditor = '';
 
-        $upcoming_project_names = [];
-        $upcoming_project_locations = [];
-        $upcoming_project_beneficiaries = [];
-        $upcoming_project_budgets = [];
+        $upcoming_project_names = array_fill(0, 9, '');
+        $upcoming_project_locations = array_fill(0, 9, '');
+        $upcoming_project_beneficiaries = array_fill(0, 9, '');
+        $upcoming_project_budgets = array_fill(0, 9, '');
 
 
 
@@ -553,7 +553,147 @@ class ReportsController extends Controller
             'fill_43_4' => $balance_beginning,
             'fill_39_4' => $revenue,
             'fill_40_4' => $expenses,
-            'fill_41_4' => $balance_ending
+            'fill_41_4' => $balance_ending,
+
+            'fill_12_7' => $budget_local_financing[0],
+            'fill_11_7' => $budget_local_financing[1],
+            'fill_10_7' => $budget_local_financing[2],
+            'fill_9_7' => $budget_local_financing[3],
+            'fill_8_7' => array_sum($budget_local_financing),
+
+            'fill_17_6' => $budget_foreign_financing[0],
+            'fill_16_6' => $budget_foreign_financing[1],
+            'fill_15_6' => $budget_foreign_financing[2],
+            'fill_14_6' => $budget_foreign_financing[3],
+            'fill_13_7' => array_sum($budget_foreign_financing),
+
+            'fill_22_6' => $budget_project_profits[0],
+            'fill_21_6' => $budget_project_profits[1],
+            'fill_20_6' => $budget_project_profits[2],
+            'fill_19_6' => $budget_project_profits[3],
+            'fill_18_6' => array_sum($budget_project_profits),
+
+            'fill_27_6' => $budget_subscriptions[0],
+            'fill_26_6' => $budget_subscriptions[1],
+            'fill_25_6' => $budget_subscriptions[2],
+            'fill_24_6' => $budget_subscriptions[3],
+            'fill_23_6' => array_sum($budget_subscriptions),
+
+            'fill_32_5' => $budget_bank_interests[0],
+            'fill_31_5' => $budget_bank_interests[1],
+            'fill_30_5' => $budget_bank_interests[2],
+            'fill_29_5' => $budget_bank_interests[3],
+            'fill_28_6' => array_sum($budget_bank_interests),
+
+            'fill_37_5' => $budget_immovable_properties[0],
+            'fill_36_5' => $budget_immovable_properties[1],
+            'fill_35_5' => $budget_immovable_properties[2],
+            'fill_34_5' => $budget_immovable_properties[3],
+            'fill_33_5' => array_sum($budget_immovable_properties),
+
+            'fill_42_5' => $budget_revenue_others[0],
+            'fill_41_5' => $budget_revenue_others[1],
+            'fill_40_5' => $budget_revenue_others[2],
+            'fill_39_5' => $budget_revenue_others[3],
+            'fill_38_5' => array_sum($budget_revenue_others),
+
+            /*
+            'fill_47_3' => $budget_local_financing[0] + $budget_foreign_financing[0] + $budget_project_profits[0] + $budget_subscriptions[0] + $budget_bank_interests[0] + $budget_immovable_properties[0] + $budget_revenue_others[0],
+            'fill_46_3' => $budget_local_financing[1] + $budget_foreign_financing[1] + $budget_project_profits[1] + $budget_subscriptions[1] + $budget_bank_interests[1] + $budget_immovable_properties[1] + $budget_revenue_others[1],
+            'fill_45_3' => $budget_local_financing[2] + $budget_foreign_financing[2] + $budget_project_profits[2] + $budget_subscriptions[2] + $budget_bank_interests[2] + $budget_immovable_properties[2] + $budget_revenue_others[2],
+            'fill_44_4' => $budget_local_financing[3] + $budget_foreign_financing[3] + $budget_project_profits[3] + $budget_subscriptions[3] + $budget_bank_interests[3] + $budget_immovable_properties[3] + $budget_revenue_others[3],
+            'fill_43_5' => array_sum($budget_local_financing) + array_sum($budget_foreign_financing) + array_sum($budget_project_profits) + array_sum($budget_subscriptions) + array_sum($budget_bank_interests) + array_sum($budget_immovable_properties) + array_sum($budget_revenue_others),
+            */
+
+            'fill_57_5' => $budget_salaries[0],
+            'fill_56_5' => $budget_salaries[1],
+            'fill_55_5' => $budget_salaries[2],
+            'fill_54_5' => $budget_salaries[3],
+            'fill_53_5' => array_sum($budget_salaries),
+
+            'fill_62_2' => $budget_depreciations[0],
+            'fill_61_4' => $budget_depreciations[1],
+            'fill_60_4' => $budget_depreciations[2],
+            'fill_59_4' => $budget_depreciations[3],
+            'fill_58_4' => array_sum($budget_depreciations),
+
+            'fill_67_3' => $budget_office_expenses[0],
+            'fill_66_3' => $budget_office_expenses[1],
+            'fill_65_3' => $budget_office_expenses[2],
+            'fill_64_3' => $budget_office_expenses[3],
+            'fill_63_2' => array_sum($budget_office_expenses),
+
+            'fill_72_3' => $budget_rents[0],
+            'fill_71_3' => $budget_rents[1], 
+            'fill_70_3' => $budget_rents[2],
+            'fill_69_3' => $budget_rents[3],
+            'fill_68_3' => array_sum($budget_rents),
+
+            'fill_77_2' => $budget_maintenances[0],
+            'fill_76_2' => $budget_maintenances[1],
+            'fill_75_2' => $budget_maintenances[2],
+            'fill_74_2' => $budget_maintenances[3],
+            'fill_73_2' => array_sum($budget_maintenances),
+
+            'fill_82_2' => $budget_expenses_others1[0],
+            'fill_81_2' => $budget_expenses_others1[1],
+            'fill_80_2' => $budget_expenses_others1[2],
+            'fill_79_2' => $budget_expenses_others1[3],
+            'fill_78_2' => array_sum($budget_expenses_others1),
+            
+            'fill_107' => 'total revenue',
+            'fill_106' => '',
+            'fill_105' => '',
+            'fill_104' => '',
+            'fill_103' => '',
+
+            'fill_112' => 'total budget',
+            'fill_111' => '',
+            'fill_110' => '',
+            'fill_109' => '',
+            'fill_108' => '',
+
+            'Text25' => $auditor,
+
+            'Name of activity' => $upcoming_project_names[0],
+            'fill_10_8' => $upcoming_project_names[1],
+            'fill_14_7' => $upcoming_project_names[2],
+            'fill_18_7' => $upcoming_project_names[3],
+            'fill_22_7' => $upcoming_project_names[4],
+            'fill_26_7' => $upcoming_project_names[5],
+            'fill_30_6' => $upcoming_project_names[6],
+            'fill_34_6' => $upcoming_project_names[7],
+            'fill_38_6' => $upcoming_project_names[8],
+
+            'Location' => $upcoming_project_locations[0],
+            'fill_9_8' => $upcoming_project_locations[1],
+            'fill_13_8' => $upcoming_project_locations[2],
+            'fill_17_7' => $upcoming_project_locations[3],
+            'fill_21_7' => $upcoming_project_locations[4],
+            'fill_25_7' => $upcoming_project_locations[5],
+            'fill_29_6' => $upcoming_project_locations[6],
+            'fill_33_6' => $upcoming_project_locations[7],
+            'fill_37_6' => $upcoming_project_locations[8],
+
+            '# of beneficiaries' => $upcoming_project_beneficiaries[0],
+            'fill_8_8' => $upcoming_project_beneficiaries[1],
+            'fill_12_8' => $upcoming_project_beneficiaries[2],
+            'fill_16_7' => $upcoming_project_beneficiaries[3],
+            'fill_20_7' => $upcoming_project_beneficiaries[4],
+            'fill_24_7' => $upcoming_project_beneficiaries[5],
+            'fill_28_7' => $upcoming_project_beneficiaries[6],
+            'fill_32_6' => $upcoming_project_beneficiaries[7],
+            'fill_36_6' => $upcoming_project_beneficiaries[8],
+
+            'Budget' => $upcoming_project_budgets[0],
+            'fill_7_8' => $upcoming_project_budgets[1],
+            'fill_11_8' => $upcoming_project_budgets[2],
+            'fill_15_7' => $upcoming_project_budgets[3],
+            'fill_19_7' => $upcoming_project_budgets[4],
+            'fill_23_7' => $upcoming_project_budgets[5],
+            'fill_27_7' => $upcoming_project_budgets[6],
+            'fill_31_6' => $upcoming_project_budgets[7],
+            'fill_35_6' => $upcoming_project_budgets[8],
 
            
         ])->send('report.pdf');
@@ -565,38 +705,3 @@ class ReportsController extends Controller
     }
 }  
     
-/*
-'id_0' => $id[0],
-            'id_1' => $id[1],
-            'id_2' => $id[2],
-            'id_3' => $id[3],
-            'id_4' => $id[4],
-            'id_5' => $id[5],
-            'id_6' => $id[6],
-            'id_7' => $id[7],
-            'id_8' => $id[8],
-            'id_9' => $id[9],
-            'id_10' => $id[10],
-            'id_11' => $id[11],
-            'id_12' => $id[12],
-            
-            'organization_name' => $organization->name,
-            'ministry' => $organization->ministry,
-            'date_of_establishment' => $organization->founding_date,
-            'landline_phone' => $landline_number,
-            'mobile_phone' => $mobile_number,
-            'email' => $email,
-            'mailbox' => $mailbox,
-            'postal_code' => $zipcode,
-            'governorate' => $address->governorate,
-            'province' => $address->provenance,
-            'district' => $address->district,
-            'area' => $address->area,
-            'neighborhood' => $address->neighborhood,
-            'residential_type' => 'بادية',
-            'organization_president' => $manager->name,
-            'president_id' => $manager->national_id,
-            'president_mobile' => $manager->phone,
-            'president_email' => $manager->email,
-            'organization_website' => $website
-            */
