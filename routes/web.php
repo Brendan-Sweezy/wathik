@@ -80,6 +80,10 @@ Route::middleware(['userSession'])
         Route::get("/managment/members/delete/{id}", 'deleteMember');
         Route::post("/managment/amendMember/{id}", 'amendMember');
         Route::post("/managment/amendAdminInfo", 'amendAdminInfo');
+        Route::post("/managment/amendAssemblyInfo", 'amendAssemblyInfo');
+        Route::post("/authority/addMeeting", 'addMeeting');
+        Route::post("/authority/amendMeeting/{id}", 'amendMeeting');
+        Route::get("/authority/delete/{id}", 'deleteMeeting');
         
     });
 
