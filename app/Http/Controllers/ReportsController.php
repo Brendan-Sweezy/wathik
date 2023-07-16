@@ -17,6 +17,8 @@ use App\Models\Employee;
 use App\Models\Meeting;
 use App\Models\Branch;
 use App\Models\FinancingEntity;
+use App\Models\revenue;
+use App\Models\expenses;
 
 
 class ReportsController extends Controller
@@ -198,28 +200,53 @@ class ReportsController extends Controller
         $expenses = '';
         $balance_ending = '';
 
-        $budget_local_financing = array_fill(0, 4, '');
-        $budget_foreign_financing = array_fill(0, 4, '');
-        $budget_project_profits = array_fill(0, 4, '');
-        $budget_subscriptions = array_fill(0, 4, '');
-        $budget_bank_interests = array_fill(0, 4, '');
-        $budget_immovable_properties = array_fill(0, 4, '');
-        $budget_revenue_others = array_fill(0, 4, '');
-        $budget_revenue_totals = array_fill(0, 4, '');
+        $q1Rev = revenue::where('organization_id', $organization->id)->where('quarter', 1)->first();
+        $q2Rev = revenue::where('organization_id', $organization->id)->where('quarter', 2)->first();
+        $q3Rev = revenue::where('organization_id', $organization->id)->where('quarter', 3)->first();
+        $q4Rev = revenue::where('organization_id', $organization->id)->where('quarter', 4)->first();
 
-        $budget_salaries = array_fill(0, 4, '');
-        $budget_depreciations = array_fill(0, 4, '');
-        $budget_office_expenses = array_fill(0, 4, '');
-        $budget_rents = array_fill(0, 4, '');
-        $budget_maintenances = array_fill(0, 4, '');
-        $budget_expenses_others1 = array_fill(0, 4, '');
-        $budget_expenses_others2 = array_fill(0, 4, '');
-        $budget_expenses_others3 = array_fill(0, 4, '');
-        $budget_expenses_others4 = array_fill(0, 4, '');
-        $budget_expenses_others5 = array_fill(0, 4, '');
-        $budget_expenses_totals = array_fill(0, 4, '');
+        $q1Ex = expenses::where('organization_id', $organization->id)->where('quarter', 1)->first();
+        $q2Ex = expenses::where('organization_id', $organization->id)->where('quarter', 2)->first();
+        $q3Ex = expenses::where('organization_id', $organization->id)->where('quarter', 3)->first();
+        $q4Ex = expenses::where('organization_id', $organization->id)->where('quarter', 4)->first();
 
-        $budget_balances = array_fill(0, 4, '');
+        $budget_local_financing = [$q1Rev->local_financing, $q2Rev->local_financing, $q3Rev->local_financing, $q4Rev->local_financing];
+        $budget_foreign_financing = [$q1Rev->foreign_financing, $q2Rev->foreign_financing, $q3Rev->foreign_financing, $q4Rev->foreign_financing];
+        $budget_project_profits = [$q1Rev->project_revenue, $q2Rev->project_revenue, $q3Rev->project_revenue, $q4Rev->project_revenue];
+        $budget_subscriptions = [$q1Rev->subscriptions, $q2Rev->subscriptions, $q3Rev->subscriptions, $q4Rev->subscriptions];
+        $budget_bank_interests = [$q1Rev->bank_interest, $q2Rev->bank_interest, $q3Rev->bank_interest, $q4Rev->bank_interest];
+        $budget_immovable_properties = [$q1Rev->immoveable_properties, $q2Rev->immoveable_properties, $q3Rev->immoveable_properties, $q4Rev->immoveable_properties];
+        $budget_revenue_others = [$q1Rev->other, $q2Rev->other, $q3Rev->other, $q4Rev->other];
+        $budget_revenue_totals = [
+            $budget_local_financing[0] + $budget_foreign_financing[0] + $budget_project_profits[0] + $budget_subscriptions[0] + $budget_bank_interests[0] + $budget_immovable_properties[0] + $budget_revenue_others[0],
+            $budget_local_financing[1] + $budget_foreign_financing[1] + $budget_project_profits[1] + $budget_subscriptions[1] + $budget_bank_interests[1] + $budget_immovable_properties[1] + $budget_revenue_others[1],
+            $budget_local_financing[2] + $budget_foreign_financing[2] + $budget_project_profits[2] + $budget_subscriptions[2] + $budget_bank_interests[2] + $budget_immovable_properties[2] + $budget_revenue_others[2],
+            $budget_local_financing[3] + $budget_foreign_financing[3] + $budget_project_profits[3] + $budget_subscriptions[3] + $budget_bank_interests[3] + $budget_immovable_properties[3] + $budget_revenue_others[3]
+        ];
+
+        $budget_salaries = [$q1Ex->salaries, $q2Ex->salaries, $q3Ex->salaries, $q4Ex->salaries];
+        $budget_depreciations = [$q1Ex->deprications, $q2Ex->deprications, $q3Ex->deprications, $q4Ex->deprications];
+        $budget_office_expenses = [$q1Ex->office_expenses, $q2Ex->office_expenses, $q3Ex->office_expenses, $q4Ex->office_expenses];
+        $budget_rents = [$q1Ex->rent, $q2Ex->rent, $q3Ex->rent, $q4Ex->rent];
+        $budget_maintenances = [$q1Ex->maintenance, $q2Ex->maintenance, $q3Ex->maintenance, $q4Ex->maintenance];
+        $budget_expenses_others1 = [$q1Ex->other, $q2Ex->other, $q3Ex->other, $q4Ex->other];
+        $budget_expenses_others2 = array_fill(0, 4, 0);
+        $budget_expenses_others3 = array_fill(0, 4, 0);
+        $budget_expenses_others4 = array_fill(0, 4, 0);
+        $budget_expenses_others5 = array_fill(0, 4, 0);
+        $budget_expenses_totals = [
+            $budget_salaries[0] + $budget_depreciations[0] + $budget_office_expenses[0] + $budget_rents[0] + $budget_maintenances[0] + $budget_expenses_others1[0],
+            $budget_salaries[1] + $budget_depreciations[1] + $budget_office_expenses[1] + $budget_rents[1] + $budget_maintenances[1] + $budget_expenses_others1[1],
+            $budget_salaries[2] + $budget_depreciations[2] + $budget_office_expenses[2] + $budget_rents[2] + $budget_maintenances[2] + $budget_expenses_others1[2],
+            $budget_salaries[3] + $budget_depreciations[3] + $budget_office_expenses[3] + $budget_rents[3] + $budget_maintenances[3] + $budget_expenses_others1[3]
+        ];
+
+        $budget_balances = [
+            $budget_revenue_totals[0] - $budget_expenses_totals[0],
+            $budget_revenue_totals[1] - $budget_expenses_totals[1],
+            $budget_revenue_totals[2] - $budget_expenses_totals[2],
+            $budget_revenue_totals[3] - $budget_expenses_totals[3],
+        ];
 
         $auditor = '';
 
@@ -597,13 +624,13 @@ class ReportsController extends Controller
             'fill_39_5' => $budget_revenue_others[3],
             'fill_38_5' => array_sum($budget_revenue_others),
 
-            /*
-            'fill_47_3' => $budget_local_financing[0] + $budget_foreign_financing[0] + $budget_project_profits[0] + $budget_subscriptions[0] + $budget_bank_interests[0] + $budget_immovable_properties[0] + $budget_revenue_others[0],
-            'fill_46_3' => $budget_local_financing[1] + $budget_foreign_financing[1] + $budget_project_profits[1] + $budget_subscriptions[1] + $budget_bank_interests[1] + $budget_immovable_properties[1] + $budget_revenue_others[1],
-            'fill_45_3' => $budget_local_financing[2] + $budget_foreign_financing[2] + $budget_project_profits[2] + $budget_subscriptions[2] + $budget_bank_interests[2] + $budget_immovable_properties[2] + $budget_revenue_others[2],
-            'fill_44_4' => $budget_local_financing[3] + $budget_foreign_financing[3] + $budget_project_profits[3] + $budget_subscriptions[3] + $budget_bank_interests[3] + $budget_immovable_properties[3] + $budget_revenue_others[3],
-            'fill_43_5' => array_sum($budget_local_financing) + array_sum($budget_foreign_financing) + array_sum($budget_project_profits) + array_sum($budget_subscriptions) + array_sum($budget_bank_interests) + array_sum($budget_immovable_properties) + array_sum($budget_revenue_others),
-            */
+            
+            'fill_47_3' => $budget_revenue_totals[0],
+            'fill_46_3' => $budget_revenue_totals[1],
+            'fill_45_3' => $budget_revenue_totals[2],
+            'fill_44_4' => $budget_revenue_totals[3],
+            'fill_43_5' => array_sum($budget_revenue_totals),
+            
 
             'fill_57_5' => $budget_salaries[0],
             'fill_56_5' => $budget_salaries[1],
@@ -641,17 +668,17 @@ class ReportsController extends Controller
             'fill_79_2' => $budget_expenses_others1[3],
             'fill_78_2' => array_sum($budget_expenses_others1),
             
-            'fill_107' => 'total revenue',
-            'fill_106' => '',
-            'fill_105' => '',
-            'fill_104' => '',
-            'fill_103' => '',
+            'fill_107' => $budget_expenses_totals[0],
+            'fill_106' => $budget_expenses_totals[1],
+            'fill_105' => $budget_expenses_totals[2],
+            'fill_104' => $budget_expenses_totals[3],
+            'fill_103' => array_sum($budget_expenses_totals),
 
-            'fill_112' => 'total budget',
-            'fill_111' => '',
-            'fill_110' => '',
-            'fill_109' => '',
-            'fill_108' => '',
+            'fill_112' => $budget_balances[0],
+            'fill_111' => $budget_balances[1],
+            'fill_110' => $budget_balances[2],
+            'fill_109' => $budget_balances[3],
+            'fill_108' => array_sum($budget_balances),
 
             'Text25' => $auditor,
 

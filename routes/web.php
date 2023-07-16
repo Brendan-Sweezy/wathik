@@ -94,6 +94,8 @@ Route::middleware(['userSession'])
         Route::get("/", 'home')->name('budget');
         Route::get("/{target}", 'view')->name('budget');
         Route::post("/amendInfo", 'amendInfo');
+        Route::post("/amendRev/{target}", 'amendRev');
+        Route::post("/amendEx/{target}", 'amendEx');
     });
 
 Route::middleware(['userSession'])
