@@ -2,7 +2,7 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
         <h2 class="fw-bold">Amend Donor Information</h2>
-        <div onclick="$('#amendDonor').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
+        <div onclick="$('#amendDonor{{ $donor->id }}').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -62,7 +62,7 @@
     </div>
     
     <div class="modal-footer flex-center">
-        <button type="reset" onclick="$('#amendDonor').modal('hide')"
+        <button type="reset" onclick="$('#amendDonor{{ $donor->id }}').modal('hide')"
             class="btn btn-light me-3">الغاء</button>
         <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
             <span class="indicator-label">اضافة</span>

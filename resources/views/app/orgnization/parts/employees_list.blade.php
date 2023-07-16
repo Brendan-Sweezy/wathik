@@ -52,7 +52,6 @@
                                         {{ $employee->gender }}
                                     </td>
                                     
-<!-- TODO: edit and delete buttons for individual employees________________________________________________________________________ -->
 
                                     <!--begin::Action=-->
                                     <td class="text-start">
@@ -76,7 +75,7 @@
                                             data-kt-menu="true">
 
                                             <div class="menu-item px-3">
-                                                <a href="{{ url('orgnization/employees/amendEmployee/' . $employee->id) }}" data-bs-toggle="modal" data-bs-target="#amendEmployee"
+                                                <a href="{{ url('orgnization/employees/amendEmployee/' . $employee->id) }}" data-bs-toggle="modal" data-bs-target="#amendEmployee{{ $employee->id }}"
                                                     class="menu-link px-3">تعديل</a>
                                             </div>
                                         <!--end::EDIT EMPLOYEE-->
@@ -94,7 +93,7 @@
                                     <!--end::Action=-->
                                     
                                 </tr>
-                                <div class="modal fade" id="amendEmployee" tabindex="-1" aria-hidden="true">
+                                <div class="modal fade" id="amendEmployee{{ $employee->id }}" tabindex="-1" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered mw-650px">
                                         <div class="modal-content">
                                             @include('app.orgnization.modals.amendEmployee')

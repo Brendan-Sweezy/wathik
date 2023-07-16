@@ -37,7 +37,7 @@
 
                                 <tr>
                                     <td>
-                                        {{ $meeting->id }}
+                                        {{ $meeting->date }}
                                     </td>
                                     <td>
                                         {{ $meeting->type }}
@@ -52,7 +52,7 @@
                                         {{ $meeting->decisions }}
                                     </td>
 
-                                    <div class="modal fade" id="editMeeting" tabindex="-1" aria-hidden="true">                     
+                                    <div class="modal fade" id="editMeeting{{ $meeting->id }}" tabindex="-1" aria-hidden="true">                     
     <div class="modal-dialog modal-dialog-centered mw-650px">
         <div class="modal-content">
 
@@ -83,7 +83,7 @@
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
                                             data-kt-menu="true">
                                             <div class="menu-item px-3">
-                                                <a href="{{ url('orgnization/authority/amendMeeting/' . $meeting->id) }}" data-bs-toggle="modal" data-bs-target="#editMeeting"
+                                                <a href="{{ url('orgnization/authority/amendMeeting/' . $meeting->id) }}" data-bs-toggle="modal" data-bs-target="#editMeeting{{ $meeting->id }}"
                                                     class="menu-link px-3">تعديل</a>
                                                     
                                             </div>
