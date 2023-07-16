@@ -259,9 +259,6 @@ class OrgnizationController extends Controller
         $member = Member::find($id);
         $member->delete();
         return redirect('orgnization/managment');}
-    
-
-
 //GENERAL AUTHORITY PAGE -----------------------------------------------------
     public function amendAssemblyInfo(Request $request){
         if (OrgnizationInfo::find(session('orgnization_id')) == NULL) {
@@ -509,9 +506,18 @@ class OrgnizationController extends Controller
             'gender' => $request->gender
         ]);
             return redirect('orgnization/employees');}
-
-    //TODO: EDIT EMPLOYEES 
-    //TODO: DELETE EMPLOYEES  
+    public function amendEmployee(Request $request, $id){
+        $employee = Employee::find($id);
+        $employee->name = $request->name;
+        $employee->qualification = $request->qualification;
+        $employee->title = $request->title;
+        $employee->gender = $request->gender;
+        $employee->save();
+        return redirect('orgnization/employees');}
+    public function deleteEmployee($id){
+        $employee = Employee::find($id);
+        $employee->delete();
+        return redirect('orgnization/employees');} 
     
     
 //DONORS PAGE ----------------------------------------------------------------
