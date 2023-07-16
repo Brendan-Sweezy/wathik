@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    //allow a new user to join existing org
+    //allow a new user to join existing org by using the joinOrgView route and calling on the blade file
     public function joinOrgView() {
         return view('app.existingOrg');
     }

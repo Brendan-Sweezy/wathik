@@ -107,7 +107,6 @@
                                         <span class="indicator-label" data-kt-translate="sign-in-submit">Sign in with Existing Account</span>
                                         <!--end::Indicator label-->
                                     </a>
-                                    
                                     <!--end::Submit-->
                                 </div>
                                 <!--end::Actions-->

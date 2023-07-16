@@ -16,21 +16,21 @@
                         <div class="d-flex flex-wrap">
                             <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                                 <div class="d-flex align-items-center">
-                                    <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="4500">0
+                                    <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="{{ $total_rev }}">0
                                     </div>
                                 </div>
                                 <div class="fw-semibold fs-6 text-gray-400">Revenue</div>
                             </div>
                             <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                                 <div class="d-flex align-items-center">
-                                    <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="80">0
+                                    <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="{{ $total_ex }}">0
                                     </div>
                                 </div>
                                 <div class="fw-semibold fs-6 text-gray-400">Expenses</div>
                             </div>
                             <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                                 <div class="d-flex align-items-center">
-                                    <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="60">0</div>
+                                    <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="{{ $total_rev - $total_ex}}">0</div>
                                 </div>
                                 <div class="fw-semibold fs-6 text-gray-400">Total</div>
                             </div>

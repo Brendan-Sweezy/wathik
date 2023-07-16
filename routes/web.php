@@ -64,6 +64,9 @@ Route::middleware(['userSession'])
     ->group(function () {
         Route::get("home", 'home')->name('home');
         Route::get("wizard", 'wizard');
+        // go to the authentication
+        Route::get("authen", 'authen');
+        Route::post("checkID", 'checkID');
         Route::post("saveWizard", 'saveWizard');
     });
     
@@ -100,6 +103,8 @@ Route::middleware(['userSession'])
         Route::get("/", 'home')->name('budget');
         Route::get("/{target}", 'view')->name('budget');
         Route::post("/amendInfo", 'amendInfo');
+        Route::post("/amendRev/{target}", 'amendRev');
+        Route::post("/amendEx/{target}", 'amendEx');
     });
 
 Route::middleware(['userSession'])

@@ -13,15 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orgnizations', function (Blueprint $table) {
+        Schema::create('expenses', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('national_id')->nullable();
-            $table->string('ministry')->nullable();
-            $table->date('founding_date')->nullable();
+
+            $table->integer('organization_id');
+            $table->integer('quarter');
+            $table->double('salaries');
+            $table->double('deprications');
+            $table->double('office_expenses');
+            $table->double('rent');
+            $table->double('maintenance');
+            $table->double('other');
+
             $table->timestamps();
-            //creating unique ID association
-            $table->string('wathik_id');
         });
     }
 
@@ -32,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orgnizations');
+        Schema::dropIfExists('expenses');
     }
 };

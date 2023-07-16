@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('app.common.head')
+<!-- I need this doc to take what we did in the login controller and
+ login blade files that got commented out in order to input a code that will allow a user to authenticate into an organization -->
+
+
 
 <body id="kt_body" class="app-blank">
     <link rel="stylesheet" href="{{ asset('assets/intl-tel-input/css/intlTelInput.css') }}" />
@@ -30,6 +34,14 @@
     </script>
     <!--end::Theme mode setup on page load-->
     <!--begin::Root-->
+    <style>
+    .otpf {
+        background-color: #086cec;
+        border: 15px solid #086cec;
+        border-radius: 10px;
+        
+    }
+    </style>
     <div class="d-flex flex-column flex-root" id="kt_app_root">
         <!--begin::Authentication - Two-stes -->
         <div class="d-flex flex-column flex-lg-row flex-column-fluid">
@@ -40,17 +52,17 @@
                     <!--begin::Wrapper-->
                     <div class="w-lg-500px p-10">
                         <form class="form w-100" novalidate="novalidate" id="loginForm"
-                        method='POST' action="{{ url('/createAccountAuthenticate')}}" encrypt='multipart/form-data'>
+                        method='POST' action="{{ url('/checkID')}}" encrypt='multipart/form-data'>
                             <!--begin::Body-->
                             {{ csrf_field()}}
-                            <div class="card-body text-center">
+                            <div class="card-body text-center otpf">
                                 {{-- <img alt="Logo" src="{{ asset('images/logo.png') }}"
                                     class="theme-light-show h-100px" /> --}}
                                 <br /><br /><br /><br />
                                 <!--begin::Heading-->
                                 <div class="text-end mb-10">
                                     <!--begin::Title-->
-                                    <h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">Joining an existing org?</h1>
+                                    <h1 class="text-light text-center mb-3 fs-3x" data-kt-translate="sign-in-title">Enter your organization's unique WathikID:</h1>
                                     <!--end::Title-->
                                 </div>
                                 <!--begin::Heading-->
@@ -60,37 +72,56 @@
                                 <!--begin::Wrapper-->
                                 
                                 <!--end::Wrapper-->
-                                <!--begin::Actions-->
-                                <div class="d-grid gap-2">
-                                    <!--begin::Submit-->
-                                    <!--go to the organization authentication page then go to /home-->
-                                    <a href='/authen' id="create_account_button"
-                                        class="btn btn-primary btn-block me-2 flex-shrink-0">
-                                        <!--begin::Indicator label-->
-                                        <span class="indicator-label" data-kt-translate="sign-in-submit">Yes, join an existing organization</span>
-                                        <!--end::Indicator label-->
-                                    </a>
-                                    <!--end::Submit-->
-                                </div>
 
-
-                                <div class="d-grid gap-2 mb-2">
-                                    <!--begin::Wiz-->
-                                    <a href='/wizard' id="create_account_button"
-                                        class="btn btn-secondary btn-block me-2 flex-shrink-0">
-                                        <!--begin::Indicator label-->
-                                        <span class="indicator-label" data-kt-translate="sign-in-submit">Add a new organization</span>
-                                        <!--end::Indicator label-->
-                                    </a>
-                                    <!--end::Wiz-->
-                                </div>
-
+                                <//Below is to work on the unique six-digit code hopefully -->
+                                <!--begin::Section-->
+                            <div class="mb-10">
+                                <!--begin::Input group-->
                                 
-                                <!--end::Actions-->
+                                <div class="d-flex flex-wrap flex-stack" style="direction: ltr">
+                                    <input type="text" id="code_1" data-inputmask="'mask': '9', 'placeholder': ''"
+                                        maxlength="1"
+                                        class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2 otp"
+                                        value="" />
+                                    <input type="text" id="code_2" data-inputmask="'mask': '9', 'placeholder': ''"
+                                        maxlength="1"
+                                        class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2 otp"
+                                        value="" />
+                                    <input type="text" id="code_3" data-inputmask="'mask': '9', 'placeholder': ''"
+                                        maxlength="1"
+                                        class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2 otp"
+                                        value="" />
+                                    <input type="text" id="code_4" data-inputmask="'mask': '9', 'placeholder': ''"
+                                        maxlength="1"
+                                        class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2 otp"
+                                        value="" />
+                                    <input type="text" id="code_5" data-inputmask="'mask': '9', 'placeholder': ''"
+                                        maxlength="1"
+                                        class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2 otp"
+                                        value="" />
+                                    <input type="text" id="code_6" data-inputmask="'mask': '9', 'placeholder': ''"
+                                        maxlength="1"
+                                        class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2 otp"
+                                        value="" />
+                                </div>
+                                <!--begin::Input group-->
+                            </div>
+                            <!--begin::Actions-->
+                            <div class="d-grid gap-2">
+                                <!--begin::Submit-->
+                                <button type="Submit" id="join_in" class="btn btn-primary">
+                                    <!--begin::Indicator label-->
+                                    <span class="indicator-label" data-kt-translate="two-step-submit">Submit</span>
+                                    <!--end::Indicator label-->
+                                </button>
+                                <!--end::Submit-->
+                            </div>
+                            <!--end::Actions-->
                             </div>
                             <!--begin::Body-->
                         </form>
                         <!--end::Form-->
+
 
                         
                     </div>
@@ -136,3 +167,9 @@
 <!--end::Body-->
 
 </html>
+
+
+
+
+
+

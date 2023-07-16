@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\UserOrgnization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -29,15 +30,41 @@ class HomeController extends Controller
     {
         return view('app.wizard.main');
     }
+
+    public function authen(Request $request)
+    {
+        return view('app.wizard.wathID');
+
+    }
+
+    public function checkID(Request $request)
+    {
+        dd($request);
+    }
+
     public function saveWizard(Request $request)
     {
-        
+        $randy = random_int(100000, 999999);
+        $org = "orgnizations";
+        $wathid = "wathik_id";
+        $wathidVals = DB::table($org)->pluck($wathid);
+        foreach ($wathidVals as $value) {
+            // Do something with the column value
+            if ($randy != $value){
+                $randy = $randy;
+                break;
+            }
+            else{
+                $randy = random_int(100000, 999999);
+            }
+        }
 
         $orgnization = Orgnization::create([
             'name' => $request->orgnization_name,
             'national_id' => $request->orgnization_national_id,
             'ministry' => $request->orgnization_ministry,
             'founding_date' => $request->orgnization_founding_date,
+            'wathik_id' => $randy
         ]);
         UserOrgnization::create([
             'user_id' => session('user_id'),
