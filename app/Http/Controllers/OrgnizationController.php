@@ -8,6 +8,7 @@ use App\Models\OrgnizationInfo;
 use App\Models\Member;
 use App\Models\AuthorityMeeting;
 use App\Models\FinancingEntity;
+use App\Models\Employee;
 
 use Illuminate\Http\Request;
 
@@ -496,29 +497,46 @@ class OrgnizationController extends Controller
             }
         }
         return redirect('orgnization/employees');}
+
+    
+    //salaried employees
+    public function addEmployee(Request $request){
+        Employee::Create([
+            'orgnization_id' => session('orgnization_id'),
+            'name' => $request->name,
+            'qualification' => $request->qualification,
+            'title' => $request->title,
+            'gender' => $request->gender
+        ]);
+            return redirect('orgnization/employees');}
+
+    //TODO: EDIT EMPLOYEES 
+    //TODO: DELETE EMPLOYEES  
+    
+    
 //DONORS PAGE ----------------------------------------------------------------
-public function addDonor(Request $request){
-    FinancingEntity::Create([
-        'orgnization_id' => session('orgnization_id'),
-        'name' => $request->name,
-        'nationality' => $request->nationality,
-        'type' => $request->type,
-        'financing_characteristic' => $request->financing_characteristic,
-        'date' => $request->date,
-        'amount' => $request->amount,
-    ]);
-     return redirect('orgnization/funding');}
-public function amendDonor(Request $request, $id){                              //TODO: somethings wrong w this is fuckog hate myself
-    $donor = FinancingEntity::find($id);
-    $donor->name = $request->name;
-    $donor->nationality = $request->nationality;
-    $donor->type = $request->type;
-    $donor->financing_characteristic = $request->financing_characteristic;
-    $donor->date = $request->date;
-    $donor->amount = $request->amount;
-    $donor->save();
-    return redirect('orgnization/funding');}
-public function deleteDonor($id){
+    public function addDonor(Request $request){
+        FinancingEntity::Create([
+            'orgnization_id' => session('orgnization_id'),
+            'name' => $request->name,
+            'nationality' => $request->nationality,
+            'type' => $request->type,
+            'financing_characteristic' => $request->financing_characteristic,
+            'date' => $request->date,
+            'amount' => $request->amount,
+        ]);
+        return redirect('orgnization/funding');}
+    public function amendDonor(Request $request, $id){                              //TODO: somethings wrong w this is fuckog hate myself
+        $donor = FinancingEntity::find($id);
+        $donor->name = $request->name;
+        $donor->nationality = $request->nationality;
+        $donor->type = $request->type;
+        $donor->financing_characteristic = $request->financing_characteristic;
+        $donor->date = $request->date;
+        $donor->amount = $request->amount;
+        $donor->save();
+        return redirect('orgnization/funding');}
+    public function deleteDonor($id){
     $donor = FinancingEntity::find($id);
     $donor->delete();
     return redirect('orgnization/funding');}

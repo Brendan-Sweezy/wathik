@@ -51,4 +51,8 @@ class Orgnization extends Model
     {
         return $this->hasMany(OrgnizationInfo::class);
     }
+    function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }
 }
