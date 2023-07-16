@@ -5,14 +5,21 @@
                 معلومات الإدارة
             </div>
 
-            <!-- button to amend manager information -->
+            <!-- MODAL -->
+            <div class="modal fade" id="managerModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered mw-650px">
+                    <div class="modal-content">
+                        @include('app.orgnization.modals.managment')
+                    </div>
+                </div>
+            </div>
             <div class="card-toolbar">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-                    data-bs-target="#kt_modal_add_customer">تعديل</button>
-            </div> 
-             <!-- end button -->
+                    data-bs-target="#managerModal">تعديل</button>
+            </div>
         </div>
         
+        <!-- CONTENT -->
         <div class="card-body pt-1">
             <div class="row">
                 <div class="col-3">اسم رئيس الجمعية</div>
@@ -38,14 +45,6 @@
 </div>
 
 <!-- popup to amend management info -->
-@section('modals')
-    <div class="modal fade" id="kt_modal_add_customer" tabindex="-1" aria-hidden="true">
-        <!--begin::Modal dialog-->
-        <div class="modal-dialog modal-dialog-centered mw-650px">
-            <!--begin::Modal content-->
-            <div class="modal-content">
-                @include('app.orgnization.modals.managment')
-            </div>
-        </div>
-    </div>
-@stop
+@section('managerModal')
+
+@endsection

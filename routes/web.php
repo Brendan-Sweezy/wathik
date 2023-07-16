@@ -8,6 +8,7 @@ use App\Http\Controllers\ParticipantsController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\WhatsAppController;
+use App\Http\Controllers\BudgetController;
 use Illuminate\Support\Facades\Route;
 use Twilio\Rest\Client;
 
@@ -77,6 +78,32 @@ Route::middleware(['userSession'])
         Route::get("/{target}", 'view')->name('orgnization');
         Route::post("/amendManager", 'amendManager');
         Route::post("/amendInfo", 'amendInfo');
+        Route::post("/managment/amendPresident", 'amendPresident');
+        Route::post("/managment/addMember", 'addMember');
+        Route::get("/managment/members/delete/{id}", 'deleteMember');
+        Route::post("/managment/amendMember/{id}", 'amendMember');
+        Route::post("/managment/amendAdminInfo", 'amendAdminInfo');
+        Route::post("/managment/amendAssemblyInfo", 'amendAssemblyInfo');
+        Route::post("/authority/addMeeting", 'addMeeting');
+        Route::post("/authority/amendMeeting/{id}", 'amendMeeting');
+        Route::get("/authority/delete/{id}", 'deleteMeeting');
+        Route::post("/employees/amendEmployees", 'amendEmployees');
+        Route::post("/employees/amendVolunteers", 'amendVolunteers');
+        Route::post("/funding/addDonor", 'addDonor');
+        Route::post("/funding/amendDonor/{id}", 'amendDonor');
+        Route::get("/funding/delete/{id}", 'deleteDonor');
+        
+    });
+
+    Route::middleware(['userSession'])
+    ->controller(BudgetController::class)
+    ->prefix('budget')
+    ->group(function () {
+        Route::get("/", 'home')->name('budget');
+        Route::get("/{target}", 'view')->name('budget');
+        Route::post("/amendInfo", 'amendInfo');
+        Route::post("/amendRev/{target}", 'amendRev');
+        Route::post("/amendEx/{target}", 'amendEx');
     });
 
 Route::middleware(['userSession'])

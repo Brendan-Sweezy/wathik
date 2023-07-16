@@ -3,9 +3,19 @@
         <div class="card-title pt-3 mb-0 gap-4 gap-lg-10 gap-xl-15 nav nav-tabs border-bottom-0">
             الموظفين العاملين بأجر
         </div>
-        <div class="card-toolbar">
-            <button type="button" class="btn btn-primary">تعديل</button>
+        
+        <div class="modal fade" id="employeeModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered mw-650px">
+                <div class="modal-content">
+                    @include('app.orgnization.modals.amendEmployees')
+                </div>
+            </div>
         </div>
+        <div class="card-toolbar">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
+                data-bs-target="#employeeModal">تعديل</button>
+        </div> 
+
     </div>
     <div class="card-body pt-1">
         <div class="row">

@@ -1,8 +1,8 @@
 <form class="form" action="{{ url('orgnization/amendManager') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-    <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
+    <div class="modal-header" id="managerModal_header" dir="rtl">
         <h2 class="fw-bold">Amend Management Information</h2>
-        <div onclick="$('#kt_modal_add_customer').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
+        <div onclick="$('#managerModal').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -17,10 +17,10 @@
 
     <!-- Modal body: Amend management info -->
     <div class="modal-body py-10 px-lg-17" dir="rtl">
-        <div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true"
+        <div class="scroll-y me-n7 pe-7" id="managerModal_scroll" data-kt-scroll="true"
             data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto"
-            data-kt-scroll-dependencies="#kt_modal_add_customer_header"
-            data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
+            data-kt-scroll-dependencies="#managerModal_header"
+            data-kt-scroll-wrappers="#managerModal_scroll" data-kt-scroll-offset="300px">
             
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">Name of association president</label>
@@ -50,9 +50,9 @@
     </div>
     
     <div class="modal-footer flex-center">
-        <button type="reset" onclick="$('#kt_modal_add_customer').modal('hide')"
+        <button type="reset" onclick="$('#managerModal').modal('hide')"
             class="btn btn-light me-3">الغاء</button>
-        <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
+        <button type="submit" id="managerModal_submit" class="btn btn-primary">
             <span class="indicator-label">اضافة</span>
         </button>
     </div>

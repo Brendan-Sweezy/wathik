@@ -20,10 +20,12 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('national_id')->nullable();
             $table->string('birthday')->nullable();
+            $table->string('gender')->nullable();
             $table->string('work')->nullable();
             $table->string('degree')->nullable();
             $table->string('major')->nullable();
             $table->string('phone')->nullable();
+            $table->string('election_date')->nullable();
             $table->timestamps();
         });
     }

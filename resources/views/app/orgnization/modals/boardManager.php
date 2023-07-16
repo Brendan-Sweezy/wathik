@@ -1,1 +1,0 @@
-<!-- TODO: make a popout to edit board leader info -->
