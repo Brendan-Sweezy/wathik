@@ -7,6 +7,7 @@ use App\Models\OrgnizationManager;
 use App\Models\OrgnizationInfo;
 use App\Models\Member;
 use App\Models\AuthorityMeeting;
+use App\Models\FinancingEntity;
 
 use Illuminate\Http\Request;
 
@@ -358,13 +359,169 @@ class OrgnizationController extends Controller
 
 
 
-//TODO: EMPLOYEES PAGE
-    //amend salaried employees
-    //amend volunteers
-//TODO: DONORS PAGE
-    //add
-    //edit
-    //delete
+//EMPLOYEES PAGE -------------------------------------------------------------
+    public function amendEmployees(Request $request){
+        if (OrgnizationInfo::find(session('orgnization_id')) == NULL) {
+            $male = OrgnizationInfo::create([
+                'orgnization_id' => session('orgnization_id'),
+                'type' => 'male_employees',
+                'info' => $request->male
+            ]);
+            $female = OrgnizationInfo::create([
+                'orgnization_id' => session('orgnization_id'),
+                'type' => 'female_employees',
+                'info' => $request->female
+            ]);
+            $total = OrgnizationInfo::create([
+                'orgnization_id' => session('orgnization_id'),
+                'type' => 'total_employees',
+                'info' => $request->total
+            ]);
+        }
+        else {
+            $counter = 1;
+            $maleHits = 0;
+            $femaleHits = 0;
+            $totalHits = 0;
+            while (OrgnizationInfo::find($counter)) {
+                $info = OrgnizationInfo::find($counter);
+                if ($info->type == 'male_employees') {
+                    $maleHits++;
+                    $info->info = $request->male;
+                    $info->save();
+                }
+                else if($info->type == 'female_employees') {
+                    $femaleHits++;
+                    $info->info = $request->female;
+                    $info->save();
+                }
+                else if($info->type == 'total_employees') {
+                    $totalHits++;
+                    $info->info = $request->total;
+                    $info->save();
+                }
+                $counter++;
+            }
+            if ($maleHits==0) {
+                $male = OrgnizationInfo::create([
+                    'orgnization_id' => session('orgnization_id'),
+                    'type' => 'male_employees',
+                    'info' => $request->male
+                ]);
+                $male->save();
+            }
+            if ($femaleHits==0) {
+                $female = OrgnizationInfo::create([
+                    'orgnization_id' => session('orgnization_id'),
+                    'type' => 'female_employees',
+                    'info' => $request->female
+                ]);
+                $female->save();
+            }
+            if ($totalHits==0) {
+                $total = OrgnizationInfo::create([
+                    'orgnization_id' => session('orgnization_id'),
+                    'type' => 'total_employees',
+                    'info' => $request->total
+                ]);
+                $total->save();
+            }
+        }
+        return redirect('orgnization/employees');}
+    public function amendVolunteers(Request $request){
+        if (OrgnizationInfo::find(session('orgnization_id')) == NULL) {
+            $male = OrgnizationInfo::create([
+                'orgnization_id' => session('orgnization_id'),
+                'type' => 'male_volunteers',
+                'info' => $request->male
+            ]);
+            $female = OrgnizationInfo::create([
+                'orgnization_id' => session('orgnization_id'),
+                'type' => 'female_volunteers',
+                'info' => $request->female
+            ]);
+            $total = OrgnizationInfo::create([
+                'orgnization_id' => session('orgnization_id'),
+                'type' => 'total_volunteers',
+                'info' => $request->total
+            ]);
+        }
+        else {
+            $counter = 1;
+            $maleHits = 0;
+            $femaleHits = 0;
+            $totalHits = 0;
+            while (OrgnizationInfo::find($counter)) {
+                $info = OrgnizationInfo::find($counter);
+                if ($info->type == 'male_volunteers') {
+                    $maleHits++;
+                    $info->info = $request->male;
+                    $info->save();
+                }
+                else if($info->type == 'female_volunteers') {
+                    $femaleHits++;
+                    $info->info = $request->female;
+                    $info->save();
+                }
+                else if($info->type == 'total_volunteers') {
+                    $totalHits++;
+                    $info->info = $request->total;
+                    $info->save();
+                }
+                $counter++;
+            }
+            if ($maleHits==0) {
+                $male = OrgnizationInfo::create([
+                    'orgnization_id' => session('orgnization_id'),
+                    'type' => 'male_volunteers',
+                    'info' => $request->male
+                ]);
+                $male->save();
+            }
+            if ($femaleHits==0) {
+                $female = OrgnizationInfo::create([
+                    'orgnization_id' => session('orgnization_id'),
+                    'type' => 'female_volunteers',
+                    'info' => $request->female
+                ]);
+                $female->save();
+            }
+            if ($totalHits==0) {
+                $total = OrgnizationInfo::create([
+                    'orgnization_id' => session('orgnization_id'),
+                    'type' => 'total_volunteers',
+                    'info' => $request->total
+                ]);
+                $total->save();
+            }
+        }
+        return redirect('orgnization/employees');}
+//DONORS PAGE ----------------------------------------------------------------
+public function addDonor(Request $request){
+    FinancingEntity::Create([
+        'orgnization_id' => session('orgnization_id'),
+        'name' => $request->name,
+        'nationality' => $request->nationality,
+        'type' => $request->type,
+        'financing_characteristic' => $request->financing_characteristic,
+        'date' => $request->date,
+        'amount' => $request->amount,
+    ]);
+     return redirect('orgnization/funding');}
+public function amendDonor(Request $request, $id){                              //TODO: somethings wrong w this is fuckog hate myself
+    $donor = FinancingEntity::find($id);
+    $donor->name = $request->name;
+    $donor->nationality = $request->nationality;
+    $donor->type = $request->type;
+    $donor->financing_characteristic = $request->financing_characteristic;
+    $donor->date = $request->date;
+    $donor->amount = $request->amount;
+    $donor->save();
+    return redirect('orgnization/funding');}
+public function deleteDonor($id){
+    $donor = FinancingEntity::find($id);
+    $donor->delete();
+    return redirect('orgnization/funding');}
 
 
 
