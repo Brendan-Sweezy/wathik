@@ -63,6 +63,9 @@ Route::middleware(['userSession'])
     ->group(function () {
         Route::get("home", 'home')->name('home');
         Route::get("wizard", 'wizard');
+        // go to the authentication
+        Route::get("authen", 'authen');
+        Route::post("checkID", 'checkID');
         Route::post("saveWizard", 'saveWizard');
     });
     
