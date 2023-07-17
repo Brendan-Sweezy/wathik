@@ -11,12 +11,10 @@ use App\Models\User;
 use App\Models\UserOrgnization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-<<<<<<< HEAD
 use App\Models\revenue;
 use App\Models\expenses;
-=======
+use App\Models\Threat;
 use Illuminate\Support\Facades\DB;
->>>>>>> 076182d684c0a7a328864e8a8174958a202eff8b
 
 class HomeController extends Controller
 {
@@ -154,6 +152,47 @@ class HomeController extends Controller
                 'other' => 0
             ]);
         }
+
+        
+        if(false) {
+        Threat::create([
+            'id' => 1,
+            'threat' => 'لیومتلا صقن ةیعمجلا ىدل'
+        ]);
+        Threat::create([
+            'id' => 2,
+            'threat' => 'تاربخلا صقن'
+        ]);
+        Threat::create([
+            'id' => 3,
+            'threat' => 'لاا قطانم يف لمعلا ارقف دش ً'
+        ]);
+        Threat::create([
+            'id' => 4,
+            'threat' => 'ةیلاع ةیناكس ةفاثك تاذ قطانم يف لمعلا'
+        ]);
+        Threat::create([
+            'id' => 5,
+            'threat' => 'نیعوطتملا ةلق'
+        ]);
+        Threat::create([
+            'id' => 6,
+            'threat' => 'ةصتخملا ةرازولا عم ةقلاعلا'
+        ]);
+
+        OrgniztionInfo::create([
+            'type' => 'auditor',
+            'info' => ''
+        ]);
+        OrgniztionInfo::create([
+            'type' => 'beginning_balance',
+            'info' => ''
+        ]);
+        /*OrgniztionInfo::create([
+            'type' => 'final_balance',
+            'info' => ''
+        ]);*/
+    }
 
 
         return redirect()->to('home');

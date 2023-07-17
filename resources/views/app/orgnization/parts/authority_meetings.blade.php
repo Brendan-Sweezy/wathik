@@ -20,7 +20,7 @@
         <table class="table align-middle table-row-dashed fs-6 gy-5" dir="rtl">
             <thead>
                 <tr class="text-end text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-                    
+                    <th class="min-w-125px">Meeting #</th>
                     <th class="min-w-125px">تاريخ انعقاد الاجتماع</th>
                     <th class="min-w-125px">نوع الاجتماع</th>
                     <th class="min-w-125px">عدد الحضور</th>
@@ -36,6 +36,9 @@
                 
 
                                 <tr>
+                                    <td>
+                                        {{ $meeting->meeting_num }}
+                                    </td>    
                                     <td>
                                         {{ $meeting->date }}
                                     </td>

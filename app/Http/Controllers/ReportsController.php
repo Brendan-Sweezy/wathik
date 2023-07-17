@@ -45,7 +45,7 @@ class ReportsController extends Controller
         
         
         //SQL Queries Second Page
-        $projects = Project::where('orgnization_id', $organization->id)->get();
+        $projects = Project::where('orgnization_id', $organization->id)->where('status', '!=', 'Upcoming')->get();
         $project_names = array_fill(0, 9, '');
         $project_dates = array_fill(0, 9, '');
         $project_titles = array_fill(0, 9, '');
@@ -132,7 +132,7 @@ class ReportsController extends Controller
         $employee_titles = array_fill(0, 10, '');
         $employee_genders = array_fill(0, 10, '');
 
-        $employees = Employee::where('organization_id', $organization->id)->get();
+        $employees = Employee::where('orgnization_id', $organization->id)->get();
         for($i = 0; $i < 9 && $i < count($employees); $i++) {
             $employee_names[$i] = $employees[$i]->name;
             $employee_qualifications[$i] = $employees[$i]->qualification;
@@ -252,14 +252,21 @@ class ReportsController extends Controller
         $balance_beginning = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'beginning_balance')->value('info');;
         $revenue = array_sum($budget_revenue_totals);
         $expenses = array_sum($budget_expenses_totals);
-        $balance_ending = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'final_balance')->value('info');
+        $balance_ending = $balance_beginning + $revenue - $expenses;
 
+        $upcoming_projects = Project::where('orgnization_id', $organization->id)->where('status', 'Upcoming')->get();
+        
         $upcoming_project_names = array_fill(0, 9, '');
         $upcoming_project_locations = array_fill(0, 9, '');
         $upcoming_project_beneficiaries = array_fill(0, 9, '');
         $upcoming_project_budgets = array_fill(0, 9, '');
 
-
+        for($i = 0; $i < 9 && $i < count($upcoming_projects); $i++) {
+            $upcoming_project_names[$i] = $upcoming_projects[$i]->name;
+            $upcoming_project_locations[$i] = $upcoming_projects[$i]->title;
+            $upcoming_project_beneficiaries[$i] = $upcoming_projects[$i]->beneficiaries;
+            $upcoming_project_budgets[$i] = $upcoming_projects[$i]->budget;
+        }
 
         
         

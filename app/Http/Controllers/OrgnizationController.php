@@ -356,6 +356,7 @@ class OrgnizationController extends Controller
         public function addMeeting(Request $request){
             $meeting = AuthorityMeeting::Create([
                 'orgnization_id' => session('orgnization_id'),
+                'meeting_num' => $request->num,
                 'date' => $request->date,
                 'type' => $request->type,
                 'attendees' => $request->attendees,
@@ -366,6 +367,7 @@ class OrgnizationController extends Controller
 
         public function amendMeeting(Request $request, $id){    //TODO: this doesnt work 
             $meeting = AuthorityMeeting::find($id);
+            $meeting->meeting_num = $request->num;
             $meeting->date = $request->date;
             $meeting->type = $request->type;
             $meeting->attendees = $request->attendees;

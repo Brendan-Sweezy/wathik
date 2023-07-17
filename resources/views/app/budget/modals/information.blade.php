@@ -25,20 +25,15 @@
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">New Year Balance</label>
                     <input type="text" class="form-control form-control-solid" 
-                        placeholder="Enter name" name="beginning_balance" required 
+                        placeholder="Enter new year balance" name="beginning_balance" required 
                         value='{{ $beginning_balance }}'/>
             </div>
 
-            <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Final Balance</label>
-                <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter ID number" name="final_balance" required 
-                    value="{{ $final_balance }}"/>
-            </div>
+     
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">Auditor</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter ministry" name="auditor" required 
+                    placeholder="Enter auditor" name="auditor" required 
                     value="{{ $auditor }}"/>
             </div>
         </div>
