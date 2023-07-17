@@ -2,7 +2,7 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
         <h2 class="fw-bold">Amend Member Information</h2>
-        <div onclick="$('#editMember').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
+        <div onclick="$('#editMember{{ $member->id }}').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +20,6 @@
             data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto"
             data-kt-scroll-dependencies="#kt_modal_add_customer_header"
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
-            
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">Member name</label>
                 <input type="text" class="form-control form-control-solid" 
@@ -79,10 +78,12 @@
     </div>
     
     <div class="modal-footer flex-center">
-        <button type="reset" onclick="$('#editMember').modal('hide')"
+        <button type="reset" onclick="$('#editMember{{ $member->id }}').modal('hide')"
             class="btn btn-light me-3">الغاء</button>
         <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
             <span class="indicator-label">اضافة</span>
         </button>
     </div>
+
+    
 </form>

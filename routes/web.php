@@ -92,6 +92,9 @@ Route::middleware(['userSession'])
         Route::post("/funding/addDonor", 'addDonor');
         Route::post("/funding/amendDonor/{id}", 'amendDonor');
         Route::get("/funding/delete/{id}", 'deleteDonor');
+        Route::post("/employees/addEmployee", 'addEmployee');
+        Route::get("/employees/delete/{id}", 'deleteEmployee');
+        Route::post("/employees/amendEmployee/{id}", 'amendEmployee');
         
     });
 

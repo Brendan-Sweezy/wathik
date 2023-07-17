@@ -15,6 +15,7 @@ use App\Models\Threat;
 use App\Models\Member;
 use App\Models\Employee;
 use App\Models\Meeting;
+use App\Models\AuthorityMeeting;
 use App\Models\Branch;
 use App\Models\FinancingEntity;
 use App\Models\revenue;
@@ -66,7 +67,7 @@ class ReportsController extends Controller
             $project_threats = ProjectThreat::where('project_id', $project->id)->get();
             foreach($project_threats as $threat) {
                 if($threat->threat_id <= 6 && $threat->threat_id > 0) {
-                    $threats[$threat->threat_id - 1] = true;
+                    $threats[$threat->threat_id - 1] = 'Yes';
                 } else {
                     array_push($other_threats, Threat::where('id', $threat->threat_id)->value('threat'));
                 }
@@ -80,22 +81,22 @@ class ReportsController extends Controller
 
         $board_members = Member::where('orgnization_id', $organization->id)->get();
 
-        $board_size = count($board_members);
-        $board_size_articles ='';
-        $board_male_size = '';
-        $board_female_size = '';
-        $board_quorum = '';
-        $board_term = '';
-        $board_election_date = '';
+        $board_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'num_members')->value('info');
+        $board_size_articles = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'mentioned_members')->value('info');
+        $board_male_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'male')->value('info');
+        $board_female_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'female')->value('info');
+        $board_quorum = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'quorum')->value('info');
+        $board_term = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'term')->value('info');
+        $board_election_date = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'election_date')->value('info');
 
-        $association_size = '';
-        $association_male_size = '';
-        $association_female_size = '';
+        $association_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'assembly_members')->value('info');
+        $association_male_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'assembly_male')->value('info');
+        $association_female_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'assembly_female')->value('info');
 
         
 
         $employees_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'total_employees')->value('info');
-        $employees_male_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'female_employees')->value('info');
+        $employees_male_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'male_employees')->value('info');
         $employees_female_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'female_employees')->value('info');
 
         $volunteers_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'total_volunteers')->value('info');
@@ -120,6 +121,7 @@ class ReportsController extends Controller
             $board_professions[$i] = $board_members[$i]->work;
             $board_degrees[$i] = $board_members[$i]->degree;
             $board_phones[$i] = $board_members[$i]->phone;
+            $board_election_dates[$i] = $board_members[$i]->election_date;
             
             //TODO Election dates:
             //$board_election_dates[$i] = TODO;
@@ -150,13 +152,13 @@ class ReportsController extends Controller
         $meeting_deputies = array_fill(0, 4, '');
         $meeting_decisions = array_fill(0, 4, '');
 
-        $meetings = Meeting::where('organization_id', $organization->id)->get();
+        $meetings = AuthorityMeeting::where('orgnization_id', $organization->id)->get();
         for($i = 0; $i < 4 && $i < count($meetings); $i++) {
-            $meeting_nums[$i] = $meetings[$i]->meeting_number;
+            //$meeting_nums[$i] = $meetings[$i]->meeting_number;
             $meeting_dates[$i] = $meetings[$i]->date;
             $meeting_types[$i] = $meetings[$i]->type;
             $meeting_attendees[$i] = $meetings[$i]->attendees;
-            $meeting_deputies[$i] = $meetings[$i]->deputies;
+            $meeting_deputies[$i] = $meetings[$i]->alternate;
             $meeting_decisions[$i] = $meetings[$i]->decisions;
         }
 
@@ -195,10 +197,7 @@ class ReportsController extends Controller
         }
 
 
-        $balance_beginning = '';
-        $revenue = '';
-        $expenses = '';
-        $balance_ending = '';
+    
 
         $q1Rev = revenue::where('organization_id', $organization->id)->where('quarter', 1)->first();
         $q2Rev = revenue::where('organization_id', $organization->id)->where('quarter', 2)->first();
@@ -248,7 +247,12 @@ class ReportsController extends Controller
             $budget_revenue_totals[3] - $budget_expenses_totals[3],
         ];
 
-        $auditor = '';
+        $auditor = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'auditor')->value('info');
+
+        $balance_beginning = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'beginning_balance')->value('info');;
+        $revenue = array_sum($budget_revenue_totals);
+        $expenses = array_sum($budget_expenses_totals);
+        $balance_ending = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'final_balance')->value('info');
 
         $upcoming_project_names = array_fill(0, 9, '');
         $upcoming_project_locations = array_fill(0, 9, '');
@@ -289,11 +293,17 @@ class ReportsController extends Controller
             'Area' => $address->area,
             'Neighborhood' => $address->neighborhood,
 
-            'Name of CBO President' => $president,
+            'Name of CBO President' => $manager->name,
+            'ID Number_0' => $manager->national_id,
+            'Mobile Number' => $manager->phone,
+            'Email' => $manager->email,
+            'CBO\'s Website' => $website,
+
+            /*'Name of CBO President' => $president,
             'ID Number_0' => $president_id,
             'Mobile Number' => $president_phone,
             'Email' => $president_email,
-            'CBO\'s Website' => $website,
+            'CBO\'s Website' => $website,*/
 
             'p4_0' => $project_names[0],
             'p4' => $project_names[1],
@@ -305,15 +315,15 @@ class ReportsController extends Controller
             'p4_7' => $project_names[7],
             'p4_8' => $project_names[8],
 
-            'p3_0' => '',
-            'p3' => '',
-            'p3_2' => '',
-            'p3_3' => '',
-            'p3_4' => '',
-            'p3_5' => '',
-            'p3_6' => '',
-            'p3_7' => '',
-            'p3_8' => '',
+            'p3_0' => $project_titles[0],
+            'p3' => $project_titles[1],
+            'p3_2' => $project_titles[2],
+            'p3_3' => $project_titles[3],
+            'p3_4' => $project_titles[4],
+            'p3_5' => $project_titles[5],
+            'p3_6' => $project_titles[6],
+            'p3_7' => $project_titles[7],
+            'p3_8' => $project_titles[8],
 
             'p2_0' => $project_statuses[0],
             'p2' => $project_statuses[1],

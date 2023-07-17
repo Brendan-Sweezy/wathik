@@ -1,66 +1,59 @@
 <div class="card card-flush h-xl-100" dir="rtl">
     <div class="card-header py-7">
         <div class="card-title pt-3 mb-0 gap-4 gap-lg-10 gap-xl-15 nav nav-tabs border-bottom-0">
-            اجتماعات الهيئة العامة
+            Salaried Employees
         </div>
-        <!-- MODAL -->
-        <div class="modal fade" id="addMeeting" tabindex="-1" aria-hidden="true">
+        
+
+    <!-- MODAL -->
+        <div class="modal fade" id="addEmployee" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered mw-650px">
                 <div class="modal-content">
-                    @include('app.orgnization.modals.addMeeting')
+                    @include('app.orgnization.modals.addEmployee')
                 </div>
             </div>
         </div>
         <div class="card-toolbar">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-                data-bs-target="#addMeeting">add</button>
+                data-bs-target="#addEmployee">add</button>
         </div> 
+
+
     </div>
     <div class="card-body pt-1">
         <table class="table align-middle table-row-dashed fs-6 gy-5" dir="rtl">
             <thead>
                 <tr class="text-end text-gray-400 fw-bold fs-7 text-uppercase gs-0">
                     
-                    <th class="min-w-125px">تاريخ انعقاد الاجتماع</th>
-                    <th class="min-w-125px">نوع الاجتماع</th>
-                    <th class="min-w-125px">عدد الحضور</th>
-                    <th class="min-w-125px">عدد الانابة</th>
-                    <th class="min-w-125px">اهم القرارات</th>
+                    <th class="min-w-125px">name</th>
+                    <th class="min-w-125px">qualification</th>
+                    <th class="min-w-125px">title</th>
+                    <th class="min-w-125px">gender</th>
                     <th class="text-start min-w-70px"></th>
                 </tr>
             </thead>
 
             <!-- TABLE BODY AND EDITING SHITE -->
             <tbody class="fw-semibold text-gray-600">
-                @foreach ($orgnization->authorityMeetings as $meeting)
+                @foreach ($orgnization->employees as $employee)
                 
 
                                 <tr>
                                     <td>
-                                        {{ $meeting->date }}
+                                        {{ $employee->name }}
                                     </td>
                                     <td>
-                                        {{ $meeting->type }}
+                                        {{ $employee->qualification }}
                                     </td>
                                     <td>
-                                        {{ $meeting->attendees }}
+                                        {{ $employee->title }}
                                     </td>
                                     <td>
-                                        {{ $meeting->alternate }}
+                                        {{ $employee->gender }}
                                     </td>
-                                    <td>
-                                        {{ $meeting->decisions }}
-                                    </td>
+                                    
 
-                                    <div class="modal fade" id="editMeeting{{ $meeting->id }}" tabindex="-1" aria-hidden="true">                     
-    <div class="modal-dialog modal-dialog-centered mw-650px">
-        <div class="modal-content">
-
-            @include('app.orgnization.modals.amendMeeting')
-        </div>
-    </div>
-</div>
-
+                                    <!--begin::Action=-->
                                     <td class="text-start">
                                         <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click"
                                             data-kt-menu-placement="bottom-end">
@@ -75,34 +68,40 @@
                                             </span>
                                             <!--end::Svg Icon-->
                                         </a>
-                                        <!--begin::EDIT MEETING-->
 
-                                        
 
-                                                
+                                        <!--begin::EDIT EMPLOYEE-->
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
                                             data-kt-menu="true">
+
                                             <div class="menu-item px-3">
-                                                <a href="{{ url('orgnization/authority/amendMeeting/' . $meeting->id) }}" data-bs-toggle="modal" data-bs-target="#editMeeting{{ $meeting->id }}"
+                                                <a href="{{ url('orgnization/employees/amendEmployee/' . $employee->id) }}" data-bs-toggle="modal" data-bs-target="#amendEmployee{{ $employee->id }}"
                                                     class="menu-link px-3">تعديل</a>
-                                                    
                                             </div>
-                                            
-                                            <!--end::EDIT MEETING-->
+                                        <!--end::EDIT EMPLOYEE-->
                                                     
-                                            <!--begin::DELETE MEETING-->
+                                        <!--begin::DELETE EMPLOYEE-->
                                             <div class="menu-item px-3">
-                                                <a href="{{ url('orgnization/authority/delete/' . $meeting->id) }}" class="menu-link px-3"
+                                                <a href="{{ url('orgnization/employees/delete/' . $employee->id) }}" class="menu-link px-3"
                                                     data-kt-customer-table-filter="delete_row">حذف</a>
                                             </div>
-                                            <!--end::DELETE MEETING-->
+                                        <!--end::DELETE EMPLOYEE-->
+
                                         </div>
-                                    <!--end::Menu-->
+                                        <!--end::Menu-->
                                     </td>
+                                    <!--end::Action=-->
                                     
                                 </tr>
+                                <div class="modal fade" id="amendEmployee{{ $employee->id }}" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered mw-650px">
+                                        <div class="modal-content">
+                                            @include('app.orgnization.modals.amendEmployee')
+                                        </div>
+                                    </div>
+                                </div>
                                     
-                                    <!--end::Action=-->
+                                    
                     
             @endforeach
             

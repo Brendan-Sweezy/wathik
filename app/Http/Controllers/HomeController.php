@@ -11,7 +11,12 @@ use App\Models\User;
 use App\Models\UserOrgnization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+<<<<<<< HEAD
+use App\Models\revenue;
+use App\Models\expenses;
+=======
 use Illuminate\Support\Facades\DB;
+>>>>>>> 076182d684c0a7a328864e8a8174958a202eff8b
 
 class HomeController extends Controller
 {
@@ -139,6 +144,33 @@ class HomeController extends Controller
             'phone' => $request->manager_phone,
             'email' => $request->manager_email,
         ]);
+
+        for($i = 1; $i < 5; $i++) {
+            expenses::create([
+                'organization_id' => $orgnization->id,
+                'quarter' => $i,
+                'salaries' => 0,
+                'deprications' => 0,
+                'office_expenses' => 0,
+                'rent' => 0,
+                'maintenance' => 0,
+                'other' => 0
+            ]);
+
+            revenue::create([
+                'organization_id' => $orgnization->id,
+                'quarter' => $i,
+                'local_financing' => 0,
+                'foreign_financing' => 0,
+                'project_revenue' => 0,
+                'subscriptions' => 0,
+                'bank_interest' => 0,
+                'immoveable_properties' => 0,
+                'other' => 0
+            ]);
+        }
+
+
         return redirect()->to('home');
     }
     
