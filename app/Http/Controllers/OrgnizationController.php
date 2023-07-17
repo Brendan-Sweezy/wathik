@@ -244,7 +244,7 @@ class OrgnizationController extends Controller
             ]);
             return redirect('orgnization/managment');}
 
-        public function amendMember(Request $request, $id){     //TODO: fix this because it doesnt FUCKIGN WORK
+        public function amendMember(Request $request, $id){     
             $member = Member::find($id);
             $member->name = $request->name;
             $member->national_id = $request->national_id;
@@ -345,7 +345,7 @@ class OrgnizationController extends Controller
             ]);
                 return redirect('orgnization/authority');}
 
-        public function amendMeeting(Request $request, $id){    //TODO: this doesnt work 
+        public function amendMeeting(Request $request, $id){   
             $meeting = AuthorityMeeting::find($id);
             $meeting->date = $request->date;
             $meeting->type = $request->type;
@@ -511,7 +511,7 @@ class OrgnizationController extends Controller
             ]);
                 return redirect('orgnization/employees');}
 
-        public function amendEmployee(Request $request, $id){   //TODO: i am sad
+        public function amendEmployee(Request $request, $id){  
             $employee = Employee::find($id);
             $employee->name = $request->name;
             $employee->qualification = $request->qualification;
@@ -539,7 +539,7 @@ class OrgnizationController extends Controller
         ]);
         return redirect('orgnization/funding');}
 
-    public function amendDonor(Request $request, $id){          //TODO: somethings wrong w this is fuckog hate myself
+    public function amendDonor(Request $request, $id){         
         $donor = FinancingEntity::find($id);
         $donor->name = $request->name;
         $donor->nationality = $request->nationality;
