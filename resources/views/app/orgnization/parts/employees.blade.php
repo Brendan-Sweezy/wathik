@@ -21,33 +21,21 @@
         <div class="row">
             <div class="col-3">عدد الموظفين الذكور</div>
             <div class="col">
-                @foreach ($orgnization->info as $info)
-                    @if ($info->type == 'male_employees')
-                        {{ $info->info }}
-                    @endif
-                @endforeach
+                {{$male_employees->info}}
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">عدد الموظفين الإناث</div>
             <div class="col">
-                @foreach ($orgnization->info as $info)
-                    @if ($info->type == 'female_employees')
-                        {{ $info->info }}
-                    @endif
-                @endforeach
+                {{$female_employees->info}}
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">عدد الموظفين (المجموع)</div>
             <div class="col">
-                @foreach ($orgnization->info as $info)
-                    @if ($info->type == 'total_employees')
-                        {{ $info->info }}
-                    @endif
-                @endforeach
+                {{$total_employees->info}}
             </div>
         </div>
     </div>

@@ -21,33 +21,21 @@
         <div class="row">
             <div class="col-3">عدد المتطوعين الذكور</div>
             <div class="col">
-                @foreach ($orgnization->info as $info)
-                    @if ($info->type == 'male_volunteers')
-                        {{ $info->info }}
-                    @endif
-                @endforeach
+                {{$male_volunteers->info}}
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">عدد المتطوعين الإناث</div>
             <div class="col">
-                @foreach ($orgnization->info as $info)
-                    @if ($info->type == 'female_volunteers')
-                        {{ $info->info }}
-                    @endif
-                @endforeach
+                {{$female_volunteers->info}}
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">عدد المتطوعين (المجموع)</div>
             <div class="col">
-                @foreach ($orgnization->info as $info)
-                    @if ($info->type == 'total_volunteers')
-                        {{ $info->info }}
-                    @endif
-                @endforeach
+                {{$total_volunteers->info}}
             </div>
         </div>
     </div>
