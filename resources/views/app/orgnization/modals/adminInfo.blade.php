@@ -78,6 +78,17 @@
             </div>
 
             <div class="fv-row mb-7">
+                <label class="required fs-6 fw-semibold mb-2">Term</label>
+                <input type="text" class="form-control form-control-solid" 
+                    placeholder="quorum" name="term" required
+                    value=" @foreach ($orgnization->info as $info)
+                                @if ($info->type == 'term')
+                                    {{ $info->info }}
+                                @endif
+                            @endforeach"/>
+            </div>
+
+            <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">election date</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter election date" name="election_date" required

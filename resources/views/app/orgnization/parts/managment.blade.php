@@ -76,6 +76,17 @@
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
+            <div class="col-3">Term</div>
+            <div class="col">
+                @foreach ($orgnization->info as $info)
+                    @if ($info->type == 'term')
+                        {{ $info->info }}
+                    @endif
+                @endforeach   
+            </div>
+        </div>
+        <div class="separator separator-dashed my-3"></div>
+        <div class="row">
             <div class="col-3">تاريخ الانتخاب</div>
             <div class="col">
                 @foreach ($orgnization->info as $info)

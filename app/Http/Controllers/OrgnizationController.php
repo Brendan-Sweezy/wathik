@@ -127,6 +127,11 @@ class OrgnizationController extends Controller
                 'type' => 'quorum',
                 'info' => $request->quorum
             ]);
+            $term = OrgnizationInfo::create([
+                'orgnization_id' => session('orgnization_id'),
+                'type' => 'term',
+                'info' => $request->term
+            ]);
             $election_date = OrgnizationInfo::create([
                 'orgnization_id' => session('orgnization_id'),
                 'type' => 'election_date',
@@ -140,6 +145,7 @@ class OrgnizationController extends Controller
             $maleHits = 0;
             $femaleHits = 0;
             $quorumHits = 0;
+            $termHits = 0;
             $dateHits = 0;
             while (OrgnizationInfo::find($counter)) {
                 $info = OrgnizationInfo::find($counter);
@@ -166,6 +172,11 @@ class OrgnizationController extends Controller
                 else if($info->type == 'quorum') {
                     $quorumHits++;
                     $info->info = $request->quorum;
+                    $info->save();
+                }
+                else if($info->type == 'term') {
+                    $termHits++;
+                    $info->info = $request->term;
                     $info->save();
                 }
                 else if($info->type == 'election_date') {
@@ -214,6 +225,14 @@ class OrgnizationController extends Controller
                     'info' => $request->quorum
                 ]);
                 $quorum->save();
+            }
+            if ($termHits==0) {
+                $term = OrgnizationInfo::create([
+                    'orgnization_id' => session('orgnization_id'),
+                    'type' => 'term',
+                    'info' => $request->term
+                ]);
+                $term->save();
             }
             if ($dateHits==0) {
                 $election_date = OrgnizationInfo::create([
