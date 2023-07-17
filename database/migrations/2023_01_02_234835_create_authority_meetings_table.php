@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('authority_meetings', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Orgnization::class);
+            $table->string('meeting_num')->nullable();
             $table->string('date')->nullable();
             $table->string('type')->nullable();
             $table->string('attendees')->nullable();

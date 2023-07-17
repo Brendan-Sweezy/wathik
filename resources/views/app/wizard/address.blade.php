@@ -39,9 +39,13 @@
             </div>
         </div>
         <div class="mb-10 fv-row fv-plugins-icon-container">
-            <label class="form-label mb-3">نوع التجمع السكني</label>
-            <input type="text" class="form-control form-control-lg form-control-solid" name="residential_type"
+            <label class="form-label mb-3">نوع التجمع السكني</label> 
+            <select type="text" class="form-control form-control-lg form-control-solid" name="residential_type"
                 placeholder="" value="" kl_vkbd_parsed="true" required>
+                <option value="volvo">حضر</option>
+                <option value="saab">ريف</option>
+                <option value="fiat">بادية</option>
+            </select>
             <div class="fv-plugins-message-container invalid-feedback"></div>
         </div>
     </div>

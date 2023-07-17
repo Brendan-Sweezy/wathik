@@ -11,6 +11,9 @@ use App\Models\User;
 use App\Models\UserOrgnization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Models\revenue;
+use App\Models\expenses;
+use App\Models\Threat;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -39,8 +42,23 @@ class HomeController extends Controller
 
     public function checkID(Request $request)
     {
-        dd($request);
+        $code_1 = $request->input('code_1');
+        $code_2 = $request->input('code_2');
+        $code_3 = $request->input('code_3');
+        $code_4 = $request->input('code_4');
+        $code_5 = $request->input('code_5');
+        $code_6 = $request->input('code_6');
+        $code = $code_1.$code_2.$code_3.$code_4.$code_5.$code_6;
+        $checkWathid = Orgnization::where('wathik_id', $code)->get();
+        if (sizeof($checkWathid)==1){
+            //sign into whatever that account is
+            echo "yay! you have joined";
+        }
+        else{
+            echo "Organization does not exist";
+        }
     }
+
 
     public function saveWizard(Request $request)
     {
@@ -51,11 +69,11 @@ class HomeController extends Controller
         foreach ($wathidVals as $value) {
             // Do something with the column value
             if ($randy != $value){
-                $randy = $randy;
+                $randy = strval($randy);
                 break;
             }
             else{
-                $randy = random_int(100000, 999999);
+                $randy = strval(random_int(100000, 999999));
             }
         }
 
@@ -124,6 +142,75 @@ class HomeController extends Controller
             'phone' => $request->manager_phone,
             'email' => $request->manager_email,
         ]);
+
+        for($i = 1; $i < 5; $i++) {
+            expenses::create([
+                'organization_id' => $orgnization->id,
+                'quarter' => $i,
+                'salaries' => 0,
+                'deprications' => 0,
+                'office_expenses' => 0,
+                'rent' => 0,
+                'maintenance' => 0,
+                'other' => 0
+            ]);
+
+            revenue::create([
+                'organization_id' => $orgnization->id,
+                'quarter' => $i,
+                'local_financing' => 0,
+                'foreign_financing' => 0,
+                'project_revenue' => 0,
+                'subscriptions' => 0,
+                'bank_interest' => 0,
+                'immoveable_properties' => 0,
+                'other' => 0
+            ]);
+        }
+
+        
+        if(false) {
+        Threat::create([
+            'id' => 1,
+            'threat' => 'لیومتلا صقن ةیعمجلا ىدل'
+        ]);
+        Threat::create([
+            'id' => 2,
+            'threat' => 'تاربخلا صقن'
+        ]);
+        Threat::create([
+            'id' => 3,
+            'threat' => 'لاا قطانم يف لمعلا ارقف دش ً'
+        ]);
+        Threat::create([
+            'id' => 4,
+            'threat' => 'ةیلاع ةیناكس ةفاثك تاذ قطانم يف لمعلا'
+        ]);
+        Threat::create([
+            'id' => 5,
+            'threat' => 'نیعوطتملا ةلق'
+        ]);
+        Threat::create([
+            'id' => 6,
+            'threat' => 'ةصتخملا ةرازولا عم ةقلاعلا'
+        ]);
+
+        OrgniztionInfo::create([
+            'type' => 'auditor',
+            'info' => ''
+        ]);
+        OrgniztionInfo::create([
+            'type' => 'beginning_balance',
+            'info' => ''
+        ]);
+        /*OrgniztionInfo::create([
+            'type' => 'final_balance',
+            'info' => ''
+        ]);*/
+    }
+
+
         return redirect()->to('home');
     }
+    
 }

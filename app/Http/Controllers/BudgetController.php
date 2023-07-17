@@ -100,15 +100,15 @@ class BudgetController extends Controller
     {
         $organization = Orgnization::find(session('orgnization_id'));
         $beginning_balance = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'beginning_balance')->first();
-        $final_balance = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'final_balance')->first();
+        //$final_balance = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'final_balance')->first();
         $auditor = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'auditor')->first();
        
         $beginning_balance->info = $request->beginning_balance;
-        $final_balance->info = $request->final_balance;
+        //$final_balance->info = $request->final_balance;
         $auditor->info = $request->auditor;
 
         $beginning_balance->save();
-        $final_balance->save();
+        //$final_balance->save();
         $auditor->save();
         return redirect('budget/main');
     }

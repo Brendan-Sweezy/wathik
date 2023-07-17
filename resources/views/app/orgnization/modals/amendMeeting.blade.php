@@ -21,6 +21,11 @@
             data-kt-scroll-dependencies="#kt_modal_add_customer_header"
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
             <div class="fv-row mb-7">
+                <label class="required fs-6 fw-semibold mb-2">number</label>
+                <input type="text" class="form-control form-control-solid" 
+                    placeholder="Enter number" name="num" required/>
+            </div>
+            <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">date</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter date" name="date" required/>
@@ -36,7 +41,7 @@
                     placeholder="Enter number of attendees" name="attendees" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">number</label>
+                <label class="required fs-6 fw-semibold mb-2">deputees</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter number" name="alternate_number" required />
             </div>

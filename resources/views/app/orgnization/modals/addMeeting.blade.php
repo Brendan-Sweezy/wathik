@@ -22,7 +22,7 @@
 
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">number</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="number" required />
+                <input type="text" class="form-control form-control-solid" placeholder="" name="num" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">date</label>

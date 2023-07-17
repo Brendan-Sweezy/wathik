@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('national_id')->nullable();
             $table->string('ministry')->nullable();
-            $table->date('founding_date')->nullable();
+            $table->string('founding_date')->nullable();
             $table->timestamps();
             //creating unique ID association
             $table->string('wathik_id');
