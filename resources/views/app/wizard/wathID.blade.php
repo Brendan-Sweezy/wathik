@@ -62,7 +62,7 @@
                                 <!--begin::Heading-->
                                 <div class="text-end mb-10">
                                     <!--begin::Title-->
-                                    <h1 class="text-light text-center mb-3 fs-3x" data-kt-translate="sign-in-title">Enter your organization's unique WathikID:</h1>
+                                    <h1 class="text-light text-center mb-3 fs-3x" data-kt-translate="sign-in-code">Enter your organization's unique WathikID:</h1>
                                     <!--end::Title-->
                                 </div>
                                 <!--begin::Heading-->
@@ -73,33 +73,33 @@
                                 
                                 <!--end::Wrapper-->
 
-                                <//Below is to work on the unique six-digit code hopefully -->
+                                <!--//Below is to work on the unique six-digit code hopefully -->
                                 <!--begin::Section-->
                             <div class="mb-10">
                                 <!--begin::Input group-->
                                 
                                 <div class="d-flex flex-wrap flex-stack" style="direction: ltr">
-                                    <input type="text" id="code_1" data-inputmask="'mask': '9', 'placeholder': ''"
+                                    <input type="text" id="code_1" name="code_1" data-inputmask="'mask': '9', 'placeholder': ''"
                                         maxlength="1"
                                         class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2 otp"
                                         value="" />
-                                    <input type="text" id="code_2" data-inputmask="'mask': '9', 'placeholder': ''"
+                                    <input type="text" id="code_2" name="code_2" data-inputmask="'mask': '9', 'placeholder': ''"
                                         maxlength="1"
                                         class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2 otp"
                                         value="" />
-                                    <input type="text" id="code_3" data-inputmask="'mask': '9', 'placeholder': ''"
+                                    <input type="text" id="code_3" name="code_3" data-inputmask="'mask': '9', 'placeholder': ''"
                                         maxlength="1"
                                         class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2 otp"
                                         value="" />
-                                    <input type="text" id="code_4" data-inputmask="'mask': '9', 'placeholder': ''"
+                                    <input type="text" id="code_4" name="code_4" data-inputmask="'mask': '9', 'placeholder': ''"
                                         maxlength="1"
                                         class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2 otp"
                                         value="" />
-                                    <input type="text" id="code_5" data-inputmask="'mask': '9', 'placeholder': ''"
+                                    <input type="text" id="code_5" name="code_5" data-inputmask="'mask': '9', 'placeholder': ''"
                                         maxlength="1"
                                         class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2 otp"
                                         value="" />
-                                    <input type="text" id="code_6" data-inputmask="'mask': '9', 'placeholder': ''"
+                                    <input type="text" id="code_6" name="code_6" data-inputmask="'mask': '9', 'placeholder': ''"
                                         maxlength="1"
                                         class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2 otp"
                                         value="" />
