@@ -39,8 +39,23 @@ class HomeController extends Controller
 
     public function checkID(Request $request)
     {
-        dd($request);
+        $code_1 = $request->input('code_1');
+        $code_2 = $request->input('code_2');
+        $code_3 = $request->input('code_3');
+        $code_4 = $request->input('code_4');
+        $code_5 = $request->input('code_5');
+        $code_6 = $request->input('code_6');
+        $code = $code_1.$code_2.$code_3.$code_4.$code_5.$code_6;
+        $checkWathid = Orgnization::where('wathik_id', $code)->get();
+        if (sizeof($checkWathid)==1){
+            //sign into whatever that account is
+            echo "yay! you have joined";
+        }
+        else{
+            echo "Organization does not exist";
+        }
     }
+
 
     public function saveWizard(Request $request)
     {
@@ -51,11 +66,11 @@ class HomeController extends Controller
         foreach ($wathidVals as $value) {
             // Do something with the column value
             if ($randy != $value){
-                $randy = $randy;
+                $randy = strval($randy);
                 break;
             }
             else{
-                $randy = random_int(100000, 999999);
+                $randy = strval(random_int(100000, 999999));
             }
         }
 
@@ -126,4 +141,5 @@ class HomeController extends Controller
         ]);
         return redirect()->to('home');
     }
+    
 }
