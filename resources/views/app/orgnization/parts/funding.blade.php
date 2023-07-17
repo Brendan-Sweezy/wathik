@@ -76,7 +76,7 @@
 
                             <!-- EDIT MEMBER -->
                             <div class="menu-item px-3">
-                                <a href="{{ url('orgnization/funding/amendDonor/' . $donor->id) }}" data-bs-toggle="modal" data-bs-target="#amendDonor"
+                                <a href="{{ url('orgnization/funding/amendDonor/' . $donor->id) }}" data-bs-toggle="modal" data-bs-target="#amendDonor{{ $donor->id }}"
                                     class="menu-link px-3">تعديل</a>
                             </div>
                             <!--end::EDIT MEMBER-->
@@ -92,7 +92,7 @@
                     </td>
                     <!--end::Action=-->
                 </tr>
-                <div class="modal fade" id="amendDonor" tabindex="-1" aria-hidden="true">
+                <div class="modal fade" id="amendDonor{{ $donor->id }}" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered mw-650px">
                         <div class="modal-content">
                             @include('app.orgnization.modals.amendDonor')
