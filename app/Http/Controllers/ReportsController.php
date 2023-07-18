@@ -20,10 +20,15 @@ use App\Models\Branch;
 use App\Models\FinancingEntity;
 use App\Models\revenue;
 use App\Models\expenses;
+use App\Charts\TestChart;
 
 
 class ReportsController extends Controller
 {
+    public function generateDonor(TestChart $chart) {
+        return view('pdf.donorReport', ['chart' => $chart->build()]); 
+    }
+    
     public function generate() {
         
         //SQL Queries First Page

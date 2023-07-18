@@ -21,7 +21,6 @@ class OrgnizationController extends Controller
     {
         $projects = Project::where('orgnization_id', session('orgnization_id'))->where('status', '!=', 'Upcoming')->get();
         $project_num = count($projects);
-
         $event_num = 0;
         $beneficiary_num = 0;
         foreach($projects as $project) {
@@ -49,7 +48,17 @@ class OrgnizationController extends Controller
         $male_employees = count(Employee::where('orgnization_id', session('orgnization_id'))->where('gender','male')->get());
         $female_employees = count(Employee::where('orgnization_id', session('orgnization_id'))->where('gender','female')->get());
 
-        $project_num = count(Project::where('orgnization_id', session('orgnization_id'))->get());
+        $projects = Project::where('orgnization_id', session('orgnization_id'))->where('status', '!=', 'Upcoming')->get();
+        $project_num = count($projects);
+        $event_num = 0;
+        $beneficiary_num = 0;
+        foreach($projects as $project) {
+            $events = Event::where('project_id', $project->id)->get();
+            $event_num += count($events);
+            foreach($events as $event) {
+                $beneficiary_num += $event->beneficiaries;
+            }
+        }
         
         return view('app.orgnization.home', [
             'orgnization' => Orgnization::find(session('orgnization_id')), 
@@ -58,7 +67,9 @@ class OrgnizationController extends Controller
             'female_mems' => $female_mems,
             'male_employees' => $male_employees,
             'female_employees' => $female_employees,
-            'project_num' => $project_num
+            'project_num' => $project_num,
+            'event_num' => $event_num,
+            'beneficiary_num' => $beneficiary_num
         ]);
     }
 
