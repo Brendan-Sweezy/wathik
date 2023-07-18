@@ -10,11 +10,13 @@ use App\Models\Project;
 use App\Models\User;
 use App\Models\UserOrgnization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Models\revenue;
 use App\Models\expenses;
-use App\Models\Threat;
+=======
 use Illuminate\Support\Facades\DB;
+>>>>>>> 076182d684c0a7a328864e8a8174958a202eff8b
 
 class HomeController extends Controller
 {
@@ -50,11 +52,10 @@ class HomeController extends Controller
         $code_6 = $request->input('code_6');
         $code = $code_1.$code_2.$code_3.$code_4.$code_5.$code_6;
         $checkWathid = Orgnization::where('wathik_id', $code)->get();
-        if (sizeof($checkWathid)==1){
-            //sign into whatever that account is
-            echo "yay! you have joined";
+        if (sizeof($checkWathid)==1) {
+            Session::put('', );
         }
-        else{
+        else {
             echo "Organization does not exist";
         }
     }
@@ -86,7 +87,7 @@ class HomeController extends Controller
         ]);
         UserOrgnization::create([
             'user_id' => session('user_id'),
-            'orgnization_id' => $orgnization->id,
+            'orgnization_id' => $orgnization->id
         ]);
         OrgnizationContact::create([
             'orgnization_id' => $orgnization->id,

@@ -2,7 +2,8 @@
 <html lang="en">
 @include('app.common.head')
 <!-- I need this doc to take what we did in the login controller and
- login blade files that got commented out in order to input a code that will allow a user to authenticate into an organization -->
+ login blade files that got commented out in order to input a code that 
+ will allow a user to authenticate into an organization -->
 
 
 
