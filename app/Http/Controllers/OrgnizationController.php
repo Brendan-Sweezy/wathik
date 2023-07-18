@@ -39,7 +39,6 @@ class OrgnizationController extends Controller
         $total_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_employees')->first();
         $male_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_volunteers')->first();
         $female_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_volunteers')->first();
-        $total_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_volunteers')->first();
         
 
 
@@ -76,12 +75,9 @@ class OrgnizationController extends Controller
         $election_date = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'election_date')->first();
         $assembly_male = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_male')->first();
         $assembly_female = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_female')->first();
-        $male_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_employees')->first();
-        $female_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_employees')->first();
-        $total_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_employees')->first();
+         
         $male_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_volunteers')->first();
         $female_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_volunteers')->first();
-        $total_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_volunteers')->first();
         
         $male_mems = count(Member::where('gender','male')->get());
         $female_mems = count(Member::where('gender','female')->get());
@@ -117,10 +113,8 @@ class OrgnizationController extends Controller
             'assembly_female' => $assembly_female,
             'male_employees' => $male_employees,
             'female_employees' => $female_employees,
-            'total_employees' => $total_employees,
             'male_volunteers' => $male_volunteers,
             'female_volunteers' => $female_volunteers,
-            'total_volunteers' => $total_volunteers,
             'project_num' => $project_num,
             'event_num' => $event_num,
             'beneficiary_num' => $beneficiary_num,
@@ -370,65 +364,28 @@ class OrgnizationController extends Controller
 
 
 //EMPLOYEES PAGE -------------------------------------------------------------
-    public function amendEmployees(Request $request){
-        $orgnization = Orgnization::find(session('orgnization_id'));
-        $male_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_employees')->first();
-        $female_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_employees')->first();
-        $total_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_employees')->first();
-        
-        if($male_employees == NULL){
-            $male_employees = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'male_employees',
-                'info' => $request->male_employees]);}
-        else $male_employees->info = $request->male_employees;
-        if($female_employees == NULL){
-            $female_employees = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'female_employees',
-                'info' => $request->female_employees]);}
-        else $female_employees->info = $request->female_employees;
-        if($total_employees == NULL){
-            $total_employees = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'total_employees',
-                'info' => $request->total_employees]);}
-        else $total_employees->info = $request->total_employees;
-        
-        $male_employees->save();
-        $female_employees->save();
-        $total_employees->save();
-        return redirect('orgnization/employees');}
-
-
+    
     public function amendVolunteers(Request $request){
         $orgnization = Orgnization::find(session('orgnization_id'));
         $male_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_volunteers')->first();
         $female_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_volunteers')->first();
-        $total_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_volunteers')->first();
         
         if($male_volunteers == NULL){
             $male_volunteers = OrgnizationInfo::create([
                 'orgnization_id' => session('orgnization_id'),
                 'type' => 'male_volunteers',
-                'info' => $request->male_volunteers]);}
-        else $male_volunteers->info = $request->male_volunteers;
+                'info' => $request->male]);}
+        else $male_volunteers->info = $request->male;
         if($female_volunteers == NULL){
             $female_volunteers = OrgnizationInfo::create([
                 'orgnization_id' => session('orgnization_id'),
                 'type' => 'female_volunteers',
-                'info' => $request->female_volunteers]);}
-        else $female_volunteers->info = $request->female_volunteers;
-        if($total_volunteers == NULL){
-            $total_volunteers = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'total_volunteers',
-                'info' => $request->total_volunteers]);}
-        else $total_volunteers->info = $request->total_volunteers;
+                'info' => $request->female]);}
+        else $female_volunteers->info = $request->female;
+        
         
         $male_volunteers->save();
         $female_volunteers->save();
-        $total_volunteers->save();
         return redirect('orgnization/employees');}
     
 
