@@ -27,8 +27,8 @@ class OrgnizationController extends Controller
         $id = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president_national_id')->first();
         $num_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'num_members')->first();
         $mentioned_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'mentioned_members')->first();
-        $male = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male')->first();
-        $female = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female')->first();
+        $male_mems = count(Member::where('gender','male')->get());
+        $female_mems = count(Member::where('gender','female')->get());
         $quorum = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'quorum')->first();
         $term = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'term')->first();
         $election_date = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'election_date')->first();
@@ -42,6 +42,7 @@ class OrgnizationController extends Controller
         $female_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_volunteers')->first();
         $total_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_volunteers')->first();
         
+
 
         $event_num = 0;
         $beneficiary_num = 0;
@@ -109,8 +110,8 @@ class OrgnizationController extends Controller
             'president_national_id' => $id,
             'num_members' => $num_members,
             'mentioned_members' => $mentioned_members,
-            'male' => $male,
-            'female' => $female,
+            'male_mems' => $male_mems,
+            'female_mems' => $female_mems,
             'quorum' => $quorum,
             'term' => $term,
             'election_date' => $election_date,
@@ -228,8 +229,10 @@ class OrgnizationController extends Controller
         $orgnization = Orgnization::find(session('orgnization_id'));
         $num_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'num_members')->first();
         $mentioned_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'mentioned_members')->first();
-        $male = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male')->first();
-        $female = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female')->first();
+
+        $male_mems = count(Member::where('gender','male')->get());
+        $female_mems = count(Member::where('gender','female')->get());
+
         $quorum = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'quorum')->first();
         $term = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'term')->first();
         $election_date = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'election_date')->first();

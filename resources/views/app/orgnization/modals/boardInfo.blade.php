@@ -22,46 +22,46 @@
 
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">name</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="name" required />
+                <input type="text" class="form-control form-control-solid" placeholder="name" name="name" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">id number</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="national_id" required />
+                <input type="text" class="form-control form-control-solid" placeholder="national_id" name="national_id" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">gender</label>
-                <select type="text" class="form-control form-control-solid" placeholder="" name="gender" required>
+                <select type="text" class="form-control form-control-solid" placeholder="gender" name="gender" required>
                     <option value='male'>Male</option>
                     <option value='female'>Female</option>
                 </select>
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">date of birth</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="birthday" required />
+                <input type="text" class="form-control form-control-solid" placeholder="birthday" name="birthday" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">profession</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="work"
+                <input type="text" class="form-control form-control-solid" placeholder="work" name="work"
                     required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">degree</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="degree"
+                <input type="text" class="form-control form-control-solid" placeholder="degree" name="degree"
                     required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">major</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="major"
+                <input type="text" class="form-control form-control-solid" placeholder="major" name="major"
                     required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">phone</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="phone"
+                <input type="text" class="form-control form-control-solid" placeholder="phone" name="phone"
                     required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">election date</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="election_date" 
+                <input type="text" class="form-control form-control-solid" placeholder="election_date" name="election_date" 
                     required />
             </div>
         </div>

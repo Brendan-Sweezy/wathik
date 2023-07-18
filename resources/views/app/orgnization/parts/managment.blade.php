@@ -23,49 +23,49 @@
         <div class="row">
             <div class="col-3">عدد أعضاء الهيئة الإدارية الحالية</div>
             <div class="col">
-                <!-- $male_mems + $female_mems -->
+                {{ $male_mems + $female_mems }}
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">عدد أعضاء الهية الإدارية الواردة في النظام الأساسي</div>
             <div class="col">
-                <!--mentioned_members-->
+                {{ $mentioned_members->info }}
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">عدد أعضاء الهيئة الإدارية الذكور</div>
             <div class="col">
-                <!--$male_mems-->
+                {{ $male_mems }}
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">عدد أعضاء الهيئة الإدارية الإناث</div>
             <div class="col">
-                <!--$female_mems--> 
+                {{ $female_mems }}
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">النصاب القانوني</div>
             <div class="col">
-                <!--quorum--> 
+                {{ $quorum->info }}
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">Term</div>
             <div class="col">
-                <!--term-->
+                {{ $term->info }}
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">تاريخ الانتخاب</div>
             <div class="col">
-                <!--election date-->
+                {{ $election_date->info }}
             </div>
         </div>
     </div>
