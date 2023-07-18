@@ -22,7 +22,12 @@
             data-kt-scroll-dependencies="#kt_modal_add_customer_header"
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
             
-            
+            <div class="fv-row mb-7">
+                <label class="required fs-6 fw-semibold mb-2"># of members of current administrative body</label>
+                <input type="text" class="form-control form-control-solid" 
+                    placeholder="Enter number of members" name="num_members" required
+                    value="{{ $num_members->info }}"/>
+            </div>
 
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2"># of members of administrative body mentioned in articles of association</label>
