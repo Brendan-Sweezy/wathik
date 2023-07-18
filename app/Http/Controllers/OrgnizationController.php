@@ -83,6 +83,24 @@ class OrgnizationController extends Controller
         $female_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_volunteers')->first();
         $total_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_volunteers')->first();
         
+        $male_mems = count(Member::where('gender','male')->get());
+        $female_mems = count(Member::where('gender','female')->get());
+
+        $male_employees = count(Employee::where('orgnization_id', session('orgnization_id'))->where('gender','male')->get());
+        $female_employees = count(Employee::where('orgnization_id', session('orgnization_id'))->where('gender','female')->get());
+
+        $projects = Project::where('orgnization_id', session('orgnization_id'))->where('status', '!=', 'Upcoming')->get();
+        $project_num = count($projects);
+        $event_num = 0;
+        $beneficiary_num = 0;
+        foreach($projects as $project) {
+            $events = Event::where('project_id', $project->id)->get();
+            $event_num += count($events);
+            foreach($events as $event) {
+                $beneficiary_num += $event->beneficiaries;
+            }
+        }
+
         return view('app.orgnization.home', [
             'orgnization' => $orgnization, 
             'target' => $target,
@@ -102,24 +120,12 @@ class OrgnizationController extends Controller
             'male_volunteers' => $male_volunteers,
             'female_volunteers' => $female_volunteers,
             'total_volunteers' => $total_volunteers,
+            'project_num' => $project_num,
+            'event_num' => $event_num,
+            'beneficiary_num' => $beneficiary_num
         ]);
-        $male_mems = count(Member::where('gender','male')->get());
-        $female_mems = count(Member::where('gender','female')->get());
-
-        $male_employees = count(Employee::where('orgnization_id', session('orgnization_id'))->where('gender','male')->get());
-        $female_employees = count(Employee::where('orgnization_id', session('orgnization_id'))->where('gender','female')->get());
-
-        $projects = Project::where('orgnization_id', session('orgnization_id'))->where('status', '!=', 'Upcoming')->get();
-        $project_num = count($projects);
-        $event_num = 0;
-        $beneficiary_num = 0;
-        foreach($projects as $project) {
-            $events = Event::where('project_id', $project->id)->get();
-            $event_num += count($events);
-            foreach($events as $event) {
-                $beneficiary_num += $event->beneficiaries;
-            }
-        }
+        
+       
         
         return view('app.orgnization.home', [
             'orgnization' => Orgnization::find(session('orgnization_id')), 
