@@ -40,27 +40,6 @@
                             @endforeach"/>
             </div>
 
-            <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2"># of male members of current body</label>
-                <input type="text" class="form-control form-control-solid" 
-                    placeholder="# male" name="male" required
-                    value=" @foreach ($orgnization->info as $info)
-                                @if ($info->type == 'male')
-                                    {{ $info->info }}
-                                @endif
-                            @endforeach"/>
-            </div>
-
-            <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2"># of female members of current body</label>
-                <input type="text" class="form-control form-control-solid" 
-                    placeholder="# female" name="female" required
-                    value=" @foreach ($orgnization->info as $info)
-                                @if ($info->type == 'female')
-                                    {{ $info->info }}
-                                @endif
-                            @endforeach"/>
-            </div>
 
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">quorum</label>

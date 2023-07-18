@@ -9,6 +9,9 @@ use App\Models\Member;
 use App\Models\AuthorityMeeting;
 use App\Models\FinancingEntity;
 use App\Models\Employee;
+use App\Models\Project;
+use App\Models\Event;
+
 
 use Illuminate\Http\Request;
 
@@ -16,6 +19,8 @@ class OrgnizationController extends Controller
 {
     public function home(Request $request)
     {
+        $projects = Project::where('orgnization_id', session('orgnization_id'))->where('status', '!=', 'Upcoming')->get();
+        $project_num = count($projects);
         $orgnization = Orgnization::find(session('orgnization_id'));
         $president = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president')->first();
         $id = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president_national_id')->first();
@@ -36,11 +41,23 @@ class OrgnizationController extends Controller
         $female_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_volunteers')->first();
         $total_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_volunteers')->first();
         
+
+        $event_num = 0;
+        $beneficiary_num = 0;
+        foreach($projects as $project) {
+            $events = Event::where('project_id', $project->id)->get();
+            $event_num += count($events);
+            foreach($events as $event) {
+                $beneficiary_num += $event->beneficiaries;
+            }
+        }
+        
         return view('app.orgnization.home', [
-            'orgnization' => $orgnization, 
+            'orgnization' => Orgnization::find(session('orgnization_id')), 
             'target' => 'main',
-            'president' => $president,
-            'president_national_id' => $id
+            'project_num' => $project_num,
+            'event_num' => $event_num,
+            'beneficiary_num' => $beneficiary_num
         ]);
     }
 
@@ -85,6 +102,23 @@ class OrgnizationController extends Controller
             'male_volunteers' => $male_volunteers,
             'female_volunteers' => $female_volunteers,
             'total_volunteers' => $total_volunteers,
+        ]);
+        $male_mems = count(Member::where('gender','male')->get());
+        $female_mems = count(Member::where('gender','female')->get());
+
+        $male_employees = count(Employee::where('orgnization_id', session('orgnization_id'))->where('gender','male')->get());
+        $female_employees = count(Employee::where('orgnization_id', session('orgnization_id'))->where('gender','female')->get());
+
+        $project_num = count(Project::where('orgnization_id', session('orgnization_id'))->get());
+        
+        return view('app.orgnization.home', [
+            'orgnization' => Orgnization::find(session('orgnization_id')), 
+            'target' => $target,
+            'male_mems' => $male_mems,
+            'female_mems' => $female_mems,
+            'male_employees' => $male_employees,
+            'female_employees' => $female_employees,
+            'project_num' => $project_num
         ]);
     }
 

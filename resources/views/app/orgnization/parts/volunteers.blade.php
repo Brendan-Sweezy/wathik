@@ -35,7 +35,15 @@
         <div class="row">
             <div class="col-3">عدد المتطوعين (المجموع)</div>
             <div class="col">
-                total#
+                @foreach ($orgnization->info as $info)
+                    @if ($info->type == 'male_volunteers')
+                        @foreach ($orgnization->info as $info2)
+                            @if ($info2->type == 'female_volunteers')
+                                {{ intval($info->info) + intval($info2->info) }}
+                            @endif
+                        @endforeach
+                    @endif
+                @endforeach
             </div>
         </div>
     </div>
