@@ -26,18 +26,14 @@
                 <label class="required fs-6 fw-semibold mb-2"># of members of current administrative body</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter number of members" name="num_members" required
-                    value="{{ $num_members->info }}"/>
+                    value=""/>
             </div>
 
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2"># of members of administrative body mentioned in articles of association</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter # members mentioned in articles of association" name="mentioned_members" required
-                    value=" @foreach ($orgnization->info as $info)
-                                @if ($info->type == 'mentioned_members')
-                                    {{ $info->info }}
-                                @endif
-                            @endforeach"/>
+                    value=""/>
             </div>
 
 
@@ -45,22 +41,14 @@
                 <label class="required fs-6 fw-semibold mb-2">quorum</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="quorum" name="quorum" required
-                    value=" @foreach ($orgnization->info as $info)
-                                @if ($info->type == 'quorum')
-                                    {{ $info->info }}
-                                @endif
-                            @endforeach"/>
+                    value=""/>
             </div>
 
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">Term</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="quorum" name="term" required
-                    value=" @foreach ($orgnization->info as $info)
-                                @if ($info->type == 'term')
-                                    {{ $info->info }}
-                                @endif
-                            @endforeach"/>
+                    value=""/>
             </div>
 
             <div class="fv-row mb-7">

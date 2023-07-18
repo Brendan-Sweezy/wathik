@@ -23,65 +23,49 @@
         <div class="row">
             <div class="col-3">عدد أعضاء الهيئة الإدارية الحالية</div>
             <div class="col">
-                {{ $male_mems + $female_mems }}
+                <!-- $male_mems + $female_mems -->
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">عدد أعضاء الهية الإدارية الواردة في النظام الأساسي</div>
             <div class="col">
-                @foreach ($orgnization->info as $info)
-                    @if ($info->type == 'mentioned_members')
-                        {{ $info->info }}
-                    @endif
-                @endforeach
+                <!--mentioned_members-->
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">عدد أعضاء الهيئة الإدارية الذكور</div>
             <div class="col">
-                {{ $male_mems }}
+                <!--$male_mems-->
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">عدد أعضاء الهيئة الإدارية الإناث</div>
             <div class="col">
-                {{ $female_mems }}   
+                <!--$female_mems--> 
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">النصاب القانوني</div>
             <div class="col">
-                @foreach ($orgnization->info as $info)
-                    @if ($info->type == 'quorum')
-                        {{ $info->info }}
-                    @endif
-                @endforeach   
+                <!--quorum--> 
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">Term</div>
             <div class="col">
-                @foreach ($orgnization->info as $info)
-                    @if ($info->type == 'term')
-                        {{ $info->info }}
-                    @endif
-                @endforeach   
+                <!--term-->
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">تاريخ الانتخاب</div>
             <div class="col">
-                @foreach ($orgnization->info as $info)
-                    @if ($info->type == 'election_date')
-                        {{ $info->info }}
-                    @endif
-                @endforeach   
+                <!--election date-->
             </div>
         </div>
     </div>
