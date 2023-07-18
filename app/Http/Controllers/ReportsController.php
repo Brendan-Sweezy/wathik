@@ -45,7 +45,7 @@ class ReportsController extends Controller
         
         
         //SQL Queries Second Page
-        $projects = Project::where('orgnization_id', $organization->id)->get();
+        $projects = Project::where('orgnization_id', $organization->id)->where('status', '!=', 'Upcoming')->get();
         $project_names = array_fill(0, 9, '');
         $project_dates = array_fill(0, 9, '');
         $project_titles = array_fill(0, 9, '');
@@ -81,28 +81,28 @@ class ReportsController extends Controller
 
         $board_members = Member::where('orgnization_id', $organization->id)->get();
 
-        $board_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'num_members')->value('info');
+        
         $board_size_articles = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'mentioned_members')->value('info');
-        $board_male_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'male')->value('info');
-        $board_female_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'female')->value('info');
+        $board_male_size = count(Member::where('gender','male')->get());
+        $board_female_size = count(Member::where('gender','female')->get());
         $board_quorum = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'quorum')->value('info');
         $board_term = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'term')->value('info');
         $board_election_date = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'election_date')->value('info');
+        $board_size = $board_male_size + $board_female_size;
+        
 
-        $association_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'assembly_members')->value('info');
         $association_male_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'assembly_male')->value('info');
         $association_female_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'assembly_female')->value('info');
-
+        $association_size = $association_female_size + $association_male_size;
         
 
         $employees_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'total_employees')->value('info');
         $employees_male_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'male_employees')->value('info');
         $employees_female_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'female_employees')->value('info');
 
-        $volunteers_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'total_volunteers')->value('info');
         $volunteers_male_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'male_volunteers')->value('info');
         $volunteers_female_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'female_volunteers')->value('info');
-
+        $volunteers_size = $volunteers_female_size + $volunteers_male_size;
         
 
         $board_names = array_fill(0, 9, '');
@@ -132,7 +132,7 @@ class ReportsController extends Controller
         $employee_titles = array_fill(0, 10, '');
         $employee_genders = array_fill(0, 10, '');
 
-        $employees = Employee::where('organization_id', $organization->id)->get();
+        $employees = Employee::where('orgnization_id', $organization->id)->get();
         for($i = 0; $i < 9 && $i < count($employees); $i++) {
             $employee_names[$i] = $employees[$i]->name;
             $employee_qualifications[$i] = $employees[$i]->qualification;
@@ -252,14 +252,21 @@ class ReportsController extends Controller
         $balance_beginning = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'beginning_balance')->value('info');;
         $revenue = array_sum($budget_revenue_totals);
         $expenses = array_sum($budget_expenses_totals);
-        $balance_ending = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'final_balance')->value('info');
+        $balance_ending = $balance_beginning + $revenue - $expenses;
 
+        $upcoming_projects = Project::where('orgnization_id', $organization->id)->where('status', 'Upcoming')->get();
+        
         $upcoming_project_names = array_fill(0, 9, '');
         $upcoming_project_locations = array_fill(0, 9, '');
         $upcoming_project_beneficiaries = array_fill(0, 9, '');
         $upcoming_project_budgets = array_fill(0, 9, '');
 
-
+        for($i = 0; $i < 9 && $i < count($upcoming_projects); $i++) {
+            $upcoming_project_names[$i] = $upcoming_projects[$i]->name;
+            $upcoming_project_locations[$i] = $upcoming_projects[$i]->title;
+            $upcoming_project_beneficiaries[$i] = $upcoming_projects[$i]->beneficiaries;
+            $upcoming_project_budgets[$i] = $upcoming_projects[$i]->budget;
+        }
 
         
         

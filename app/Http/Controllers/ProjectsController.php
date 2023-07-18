@@ -66,6 +66,7 @@ class ProjectsController extends Controller
                     'date' => $request->date,
                     'title' => $request->title,
                     'status' => $request->status,
+                    'budget' => $request->budget,
                     'beneficiaries' => $request->beneficiaries,
                 ]);
                 return redirect('/projects/addThreats/' . $project->id);

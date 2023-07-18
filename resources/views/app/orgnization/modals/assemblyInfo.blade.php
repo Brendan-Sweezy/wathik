@@ -21,13 +21,6 @@
             data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto"
             data-kt-scroll-dependencies="#kt_modal_add_customer_header"
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
-            
-            <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2"># of members of general assembly</label>
-                <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter number of members" name="assembly_members" required
-                    value=""/>
-            </div>
 
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2"># of male members</label>

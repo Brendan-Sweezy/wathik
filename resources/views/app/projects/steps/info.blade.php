@@ -15,11 +15,20 @@
     </div>
     <div class="fv-row mb-7" style="direction: rtl">
         <label class="required fs-6 fw-semibold mb-2">حالة المشروع</label>
-        <input type="text" class="form-control form-control-solid" placeholder="" name="status" required />
+        <select type="text" class="form-control form-control-solid" placeholder="" name="status" required>
+            <option value="not started">Not started</option>
+            <option value="in progress">In Progress</option>
+            <option value="complete">Complete</option>
+            <option value="Upcoming">Upcoming</option>
+        </select>
     </div>
     <div class="fv-row mb-7" style="direction: rtl">
         <label class="required fs-6 fw-semibold mb-2">عدد المستفيدين</label>
         <input type="text" class="form-control form-control-solid" placeholder="" name="beneficiaries" required />
+    </div>
+    <div class="fv-row mb-7" style="direction: rtl">
+        <label class="required fs-6 fw-semibold mb-2">Budget</label>
+        <input type="text" class="form-control form-control-solid" placeholder="" name="budget" required />
     </div>
     <button type="submit" class="btn btn-primary">
         <span class="indicator-label">التالي</span>

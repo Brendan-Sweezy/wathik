@@ -35,11 +35,7 @@
             <div class="row">
                 <div class="col-3">Final Balance</div>
                 <div class="col">
-                    @foreach ($orgnization->info as $info)
-                        @if ($info->type == 'final_balance')
-                            {{ $info->info }}
-                        @endif
-                    @endforeach
+                    {{ $beginning_balance + $total_rev - $total_ex }}
                 </div>
             </div>
             <div class="separator separator-dashed my-3"></div>

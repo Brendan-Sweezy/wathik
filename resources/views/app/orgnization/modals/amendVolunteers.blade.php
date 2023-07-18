@@ -32,11 +32,6 @@
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter female" name="female" required/>
             </div>
-            <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2"># total</label>
-                <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter total" name="total" required/>
-            </div>
 
         </div>
     </div>

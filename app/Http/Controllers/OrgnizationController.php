@@ -9,6 +9,9 @@ use App\Models\Member;
 use App\Models\AuthorityMeeting;
 use App\Models\FinancingEntity;
 use App\Models\Employee;
+use App\Models\Project;
+use App\Models\Event;
+
 
 use Illuminate\Http\Request;
 
@@ -16,12 +19,47 @@ class OrgnizationController extends Controller
 {
     public function home(Request $request)
     {
-        return view('app.orgnization.home', ['orgnization' => Orgnization::find(session('orgnization_id')), 'target' => 'main']);
+        $projects = Project::where('orgnization_id', session('orgnization_id'))->where('status', '!=', 'Upcoming')->get();
+        $project_num = count($projects);
+
+        $event_num = 0;
+        $beneficiary_num = 0;
+        foreach($projects as $project) {
+            $events = Event::where('project_id', $project->id)->get();
+            $event_num += count($events);
+            foreach($events as $event) {
+                $beneficiary_num += $event->beneficiaries;
+            }
+        }
+        
+        return view('app.orgnization.home', [
+            'orgnization' => Orgnization::find(session('orgnization_id')), 
+            'target' => 'main',
+            'project_num' => $project_num,
+            'event_num' => $event_num,
+            'beneficiary_num' => $beneficiary_num
+        ]);
     }
 
     public function view(Request $request, $target)
     {
-        return view('app.orgnization.home', ['orgnization' => Orgnization::find(session('orgnization_id')), 'target' => $target]);
+        $male_mems = count(Member::where('gender','male')->get());
+        $female_mems = count(Member::where('gender','female')->get());
+
+        $male_employees = count(Employee::where('orgnization_id', session('orgnization_id'))->where('gender','male')->get());
+        $female_employees = count(Employee::where('orgnization_id', session('orgnization_id'))->where('gender','female')->get());
+
+        $project_num = count(Project::where('orgnization_id', session('orgnization_id'))->get());
+        
+        return view('app.orgnization.home', [
+            'orgnization' => Orgnization::find(session('orgnization_id')), 
+            'target' => $target,
+            'male_mems' => $male_mems,
+            'female_mems' => $female_mems,
+            'male_employees' => $male_employees,
+            'female_employees' => $female_employees,
+            'project_num' => $project_num
+        ]);
     }
 
 
@@ -104,26 +142,13 @@ class OrgnizationController extends Controller
 
     public function amendAdminInfo(Request $request){
         if (OrgnizationInfo::find(session('orgnization_id')) == NULL) {
-            $num_members = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'num_members',
-                'info' => $request->num_members
-            ]);
+            
             $mentioned_members = OrgnizationInfo::create([
                 'orgnization_id' => session('orgnization_id'),
                 'type' => 'mentioned_members',
                 'info' => $request->mentioned_members
             ]);
-            $male = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'male',
-                'info' => $request->male
-            ]);
-            $female = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'female',
-                'info' => $request->female
-            ]);
+            
             $quorum = OrgnizationInfo::create([
                 'orgnization_id' => session('orgnization_id'),
                 'type' => 'quorum',
@@ -151,26 +176,13 @@ class OrgnizationController extends Controller
             $dateHits = 0;
             while (OrgnizationInfo::find($counter)) {
                 $info = OrgnizationInfo::find($counter);
-                if ($info->type == 'num_members') {
-                    $numHits++;
-                    $info->info = $request->num_members;
-                    $info->save();
-                }
-                else if($info->type == 'mentioned_members') {
+                
+                if($info->type == 'mentioned_members') {
                     $mentionedHits++;
                     $info->info = $request->mentioned_members;
                     $info->save();
                 }
-                else if($info->type == 'male') {
-                    $maleHits++;
-                    $info->info = $request->male;
-                    $info->save();
-                }
-                else if($info->type == 'female') {
-                    $femaleHits++;
-                    $info->info = $request->female;
-                    $info->save();
-                }
+                
                 else if($info->type == 'quorum') {
                     $quorumHits++;
                     $info->info = $request->quorum;
@@ -188,14 +200,7 @@ class OrgnizationController extends Controller
                 }
                 $counter++;
             }
-            if ($numHits==0) {
-                $num_members = OrgnizationInfo::create([
-                    'orgnization_id' => session('orgnization_id'),
-                    'type' => 'num_members',
-                    'info' => $request->num_members
-                ]);
-                $num_members->save();
-            }
+            
             if ($mentionedHits==0) {
                 $mentioned_members = OrgnizationInfo::create([
                     'orgnization_id' => session('orgnization_id'),
@@ -204,22 +209,7 @@ class OrgnizationController extends Controller
                 ]);
                 $mentioned_members->save();
             }
-            if ($maleHits==0) {
-                $male = OrgnizationInfo::create([
-                    'orgnization_id' => session('orgnization_id'),
-                    'type' => 'male',
-                    'info' => $request->male
-                ]);
-                $male->save();
-            }
-            if ($femaleHits==0) {
-                $female = OrgnizationInfo::create([
-                    'orgnization_id' => session('orgnization_id'),
-                    'type' => 'female',
-                    'info' => $request->female
-                ]);
-                $female->save();
-            }
+            
             if ($quorumHits==0) {
                 $quorum = OrgnizationInfo::create([
                     'orgnization_id' => session('orgnization_id'),
@@ -285,11 +275,6 @@ class OrgnizationController extends Controller
 //GENERAL AUTHORITY PAGE -----------------------------------------------------
     public function amendAssemblyInfo(Request $request){
         if (OrgnizationInfo::find(session('orgnization_id')) == NULL) {
-            $assembly_members = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'assembly_members',
-                'info' => $request->assembly_members
-            ]);
             $assembly_male = OrgnizationInfo::create([
                 'orgnization_id' => session('orgnization_id'),
                 'type' => 'assembly_male',
@@ -308,12 +293,8 @@ class OrgnizationController extends Controller
             $femaleHits = 0;
             while (OrgnizationInfo::find($counter)) {
                 $info = OrgnizationInfo::find($counter);
-                if ($info->type == 'assembly_members') {
-                    $memberHits++;
-                    $info->info = $request->assembly_members;
-                    $info->save();
-                }
-                else if($info->type == 'assembly_male') {
+                
+                if($info->type == 'assembly_male') {
                     $maleHits++;
                     $info->info = $request->assembly_male;
                     $info->save();
@@ -325,14 +306,7 @@ class OrgnizationController extends Controller
                 }
                 $counter++;
             }
-            if ($memberHits==0) {
-                $assembly_members = OrgnizationInfo::create([
-                    'orgnization_id' => session('orgnization_id'),
-                    'type' => 'assembly_members',
-                    'info' => $request->assembly_members
-                ]);
-                $assembly_members->save();
-            }
+            
             if ($maleHits==0) {
                 $assembly_male = OrgnizationInfo::create([
                     'orgnization_id' => session('orgnization_id'),
@@ -356,6 +330,7 @@ class OrgnizationController extends Controller
         public function addMeeting(Request $request){
             $meeting = AuthorityMeeting::Create([
                 'orgnization_id' => session('orgnization_id'),
+                'meeting_num' => $request->num,
                 'date' => $request->date,
                 'type' => $request->type,
                 'attendees' => $request->attendees,
@@ -366,6 +341,7 @@ class OrgnizationController extends Controller
 
         public function amendMeeting(Request $request, $id){    //TODO: this doesnt work 
             $meeting = AuthorityMeeting::find($id);
+            $meeting->meeting_num = $request->num;
             $meeting->date = $request->date;
             $meeting->type = $request->type;
             $meeting->attendees = $request->attendees;
@@ -462,11 +438,6 @@ class OrgnizationController extends Controller
                 'type' => 'female_volunteers',
                 'info' => $request->female
             ]);
-            $total = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'total_volunteers',
-                'info' => $request->total
-            ]);
         }
         else {
             $counter = 1;
@@ -483,11 +454,6 @@ class OrgnizationController extends Controller
                 else if($info->type == 'female_volunteers') {
                     $femaleHits++;
                     $info->info = $request->female;
-                    $info->save();
-                }
-                else if($info->type == 'total_volunteers') {
-                    $totalHits++;
-                    $info->info = $request->total;
                     $info->save();
                 }
                 $counter++;
@@ -507,14 +473,6 @@ class OrgnizationController extends Controller
                     'info' => $request->female
                 ]);
                 $female->save();
-            }
-            if ($totalHits==0) {
-                $total = OrgnizationInfo::create([
-                    'orgnization_id' => session('orgnization_id'),
-                    'type' => 'total_volunteers',
-                    'info' => $request->total
-                ]);
-                $total->save();
             }
         }
         return redirect('orgnization/employees');}

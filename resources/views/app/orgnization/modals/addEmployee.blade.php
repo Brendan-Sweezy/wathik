@@ -34,7 +34,10 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">gender</label>
-                <input type="text" class="form-control form-control-solid" placeholder="gender" name="gender" required />
+                <select type="text" class="form-control form-control-solid" placeholder="gender" name="gender" required >
+                    <option value='male'>Male</option>
+                    <option value='female'>Female</option>
+                </select>
             </div>
             
         </div>

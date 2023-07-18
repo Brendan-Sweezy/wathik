@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('qualification');
             $table->string('title');
-            $table->boolean('gender');
+            $table->string('gender');
             $table->timestamps();
         });
     }
