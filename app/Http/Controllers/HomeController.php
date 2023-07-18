@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Models\revenue;
 use App\Models\expenses;
-=======
-use Illuminate\Support\Facades\DB;
->>>>>>> 076182d684c0a7a328864e8a8174958a202eff8b
-
 class HomeController extends Controller
 {
     

@@ -78,6 +78,9 @@ Route::middleware(['userSession'])
         Route::get("/{target}", 'view')->name('orgnization');
         Route::post("/amendManager", 'amendManager');
         Route::post("/amendInfo", 'amendInfo');
+        Route::post("/addBranch", 'addBranch');
+        Route::get("/delete/{id}", 'deleteBranch');
+        Route::post("/amendBranch/{id}", 'amendBranch');
         Route::post("/managment/amendPresident", 'amendPresident');
         Route::post("/managment/addMember", 'addMember');
         Route::get("/managment/members/delete/{id}", 'deleteMember');
