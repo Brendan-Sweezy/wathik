@@ -32,7 +32,6 @@ class OrgnizationController extends Controller
         $quorum = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'quorum')->first();
         $term = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'term')->first();
         $election_date = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'election_date')->first();
-        $assembly_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_members')->first();
         $assembly_male = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_male')->first();
         $assembly_female = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_female')->first();
         $male_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_employees')->first();
@@ -75,7 +74,6 @@ class OrgnizationController extends Controller
         $quorum = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'quorum')->first();
         $term = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'term')->first();
         $election_date = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'election_date')->first();
-        $assembly_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_members')->first();
         $assembly_male = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_male')->first();
         $assembly_female = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_female')->first();
         $male_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_employees')->first();
@@ -115,7 +113,8 @@ class OrgnizationController extends Controller
             'quorum' => $quorum,
             'term' => $term,
             'election_date' => $election_date,
-            'assembly_members' => $assembly_members,
+            'assembly_male' => $assembly_male,
+            'assembly_female' => $assembly_female,
             'male_employees' => $male_employees,
             'female_employees' => $female_employees,
             'total_employees' => $total_employees,
@@ -128,18 +127,7 @@ class OrgnizationController extends Controller
         ]);
         
        
-        
-        return view('app.orgnization.home', [
-            'orgnization' => Orgnization::find(session('orgnization_id')), 
-            'target' => $target,
-            'male_mems' => $male_mems,
-            'female_mems' => $female_mems,
-            'male_employees' => $male_employees,
-            'female_employees' => $female_employees,
-            'project_num' => $project_num,
-            'event_num' => $event_num,
-            'beneficiary_num' => $beneficiary_num
-        ]);
+       
     }
 
 
@@ -326,16 +314,9 @@ class OrgnizationController extends Controller
 //GENERAL AUTHORITY PAGE -----------------------------------------------------
     public function amendAssemblyInfo(Request $request){
         $orgnization = Orgnization::find(session('orgnization_id'));
-        $assembly_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_members')->first();
         $assembly_male = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_male')->first();
         $assembly_female = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_female')->first();
         
-        if($assembly_members == NULL){
-            $assembly_members = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'assembly_members',
-                'info' => $request->assembly_members]);}
-        else $assembly_members->info = $request->assembly_members;
         if($assembly_male == NULL){
             $assembly_male = OrgnizationInfo::create([
                 'orgnization_id' => session('orgnization_id'),
@@ -349,7 +330,6 @@ class OrgnizationController extends Controller
                 'info' => $request->assembly_female]);}
         else $assembly_female->info = $request->assembly_female;
         
-        $assembly_members->save();
         $assembly_male->save();
         $assembly_female->save();
         return redirect('orgnization/authority');}
