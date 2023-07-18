@@ -81,28 +81,28 @@ class ReportsController extends Controller
 
         $board_members = Member::where('orgnization_id', $organization->id)->get();
 
-        $board_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'num_members')->value('info');
+        
         $board_size_articles = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'mentioned_members')->value('info');
-        $board_male_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'male')->value('info');
-        $board_female_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'female')->value('info');
+        $board_male_size = count(Member::where('gender','male')->get());
+        $board_female_size = count(Member::where('gender','female')->get());
         $board_quorum = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'quorum')->value('info');
         $board_term = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'term')->value('info');
         $board_election_date = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'election_date')->value('info');
+        $board_size = $board_male_size + $board_female_size;
+        
 
-        $association_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'assembly_members')->value('info');
         $association_male_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'assembly_male')->value('info');
         $association_female_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'assembly_female')->value('info');
-
+        $association_size = $association_female_size + $association_male_size;
         
 
         $employees_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'total_employees')->value('info');
         $employees_male_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'male_employees')->value('info');
         $employees_female_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'female_employees')->value('info');
 
-        $volunteers_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'total_volunteers')->value('info');
         $volunteers_male_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'male_volunteers')->value('info');
         $volunteers_female_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'female_volunteers')->value('info');
-
+        $volunteers_size = $volunteers_female_size + $volunteers_male_size;
         
 
         $board_names = array_fill(0, 9, '');

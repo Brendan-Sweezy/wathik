@@ -23,11 +23,7 @@
         <div class="row">
             <div class="col-3">عدد أعضاء الهيئة الإدارية الحالية</div>
             <div class="col">
-                @foreach ($orgnization->info as $info)
-                    @if ($info->type == 'num_members')
-                        {{ $info->info }}
-                    @endif
-                @endforeach
+                {{ $male_mems + $female_mems }}
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
@@ -45,22 +41,14 @@
         <div class="row">
             <div class="col-3">عدد أعضاء الهيئة الإدارية الذكور</div>
             <div class="col">
-                @foreach ($orgnization->info as $info)
-                    @if ($info->type == 'male')
-                        {{ $info->info }}
-                    @endif
-                @endforeach
+                {{ $male_mems }}
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">عدد أعضاء الهيئة الإدارية الإناث</div>
             <div class="col">
-                @foreach ($orgnization->info as $info)
-                    @if ($info->type == 'female')
-                        {{ $info->info }}
-                    @endif
-                @endforeach   
+                {{ $female_mems }}   
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>

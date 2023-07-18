@@ -24,8 +24,12 @@
             <div class="col-3">عدد أعضاء الهيئة العامة الحالي (المسددين اشتراكاتهم)</div>
             <div class="col">
                 @foreach ($orgnization->info as $info)
-                    @if ($info->type == 'assembly_members')
-                        {{ $info->info }}
+                    @if ($info->type == 'assembly_female')
+                        @foreach ($orgnization->info as $info2)
+                            @if ($info2->type == 'assembly_male')
+                                {{ intval($info->info) + intval($info2->info) }}
+                            @endif
+                        @endforeach
                     @endif
                 @endforeach
             </div>
