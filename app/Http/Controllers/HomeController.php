@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Models\revenue;
 use App\Models\expenses;
+use App\Models\OrgnizationInfo;
 class HomeController extends Controller
 {
     
@@ -140,6 +141,18 @@ class HomeController extends Controller
             'email' => $request->manager_email,
         ]);
 
+        OrgnizationInfo::create(['orgnization_id' => $orgnization->id, 'type' => 'president_national_id', 'info' => '']);
+        OrgnizationInfo::create(['orgnization_id' => $orgnization->id, 'type' => 'president', 'info' => '']);
+        OrgnizationInfo::create(['orgnization_id' => $orgnization->id, 'type' => 'mentioned_members', 'info' => '']);
+        OrgnizationInfo::create(['orgnization_id' => $orgnization->id, 'type' => 'quorum', 'info' => '']);
+        OrgnizationInfo::create(['orgnization_id' => $orgnization->id, 'type' => 'term', 'info' => '']);
+        OrgnizationInfo::create(['orgnization_id' => $orgnization->id, 'type' => 'election_date', 'info' => '']);
+        OrgnizationInfo::create(['orgnization_id' => $orgnization->id, 'type' => 'assembly_male', 'info' => '']);
+        OrgnizationInfo::create(['orgnization_id' => $orgnization->id, 'type' => 'assembly_female', 'info' => '']);
+        OrgnizationInfo::create(['orgnization_id' => $orgnization->id, 'type' => 'male_volunteers', 'info' => '']);
+        OrgnizationInfo::create(['orgnization_id' => $orgnization->id, 'type' => 'female_volunteers', 'info' => '']);
+        
+
         for($i = 1; $i < 5; $i++) {
             expenses::create([
                 'organization_id' => $orgnization->id,
@@ -192,15 +205,15 @@ class HomeController extends Controller
             'threat' => 'ةصتخملا ةرازولا عم ةقلاعلا'
         ]);
 
-        OrgniztionInfo::create([
+        OrgnizationInfo::create([
             'type' => 'auditor',
             'info' => ''
         ]);
-        OrgniztionInfo::create([
+        OrgnizationInfo::create([
             'type' => 'beginning_balance',
             'info' => ''
         ]);
-        /*OrgniztionInfo::create([
+        /*OrgnizationInfo::create([
             'type' => 'final_balance',
             'info' => ''
         ]);*/
