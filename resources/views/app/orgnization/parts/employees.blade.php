@@ -21,21 +21,21 @@
         <div class="row">
             <div class="col-3">عدد الموظفين الذكور</div>
             <div class="col">
-                {{$male_employees->info}}
+                male #
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">عدد الموظفين الإناث</div>
             <div class="col">
-                {{$female_employees->info}}
+                female #
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">عدد الموظفين (المجموع)</div>
             <div class="col">
-                {{$total_employees->info}}
+                total #
             </div>
         </div>
     </div>

@@ -25,17 +25,17 @@
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2"># male</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter male" name="male" value="{{$male_volunteers->info}}" required/>
+                    placeholder="Enter male" name="male" required/>
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2"># female</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter female" name="female"  value="{{$female_volunteers->info}}"required/>
+                    placeholder="Enter female" name="female" required/>
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2"># total</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter total" name="total" value="{{$total_volunteers->info}}" required/>
+                    placeholder="Enter total" name="total" required/>
             </div>
 
         </div>

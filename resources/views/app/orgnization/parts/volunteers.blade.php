@@ -21,21 +21,21 @@
         <div class="row">
             <div class="col-3">عدد المتطوعين الذكور</div>
             <div class="col">
-                {{$male_volunteers->info}}
+                male#
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">عدد المتطوعين الإناث</div>
             <div class="col">
-                {{$female_volunteers->info}}
+                female#
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">عدد المتطوعين (المجموع)</div>
             <div class="col">
-                {{$total_volunteers->info}}
+                total#
             </div>
         </div>
     </div>

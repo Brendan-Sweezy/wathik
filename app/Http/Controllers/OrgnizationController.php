@@ -19,6 +19,22 @@ class OrgnizationController extends Controller
         $orgnization = Orgnization::find(session('orgnization_id'));
         $president = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president')->first();
         $id = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president_national_id')->first();
+        $num_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'num_members')->first();
+        $mentioned_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'mentioned_members')->first();
+        $male = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male')->first();
+        $female = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female')->first();
+        $quorum = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'quorum')->first();
+        $term = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'term')->first();
+        $election_date = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'election_date')->first();
+        $assembly_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_members')->first();
+        $assembly_male = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_male')->first();
+        $assembly_female = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_female')->first();
+        $male_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_employees')->first();
+        $female_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_employees')->first();
+        $total_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_employees')->first();
+        $male_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_volunteers')->first();
+        $female_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_volunteers')->first();
+        $total_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_volunteers')->first();
         
         return view('app.orgnization.home', [
             'orgnization' => $orgnization, 

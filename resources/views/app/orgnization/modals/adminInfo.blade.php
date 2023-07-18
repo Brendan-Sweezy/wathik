@@ -26,11 +26,7 @@
                 <label class="required fs-6 fw-semibold mb-2"># of members of current administrative body</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter number of members" name="num_members" required
-                    value=" @foreach ($orgnization->info as $info)
-                                @if ($info->type == 'num_members')
-                                    {{ $info->info }}
-                                @endif
-                            @endforeach"/>
+                    value="{{ $num_members->info }}"/>
             </div>
 
             <div class="fv-row mb-7">

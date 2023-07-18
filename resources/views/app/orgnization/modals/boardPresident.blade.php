@@ -26,21 +26,13 @@
                 <label class="required fs-6 fw-semibold mb-2">Name of association president</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter name" name="name" required
-                    value=" @foreach ($orgnization->info as $info)
-                                @if ($info->type == 'president')
-                                    {{ $info->info }}
-                                @endif
-                            @endforeach"/>
+                    value="{{ $president->info }}"/>
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">ID number</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter ID number" name="national_id" required
-                    value=" @foreach ($orgnization->info as $info)
-                                @if ($info->type == 'president_national_id')
-                                    {{ $info->info }}
-                                @endif
-                            @endforeach"/>
+                    value="{{ $president_national_id->info }}"/>
             </div>
         </div>
     </div>
