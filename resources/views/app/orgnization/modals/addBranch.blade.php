@@ -1,4 +1,4 @@
-<form class="form" action="{{ url('orgnization/main/addBranch') }}" method="POST">
+<form class="form" action="{{ url('orgnization/addBranch') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
         <h2 class="fw-bold">add organization branch</h2>

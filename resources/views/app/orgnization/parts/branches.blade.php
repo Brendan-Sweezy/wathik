@@ -83,14 +83,14 @@
                                             data-kt-menu="true">
 
                                             <div class="menu-item px-3">
-                                                <a href="{{ url('orgnization/main/amendBranch/' . $branch->id) }}" data-bs-toggle="modal" data-bs-target="#amendBranch{{ $branch->id }}"
+                                                <a href="{{ url('orgnization/amendBranch/' . $branch->id) }}" data-bs-toggle="modal" data-bs-target="#amendBranch{{ $branch->id }}"
                                                     class="menu-link px-3">تعديل</a>
                                             </div>
                                         <!--end::EDIT BRANCH-->
                                                     
                                         <!--begin::DELETE BRANCH-->
                                             <div class="menu-item px-3">
-                                                <a href="{{ url('orgnization/main/delete/' . $branch->id) }}" class="menu-link px-3"
+                                                <a href="{{ url('orgnization/delete/' . $branch->id) }}" class="menu-link px-3"
                                                     data-kt-customer-table-filter="delete_row">حذف</a>
                                             </div>
                                         <!--end::DELETE BRANCH-->

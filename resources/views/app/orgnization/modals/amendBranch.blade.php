@@ -1,4 +1,4 @@
-<form class="form" action="{{ url('orgnization/main/amendBranch/' . $branch->id)}}" method="POST">
+<form class="form" action="{{ url('orgnization/amendBranch/' . $branch->id)}}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
         <h2 class="fw-bold">Amend Branch Information</h2>
