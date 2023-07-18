@@ -23,32 +23,32 @@
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">number</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter number" name="num" required/>
+                    placeholder="Enter number" name="num" value='{{ $meeting->meeting_num }}' required/>
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">date</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter date" name="date" required/>
+                    placeholder="Enter date" name="date" required value='{{ $meeting->date }}'/>
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">type</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter type" name="type" required />
+                    placeholder="Enter type" name="type" required value='{{ $meeting->type }}'/>
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">attendees</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter number of attendees" name="attendees" required />
+                    placeholder="Enter number of attendees" name="attendees" required value='{{ $meeting->attendees }}'/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">deputees</label>
+                <label class="required fs-6 fw-semibold mb-2">deputies</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter number" name="alternate_number" required />
+                    placeholder="Enter number" name="alternate_number" required value='{{ $meeting->alternate }}'/>
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">decisions</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter important decisions" name="decisions" required />
+                    placeholder="Enter important decisions" name="decisions" required value='{{ $meeting->decisions }}'/>
             </div>
         </div>
     </div>

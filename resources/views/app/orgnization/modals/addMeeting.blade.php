@@ -22,28 +22,28 @@
 
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">number</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="num" required />
+                <input type="text" class="form-control form-control-solid" placeholder="num" name="num" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">date</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="date" required />
+                <input type="text" class="form-control form-control-solid" placeholder="date" name="date" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">type</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="type" required />
+                <input type="text" class="form-control form-control-solid" placeholder="type" name="type" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">attendees</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="attendees" required />
+                <input type="text" class="form-control form-control-solid" placeholder="attendees" name="attendees" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">alternate_number</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="alternate_number"
+                <input type="text" class="form-control form-control-solid" placeholder="alternate_number" name="alternate_number"
                     required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">decisions</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="decisions"
+                <input type="text" class="form-control form-control-solid" placeholder="decisions" name="decisions"
                     required />
             </div>
         </div>

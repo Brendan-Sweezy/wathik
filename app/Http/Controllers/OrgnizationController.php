@@ -123,7 +123,7 @@ class OrgnizationController extends Controller
             'total_volunteers' => $total_volunteers,
             'project_num' => $project_num,
             'event_num' => $event_num,
-            'beneficiary_num' => $beneficiary_num
+            'beneficiary_num' => $beneficiary_num,
         ]);
         
        
