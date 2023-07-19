@@ -15,9 +15,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Models\revenue;
 use App\Models\expenses;
-
-
-
 class HomeController extends Controller
 {
     
@@ -51,10 +48,19 @@ class HomeController extends Controller
         $code_5 = $request->input('code_5');
         $code_6 = $request->input('code_6');
         $code = $code_1.$code_2.$code_3.$code_4.$code_5.$code_6;
-        $checkWathid = Orgnization::where('wathik_id', $code)->get();
-        if (sizeof($checkWathid)==1) {
-            Session::put('', );
+        $checkWathid = Orgnization::where('wathik_id', $code)->first();
+        if ($checkWathid!=null) {
+            //make the orgnizationid for the joining user match the id for an existing org
+            $matchid = $checkWathid->id;
+            $new_user = session('user_id');
+
+            UserOrgnization::create([
+                'user_id'=> $new_user,
+                'orgnization_id' => $matchid
+            ]);
+            return redirect('home');
         }
+         
         else {
             echo "Organization does not exist";
         }
