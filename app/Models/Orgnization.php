@@ -55,4 +55,8 @@ class Orgnization extends Model
     {
         return $this->hasMany(Employee::class);
     }
+    function branch()
+    {
+        return $this->hasMany(Branch::class);
+    }
 }

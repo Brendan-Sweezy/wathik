@@ -11,6 +11,7 @@ use App\Models\FinancingEntity;
 use App\Models\Employee;
 use App\Models\Project;
 use App\Models\Event;
+use App\Models\Branch;
 
 
 use Illuminate\Http\Request;
@@ -172,6 +173,36 @@ class OrgnizationController extends Controller
         return redirect('orgnization/main');}
 
 
+    //list of branches
+        public function addBranch(Request $request){
+            Branch::Create([
+                'orgnization_id' => session('orgnization_id'),
+                'date' => $request->date,
+                'name' => $request->name,
+                'governorate' => $request->governorate,
+                'major_general' => $request->major_general,
+                'eleminate' => $request->eleminate,
+                'population' => $request->population,
+            ]);
+            return redirect('orgnization/main');}
+
+        public function amendBranch(Request $request, $id){     
+            $branch = Branch::find($id);
+            $branch->date = $request->date;
+            $branch->name = $request->name;
+            $branch->governorate = $request->governorate;
+            $branch->major_general = $request->major_general;
+            $branch->eleminate = $request->eleminate;
+            $branch->population = $request->population;
+            $branch->save();
+            return redirect('orgnization/main');}
+            
+        public function deleteBranch($id){
+            $branch = Branch::find($id);
+            $branch->delete();
+            return redirect('orgnization/main');}
+
+
 //ADMINISTRATIVE BOARD PAGE --------------------------------------------------
     public function amendPresident(Request $request){
         $orgnization = Orgnization::find(session('orgnization_id'));
@@ -282,6 +313,7 @@ class OrgnizationController extends Controller
             $member->election_date = $request->election_date;
             $member->save();
             return redirect('orgnization/managment');}
+
         public function deleteMember($id){
             $member = Member::find($id);
             $member->delete();

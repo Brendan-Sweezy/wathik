@@ -60,6 +60,10 @@ class HomeController extends Controller
             ]);
             return redirect('home');
         }
+
+            //$us_id = UserOrgnization::find('user_id', $new_user)->first();
+
+            //echo $checkWathid;
          
         else {
             echo "Organization does not exist";
