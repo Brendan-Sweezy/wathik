@@ -46,9 +46,8 @@
 
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">election date</label>
-                <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter election date" name="election_date" required
-                    value='{{ $election_date->info }}'/>
+                
+                <input type="datetime-local" class="form-control" name="election_date" placeholder="click to enter election date" value='{{ $election_date->info }}' required />
             </div>
             
 
@@ -64,3 +63,8 @@
         </button>
     </div>
 </form>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("input[type=datetime-local]");
+</script>

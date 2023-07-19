@@ -73,6 +73,7 @@
     @yield('modals')
     @include('app.common.script')
     @yield('script')
+    @fcScripts
 </body>
 <!--end::Body-->
 

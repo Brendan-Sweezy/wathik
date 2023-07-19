@@ -42,9 +42,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">Founding date</label>
-                <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter founding date" name="founding_date" required 
-                    value="{{ $orgnization->founding_date }}"/>
+                <input type="datetime-local" class="form-control" name="founding_date" placeholder="Click to select founding date"  value='{{ $orgnization->founding_date }}' required />
             </div>
         </div>
     </div>
@@ -57,3 +55,8 @@
         </button>
     </div>
 </form>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("input[type=datetime-local]");
+</script>

@@ -19,13 +19,13 @@ return new class extends Migration
             $table->foreignIdFor(Orgnization::class);
             $table->string('name')->nullable();
             $table->string('national_id')->nullable();
-            $table->string('birthday')->nullable();
+            $table->dateTime('birthday')->nullable();
             $table->string('gender')->nullable();
             $table->string('work')->nullable();
             $table->string('degree')->nullable();
             $table->string('major')->nullable();
             $table->string('phone')->nullable();
-            $table->string('election_date')->nullable();
+            $table->dateTime('election_date')->nullable();
             $table->timestamps();
         });
     }

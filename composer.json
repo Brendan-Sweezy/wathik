@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "arielmejiadev/larapex-charts": "^6.0",
         "barryvdh/laravel-dompdf": "^2.0",
+        "blade-ui-kit/blade-heroicons": "^2.1",
         "doctrine/dbal": "^3.6",
         "dompdf/dompdf": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
@@ -16,6 +17,7 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",
         "mikehaertl/php-pdftk": "^0.13.0",
+        "rawilk/laravel-form-components": "*",
         "setasign/fpdf": "^1.8",
         "setasign/fpdi": "^2.3",
         "twilio/sdk": "^6.44"

@@ -22,7 +22,7 @@
 
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">date</label>
-                <input type="text" class="form-control form-control-solid" placeholder="date" name="date" required />
+                <input type="datetime-local" class="form-control" placeholder="click to select date of establishment" name="date" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">name</label>
@@ -56,3 +56,8 @@
         </button>
     </div>
 </form>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("input[type=datetime-local]");
+</script>
