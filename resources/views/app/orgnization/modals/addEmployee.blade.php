@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('orgnization/employees/addEmployee') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">add authority meeting</h2>
+        <h2 class="fw-bold">add employee</h2>
         <div onclick="$('#addEmployee').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"

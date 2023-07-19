@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use mikehaertl\pdftk\Pdf;
+use Barryvdh\DomPDF\Facade\Pdf as Pdf2;
 use App\Models\Orgnization;
 use App\Models\OrgnizationContact;
 use App\Models\OrgnizationAddress;
@@ -26,7 +27,17 @@ use App\Charts\TestChart;
 class ReportsController extends Controller
 {
     public function generateDonor(TestChart $chart) {
-        return view('pdf.donorReport', ['chart' => $chart->build()]); 
+        
+        $organization = Orgnization::find(session('orgnization_id'));
+        $project = Project::where('orgnization_id', $organization->id)->first();
+
+        $pdf = Pdf2::loadView('pdf.donorReport', [
+            'project' => $project,
+            'organization' => $organization
+        ]);
+
+        return $pdf->download('donorReport.pdf');
+        return view('pdf.donorReport');
     }
     
     public function generate() {

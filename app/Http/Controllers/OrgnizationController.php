@@ -23,16 +23,15 @@ class OrgnizationController extends Controller
         $projects = Project::where('orgnization_id', session('orgnization_id'))->where('status', '!=', 'Upcoming')->get();
         $project_num = count($projects);
         $orgnization = Orgnization::find(session('orgnization_id'));
-        $president = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president')->first();
+        
         $id = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president_national_id')->first();
         $num_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'num_members')->first();
         $mentioned_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'mentioned_members')->first();
-        $male = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male')->first();
-        $female = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female')->first();
+        $male_mems = count(Member::where('gender','male')->get());
+        $female_mems = count(Member::where('gender','female')->get());
         $quorum = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'quorum')->first();
         $term = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'term')->first();
         $election_date = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'election_date')->first();
-        $assembly_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_members')->first();
         $assembly_male = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_male')->first();
         $assembly_female = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_female')->first();
         $male_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_employees')->first();
@@ -40,8 +39,8 @@ class OrgnizationController extends Controller
         $total_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_employees')->first();
         $male_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_volunteers')->first();
         $female_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_volunteers')->first();
-        $total_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_volunteers')->first();
         
+
 
         $event_num = 0;
         $beneficiary_num = 0;
@@ -74,15 +73,12 @@ class OrgnizationController extends Controller
         $quorum = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'quorum')->first();
         $term = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'term')->first();
         $election_date = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'election_date')->first();
-        $assembly_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_members')->first();
         $assembly_male = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_male')->first();
         $assembly_female = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_female')->first();
         $male_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_employees')->first();
         $female_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_employees')->first();
-        $total_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_employees')->first();
         $male_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_volunteers')->first();
         $female_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_volunteers')->first();
-        $total_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_volunteers')->first();
         
         $male_mems = count(Member::where('gender','male')->get());
         $female_mems = count(Member::where('gender','female')->get());
@@ -109,35 +105,20 @@ class OrgnizationController extends Controller
             'president_national_id' => $id,
             'num_members' => $num_members,
             'mentioned_members' => $mentioned_members,
-            'male' => $male,
-            'female' => $female,
+            'male_mems' => $male_mems,
+            'female_mems' => $female_mems,
             'quorum' => $quorum,
             'term' => $term,
             'election_date' => $election_date,
-            'assembly_members' => $assembly_members,
+            'assembly_male' => $assembly_male,
+            'assembly_female' => $assembly_female,
             'male_employees' => $male_employees,
             'female_employees' => $female_employees,
-            'total_employees' => $total_employees,
             'male_volunteers' => $male_volunteers,
             'female_volunteers' => $female_volunteers,
-            'total_volunteers' => $total_volunteers,
             'project_num' => $project_num,
             'event_num' => $event_num,
-            'beneficiary_num' => $beneficiary_num
-        ]);
-        
-       
-        
-        return view('app.orgnization.home', [
-            'orgnization' => Orgnization::find(session('orgnization_id')), 
-            'target' => $target,
-            'male_mems' => $male_mems,
-            'female_mems' => $female_mems,
-            'male_employees' => $male_employees,
-            'female_employees' => $female_employees,
-            'project_num' => $project_num,
-            'event_num' => $event_num,
-            'beneficiary_num' => $beneficiary_num
+            'beneficiary_num' => $beneficiary_num,
         ]);
     }
 
@@ -207,29 +188,23 @@ class OrgnizationController extends Controller
     public function amendPresident(Request $request){
         $orgnization = Orgnization::find(session('orgnization_id'));
         $president = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president')->first();
-        $id = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president_national_id')->first();
-        if($president == NULL){
-            $president = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'president',
-                'info' => $request->name]);}
-        else $president->info = $request->name;
-        if($id == NULL){
-            $id = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'president_national_id',
-                'info' => $request->national_id]);}
-        else $id->info = $request->national_id;
+        
+
+        $president_national_id = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president_national_id')->first();
+        $president->info = $request->name;
+        $president_national_id->info = $request->national_id;
         $president->save();
-        $id->save();
+        $president_national_id->save();
         return redirect('orgnization/managment');}
 
     public function amendAdminInfo(Request $request){
         $orgnization = Orgnization::find(session('orgnization_id'));
         $num_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'num_members')->first();
         $mentioned_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'mentioned_members')->first();
-        $male = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male')->first();
-        $female = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female')->first();
+
+        $male_mems = count(Member::where('gender','male')->get());
+        $female_mems = count(Member::where('gender','female')->get());
+
         $quorum = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'quorum')->first();
         $term = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'term')->first();
         $election_date = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'election_date')->first();
@@ -245,18 +220,7 @@ class OrgnizationController extends Controller
                 'type' => 'mentioned_members',
                 'info' => $request->mentioned_members]);}
         else $mentioned_members->info = $request->mentioned_members;
-        if($male == NULL){
-            $male = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'male',
-                'info' => $request->male]);}
-        else $male->info = $request->male;
-        if($female == NULL){
-            $female = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'female',
-                'info' => $request->female]);}
-        else $female->info = $request->female;
+        
         if($quorum == NULL){
             $quorum = OrgnizationInfo::create([
                 'orgnization_id' => session('orgnization_id'),
@@ -277,8 +241,6 @@ class OrgnizationController extends Controller
         else $election_date->info = $request->election_date;
         $num_members->save();
         $mentioned_members->save();
-        $male->save();
-        $female->save();
         $quorum->save();
         $term->save();
         $election_date->save();
@@ -323,16 +285,9 @@ class OrgnizationController extends Controller
 //GENERAL AUTHORITY PAGE -----------------------------------------------------
     public function amendAssemblyInfo(Request $request){
         $orgnization = Orgnization::find(session('orgnization_id'));
-        $assembly_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_members')->first();
         $assembly_male = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_male')->first();
         $assembly_female = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_female')->first();
         
-        if($assembly_members == NULL){
-            $assembly_members = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'assembly_members',
-                'info' => $request->assembly_members]);}
-        else $assembly_members->info = $request->assembly_members;
         if($assembly_male == NULL){
             $assembly_male = OrgnizationInfo::create([
                 'orgnization_id' => session('orgnization_id'),
@@ -346,7 +301,6 @@ class OrgnizationController extends Controller
                 'info' => $request->assembly_female]);}
         else $assembly_female->info = $request->assembly_female;
         
-        $assembly_members->save();
         $assembly_male->save();
         $assembly_female->save();
         return redirect('orgnization/authority');}
@@ -387,65 +341,28 @@ class OrgnizationController extends Controller
 
 
 //EMPLOYEES PAGE -------------------------------------------------------------
-    public function amendEmployees(Request $request){
-        $orgnization = Orgnization::find(session('orgnization_id'));
-        $male_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_employees')->first();
-        $female_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_employees')->first();
-        $total_employees = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_employees')->first();
-        
-        if($male_employees == NULL){
-            $male_employees = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'male_employees',
-                'info' => $request->male_employees]);}
-        else $male_employees->info = $request->male_employees;
-        if($female_employees == NULL){
-            $female_employees = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'female_employees',
-                'info' => $request->female_employees]);}
-        else $female_employees->info = $request->female_employees;
-        if($total_employees == NULL){
-            $total_employees = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'total_employees',
-                'info' => $request->total_employees]);}
-        else $total_employees->info = $request->total_employees;
-        
-        $male_employees->save();
-        $female_employees->save();
-        $total_employees->save();
-        return redirect('orgnization/employees');}
-
 
     public function amendVolunteers(Request $request){
         $orgnization = Orgnization::find(session('orgnization_id'));
         $male_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_volunteers')->first();
         $female_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_volunteers')->first();
-        $total_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'total_volunteers')->first();
         
         if($male_volunteers == NULL){
             $male_volunteers = OrgnizationInfo::create([
                 'orgnization_id' => session('orgnization_id'),
                 'type' => 'male_volunteers',
-                'info' => $request->male_volunteers]);}
-        else $male_volunteers->info = $request->male_volunteers;
+                'info' => $request->male]);}
+        else $male_volunteers->info = $request->male;
         if($female_volunteers == NULL){
             $female_volunteers = OrgnizationInfo::create([
                 'orgnization_id' => session('orgnization_id'),
                 'type' => 'female_volunteers',
-                'info' => $request->female_volunteers]);}
-        else $female_volunteers->info = $request->female_volunteers;
-        if($total_volunteers == NULL){
-            $total_volunteers = OrgnizationInfo::create([
-                'orgnization_id' => session('orgnization_id'),
-                'type' => 'total_volunteers',
-                'info' => $request->total_volunteers]);}
-        else $total_volunteers->info = $request->total_volunteers;
+                'info' => $request->female]);}
+        else $female_volunteers->info = $request->female;
+        
         
         $male_volunteers->save();
         $female_volunteers->save();
-        $total_volunteers->save();
         return redirect('orgnization/employees');}
     
 

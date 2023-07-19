@@ -21,14 +21,14 @@
         <div class="row">
             <div class="col-3">عدد المتطوعين الذكور</div>
             <div class="col">
-                male#
+                {{ $male_volunteers->info }}
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
             <div class="col-3">عدد المتطوعين الإناث</div>
             <div class="col">
-                female#
+                {{ $female_volunteers->info }}
             </div>
         </div>
         <div class="separator separator-dashed my-3"></div>
@@ -40,6 +40,7 @@
                         @foreach ($orgnization->info as $info2)
                             @if ($info2->type == 'female_volunteers')
                                 {{ intval($info->info) + intval($info2->info) }}
+                                @break
                             @endif
                         @endforeach
                     @endif
