@@ -22,28 +22,28 @@
 
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">name</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="name" required />
+                <input type="text" class="form-control form-control-solid" placeholder="name" name="name" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">nationality</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="nationality" required />
+                <input type="text" class="form-control form-control-solid" placeholder="nationality" name="nationality" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">governmental?</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="type" required />
+                <input type="text" class="form-control form-control-solid" placeholder="type" name="type" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">financing status</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="financing_characteristic" required />
+                <input type="text" class="form-control form-control-solid" placeholder="financing_characteristic" name="financing_characteristic" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">approval date</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="date"
+                <input type="text" class="form-control form-control-solid" placeholder="date" name="date"
                     required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">value (jod)</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="amount"
+                <input type="text" class="form-control form-control-solid" placeholder="amount" name="amount"
                     required />
             </div>
             

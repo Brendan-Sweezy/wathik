@@ -1,8 +1,8 @@
-<form class="form" action="{{ url('orgnization/authority/addMeeting') }}" method="POST">
+<form class="form" action="{{ url('orgnization/addBranch') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">add authority meeting</h2>
-        <div onclick="$('#addMeeting').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
+        <h2 class="fw-bold">add organization branch</h2>
+        <div onclick="$('#addBranch').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -21,36 +21,35 @@
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">number</label>
-                <input type="text" class="form-control form-control-solid" placeholder="num" name="num" required />
-            </div>
-            <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">date</label>
                 <input type="text" class="form-control form-control-solid" placeholder="date" name="date" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">type</label>
-                <input type="text" class="form-control form-control-solid" placeholder="type" name="type" required />
+                <label class="required fs-6 fw-semibold mb-2">name</label>
+                <input type="text" class="form-control form-control-solid" placeholder="name" name="name" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">attendees</label>
-                <input type="text" class="form-control form-control-solid" placeholder="attendees" name="attendees" required />
+                <label class="required fs-6 fw-semibold mb-2">governorate</label>
+                <input type="text" class="form-control form-control-solid" placeholder="governorate" name="governorate" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">alternate_number</label>
-                <input type="text" class="form-control form-control-solid" placeholder="alternate_number" name="alternate_number"
-                    required />
+                <label class="required fs-6 fw-semibold mb-2">major general</label>
+                <input type="text" class="form-control form-control-solid" placeholder="major general" name="major_general" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">decisions</label>
-                <input type="text" class="form-control form-control-solid" placeholder="decisions" name="decisions"
-                    required />
+                <label class="required fs-6 fw-semibold mb-2">eleminate</label>
+                <input type="text" class="form-control form-control-solid" placeholder="eleminate" name="eleminate" required />
             </div>
+            <div class="fv-row mb-7">
+                <label class="required fs-6 fw-semibold mb-2">population</label>
+                <input type="text" class="form-control form-control-solid" placeholder="population" name="population" required />
+            </div>
+            
         </div>
     </div>
     
     <div class="modal-footer flex-center">
-        <button type="reset" onclick="$('#addMeeting').modal('hide')"
+        <button type="reset" onclick="$('#addBranch').modal('hide')"
             class="btn btn-light me-3">الغاء</button>
         <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
             <span class="indicator-label">اضافة</span>

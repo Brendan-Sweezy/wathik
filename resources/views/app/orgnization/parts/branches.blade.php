@@ -1,21 +1,21 @@
 <div class="card card-flush h-xl-100" dir="rtl">
     <div class="card-header py-7">
         <div class="card-title pt-3 mb-0 gap-4 gap-lg-10 gap-xl-15 nav nav-tabs border-bottom-0">
-            Employees
+            Branches
         </div>
         
 
     <!-- MODAL -->
-        <div class="modal fade" id="addEmployee" tabindex="-1" aria-hidden="true">
+        <div class="modal fade" id="addBranch" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered mw-650px">
                 <div class="modal-content">
-                    @include('app.orgnization.modals.addEmployee')
+                    @include('app.orgnization.modals.addBranch')
                 </div>
             </div>
         </div>
         <div class="card-toolbar">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-                data-bs-target="#addEmployee">add</button>
+                data-bs-target="#addBranch">add</button>
         </div> 
 
 
@@ -25,31 +25,39 @@
             <thead>
                 <tr class="text-end text-gray-400 fw-bold fs-7 text-uppercase gs-0">
                     
+                    <th class="min-w-125px">date</th>
                     <th class="min-w-125px">name</th>
-                    <th class="min-w-125px">qualification</th>
-                    <th class="min-w-125px">title</th>
-                    <th class="min-w-125px">gender</th>
+                    <th class="min-w-125px">governorate</th>
+                    <th class="min-w-125px">major_general</th>
+                    <th class="min-w-125px">eleminate</th>
+                    <th class="min-w-125px">population</th>
                     <th class="text-start min-w-70px"></th>
                 </tr>
             </thead>
 
             <!-- TABLE BODY AND EDITING SHITE -->
             <tbody class="fw-semibold text-gray-600">
-                @foreach ($orgnization->employees as $employee)
+                @foreach ($orgnization->branch as $branch)
                 
 
                                 <tr>
                                     <td>
-                                        {{ $employee->name }}
+                                        {{ $branch->date }}
                                     </td>
                                     <td>
-                                        {{ $employee->qualification }}
+                                        {{ $branch->name }}
                                     </td>
                                     <td>
-                                        {{ $employee->title }}
+                                        {{ $branch->governorate }}
                                     </td>
                                     <td>
-                                        {{ $employee->gender }}
+                                        {{ $branch->major_general }}
+                                    </td>
+                                    <td>
+                                        {{ $branch->eleminate }}
+                                    </td>
+                                    <td>
+                                        {{ $branch->population }}
                                     </td>
                                     
 
@@ -70,22 +78,22 @@
                                         </a>
 
 
-                                        <!--begin::EDIT EMPLOYEE-->
+                                        <!--begin::EDIT BRANCH-->
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
                                             data-kt-menu="true">
 
                                             <div class="menu-item px-3">
-                                                <a href="{{ url('orgnization/employees/amendEmployee/' . $employee->id) }}" data-bs-toggle="modal" data-bs-target="#amendEmployee{{ $employee->id }}"
+                                                <a href="{{ url('orgnization/amendBranch/' . $branch->id) }}" data-bs-toggle="modal" data-bs-target="#amendBranch{{ $branch->id }}"
                                                     class="menu-link px-3">تعديل</a>
                                             </div>
-                                        <!--end::EDIT EMPLOYEE-->
+                                        <!--end::EDIT BRANCH-->
                                                     
-                                        <!--begin::DELETE EMPLOYEE-->
+                                        <!--begin::DELETE BRANCH-->
                                             <div class="menu-item px-3">
-                                                <a href="{{ url('orgnization/employees/delete/' . $employee->id) }}" class="menu-link px-3"
+                                                <a href="{{ url('orgnization/delete/' . $branch->id) }}" class="menu-link px-3"
                                                     data-kt-customer-table-filter="delete_row">حذف</a>
                                             </div>
-                                        <!--end::DELETE EMPLOYEE-->
+                                        <!--end::DELETE BRANCH-->
 
                                         </div>
                                         <!--end::Menu-->
@@ -93,10 +101,10 @@
                                     <!--end::Action=-->
                                     
                                 </tr>
-                                <div class="modal fade" id="amendEmployee{{ $employee->id }}" tabindex="-1" aria-hidden="true">
+                                <div class="modal fade" id="amendBranch{{ $branch->id }}" tabindex="-1" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered mw-650px">
                                         <div class="modal-content">
-                                            @include('app.orgnization.modals.amendEmployee')
+                                            @include('app.orgnization.modals.amendBranch')
                                         </div>
                                     </div>
                                 </div>

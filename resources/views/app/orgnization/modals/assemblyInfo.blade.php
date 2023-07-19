@@ -26,14 +26,14 @@
                 <label class="required fs-6 fw-semibold mb-2"># of male members</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter # male members" name="assembly_male" required
-                    value=""/>
+                    value='{{ $assembly_male->info }}'/>
             </div>
 
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2"># of female members</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="# female members" name="assembly_female" required
-                    value=""/>
+                    value='{{ $assembly_female->info }}'/>
             </div>
         </div>
     </div>

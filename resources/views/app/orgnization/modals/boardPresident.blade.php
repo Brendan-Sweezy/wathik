@@ -26,13 +26,13 @@
                 <label class="required fs-6 fw-semibold mb-2">Name of association president</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter name" name="name" required
-                    value="{{ $president->info }}"/>
+                    value='{{ $president->info }}'/>
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">ID number</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter ID number" name="national_id" required
-                    value="{{ $president_national_id->info }}"/>
+                    value='{{ $president_national_id->info }}'/>
             </div>
         </div>
     </div>

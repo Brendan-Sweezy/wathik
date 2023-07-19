@@ -25,12 +25,12 @@
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2"># male</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter male" name="male" required/>
+                    placeholder="Enter male" name="male" required value='{{ $male_volunteers->info }}'/>
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2"># female</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter female" name="female" required/>
+                    placeholder="Enter female" name="female" required value='{{ $female_volunteers->info }}'/>
             </div>
 
         </div>
