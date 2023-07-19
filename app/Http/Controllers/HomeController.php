@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Orgnization;
+use App\Models\OrgnizationInfo;
 use App\Models\OrgnizationAddress;
 use App\Models\OrgnizationContact;
 use App\Models\OrgnizationManager;

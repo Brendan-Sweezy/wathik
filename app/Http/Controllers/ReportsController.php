@@ -21,23 +21,38 @@ use App\Models\Branch;
 use App\Models\FinancingEntity;
 use App\Models\revenue;
 use App\Models\expenses;
-use App\Charts\TestChart;
+use App\Models\Event;
 
 
 class ReportsController extends Controller
 {
-    public function generateDonor(TestChart $chart) {
+    public function generateDonor() {
         
         $organization = Orgnization::find(session('orgnization_id'));
         $project = Project::where('orgnization_id', $organization->id)->first();
+        $events = Event::where('project_id', $project->id)->get(); 
+        $beneficiaries = 0;
+        foreach($events as $event) {
+            $beneficiaries += $event->beneficiaries;
+        }
+
+        $image = base64_encode(file_get_contents(public_path(asset('assets/media/wathikLogo.png'))));
 
         $pdf = Pdf2::loadView('pdf.donorReport', [
             'project' => $project,
-            'organization' => $organization
+            'organization' => $organization,
+            'events' => $events,
+            'beneficiaries_sum' => $beneficiaries,
+            'logo' => $image
         ]);
 
-        return $pdf->download('donorReport.pdf');
-        return view('pdf.donorReport');
+        //return $pdf->download('donorReport.pdf');
+        return view('pdf.donorReport', [
+            'project' => $project,
+            'organization' => $organization,
+            'events' => $events,
+            'beneficiaries_sum' => $beneficiaries
+        ]);
     }
     
     public function generate() {
@@ -185,7 +200,7 @@ class ReportsController extends Controller
         $branch_eleminates = array_fill(0, 4, '');
         $branch_populations = array_fill(0, 4, '');
 
-        $branches = Branch::where('organization_id', $organization->id)->get();
+        $branches = Branch::where('orgnization_id', $organization->id)->get();
         for($i = 0; $i < 4 && $i < count($branches); $i++) {
             $branch_dates[$i] = $branches[$i]->date;
             $branch_names[$i] = $branches[$i]->name;
@@ -212,7 +227,7 @@ class ReportsController extends Controller
             $funding_values[$i] = $donors[$i]->amount;
         }
 
-
+        
     
 
         $q1Rev = revenue::where('organization_id', $organization->id)->where('quarter', 1)->first();
@@ -225,6 +240,8 @@ class ReportsController extends Controller
         $q3Ex = expenses::where('organization_id', $organization->id)->where('quarter', 3)->first();
         $q4Ex = expenses::where('organization_id', $organization->id)->where('quarter', 4)->first();
 
+        //dd($organization->id);
+        
         $budget_local_financing = [$q1Rev->local_financing, $q2Rev->local_financing, $q3Rev->local_financing, $q4Rev->local_financing];
         $budget_foreign_financing = [$q1Rev->foreign_financing, $q2Rev->foreign_financing, $q3Rev->foreign_financing, $q4Rev->foreign_financing];
         $budget_project_profits = [$q1Rev->project_revenue, $q2Rev->project_revenue, $q3Rev->project_revenue, $q4Rev->project_revenue];
