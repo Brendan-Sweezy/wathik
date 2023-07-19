@@ -36,17 +36,16 @@ class ReportsController extends Controller
             $beneficiaries += $event->beneficiaries;
         }
 
-        $image = base64_encode(file_get_contents(public_path(asset('assets/media/wathikLogo.png'))));
+        //$image = base64_encode(file_get_contents(public_path(asset('assets/media/wathikLogo.png'))));
 
         $pdf = Pdf2::loadView('pdf.donorReport', [
             'project' => $project,
             'organization' => $organization,
             'events' => $events,
-            'beneficiaries_sum' => $beneficiaries,
-            'logo' => $image
+            'beneficiaries_sum' => $beneficiaries
         ]);
 
-        //return $pdf->download('donorReport.pdf');
+        return $pdf->download('donorReport.pdf');
         return view('pdf.donorReport', [
             'project' => $project,
             'organization' => $organization,
@@ -124,7 +123,7 @@ class ReportsController extends Controller
 
         $association_male_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'assembly_male')->value('info');
         $association_female_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'assembly_female')->value('info');
-        $association_size = $association_female_size + $association_male_size;
+        $association_size = intval($association_female_size) + intval($association_male_size);
         
 
         $employees_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'total_employees')->value('info');
@@ -133,7 +132,7 @@ class ReportsController extends Controller
 
         $volunteers_male_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'male_volunteers')->value('info');
         $volunteers_female_size = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'female_volunteers')->value('info');
-        $volunteers_size = $volunteers_female_size + $volunteers_male_size;
+        $volunteers_size = intval($volunteers_female_size) + intval($volunteers_male_size);
         
 
         $board_names = array_fill(0, 9, '');
