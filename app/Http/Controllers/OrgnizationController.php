@@ -124,20 +124,6 @@ class OrgnizationController extends Controller
             'event_num' => $event_num,
             'beneficiary_num' => $beneficiary_num
         ]);
-        
-       
-        
-        return view('app.orgnization.home', [
-            'orgnization' => Orgnization::find(session('orgnization_id')), 
-            'target' => $target,
-            'male_mems' => $male_mems,
-            'female_mems' => $female_mems,
-            'male_employees' => $male_employees,
-            'female_employees' => $female_employees,
-            'project_num' => $project_num,
-            'event_num' => $event_num,
-            'beneficiary_num' => $beneficiary_num
-        ]);
     }
 
 
