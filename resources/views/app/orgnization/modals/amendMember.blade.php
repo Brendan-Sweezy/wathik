@@ -43,9 +43,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">Date of Birth</label>
-                <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter date of birth" name="birthday" required 
-                    value="{{ $member->birthday }}"/>
+                <input type="datetime-local" class="form-control" name="birthday" placeholder="click to select birthday" value='{{ $member->birthday }}' required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">Work</label>
@@ -73,9 +71,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">Election date</label>
-                <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter election date" name="election_date" required 
-                    value="{{ $member->election_date }}"/>
+                <input type="datetime-local" class="form-control" name="election_date" placeholder="click to select election_date" value='{{ $member->election_date }}' required />
             </div>
         </div>
     </div>
@@ -90,3 +86,10 @@
 
     
 </form>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("input[type=datetime-local]");
+</script>

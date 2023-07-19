@@ -1,3 +1,4 @@
+
 <form class="form" action="{{ url('orgnization/funding/addDonor') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
@@ -38,8 +39,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">approval date</label>
-                <input type="text" class="form-control form-control-solid" placeholder="date" name="date"
-                    required />
+                <input type="datetime-local" class="form-control" name="date" placeholder="Click to select approval date" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">value (jod)</label>
@@ -58,3 +58,8 @@
         </button>
     </div>
 </form>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("input[type=datetime-local]");
+</script>

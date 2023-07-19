@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('nationality')->nullable();
             $table->string('type')->nullable();
             $table->string('financing_characteristic')->nullable();
-            $table->string('date')->nullable();
+            $table->dateTime('date')->nullable();
             $table->string('amount')->nullable();
             $table->timestamps();
         });

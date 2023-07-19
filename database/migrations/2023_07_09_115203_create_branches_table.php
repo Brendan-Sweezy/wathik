@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
             $table->integer('orgnization_id');
-            $table->string('date');
+            $table->dateTime('date');
             $table->string('name');
             $table->string('governorate');
             $table->string('major_general');

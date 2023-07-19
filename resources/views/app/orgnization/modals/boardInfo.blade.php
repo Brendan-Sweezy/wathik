@@ -37,7 +37,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">date of birth</label>
-                <input type="text" class="form-control form-control-solid" placeholder="birthday" name="birthday" required />
+                <input type="datetime-local" class="form-control" name="birthday" placeholder="click to select birthday" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">profession</label>
@@ -61,8 +61,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">election date</label>
-                <input type="text" class="form-control form-control-solid" placeholder="election_date" name="election_date" 
-                    required />
+                <input type="datetime-local" class="form-control" name="election_date" placeholder="click to select election date" required />
             </div>
         </div>
     </div>
@@ -75,3 +74,9 @@
         </button>
     </div>
 </form>
+
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("input[type=datetime-local]");
+</script>

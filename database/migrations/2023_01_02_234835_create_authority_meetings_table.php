@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Orgnization::class);
             $table->string('meeting_num')->nullable();
-            $table->string('date')->nullable();
+            $table->dateTime('date')->nullable();
             $table->string('type')->nullable();
             $table->string('attendees')->nullable();
             $table->string('alternate')->nullable();
