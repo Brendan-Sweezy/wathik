@@ -148,6 +148,17 @@
             <!--end::Aside-->
         </div>
         <!--end::Authentication - Two-stes-->
+        <!-- Add the button element here -->
+        <style>
+        /* Custom CSS for the button */
+        .btn-bottom-left {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            z-index: 9999; /* To make sure it appears above other elements */}
+        </style>
+        <button onclick="history.go(-1);" class="btn btn-primary btn-bottom-left">Back</button>
+        <!-- End of the button element -->
     </div>
     <!--end::Root-->
     <!--begin::Javascript-->
