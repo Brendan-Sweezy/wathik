@@ -6,19 +6,19 @@
         </div>
         <div class="mb-10 fv-row fv-plugins-icon-container">
             <label class="form-label mb-3">البريد الالكتروني</label>
-            <input type="text" class="form-control form-control-lg form-control-solid" name="email" placeholder=""
+            <input type="email" class="form-control form-control-lg form-control-solid" name="email" placeholder=""
                 value="" kl_vkbd_parsed="true" required>
             <div class="fv-plugins-message-container invalid-feedback"></div>
         </div>
         <div class="mb-10 fv-row fv-plugins-icon-container">
             <label class="form-label mb-3">رقم الهاتف</label>
-            <input type="text" class="form-control form-control-lg form-control-solid" name="phone" placeholder=""
+            <input type="tel" class="form-control form-control-lg form-control-solid" name="phone" placeholder=""
                 value="" kl_vkbd_parsed="true" required>
             <div class="fv-plugins-message-container invalid-feedback"></div>
         </div>
         <div class="mb-10 fv-row fv-plugins-icon-container">
             <label class="form-label mb-3">الهاتف النقال</label>
-            <input type="text" class="form-control form-control-lg form-control-solid" name="mobile" placeholder=""
+            <input type="tel" class="form-control form-control-lg form-control-solid" name="mobile" placeholder=""
                 value="" kl_vkbd_parsed="true" required>
             <div class="fv-plugins-message-container invalid-feedback"></div>
         </div>
@@ -31,14 +31,14 @@
             </div>
             <div class="col-6">
                 <label class="form-label mb-3">الرمز البريدي</label>
-                <input type="text" class="form-control form-control-lg form-control-solid" name="zipcode"
+                <input type="number" class="form-control form-control-lg form-control-solid" name="zipcode"
                     placeholder="" value="" kl_vkbd_parsed="true" required>
                 <div class="fv-plugins-message-container invalid-feedback"></div>
             </div>
         </div>
         <div class="mb-10 fv-row fv-plugins-icon-container">
             <label class="form-label mb-3">الموقع الالكتروني</label>
-            <input type="text" class="form-control form-control-lg form-control-solid" name="website" placeholder=""
+            <input type="url" class="form-control form-control-lg form-control-solid" name="website" placeholder=""
                 value="" kl_vkbd_parsed="true" required>
             <div class="fv-plugins-message-container invalid-feedback"></div>
         </div>

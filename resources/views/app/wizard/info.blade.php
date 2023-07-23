@@ -12,7 +12,7 @@
         </div>
         <div class="mb-10 fv-row fv-plugins-icon-container">
             <label class="form-label mb-3">الرقم الوطني</label>
-            <input type="text" class="form-control form-control-lg form-control-solid" name="orgnization_national_id"
+            <input type="number" class="form-control form-control-lg form-control-solid" name="orgnization_national_id"
                 placeholder="" value="" kl_vkbd_parsed="true">
             <div class="fv-plugins-message-container invalid-feedback"></div>
         </div>
@@ -24,9 +24,14 @@
         </div>
         <div class="mb-10 fv-row fv-plugins-icon-container">
             <label class="form-label mb-3">تاريخ التأسيس</label>
-            <input type="text" class="form-control form-control-lg form-control-solid"
+            <input type="datetime-local" class="form-control form-control-lg form-control-solid"
                 name="orgnization_founding_date" placeholder="" value="" kl_vkbd_parsed="true">
             <div class="fv-plugins-message-container invalid-feedback"></div>
+            <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+            <script>
+                    flatpickr("input[type=datetime-local]");
+            </script>
         </div>
     </div>
+
 </div>
