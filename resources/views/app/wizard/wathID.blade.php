@@ -9,6 +9,45 @@
 
 <body id="kt_body" class="app-blank">
     <link rel="stylesheet" href="{{ asset('assets/intl-tel-input/css/intlTelInput.css') }}" />
+    <!-- Image and Pop-up Container -->
+    <!--begin style for hover help button-->
+    <style>
+    .info-container {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 999; /* To make sure it appears above other elements */
+    }
+    .info-popup {
+        display: none;
+        position: absolute;
+        top: 100%; 
+        left: 100%;
+        padding: 5px;
+        background-color: #f1f1f1;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 200px;
+    }
+    .info-image {
+        /* Adjust the width and height as needed */
+        width: 30px; /* Change this value to the desired width */
+        height: 30px; /* Change this value to the desired height */
+    }
+    /* When the mouse hovers over the container, show the pop-up */
+    .info-container:hover .info-popup {
+        display: block;
+    }
+    </style>
+    <!--end style for hover help button-->
+    <!--begin hover help button div-->
+    <div class="info-container">
+        <img src="{{ url('assets/media/Help.png') }}" alt="Image" class="info-image" />
+        <div class="info-popup">Get your organization's original administrator to pull up the associations 
+            page after logging in. Under "The Information" section, use the six-digit code called "Share Code" and enter below!</div>
+    </div>
+    <!--end hover help button-->
+
     <style>
         .iti {
             width: 95%;
