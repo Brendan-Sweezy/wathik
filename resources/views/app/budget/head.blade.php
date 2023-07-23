@@ -37,6 +37,7 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-center w-200px w-sm-300px flex-column mt-3">
+                        <!--/>
                         <div class="d-flex justify-content-between w-100 mt-auto mb-2">
                             <span class="fw-semibold fs-6 text-gray-400">اكتمال المعلومات</span>
                             <span class="fw-bold fs-6">50%</span>
@@ -45,6 +46,7 @@
                             <div class="bg-success rounded h-5px" role="progressbar" style="width: 50%;"
                                 aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
+                        </!-->
                     </div>
                 </div>
             </div>

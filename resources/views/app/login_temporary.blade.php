@@ -57,12 +57,12 @@
                                 <!--begin::Heading-->
                                 <!--begin::Input group=-->
                                 <div class="fv-row mb-6">
-                                    <input type="string" placeholder="Username" id="username" autocomplete="off" 
+                                    <input type="string" placeholder="اسم المستخدم" id="username" autocomplete="off" 
                                         required class="form-control form-control-solid" name='username'/> <!--username-->
                                 </div>
 
                                 <div class="fv-row mb-6">
-                                    <input type="password" placeholder="Password" id="password" autocomplete="off" 
+                                    <input type="password" placeholder="كلمة المرور" id="password" autocomplete="off" 
                                         required class="form-control form-control-solid" name='password'/> <!--password-->
                                 </div>
                                 <!--end::Input group=-->
@@ -78,7 +78,7 @@
                                     <button type="Submit" id="login_button"
                                         class="btn btn-primary btn-block me-2 flex-shrink-0">
                                         <!--begin::Indicator label-->
-                                        <span class="indicator-label" data-kt-translate="sign-in-submit">Sign in</span>
+                                        <span class="indicator-label" data-kt-translate="sign-in-submit">تسجيل الدخول</span>
                                         <!--end::Indicator label-->
                                     </button>
                                     <!--end::Submit-->
@@ -90,7 +90,7 @@
                                       <a href="/createAccount" id="create_account_button" class="btn btn-secondary btn-block me-2 flex-shrink-0"
                                         >
                                         <!--begin::Indicator label-->
-                                        <span class="indicator-label" data-kt-translate="sign-in-submit">Create Account</span>
+                                        <span class="indicator-label" data-kt-translate="sign-in-submit">إنشاء حساب</span>
                                         
                                         <!--end::Indicator label-->
                                       </a>
@@ -98,7 +98,7 @@
                                     <button type='button' id="forgot_password__button"
                                         class="btn btn-secondary btn-block me-2 flex-shrink-0">
                                         <!--begin::Indicator label-->
-                                        <span class="indicator-label" data-kt-translate="sign-in-submit">Forgot Password</span>
+                                        <span class="indicator-label" data-kt-translate="sign-in-submit">هل نسيت كلمة السر</span>
                                         <!--end::Indicator label-->
                                     </button>
                                     <!--end::Submit-->

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('date')->nullable();
             $table->string('time')->nullable();
             $table->string('beneficiaries')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

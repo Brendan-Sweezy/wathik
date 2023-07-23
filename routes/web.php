@@ -145,7 +145,7 @@ Route::middleware(['userSession'])
     ->group(function () {
         Route::get("/", 'home')->name('reports');
         Route::get("/generate", 'generate')->name('generate');
-        Route::get("/generateDonor", 'generateDonor')->name('generateDonor');
+        Route::post("/generateDonor", 'generateDonor')->name('generateDonor');
     });
 
 

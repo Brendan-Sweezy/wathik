@@ -50,33 +50,33 @@
                                 <!--begin::Heading-->
                                 <div class="text-end mb-10">
                                     <!--begin::Title-->
-                                    <h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">Create Account</h1>
+                                    <h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">إنشاء حساب</h1>
                                     <!--end::Title-->
                                 </div>
                                 <!--begin::Heading-->
                                 <!--begin::Input group=-->
                                 <div class="fv-row mb-2">
-                                    <input type="string" placeholder="Username" id="username" autocomplete="off" 
+                                    <input type="string" placeholder="اسم المستخدم" id="username" autocomplete="off" 
                                         required class="form-control form-control-solid" name='username'/> <!--username-->
                                 </div>
 
                                 <div class="fv-row mb-2">
-                                    <input type="email" placeholder="Email" id="email" autocomplete="off" 
+                                    <input type="email" placeholder="بريد إلكتروني" id="email" autocomplete="off" 
                                         required class="form-control form-control-solid" name='email'/> <!--password-->
                                 </div>
 
                                 <div class="fv-row mb-2">
-                                    <input type="tel" placeholder="Phone Number" id="phone_number" autocomplete="off" 
+                                    <input type="tel" placeholder="رقم التليفون" id="phone_number" autocomplete="off" 
                                         required class="form-control form-control-solid" name='phone_number'/> <!--password-->
                                 </div>
 
                                 <div class="fv-row mb-2">
-                                    <input type="password" placeholder="Password" id="password" autocomplete="off" 
+                                    <input type="password" placeholder="كلمة المرور" id="password" autocomplete="off" 
                                         required class="form-control form-control-solid" name='password'/> <!--password-->
                                 </div>
 
                                 <div class="fv-row mb-2">
-                                    <input type="password" placeholder="Confirm Password" id="password_confirm" autocomplete="off" 
+                                    <input type="password" placeholder="تأكيد كلمة المرور" id="password_confirm" autocomplete="off" 
                                         required class="form-control form-control-solid" name='password_confirm'/> <!--password-->
                                 </div>
 

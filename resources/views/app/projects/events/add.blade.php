@@ -38,6 +38,10 @@
                 <input type="text" class="form-control form-control-solid" placeholder="" name="beneficiaries"
                     required />
             </div>
+            <div class="fv-row mb-7">
+                <label class="required fs-6 fw-semibold mb-2">عدد المستفيدين</label>
+                <input type="file" class="form-control form-control-solid" name="photo" id='photo'/>
+            </div>
         </div>
     </div>
     <div class="modal-footer flex-center">

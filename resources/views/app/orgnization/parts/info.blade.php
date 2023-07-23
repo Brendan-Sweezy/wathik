@@ -40,6 +40,11 @@
                 <div class="col-3">تاريخ التأسيس</div>
                 <div class="col">{{ $orgnization->founding_date }}</div>
             </div>
+            <div class="separator separator-dashed my-3"></div>
+            <div class="row">
+                <div class="col-3">Share Code</div>
+                <div class="col">{{ $orgnization->wathik_id }}</div>
+            </div>
         </div>
     </div>
 </div>

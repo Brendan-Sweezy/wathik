@@ -26,10 +26,10 @@ use App\Models\Event;
 
 class ReportsController extends Controller
 {
-    public function generateDonor() {
-        
+    public function generateDonor(Request $request) {
+
         $organization = Orgnization::find(session('orgnization_id'));
-        $project = Project::where('orgnization_id', $organization->id)->first();
+        $project = Project::where('orgnization_id', $organization->id)->where('id', $request->id)->first();
         $events = Event::where('project_id', $project->id)->get(); 
         $beneficiaries = 0;
         foreach($events as $event) {
@@ -777,7 +777,11 @@ class ReportsController extends Controller
 
     public function home(Request $request)
     {
-        return view('app.reports.home');
+        $projects = Project::where('orgnization_id', session('orgnization_id'))->get();
+        
+        return view('app.reports.home', [
+            'projects' => $projects
+        ]);
     }
 }  
     
