@@ -4,7 +4,7 @@
     <input type="hidden" name="project_id" value="{{ $id }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
         <h2 class="fw-bold">اضافة مشارك</h2>
-        <div onclick="$('#kt_modal_add_customer').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
+        <div onclick="$('#addParticipant').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -25,6 +25,7 @@
                 <label class="required fs-6 fw-semibold mb-2">اسم المشارك</label>
                 <input type="text" class="form-control form-control-solid" placeholder="" name="name" required />
             </div>
+            
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">القسم</label>
                 <input type="text" class="form-control form-control-solid" placeholder="" name="department"
@@ -50,7 +51,7 @@
         </div>
     </div>
     <div class="modal-footer flex-center">
-        <button type="reset" onclick="$('#kt_modal_add_customer').modal('hide')"
+        <button type="reset" onclick="$('#addParticipant').modal('hide')"
             class="btn btn-light me-3">الغاء</button>
         <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
             <span class="indicator-label">اضافة</span>

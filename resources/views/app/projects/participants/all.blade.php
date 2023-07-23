@@ -1,21 +1,31 @@
 <!-- begin: Button to open "add participants" popup -->
 <button type="button" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal"
-    data-bs-target="#kt_modal_add_customer">اضافة مشاركين</button>
+    data-bs-target="#addParticipant">اضافة مشاركين</button>
+<div class="modal fade" id="addParticipant" tabindex="-1" aria-hidden="true">
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered mw-650px">
+        <!--begin::Modal content-->
+        <div class="modal-content">
+            @include('app.projects.participants.add')
+        </div>
+    </div>
+</div>
+
 <hr />
 <!-- end: Button... -->
 
-<table class="table align-middle table-row-dashed fs-6 gy-5" dir="rtl">
+<table class="table align-middle table-row-dashed fs-6 gy-5 " dir="rtl">
     <!--begin::Table head-->
     <thead>
         <!--begin::Table row-->
         <tr class="text-end text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-            <th class="min-w-125px">الاسم</th>
-            <th class="min-w-125px">القسم</th>
-            <th class="min-w-125px">الرقم الوطني</th>
-            <th class="min-w-125px">العنوان</th>
-            <th class="min-w-125px">رقم الهاتف</th>
-            <th class="min-w-125px">تاريخ الميلاد</th>
-            <th class="text-start min-w-70px"></th>
+            <th class="min-w-50px">الاسم</th>
+            <th class="min-w-50px">القسم</th>
+            <th class="min-w-50px">الرقم الوطني</th>
+            <th class="min-w-50px">العنوان</th>
+            <th class="min-w-50px">رقم الهاتف</th>
+            <th class="min-w-50px">تاريخ الميلاد</th>
+            <th class="text-start min-w-50px"></th>
         </tr>
         <!--end::Table row-->
     </thead>
@@ -62,13 +72,12 @@
                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
                         data-kt-menu="true">
                         <div class="menu-item px-3">
-                            <a href="{{ url('admin/participants/edit/' . $participant->id) }}"
-                                class="menu-link px-3">تعديل</a>
+                            <a href="{{ url('participants/amend/' . $participant->id) }}" data-bs-toggle="modal" data-bs-target="#amendParticipant{{ $participant->id }}" class="menu-link px-3">تعديل</a>
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-3">
-                            <a href="{{ url('admin/participants/delete/' . $participant->id) }}" class="menu-link px-3"
+                            <a href="{{ url('participants/delete/' . $participant->id) }}" class="menu-link px-3"
                                 data-kt-customer-table-filter="delete_row">حذف</a>
                         </div>
                         <!--end::Menu item-->
@@ -77,20 +86,15 @@
                 </td>
                 <!--end::Action=-->
             </tr>
+            <div class="modal fade" id="amendParticipant{{ $participant->id }}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered mw-650px">
+                    <div class="modal-content">
+                        @include('app.projects.participants.amend')
+                    </div>
+                </div>
+            </div>
         @endforeach
 
 
     </tbody>
 </table>
-
-@section('modals')
-    <div class="modal fade" id="kt_modal_add_customer" tabindex="-1" aria-hidden="true">
-        <!--begin::Modal dialog-->
-        <div class="modal-dialog modal-dialog-centered mw-650px">
-            <!--begin::Modal content-->
-            <div class="modal-content">
-                @include('app.projects.participants.add')
-            </div>
-        </div>
-    </div>
-@stop

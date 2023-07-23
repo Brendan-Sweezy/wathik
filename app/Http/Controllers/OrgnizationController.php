@@ -39,8 +39,8 @@ class OrgnizationController extends Controller
         $female_employees = count(Employee::where('orgnization_id', session('orgnization_id'))->where('gender','female')->get());
         
         $project_num = count($projects);
-        $event_num = 0;                     //TODO
-        $beneficiary_num = 0;               //TODO
+        $event_num = 0;                     
+        $beneficiary_num = 0;               
         foreach($projects as $project) {
             $events = Event::where('project_id', $project->id)->get();
             $event_num += count($events);
@@ -82,8 +82,8 @@ class OrgnizationController extends Controller
         $female_employees = count(Employee::where('orgnization_id', session('orgnization_id'))->where('gender','female')->get());
         
         $project_num = count($projects);
-        $event_num = 0;                         //TODO
-        $beneficiary_num = 0;                   //TODO
+        $event_num = 0;                        
+        $beneficiary_num = 0;                  
         foreach($projects as $project) {
             $events = Event::where('project_id', $project->id)->get();
             $event_num += count($events);
