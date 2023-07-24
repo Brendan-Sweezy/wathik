@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('reports/generateDonor') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="weeklyReport_header" dir="rtl">
-        <h2 class="fw-bold">Amend Quarter One Expenses</h2>
+        <h2 class="fw-bold">Weekly Report Options</h2>
         <div onclick="$('#weeklyReport').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -23,7 +23,7 @@
             data-kt-scroll-wrappers="#weeklyReport_scroll" data-kt-scroll-offset="300px">
             
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Salaries</label>
+                <label class="required fs-6 fw-semibold mb-2">Project</label>
                     <select class="form-control form-control-solid" 
                         placeholder="Enter project" name="id" required 
                         value='id'>
@@ -34,10 +34,20 @@
             </div>
             
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Salaries</label>
+                <label class="required fs-6 fw-semibold mb-2">Date</label>
                     <input type="text" class="form-control form-control-solid" 
                         placeholder="Enter date" name="salaries" required 
                         value='date'/>
+            </div>
+
+            <div class="fv-row mb-7">
+                <label class="required fs-6 fw-semibold mb-2">Language</label>
+                    <select class="form-control form-control-solid" 
+                        placeholder="Enter project" name="language" required 
+                        value='language'>
+                        <option value='arabic'>Arabic</option>
+                        <option value='english'>English</option>
+                    </select>
             </div>
 
         </div>

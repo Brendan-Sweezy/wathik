@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use mikehaertl\pdftk\Pdf;
 use Barryvdh\DomPDF\Facade\Pdf as Pdf2;
+use Elibyy\TCPDF\Facades\TCPDF;
 use Barryvdh\Dompdf\Font;
 use App\Models\Orgnization;
 use App\Models\OrgnizationContact;
@@ -37,6 +38,70 @@ class ReportsController extends Controller
             $beneficiaries += $event->beneficiaries;
         }
 
+    	if($request->language == 'arabic') {
+        
+            $filename = 'donorReportArabic.pdf';
+
+    	    $data = [
+    		    'project' => $project,
+                'organization' => $organization,
+                'events' => $events,
+                'beneficiaries_sum' => $beneficiaries
+    	    ];
+
+    	    $view = \View::make('pdf.donorReportArabic', $data);
+            $html = $view->render();
+
+    	    $pdf = new TCPDF;
+        
+        
+            $pdf::SetTitle('Hello World');
+
+            // set some language dependent data:
+            $lg = Array();
+            $lg['a_meta_charset'] = 'UTF-8';
+            $lg['a_meta_dir'] = 'rtl';
+            $lg['a_meta_language'] = 'fa';
+            $lg['w_page'] = 'page';
+
+            // set some language-dependent strings (optional)
+            $pdf::setLanguageArray($lg);
+
+            // ---------------------------------------------------------
+
+            // set font
+            $pdf::SetFont('dejavusans', '', 12);
+
+            $pdf::AddPage();
+
+            $logoPath = public_path('assets/media/wathikLogo.png');
+            $pdf::Image($logoPath, 40, 10, 30, 30, 'PNG');
+
+            $pdf::writeHTML($html, true, false, true, false, '');
+
+            $pdf::Output(public_path($filename), 'F');
+
+            return response()->download(public_path($filename));
+        } else {
+            $pdf = Pdf2::loadView('pdf.donorReportEnglish', [
+                'project' => $project,
+                'organization' => $organization,
+                'events' => $events,
+                'beneficiaries_sum' => $beneficiaries
+            ]);
+    
+            return $pdf->download('donorReport.pdf');
+        }
+    
+        
+        /*$organization = Orgnization::find(session('orgnization_id'));
+        $project = Project::where('orgnization_id', $organization->id)->where('id', $request->id)->first();
+        $events = Event::where('project_id', $project->id)->get(); 
+        $beneficiaries = 0;
+        foreach($events as $event) {
+            $beneficiaries += $event->beneficiaries;
+        }
+
         //$image = base64_encode(file_get_contents(public_path(asset('assets/media/wathikLogo.png'))));
 
         $pdf = Pdf2::loadView('pdf.donorReport', [
@@ -52,7 +117,7 @@ class ReportsController extends Controller
             'organization' => $organization,
             'events' => $events,
             'beneficiaries_sum' => $beneficiaries
-        ]);
+        ]);*/
     }
     
     public function generate() {
