@@ -19,44 +19,44 @@
             data-kt-scroll-wrappers="#q3RevModal_scroll" data-kt-scroll-offset="300px">
             
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">التمويل المحلي</label>
+                <label class="required fs-6 fw-semibold mb-2">تمویل محلي (حدد)</label>
                     <input type="text" class="form-control form-control-solid" 
                         placeholder="أدخل التمويل المحلي" name="local_financing" required 
                         value='{{ $q3Rev->local_financing }}'/>
             </div>
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">التمويل الأجنبي</label>
+                <label class="required fs-6 fw-semibold mb-2">تمویل أجنبي(حدد)</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="أدخل التمويل الأجنبي" name="foreign_financing" required 
                     value="{{ $q3Rev->foreign_financing }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">إيرادات المشروع</label>
+                <label class="required fs-6 fw-semibold mb-2">أرباح مشاریع الجمعیة</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="أدخل إيرادات المشروع" name="project_revenue" required 
                     value="{{ $q3Rev->project_revenue }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">الاشتراكات</label>
+                <label class="required fs-6 fw-semibold mb-2">إشتراكات أعضاء الجمعیة</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="أدخل الاشتراكات" name="subscriptions" required 
                     value="{{ $q3Rev->subscriptions }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">فوائد البنوك</label>
+                <label class="required fs-6 fw-semibold mb-2">فائدة بنكیة</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="أدخل فوائد البنوك" name="bank_interest" required 
                     value="{{ $q3Rev->bank_interest }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">العقارات الثابتة</label>
+                <label class="required fs-6 fw-semibold mb-2">اموال غیر منقولة (عقار، سیارات،....)</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="أدخل العقارات الثابتة" name="immoveable_properties" required 
                     value="{{ $q3Rev->immoveable_properties }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">أخرى</label>
+                <label class="required fs-6 fw-semibold mb-2">>غیرھا- حدد<</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="أدخل الإيرادات الأخرى" name="other" required 
                     value="{{ $q3Rev->other }}"/>

@@ -19,38 +19,38 @@
             data-kt-scroll-wrappers="#q4ExModal_scroll" data-kt-scroll-offset="300px">
             
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">الرواتب</label>
+                <label class="required fs-6 fw-semibold mb-2">رواتب وعلاوات</label>
                     <input type="text" class="form-control form-control-solid" 
                         placeholder="أدخل الرواتب" name="salaries" required 
                         value='{{ $q4Ex->salaries }}'/>
             </div>
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">الإهلاكات</label>
+                <label class="required fs-6 fw-semibold mb-2">إھتلاكات</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="أدخل الإهلاكات" name="deprications" required 
                     value="{{ $q4Ex->deprications }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">نفقات المكتب</label>
+                <label class="required fs-6 fw-semibold mb-2">مصاریف مكتبیة</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="أدخل نفقات المكتب" name="office_expenses" required 
                     value="{{ $q4Ex->office_expenses }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">الإيجار</label>
+                <label class="required fs-6 fw-semibold mb-2">إیجار</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="أدخل الإيجار" name="rent" required 
                     value="{{ $q4Ex->rent }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">الصيانة</label>
+                <label class="required fs-6 fw-semibold mb-2">صیانة</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="أدخل الصيانة" name="maintenance" required 
                     value="{{ $q4Ex->maintenance }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">أخرى</label>
+                <label class="required fs-6 fw-semibold mb-2"><غیرھا- حدد></label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="أدخل المصاريف الأخرى" name="other" required 
                     value="{{ $q4Ex->other }}"/>

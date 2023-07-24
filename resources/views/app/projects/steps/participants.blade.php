@@ -3,7 +3,7 @@
     <input type="hidden" name="step" value="{{ $step }}" />
     <input type="hidden" name="id" value="{{ $id }}" />
     @include('app.projects.participants.all')
-    <button type="submit" class="btn btn-primary">
-        <span class="indicator-label">التالي</span>
-    </button>
 </form>
+<div class="card-toolbar">
+    <a href="{{ url('projects/addEvents/' . $id) }}" type="button" class="btn btn-primary">submit</a>
+</div>

@@ -25,4 +25,26 @@ class ParticipantsController extends Controller
             return redirect('/projects/view/' . $request->project_id);
         }
     }
+
+    public function amend(Request $request, $id){   
+        $participant = Participant::find($id);
+
+        $participant->name = $request->name;
+        $participant->department = $request->department;
+        $participant->national_id = $request->national_id;
+        $participant->address = $request->address;
+        $participant->phone = $request->phone;
+        $participant->birthday = $request->birthday;
+
+        $participant->save();
+
+        if ($request->backto == 'wizard') {
+            return redirect('/projects/addParticipants/' . $request->project_id);
+        } else {
+            return redirect('/projects/view/' . $request->project_id);}}
+
+    public function delete($id){
+        $participant = Participant::find($id);
+        $participant->delete();
+        return redirect('/projects/view/' . $participant->project_id);}
 }

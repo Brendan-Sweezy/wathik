@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('budget/amendEx/1') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="q1ExModal_header" dir="rtl">
-        <h2 class="fw-bold">تعديل مصروفات الربع الأول</h2>
+        <h2 class="fw-bold">تعديل مصاريف الربع الأول</h2>
         <div onclick="$('#q1ExModal').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,38 +19,38 @@
             data-kt-scroll-wrappers="#q1ExModal_scroll" data-kt-scroll-offset="300px">
             
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">الرواتب</label>
-                <input type="text" class="form-control form-control-solid" 
-                    placeholder="أدخل قيمة الرواتب" name="salaries" required 
-                    value='{{ $q1Ex->salaries }}'/>
+                <label class="required fs-6 fw-semibold mb-2">رواتب وعلاوات</label>
+                    <input type="text" class="form-control form-control-solid" 
+                        placeholder="Enter salaries" name="salaries" required 
+                        value='{{ $q1Ex->salaries }}'/>
             </div>
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">الإهلاكات</label>
+                <label class="required fs-6 fw-semibold mb-2">إھتلاكات</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="أدخل قيمة الإهلاكات" name="deprications" required 
                     value="{{ $q1Ex->deprications }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">نفقات المكتب</label>
+                <label class="required fs-6 fw-semibold mb-2">مصاریف مكتبیة</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="أدخل قيمة نفقات المكتب" name="office_expenses" required 
                     value="{{ $q1Ex->office_expenses }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">الإيجار</label>
+                <label class="required fs-6 fw-semibold mb-2">إیجار</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="أدخل قيمة الإيجار" name="rent" required 
                     value="{{ $q1Ex->rent }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">الصيانة</label>
+                <label class="required fs-6 fw-semibold mb-2">صیانة</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="أدخل قيمة الصيانة" name="maintenance" required 
                     value="{{ $q1Ex->maintenance }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">أخرى</label>
+                <label class="required fs-6 fw-semibold mb-2"><غیرھا- حدد></label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="أدخل قيمة المصروفات الأخرى" name="other" required 
                     value="{{ $q1Ex->other }}"/>

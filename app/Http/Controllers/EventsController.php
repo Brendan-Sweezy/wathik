@@ -27,4 +27,21 @@ class EventsController extends Controller
             return redirect('/projects/view/' . $request->project_id);
         }
     }
+
+
+    public function amend(Request $request, $id){   
+        $event = Event::find($id);
+
+        $event->name = $request->name;
+        $event->date = $request->date;
+        $event->time = $request->time;
+        $event->beneficiaries = $request->beneficiaries;
+
+        $event->save();
+        return redirect('/projects/view/' . $request->project_id);}
+
+    public function delete($id){
+        $event = Event::find($id);
+        $event->delete();
+        return redirect('/projects/view/' . $event->project_id);}
 }
