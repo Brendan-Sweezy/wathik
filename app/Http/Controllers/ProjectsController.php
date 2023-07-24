@@ -99,6 +99,7 @@ class ProjectsController extends Controller
                 Participant::Create([
                     'project_id' => $request->project_id,
                     'name' => $request->name,
+                    'gender' => $request->gender,
                     'department' => $request->department,
                     'national_id' => $request->national_id,
                     'address' => $request->address,

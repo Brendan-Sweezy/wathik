@@ -26,9 +26,12 @@
                 <input type="text" class="form-control form-control-solid" placeholder="" name="name" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">تاريخ النشاط</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="date" required />
+                <label class="required fs-6 fw-semibold mb-2">date</label>
+                <input type="datetime-local" class="form-control" name="date" 
+                    placeholder="click to select date" required />
             </div>
+
+            
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">وقت النشاط</label>
                 <input type="text" class="form-control form-control-solid" placeholder="" name="time" required />
@@ -52,3 +55,10 @@
         </button>
     </div>
 </form>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("input[type=datetime-local]");
+</script>

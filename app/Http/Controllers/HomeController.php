@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Models\revenue;
 use App\Models\expenses;
+use App\Models\Threat;
 class HomeController extends Controller
 {
     
@@ -188,40 +189,40 @@ class HomeController extends Controller
         }
 
         
-        if(false) {
-        Threat::create([
-            'id' => 1,
-            'threat' => 'لیومتلا صقن ةیعمجلا ىدل'
-        ]);
-        Threat::create([
-            'id' => 2,
-            'threat' => 'تاربخلا صقن'
-        ]);
-        Threat::create([
-            'id' => 3,
-            'threat' => 'لاا قطانم يف لمعلا ارقف دش ً'
-        ]);
-        Threat::create([
-            'id' => 4,
-            'threat' => 'ةیلاع ةیناكس ةفاثك تاذ قطانم يف لمعلا'
-        ]);
-        Threat::create([
-            'id' => 5,
-            'threat' => 'نیعوطتملا ةلق'
-        ]);
-        Threat::create([
-            'id' => 6,
-            'threat' => 'ةصتخملا ةرازولا عم ةقلاعلا'
-        ]);
+        if(Threat::find(1) == NULL) {
+            Threat::create([
+                'id' => 1,
+                'threat' => 'لیومتلا صقن ةیعمجلا ىدل'
+            ]);
+            Threat::create([
+                'id' => 2,
+                'threat' => 'تاربخلا صقن'
+            ]);
+            Threat::create([
+                'id' => 3,
+                'threat' => 'لاا قطانم يف لمعلا ارقف دش ً'
+            ]);
+            Threat::create([
+                'id' => 4,
+                'threat' => 'ةیلاع ةیناكس ةفاثك تاذ قطانم يف لمعلا'
+            ]);
+            Threat::create([
+                'id' => 5,
+                'threat' => 'نیعوطتملا ةلق'
+            ]);
+            Threat::create([
+                'id' => 6,
+                'threat' => 'ةصتخملا ةرازولا عم ةقلاعلا'
+            ]);
 
-        OrgnizationInfo::create([
-            'type' => 'auditor',
-            'info' => ''
-        ]);
-        OrgnizationInfo::create([
-            'type' => 'beginning_balance',
-            'info' => ''
-        ]);
+            OrgnizationInfo::create([
+                'type' => 'auditor',
+                'info' => ''
+            ]);
+            OrgnizationInfo::create([
+                'type' => 'beginning_balance',
+                'info' => ''
+            ]);
         /*OrgnizationInfo::create([
             'type' => 'final_balance',
             'info' => ''
