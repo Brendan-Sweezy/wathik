@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('budget/amendEx/2') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="q2ExModal_header" dir="rtl">
-        <h2 class="fw-bold">Amend Quarter Two Expenses</h2>
+        <h2 class="fw-bold">تعديل مصاريف الربع الثاني</h2>
         <div onclick="$('#q2ExModal').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -23,38 +23,38 @@
             data-kt-scroll-wrappers="#q2ExModal_scroll" data-kt-scroll-offset="300px">
             
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Salaries</label>
+                <label class="required fs-6 fw-semibold mb-2">رواتب وعلاوات</label>
                     <input type="text" class="form-control form-control-solid" 
                         placeholder="Enter salaries" name="salaries" required 
                         value='{{ $q2Ex->salaries }}'/>
             </div>
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Deprications</label>
+                <label class="required fs-6 fw-semibold mb-2">إھتلاكات</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter deprications" name="deprications" required 
                     value="{{ $q2Ex->deprications }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Office Expenses</label>
+                <label class="required fs-6 fw-semibold mb-2">مصاریف مكتبیة</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter office expenses" name="office_expenses" required 
                     value="{{ $q2Ex->office_expenses }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Rent</label>
+                <label class="required fs-6 fw-semibold mb-2">إیجار</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter rent" name="rent" required 
                     value="{{ $q2Ex->rent }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Maintenance</label>
+                <label class="required fs-6 fw-semibold mb-2">صیانة</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter maintenance" name="maintenance" required 
                     value="{{ $q2Ex->maintenance }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Other</label>
+                <label class="required fs-6 fw-semibold mb-2"><غیرھا- حدد></label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter other expenses" name="other" required 
                     value="{{ $q2Ex->other }}"/>

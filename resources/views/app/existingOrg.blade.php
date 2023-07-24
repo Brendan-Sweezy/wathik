@@ -50,7 +50,7 @@
                                 <!--begin::Heading-->
                                 <div class="text-end mb-10">
                                     <!--begin::Title-->
-                                    <h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">Does your organization already have Wathik?</h1>
+                                    <h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title"> هل يوجد لديك حساب سابق مع مؤسسة لدينا؟</h1>
                                     <!--end::Title-->
                                 </div>
                                 <!--begin::Heading-->
@@ -67,7 +67,7 @@
                                     <a href='/authen' id="create_account_button"
                                         class="btn btn-primary btn-block me-2 flex-shrink-0">
                                         <!--begin::Indicator label-->
-                                        <span class="indicator-label" data-kt-translate="sign-in-submit">Yes, add me to my organization</span>
+                                        <span class="indicator-label" data-kt-translate="sign-in-submit">نعم, يرجى اضافتي للمؤسسة الموجودة مسبقا </span>
                                         <!--end::Indicator label-->
                                     </a>
                                     <!--end::Submit-->
@@ -79,7 +79,7 @@
                                     <a href='/wizard' id="create_account_button"
                                         class="btn btn-secondary btn-block me-2 flex-shrink-0">
                                         <!--begin::Indicator label-->
-                                        <span class="indicator-label" data-kt-translate="sign-in-submit">No, I would like to add a new organization</span>
+                                        <span class="indicator-label" data-kt-translate="sign-in-submit">لا, اود اضافة مؤسسة جديدة</span>
                                         <!--end::Indicator label-->
                                     </a>
                                     <!--end::Wiz-->

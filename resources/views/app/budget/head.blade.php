@@ -19,20 +19,20 @@
                                     <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="{{ $total_rev }}">0
                                     </div>
                                 </div>
-                                <div class="fw-semibold fs-6 text-gray-400">Revenue</div>
+                                <div class="fw-semibold fs-6 text-gray-400"> الإیرادات</div>
                             </div>
                             <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                                 <div class="d-flex align-items-center">
                                     <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="{{ $total_ex }}">0
                                     </div>
                                 </div>
-                                <div class="fw-semibold fs-6 text-gray-400">Expenses</div>
+                                <div class="fw-semibold fs-6 text-gray-400">مصروفات تشغیلیة</div>
                             </div>
                             <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                                 <div class="d-flex align-items-center">
                                     <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="{{ $total_rev - $total_ex}}">0</div>
                                 </div>
-                                <div class="fw-semibold fs-6 text-gray-400">Total</div>
+                                <div class="fw-semibold fs-6 text-gray-400">المجموع</div>
                             </div>
                         </div>
                     </div>
@@ -55,19 +55,19 @@
             <li class="nav-item mt-2">
                 <a class="nav-link text-active-primary ms-0 me-10 py-5 @if ($target == 'main') active @endif"
                     href="{{ url('budget') }}">
-                    Budget Information
+                    معلومات الميزانية
                 </a>
             </li>
             <li class="nav-item mt-2">
                 <a class="nav-link text-active-primary ms-0 me-10 py-5 @if ($target == 'revenue') active @endif"
                     href="{{ url('budget/revenue') }}">
-                    Revenue
+                    الإیرادات
                 </a>
             </li>
             <li class="nav-item mt-2">
                 <a class="nav-link text-active-primary ms-0 me-10 py-5 @if ($target == 'expenses') active @endif"
                     href="{{ url('budget/expenses') }}">
-                    Expenses
+                    مصروفات تشغیلیة
                 </a>
             </li>
         </ul>

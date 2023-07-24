@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('budget/amendRev/1') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="q1RevModal_header" dir="rtl">
-        <h2 class="fw-bold">Amend Quarter One Revenue</h2>
+        <h2 class="fw-bold">تعديل إيرادات الربع الأول</h2>
         <div onclick="$('#q1RevModal').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -23,44 +23,44 @@
             data-kt-scroll-wrappers="#q1RevModal_scroll" data-kt-scroll-offset="300px">
             
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Local Financing</label>
+                <label class="required fs-6 fw-semibold mb-2">تمویل محلي (حدد)</label>
                     <input type="text" class="form-control form-control-solid" 
                         placeholder="Enter local financing" name="local_financing" required 
                         value='{{ $q1Rev->local_financing }}'/>
             </div>
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Foreign Financing</label>
+                <label class="required fs-6 fw-semibold mb-2">تمویل أجنبي(حدد)</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter foreign financing" name="foreign_financing" required 
                     value="{{ $q1Rev->foreign_financing }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Project Revenue</label>
+                <label class="required fs-6 fw-semibold mb-2">أرباح مشاریع الجمعیة</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter project revenue" name="project_revenue" required 
                     value="{{ $q1Rev->project_revenue }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Subscriptions</label>
+                <label class="required fs-6 fw-semibold mb-2">إشتراكات أعضاء الجمعیة</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter subscriptions" name="subscriptions" required 
                     value="{{ $q1Rev->subscriptions }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Bank Interest</label>
+                <label class="required fs-6 fw-semibold mb-2">فائدة بنكیة</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter bank interest" name="bank_interest" required 
                     value="{{ $q1Rev->bank_interest }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Immoveable Properties</label>
+                <label class="required fs-6 fw-semibold mb-2">اموال غیر منقولة (عقار، سیارات،....)</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter immoveable properties" name="immoveable_properties" required 
                     value="{{ $q1Rev->immoveable_properties }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Other</label>
+                <label class="required fs-6 fw-semibold mb-2">>غیرھا- حدد<</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter other revenue" name="other" required 
                     value="{{ $q1Rev->other }}"/>
