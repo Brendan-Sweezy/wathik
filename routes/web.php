@@ -123,6 +123,7 @@ Route::middleware(['userSession'])
         Route::get("addEvents/{id}", 'addEvents');
         Route::post("save", 'save');
         Route::get("view/{id}", 'view');
+        Route::post("delete/{id}", 'deleteProject');
     });
 
 Route::middleware(['userSession'])
@@ -130,6 +131,8 @@ Route::middleware(['userSession'])
     ->prefix('participants')
     ->group(function () {
         Route::post("add", 'add');
+        Route::post("amend/{id}", 'amend');
+        Route::get("delete/{id}", 'delete');
     });
 
 Route::middleware(['userSession'])
@@ -137,6 +140,8 @@ Route::middleware(['userSession'])
     ->prefix('events')
     ->group(function () {
         Route::post("add", 'add');
+        Route::post("amend/{id}", 'amend');
+        Route::get("delete/{id}", 'delete');
     });
 
 Route::middleware(['userSession'])

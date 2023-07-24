@@ -1,7 +1,9 @@
 @extends('app.theme')
 
 @section('content')
+
     <div class="row gy-5 g-xl-10">
+        
         <div class="col-12 mb-5">
             <div class="card card-flush p-20">
                 <div class="stepper stepper-pills stepper-column d-flex flex-column flex-xl-row flex-row-fluid"
@@ -9,6 +11,7 @@
                     <div class="flex-row-fluid py-lg-5 px-lg-15">
                         @include('app.projects.steps.' . $step)
                     </div>
+                    
                     <div class="d-flex justify-content-center justify-content-xl-start flex-row-auto w-100 w-xl-300px">
                         <div class="stepper-nav ps-lg-10">
                             <div class="stepper-item 

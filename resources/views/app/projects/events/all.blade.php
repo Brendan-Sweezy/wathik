@@ -1,5 +1,16 @@
 <button type="button" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal"
-    data-bs-target="#kt_modal_add_customer">اضافة فعالية</button>
+    data-bs-target="#addEvent">اضافة فعالية</button>
+<div class="modal fade" id="addEvent" tabindex="-1" aria-hidden="true">
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered mw-650px">
+        <!--begin::Modal content-->
+        <div class="modal-content">
+            @include('app.projects.events.add')
+        </div>
+    </div>
+</div>
+
+
 <hr />
 <table class="table align-middle table-row-dashed fs-6 gy-5" dir="rtl">
     <!--begin::Table head-->
@@ -48,12 +59,13 @@
                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
                         data-kt-menu="true">
                         <div class="menu-item px-3">
-                            <a href="{{ url('admin/events/edit/' . $event->id) }}" class="menu-link px-3">تعديل</a>
+                            <a href="{{ url('events/amend/' . $event->id) }}" class="menu-link px-3"
+                                data-bs-toggle="modal" data-bs-target="#amendEvent{{ $event->id }}">تعديل</a>
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-3">
-                            <a href="{{ url('admin/events/delete/' . $event->id) }}" class="menu-link px-3"
+                            <a href="{{ url('events/delete/' . $event->id) }}" class="menu-link px-3"
                                 data-kt-customer-table-filter="delete_row">حذف</a>
                         </div>
                         <!--end::Menu item-->
@@ -62,6 +74,13 @@
                 </td>
                 <!--end::Action=-->
             </tr>
+            <div class="modal fade" id="amendEvent{{ $event->id }}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered mw-650px">
+                    <div class="modal-content">
+                        @include('app.projects.events.amend')
+                    </div>
+                </div>
+            </div>
         @endforeach
 
 
@@ -69,13 +88,5 @@
 </table>
 
 @section('modals')
-    <div class="modal fade" id="kt_modal_add_customer" tabindex="-1" aria-hidden="true">
-        <!--begin::Modal dialog-->
-        <div class="modal-dialog modal-dialog-centered mw-650px">
-            <!--begin::Modal content-->
-            <div class="modal-content">
-                @include('app.projects.events.add')
-            </div>
-        </div>
-    </div>
+    
 @stop
