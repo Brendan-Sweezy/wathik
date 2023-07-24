@@ -6,9 +6,10 @@
         <input type="text" class="form-control form-control-solid" placeholder="" name="name" required />
     </div>
     <div class="fv-row mb-7" style="direction: rtl">
-        <label class="required fs-6 fw-semibold mb-2">تاريخ المشروع</label>
-        <input type="text" class="form-control form-control-solid" placeholder="" name="date" required />
-    </div>
+                <label class="required fs-6 fw-semibold mb-2">تاريخ المشروع</label>
+                <input type="datetime-local" class="form-control" name="date" 
+                    placeholder="click to select تاريخ المشروع" required />
+            </div>
     <div class="fv-row mb-7" style="direction: rtl">
         <label class="required fs-6 fw-semibold mb-2">عنوان المشروع</label>
         <input type="text" class="form-control form-control-solid" placeholder="" name="title" required />
@@ -34,3 +35,10 @@
         <span class="indicator-label">التالي</span>
     </button>
 </form>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("input[type=datetime-local]");
+</script>
