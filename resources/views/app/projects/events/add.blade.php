@@ -1,4 +1,4 @@
-<form class="form" action="{{ url('events/add') }}" method="POST">
+<form class="form" action="{{ url('events/add') }}" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <input type="hidden" name="backto" value="{{ isset($step) ? 'wizard' : 'view' }}" />
     <input type="hidden" name="project_id" value="{{ $id }}" />
@@ -43,7 +43,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">عدد المستفيدين</label>
-                <input type="file" class="form-control form-control-solid" name="photo" id='photo'/>
+                <input type="file" class="form-control form-control-solid" name="image" id='image' accept='images/*'/>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ar">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -9,44 +9,42 @@
     
     <title>Weekly Report</title>
     <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
 
-.bottom {
-  position:absolute;
-  bottom:0;
-  left:30%;
-  
-}
+      .bottom {
+        position: absolute;
+        bottom: 0;
+        left: 30%;
+      }
 
-.topright {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  font-size: 18px;
-}
+      .topright {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        font-size: 18px;
+      }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
-
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    </style>
   </head>
   <body>
     <h1>{{ $project->name }}</h1>
     <h5>{{ $organization->name }}</h5>
     <h5>7/11/23-7/17/23</h5>
 
-    <p>This week the project <strong>{{ $project->name }}</strong> held a total of <strong>{{ count($events) }} events</strong>. This week {{ $project->name }} made contact with beneficiaries a total of <strong>{{ $beneficiaries_sum }} times</strong>. {{ $project->name }} began on <strong>{{ $project->date }}</strong> and serves a total of <strong>{{ $project->beneficiaries }} beneficiaries</strong>.</p>
+    <p>This week, the project <strong>{{ $project->name }}</strong> conducted a series of social events with a total of <strong>{{ count($events) }} events</strong>. During this week, there were <strong>{{ $beneficiaries_sum }} interactions with beneficiaries</strong>. The project started on <strong>{{ $project->date }}</strong> and serves a total of <strong>{{ $project->beneficiaries }} beneficiaries</strong>.</p>
     
     <table>
       <tr>
@@ -71,11 +69,12 @@ tr:nth-child(even) {
 
     <br>
     
-    <img alt="Image" src="{{'data:image/png;base64,'.base64_encode(file_get_contents(public_path('assets/media/images/test_image_weekly_report.jpeg')))}}" height='300'/>
-    
-    <br>
-    <p class='bottom'>Powered by Wathik © 2023 an ILearn product</p>
-</div>
+    @foreach ($events as $event)
+      <img alt="Image" src="{{'data:image/png;base64,'.base64_encode(file_get_contents(public_path('storage/' . $event->photo)))}}" height='300'/>
+    @endforeach
 
+    <br>
+    <p class='bottom'>Supported by Wathiq ©2023 - Product of ILearn</p>
   </body>
 </html>
+

@@ -1,7 +1,7 @@
 <div class="card card-flush h-xl-100" dir="rtl">
     <div class="card-header py-7">
         <div class="card-title pt-3 mb-0 gap-4 gap-lg-10 gap-xl-15 nav nav-tabs border-bottom-0">
-            Branches
+            الفروع  
         </div>
         
 
@@ -15,7 +15,7 @@
         </div>
         <div class="card-toolbar">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-                data-bs-target="#addBranch">add</button>
+                data-bs-target="#addBranch">تعديل</button>
         </div> 
 
 
@@ -25,12 +25,12 @@
             <thead>
                 <tr class="text-end text-gray-400 fw-bold fs-7 text-uppercase gs-0">
                     
-                    <th class="min-w-125px">date</th>
-                    <th class="min-w-125px">name</th>
-                    <th class="min-w-125px">governorate</th>
-                    <th class="min-w-125px">major_general</th>
-                    <th class="min-w-125px">eleminate</th>
-                    <th class="min-w-125px">population</th>
+                    <th class="min-w-125px">تاريخ</th>
+                    <th class="min-w-125px">اسم</th>
+                    <th class="min-w-125px">محافظة</th>
+                    <th class="min-w-125px">لواء</th>
+                    <th class="min-w-125px">اِسْتَبْعَد</th>
+                    <th class="min-w-125px">سكان</th>
                     <th class="text-start min-w-70px"></th>
                 </tr>
             </thead>

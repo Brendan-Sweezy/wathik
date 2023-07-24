@@ -2,7 +2,7 @@
     <div class="card card-flush h-xl-100">
         <div class="card-header py-7">
             <div class="card-title pt-3 mb-0 gap-4 gap-lg-10 gap-xl-15 nav nav-tabs border-bottom-0">
-                Information
+                المعلومات
             </div>
 
             <!-- MODAL -->
@@ -22,7 +22,7 @@
         <!-- CONTENT -->
         <div class="card-body pt-1">
             <div class="row">
-                <div class="col-3">New Year Balance</div>
+                <div class="col-3">الرصید في بدایة العام</div>
                 <div class="col">
                     @foreach ($orgnization->info as $info)
                         @if ($info->type == 'beginning_balance')
@@ -33,14 +33,14 @@
             </div>
             <div class="separator separator-dashed my-3"></div>
             <div class="row">
-                <div class="col-3">Final Balance</div>
+                <div class="col-3">الرصید في نھایة العام</div>
                 <div class="col">
                     {{ $beginning_balance + $total_rev - $total_ex }}
                 </div>
             </div>
             <div class="separator separator-dashed my-3"></div>
             <div class="row">
-                <div class="col-3">Auditor</div>
+                <div class="col-3">اسم المحاسب القانوني (مدقق الحسابات)/ شركة تدقیق الحسابات</div>
                 <div class="col">
                     @foreach ($orgnization->info as $info)
                         @if ($info->type == 'auditor')

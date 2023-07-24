@@ -2,7 +2,7 @@
     <div class="card card-flush h-xl-100">
         <div class="card-header py-7">
             <div class="card-title pt-3 mb-0 gap-4 gap-lg-10 gap-xl-15 nav nav-tabs border-bottom-0">
-                Quarter Two
+            الربع الثاني (نیسان، أیار، حزیران)
             </div>
 
             <!-- MODAL -->
@@ -22,37 +22,37 @@
         <!-- CONTENT -->
         <div class="card-body pt-1">
             <div class="row">
-                <div class="col-3">Salaries</div>
+                <div class="col-3">رواتب وعلاوات</div>
                 <div class="col">{{ $q2Ex->salaries }}</div>
             </div>
             <div class="separator separator-dashed my-3"></div>
             <div class="row">
-                <div class="col-3">Depreciations</div>
+                <div class="col-3">إھتلاكات</div>
                 <div class="col">{{ $q2Ex->deprications }}</div>
             </div>
             <div class="separator separator-dashed my-3"></div>
             <div class="row">
-                <div class="col-3">Office Expenses</div>
+                <div class="col-3">مصاریف مكتبیة</div>
                 <div class="col">{{ $q2Ex->office_expenses }}</div>
             </div>
             <div class="separator separator-dashed my-3"></div>
             <div class="row">
-                <div class="col-3">Rent</div>
+                <div class="col-3">إیجار</div>
                 <div class="col">{{ $q2Ex->rent }}</div>
             </div>
             <div class="separator separator-dashed my-3"></div>
             <div class="row">
-                <div class="col-3">Maintenance</div>
+                <div class="col-3">صیانة</div>
                 <div class="col">{{ $q2Ex->maintenance }}</div>
             </div>
             <div class="separator separator-dashed my-3"></div>
             <div class="row">
-                <div class="col-3">Other</div>
+                <div class="col-3"><غیرھا- حدد></div>
                 <div class="col">{{ $q2Ex->other }}</div>
             </div>
             <div class="separator separator-dashed my-3"></div>
             <div class="row">
-                <div class="col-3">Total</div>
+                <div class="col-3">مجموع المصاریف￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼ التشغیلیة</div>
                 <div class="col">{{ $q2Ex->salaries + $q2Ex->deprications + $q2Ex->office_expenses + $q2Ex->rent + $q2Ex->maintenance + $q2Ex->other }}</div>
             </div>
         </div>

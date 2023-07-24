@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use mikehaertl\pdftk\Pdf;
 use Barryvdh\DomPDF\Facade\Pdf as Pdf2;
+use Barryvdh\Dompdf\Font;
 use App\Models\Orgnization;
 use App\Models\OrgnizationContact;
 use App\Models\OrgnizationAddress;
@@ -58,7 +59,10 @@ class ReportsController extends Controller
         
         //SQL Queries First Page
         $organization = Orgnization::find(session('orgnization_id'));
-        $id = $organization->national_id;
+        $id = 0000000000000;
+        for($i = 0; $i < count($organization->national_id); $i++) {
+            $id[$i] = $organization->national_id[$i];
+        }
         $mobile_number = OrgnizationContact::where('orgnization_id', $organization->id)->where('type', 'mobile')->value('contact');
         $landline_number = OrgnizationContact::where('orgnization_id', $organization->id)->where('type', 'phone')->value('contact');
         $mailbox = OrgnizationContact::where('orgnization_id', $organization->id)->where('type', 'mail')->value('contact');

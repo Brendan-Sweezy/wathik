@@ -11,8 +11,7 @@ class EventsController extends Controller
     public function add(Request $request)
     {
 
-        //$filename = time() . '.' . $request->file('photo')->extension();
-        //$path = $request->file('photo')->storeAs('images', $filename, 'public');
+        $request->file('image')->store('public');
         
         Event::Create([
             'project_id' => $request->project_id,
@@ -20,7 +19,7 @@ class EventsController extends Controller
             'date' => $request->date,
             'time' => $request->time,
             'beneficiaries' => $request->beneficiaries,
-            
+            'photo' => $request->file('image')->hashName()
         ]);
         if ($request->backto == 'wizard') {
             return redirect('/projects/addEvents/' . $request->project_id);

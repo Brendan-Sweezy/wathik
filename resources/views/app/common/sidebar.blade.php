@@ -39,7 +39,7 @@
                     <a href="{{ url('budget') }}"
                         class="nav-link py-4 px-1 btn {{ Route::currentRouteName() == 'budget' ? 'active' : '' }}">
                         <i class="fa-solid fa-money-bill"></i>
-                        <span class="pt-2 fs-9 fs-lg-7 fw-bold">Budget</span>
+                        <span class="pt-2 fs-9 fs-lg-7 fw-bold">ميزانية</span>
                     </a>
                 </li>
                 <li class="nav-item py-1">
