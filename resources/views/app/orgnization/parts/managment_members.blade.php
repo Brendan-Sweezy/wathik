@@ -25,7 +25,7 @@
                 <tr class="text-end text-gray-400 fw-bold fs-7 text-uppercase gs-0">
                     <th class="min-w-100px">الاسم</th>
                     <th class="min-w-100px">الرقم الوطني</th>
-                    <th class="min-w-100px">gender </th>
+                    <th class="min-w-100px">جنس </th>
                     <th class="min-w-100px">تاريخ الميلاد</th>
                     <th class="min-w-100px">العمل/المهنة</th>
                     <th class="min-w-100px">الدرجة العملية</th>

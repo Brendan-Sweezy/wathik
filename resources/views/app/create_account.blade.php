@@ -93,7 +93,7 @@
                                     <button type="Submit" id="login_button"
                                         class="btn btn-primary btn-block me-2 flex-shrink-0">
                                         <!--begin::Indicator label-->
-                                        <span class="indicator-label" data-kt-translate="sign-in-submit">Create Account</span>
+                                        <span class="indicator-label" data-kt-translate="sign-in-submit">إنشاء حساب</span>
                                         <!--end::Indicator label-->
                                     </button>
                                     <!--end::Submit-->
@@ -104,7 +104,7 @@
                                     <a href='/login' id="create_account_button"
                                         class="btn btn-secondary btn-block me-2 flex-shrink-0">
                                         <!--begin::Indicator label-->
-                                        <span class="indicator-label" data-kt-translate="sign-in-submit">Sign in with Existing Account</span>
+                                        <span class="indicator-label" data-kt-translate="sign-in-submit">تسجيل الدخول بحساب موجود</span>
                                         <!--end::Indicator label-->
                                     </a>
                                     <!--end::Submit-->
