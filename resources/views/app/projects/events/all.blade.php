@@ -21,6 +21,7 @@
             <th class="min-w-125px">تاريخ النشاط</th>
             <th class="min-w-125px">وقت النشاط</th>
             <th class="min-w-125px">عدد المستفيدين</th>
+            <th class="min-w-125px">images</th>
             <th class="text-start min-w-70px"></th>
         </tr>
         <!--end::Table row-->
@@ -41,6 +42,9 @@
                 </td>
                 <td>
                     {{ $event->beneficiaries }}
+                </td>
+                <td>
+                    <img src="{{ asset('storage/app/public/' . $event->photo) }}" width="100%" />
                 </td>
                 <td class="text-start">
                     <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click"

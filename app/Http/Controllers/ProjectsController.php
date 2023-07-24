@@ -24,7 +24,12 @@ class ProjectsController extends Controller
         $num_participants = count($participants);
         $events = Event::where('project_id', $id)->get();
         $num_events = count($events);
-        $next = 0;
+
+        $beneficiary_num = 0;
+        foreach($events as $event) {
+            $beneficiary_num += $event->beneficiaries;}
+        $project->beneficiaries = $beneficiary_num;
+        $project->save();
         
         return view('app.projects.view', [
             'id' => $id,
@@ -32,8 +37,7 @@ class ProjectsController extends Controller
             'participants' => Participant::where('project_id', $id)->get(),
             'events' => Event::where('project_id', $id)->get(),
             'num_participants' => $num_participants,
-            'num_events' => $num_events,
-            'next' => $next,]);}
+            'num_events' => $num_events]);}
 
     public function add(Request $request){
         return view('app.projects.add', ['step' => 'info']);}
@@ -56,6 +60,7 @@ class ProjectsController extends Controller
 
 
     public function addEvents(Request $request, int $id){
+
         return view('app.projects.add', [
             'step' => 'events',
             'id' => $id,
@@ -72,7 +77,7 @@ class ProjectsController extends Controller
                     'title' => $request->title,
                     'status' => $request->status,
                     'budget' => $request->budget,
-                    'beneficiaries' => $request->beneficiaries,
+                    'beneficiaries' => 0,
                 ]);
                 return redirect('/projects/addThreats/' . $project->id);
             case 'threats':
@@ -95,29 +100,7 @@ class ProjectsController extends Controller
                 } else {
                     return redirect('/projects/addThreats/' . $request->id);
                 }
-            case 'participants':
-                Participant::Create([
-                    'project_id' => $request->project_id,
-                    'name' => $request->name,
-                    'gender' => $request->gender,
-                    'department' => $request->department,
-                    'national_id' => $request->national_id,
-                    'address' => $request->address,
-                    'phone' => $request->phone,
-                    'birthday' => $request->birthday,
-                ]);
-                return redirect('/projects/addParticipants/' . $request->id);
-                
-            case 'events':
-                Event::Create([
-                    'project_id' => $request->project_id,
-                    'name' => $request->name,
-                    'date' => $request->date,
-                    'time' => $request->time,
-                    'beneficiaries' => $request->beneficiaries,
-                    
-                ]);
-                return redirect('projects/addEvents/' . $request->id);}}
+            }}
                 
 
     public function deleteProject($id){

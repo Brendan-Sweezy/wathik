@@ -21,7 +21,7 @@ return new class extends Migration
             $table->dateTime('date')->nullable();
             $table->string('title')->nullable();
             $table->string('status')->nullable();
-            $table->string('beneficiaries')->nullable();
+            $table->integer('beneficiaries')->nullable();
             $table->string('budget')->nullable();
             $table->timestamps();
         });

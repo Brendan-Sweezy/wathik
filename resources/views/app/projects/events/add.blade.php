@@ -34,15 +34,15 @@
             
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">وقت النشاط</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="time" required />
+                <input type="text" class="form-control form-control-solid" placeholder="insert event time" name="time" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">عدد المستفيدين</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="beneficiaries"
+                <input type="text" class="form-control form-control-solid" placeholder="insert # of beneficiaries" name="beneficiaries"
                     required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">عدد المستفيدين</label>
+                <label class="required fs-6 fw-semibold mb-2">attach image</label>
                 <input type="file" class="form-control form-control-solid" name="image" id='image' accept='images/*'/>
             </div>
         </div>
