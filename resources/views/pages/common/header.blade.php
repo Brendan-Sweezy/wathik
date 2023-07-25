@@ -68,7 +68,7 @@
                     <!--end::Menu wrapper-->
                     <!--begin::Toolbar-->
                     <div class="flex-equal text-end ms-1">
-                        <a href="{{ url('login') }}" class="btn btn-success">Start Now</a>
+                        <a href="{{ url('login') }}" class="btn btn-success">Sign In</a>
                     </div>
                     <!--end::Toolbar-->
                 </div>

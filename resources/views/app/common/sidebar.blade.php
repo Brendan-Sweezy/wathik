@@ -65,27 +65,33 @@
                 <!--begin::Menu 2-->
                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px"
                     data-kt-menu="true">
-                    <!--begin::Menu item-->
-                    <div class="menu-item px-3">
-                        <a href="#" class="menu-link px-3">الاعدادات</a>
+                    <div class="px-5 py-1 fw-bolder fs-4"> 
+                        {{ $user->username }}    
                     </div>
-                    <!--end::Menu item-->
+                    <hr>
+                    
+
+                    
+
+                    <!-- SETTINGS --><!--
+                        <div class="menu-item px-3">
+                            <a href="#" class="menu-link px-3">الاعدادات</a>
+                        </div>-->
 
                     <!--begin::Menu item-->
                     <div class="menu-item px-3">
                         <a href="{{ url('logout') }}" class="menu-link px-3">تسجيل الخروج</a>
                     </div>
                     <!--end::Menu item-->
+                    <!--begin::Menu item-->
+                    <div class="menu-item px-3">
+                        <a href="{{ url('/') }}" class="menu-link px-3">return to home page</a>
+                    </div>
+                    <!--end::Menu item-->
                     <!--begin::Menu separator-->
                     <div class="separator mt-3 opacity-75"></div>
                     <!--end::Menu separator-->
-                    <!--begin::Menu item-->
-                    <div class="menu-item px-3">
-                        <div class="menu-content px-3 py-3">
-                            <a class="btn btn-primary btn-sm px-4" href="#">انشاء التقرير</a>
-                        </div>
-                    </div>
-                    <!--end::Menu item-->
+                    
                 </div>
                 <!--end::Menu 2-->
             </div>
