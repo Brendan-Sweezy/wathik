@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->dateTime('date')->nullable();
             $table->string('time')->nullable();
-            $table->string('beneficiaries')->nullable();
+            $table->integer('beneficiaries')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
         });

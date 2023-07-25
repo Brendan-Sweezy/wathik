@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('national_id')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
-            $table->string('birthday')->nullable();
+            $table->dateTime('birthday')->nullable();
             $table->timestamps();
         });
     }

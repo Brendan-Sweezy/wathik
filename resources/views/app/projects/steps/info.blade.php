@@ -3,7 +3,7 @@
     <input type="hidden" name="step" value="{{ $step }}" />
     <div class="fv-row mb-7" style="direction: rtl">
         <label class="required fs-6 fw-semibold mb-2">اسم المشروع</label>
-        <input type="text" class="form-control form-control-solid" placeholder="" name="name" required />
+        <input type="text" class="form-control form-control-solid" placeholder="insert project name" name="name" required />
     </div>
     <div class="fv-row mb-7" style="direction: rtl">
                 <label class="required fs-6 fw-semibold mb-2">تاريخ المشروع</label>
@@ -12,24 +12,21 @@
             </div>
     <div class="fv-row mb-7" style="direction: rtl">
         <label class="required fs-6 fw-semibold mb-2">عنوان المشروع</label>
-        <input type="text" class="form-control form-control-solid" placeholder="" name="title" required />
+        <input type="text" class="form-control form-control-solid" placeholder="insert projecta title" name="title" required />
     </div>
     <div class="fv-row mb-7" style="direction: rtl">
         <label class="required fs-6 fw-semibold mb-2">حالة المشروع</label>
-        <select type="text" class="form-control form-control-solid" placeholder="" name="status" required>
+        <select type="text" class="form-control form-control-solid" placeholder="select project status" name="status" required>
             <option value="لم يبدأ ">لم يبدأ</option>
             <option value="في تَقَدم">في تَقَدم</option>
             <option value="مكتمل">مكتمل</option>
             <option value="Upcoming">القادمة</option>
         </select>
     </div>
-    <div class="fv-row mb-7" style="direction: rtl">
-        <label class="required fs-6 fw-semibold mb-2">عدد المستفيدين</label>
-        <input type="text" class="form-control form-control-solid" placeholder="" name="beneficiaries" required />
-    </div>
+    
     <div class="fv-row mb-7" style="direction: rtl">
         <label class="required fs-6 fw-semibold mb-2">ميزانية</label>
-        <input type="text" class="form-control form-control-solid" placeholder="" name="budget" required />
+        <input type="text" class="form-control form-control-solid" placeholder="insert project budget" name="budget" required />
     </div>
     <button type="submit" class="btn btn-primary">
         <span class="indicator-label">التالي</span>

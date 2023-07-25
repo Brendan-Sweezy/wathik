@@ -1,8 +1,8 @@
-<form class="form" action="{{ url('events/amend/' . $event->id)}}" method="POST">
+<form class="form" action="{{ url('events/amend/' . $event->id)}}" method="POST"  enctype="multipart/form-data">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <input type="hidden" name="project_id" value="{{ $id }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">Amend Participant Information</h2>
+        <h2 class="fw-bold">Amend Event Information</h2>
         <div onclick="$('#amendEvents{{ $event->id }}').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -43,6 +43,11 @@
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter beneficiaries" name="beneficiaries" required 
                     value="{{ $event->beneficiaries }}"/>
+            </div>
+
+            <div class="fv-row mb-7">
+                <label class="required fs-6 fw-semibold mb-2">attach image</label>
+                <input type="file" class="form-control form-control-solid" name="image" id='image' accept='images/*'/>
             </div>
             
         </div>
