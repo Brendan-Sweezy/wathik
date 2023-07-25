@@ -10,7 +10,7 @@ class EventsController extends Controller
 
     public function add(Request $request)
     {
-
+       
         $request->file('image')->store('public');
         
         Event::Create([

@@ -30,12 +30,20 @@ class ReportsController extends Controller
 {
     public function generateDonor(Request $request) {
 
+        $oneWeekAfter = date('Y-m-d', strtotime('+1 week', strtotime($request->date)));
+        $oneWeekBeforeNextDay = date('Y-m-d', strtotime('-1 day', strtotime($oneWeekAfter)));
+        
         $organization = Orgnization::find(session('orgnization_id'));
         $project = Project::where('orgnization_id', $organization->id)->where('id', $request->id)->first();
-        $events = Event::where('project_id', $project->id)->get(); 
+        $events = Event::where('project_id', $project->id)->whereDate('date', '>=', $request->date)->whereDate('date', '<', $oneWeekAfter)->get(); 
         $beneficiaries = 0;
+        $images = [];
         foreach($events as $event) {
             $beneficiaries += $event->beneficiaries;
+
+            if($event->picture != null) {
+                array_push($images, $event->picture);
+            }
         }
 
     	if($request->language == 'arabic') {
@@ -46,7 +54,10 @@ class ReportsController extends Controller
     		    'project' => $project,
                 'organization' => $organization,
                 'events' => $events,
-                'beneficiaries_sum' => $beneficiaries
+                'beneficiaries_sum' => $beneficiaries,
+                'start_date' => $request->date,
+                'end_date' => $oneWeekBeforeNextDay,
+                'pictures' => $images
     	    ];
 
     	    $view = \View::make('pdf.donorReportArabic', $data);
@@ -87,7 +98,10 @@ class ReportsController extends Controller
                 'project' => $project,
                 'organization' => $organization,
                 'events' => $events,
-                'beneficiaries_sum' => $beneficiaries
+                'beneficiaries_sum' => $beneficiaries,
+                'start_date' => $request->date,
+                'end_date' => $oneWeekBeforeNextDay,
+                'pictures' => $images
             ]);
     
             return $pdf->download('donorReport.pdf');

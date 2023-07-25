@@ -109,12 +109,16 @@ class ProjectsController extends Controller
                 return redirect('/projects/addParticipants/' . $request->id);
                 
             case 'events':
+                
+                $request->file('image')->store('public');
+                
                 Event::Create([
                     'project_id' => $request->project_id,
                     'name' => $request->name,
                     'date' => $request->date,
                     'time' => $request->time,
                     'beneficiaries' => $request->beneficiaries,
+                    'photo' => $request->file('image')->hashName()
                     
                 ]);
                 return redirect('projects/addEvents/' . $request->id);}}

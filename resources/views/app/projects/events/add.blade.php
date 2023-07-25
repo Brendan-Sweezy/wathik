@@ -43,7 +43,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">عدد المستفيدين</label>
-                <input type="file" class="form-control form-control-solid" name="image" id='image' accept='images/*'/>
+                <input type="file" class="form-control form-control-solid" name="image" id='image' accept='image/*'/>
             </div>
         </div>
     </div>

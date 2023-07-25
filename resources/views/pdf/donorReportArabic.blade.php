@@ -58,7 +58,7 @@
 </!-->
 <h1>{{ $project->name }}</h1>
 <h5>{{ $organization->name }}</h5>
-<h5>7/11/23-7/17/23</h5>
+<h5>من {{$start_date}} إلى {{$end_date}}</h5>
 
 <p>هذا الأسبوع، قام المشروع <strong>{{ $project->name }}</strong> بإجراء مجموعة من الفعاليات الإجتماعية بإجمالي <strong>{{ count($events) }} فعاليات</strong>. خلال هذا الأسبوع، تم التواصل مع المستفيدين <strong>{{ $beneficiaries_sum }} مرة</strong>. بدأ المشروع في <strong>{{ $project->date }}</strong> ويخدم إجمالي <strong>{{ $project->beneficiaries }} مستفيد</strong>.</p>
 
@@ -82,9 +82,12 @@
 </table>
 
 <br>
+<br>
 
-@foreach ($events as $event)
-    <img alt="صورة" src="{{'data:image/png;base64,'.base64_encode(file_get_contents(public_path('storage/' . $event->photo)))}}" height='300'/>
+
+@foreach ($pictures as $image)
+    <img alt="Image" src="{{'data:image/png;base64,'.base64_encode(file_get_contents(public_path('storage/' . $image)))}}" height='200'/>
+    <br>
 @endforeach
 
 <br>

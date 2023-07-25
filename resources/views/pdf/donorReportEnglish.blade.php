@@ -42,7 +42,7 @@
   <body>
     <h1>{{ $project->name }}</h1>
     <h5>{{ $organization->name }}</h5>
-    <h5>7/11/23-7/17/23</h5>
+    <h5>From {{$start_date}} to {{$end_date}}</h5>
 
     <p>This week, the project <strong>{{ $project->name }}</strong> conducted a series of social events with a total of <strong>{{ count($events) }} events</strong>. During this week, there were <strong>{{ $beneficiaries_sum }} interactions with beneficiaries</strong>. The project started on <strong>{{ $project->date }}</strong> and serves a total of <strong>{{ $project->beneficiaries }} beneficiaries</strong>.</p>
     
@@ -69,8 +69,9 @@
 
     <br>
     
-    @foreach ($events as $event)
-      <img alt="Image" src="{{'data:image/png;base64,'.base64_encode(file_get_contents(public_path('storage/' . $event->photo)))}}" height='300'/>
+    @foreach ($pictures as $image)
+      <img alt="Image" src="{{'data:image/png;base64,'.base64_encode(file_get_contents(public_path('storage/' . $image)))}}" height='200'/>
+      <br>
     @endforeach
 
     <br>

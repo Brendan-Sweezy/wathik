@@ -34,10 +34,8 @@
             </div>
             
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Date</label>
-                    <input type="text" class="form-control form-control-solid" 
-                        placeholder="Enter date" name="salaries" required 
-                        value='date'/>
+                <label class="required fs-6 fw-semibold mb-2">Week of</label>
+                <input type="datetime-local" class="form-control" name="date" placeholder="Click to select week" required />
             </div>
 
             <div class="fv-row mb-7">
@@ -60,4 +58,19 @@
             <span class="indicator-label">اضافة</span>
         </button>
     </div>
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 </form>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("input[type=datetime-local]");
+</script>
