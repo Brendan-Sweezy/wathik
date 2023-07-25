@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('orgnization/managment/amendAssemblyInfo') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">Amend General Authority</h2>
+        <h2 class="fw-bold">التعديل على الهيئة العامة</h2>
         <div onclick="$('#assemblyInfo').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -23,16 +23,16 @@
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2"># of male members</label>
+                <label class="required fs-6 fw-semibold mb-2">عدد أعضاء الهيئة العامة الحالي (المسددين اشتراكاتهم)</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter # male members" name="assembly_male" required
+                    placeholder= "# أدخل" name="assembly_male" required
                     value='{{ $assembly_male->info }}'/>
             </div>
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2"># of female members</label>
+                <label class="required fs-6 fw-semibold mb-2">عدد أعضاء الهيئة العامة الذكور</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="# female members" name="assembly_female" required
+                    placeholder="# أدخل" name="assembly_female" required
                     value='{{ $assembly_female->info }}'/>
             </div>
         </div>

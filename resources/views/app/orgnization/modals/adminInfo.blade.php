@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('orgnization/managment/amendAdminInfo') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">Amend Administrative Board</h2>
+        <h2 class="fw-bold">تعديل الهيئة الإدارية</h2>
         <div onclick="$('#adminInfo').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -25,29 +25,29 @@
             
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2"># of members of administrative body mentioned in articles of association</label>
+                <label class="required fs-6 fw-semibold mb-2">عدد أعضاء الهية الإدارية الواردة في النظام الأساسي</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter # members mentioned in articles of association" name="mentioned_members" required
+                    placeholder="إضغط هنا  " name="mentioned_members" required
                     value='{{ $mentioned_members->info }}'/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">quorum</label>
+                <label class="required fs-6 fw-semibold mb-2">النصاب القانوني</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="quorum" name="quorum" required
+                    placeholder="إضغط هنا  " name="quorum" required
                     value='{{ $quorum->info }}'/>
             </div>
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Term</label>
+                <label class="required fs-6 fw-semibold mb-2">مدة الھیئة الإداریة بالسنوات</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="quorum" name="term" required
+                    placeholder="إضغط هنا  " name="term" required
                     value='{{ $term->info }}'/>
             </div>
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">election date</label>
+                <label class="required fs-6 fw-semibold mb-2">تاريخ الانتخاب</label>
                 
-                <input type="datetime-local" class="form-control" name="election_date" placeholder="click to enter election date" value='{{ $election_date->info }}' required />
+                <input type="datetime-local" class="form-control" name="election_date" placeholder="يرجى الضغط لاختيار التاريخ " value='{{ $election_date->info }}' required />
             </div>
             
 

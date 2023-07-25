@@ -56,7 +56,7 @@
         </div>
         <div class="separator separator-dashed my-3"></div>
         <div class="row">
-            <div class="col-3">Term</div>
+            <div class="col-3">مدة الھیئة الإداریة بالسنوات</div>
             <div class="col">
                 {{ $term->info }}
             </div>

@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('orgnization/amendManager') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="managerModal_header" dir="rtl">
-        <h2 class="fw-bold">Amend Management Information</h2>
+        <h2 class="fw-bold">التعديل على معلومات الإدارة</h2>
         <div onclick="$('#managerModal').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -23,27 +23,27 @@
             data-kt-scroll-wrappers="#managerModal_scroll" data-kt-scroll-offset="300px">
             
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Name of association president</label>
+                <label class="required fs-6 fw-semibold mb-2">اسم رئيس الجمعية</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter name" name="name" required 
+                    placeholder="إضغط هنا" name="name" required 
                     value="{{ $orgnization->manager->name }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">ID number</label>
+                <label class="required fs-6 fw-semibold mb-2">الرقم الوطني</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter ID number" name="national_id" required 
+                    placeholder="إضغط هنا" name="national_id" required 
                     value="{{ $orgnization->manager->national_id }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Cell phone number</label>
+                <label class="required fs-6 fw-semibold mb-2">رقم الهاتف الخلوي</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter phone number" name="phone" required 
+                    placeholder="إضغط هنا" name="phone" required 
                     value="{{ $orgnization->manager->phone }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Email</label>
+                <label class="required fs-6 fw-semibold mb-2">البريد الإلكتروني</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter email" name="email" required 
+                    placeholder="إضغط هنا" name="email" required 
                     value="{{ $orgnization->manager->email }}"/>
             </div>
         </div>

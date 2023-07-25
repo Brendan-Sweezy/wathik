@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('orgnization/authority/addMeeting') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">add authority meeting</h2>
+        <h2 class="fw-bold">إضافة إجتماع</h2>
         <div onclick="$('#addMeeting').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -21,28 +21,28 @@
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">number</label>
-                <input type="text" class="form-control form-control-solid" placeholder="num" name="num" required />
+                <label class="required fs-6 fw-semibold mb-2">الرقم</label>
+                <input type="text" class="form-control form-control-solid" name="num" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">date</label>
-                <input type="datetime-local" class="form-control" name="date" placeholder="Click to select date" required />
+                <label class="required fs-6 fw-semibold mb-2">تاریخ انعقاد اجتماع الھیئة العامة</label>
+                <input type="datetime-local" class="form-control" name="date" placeholder="يرجى الضغط لاختيار التاريخ" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">type</label>
-                <input type="text" class="form-control form-control-solid" placeholder="type" name="type" required />
+                <label class="required fs-6 fw-semibold mb-2">نوع الاجتماع عادي / غیر عادي </label>
+                <input type="text" class="form-control form-control-solid"  name="type" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">attendees</label>
-                <input type="text" class="form-control form-control-solid" placeholder="attendees" name="attendees" required />
+                <label class="required fs-6 fw-semibold mb-2">عدد الحضور</label>
+                <input type="text" class="form-control form-control-solid" name="attendees" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">alternate_number</label>
-                <input type="text" class="form-control form-control-solid" placeholder="alternate_number" name="alternate_number"
+                <label class="required fs-6 fw-semibold mb-2">عدد الانابة</label>
+                <input type="text" class="form-control form-control-solid" name="alternate_number"
                     required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">decisions</label>
+                <label class="required fs-6 fw-semibold mb-2">اهم القرارات</label>
                 <input type="text" class="form-control form-control-solid" placeholder="decisions" name="decisions"
                     required />
             </div>

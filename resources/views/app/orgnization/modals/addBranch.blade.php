@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('orgnization/addBranch') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">add organization branch</h2>
+        <h2 class="fw-bold">إضافة فرع</h2>
         <div onclick="$('#addBranch').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -21,28 +21,28 @@
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">date</label>
-                <input type="datetime-local" class="form-control" placeholder="click to select date of establishment" name="date" required />
+                <label class="required fs-6 fw-semibold mb-2">تاریخ التسجیل</label>
+                <input type="datetime-local" class="form-control" placeholder="يرجى الضغط لاختيار التاريخ " name="date" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">name</label>
-                <input type="text" class="form-control form-control-solid" placeholder="name" name="name" required />
+                <label class="required fs-6 fw-semibold mb-2">اسم الفرع</label>
+                <input type="text" class="form-control form-control-solid" name="name" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">governorate</label>
-                <input type="text" class="form-control form-control-solid" placeholder="governorate" name="governorate" required />
+                <label class="required fs-6 fw-semibold mb-2">المحافظة</label>
+                <input type="text" class="form-control form-control-solid"  name="governorate" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">major general</label>
-                <input type="text" class="form-control form-control-solid" placeholder="major general" name="major_general" required />
+                <label class="required fs-6 fw-semibold mb-2">اللواء</label>
+                <input type="text" class="form-control form-control-solid" name="major_general" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">eleminate</label>
-                <input type="text" class="form-control form-control-solid" placeholder="eleminate" name="eleminate" required />
+                <label class="required fs-6 fw-semibold mb-2">القضاء</label>
+                <input type="text" class="form-control form-control-solid" name="eleminate" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">population</label>
-                <input type="text" class="form-control form-control-solid" placeholder="population" name="population" required />
+                <label class="required fs-6 fw-semibold mb-2">التجمع السكاني</label>
+                <input type="text" class="form-control form-control-solid" name="population" required />
             </div>
             
         </div>

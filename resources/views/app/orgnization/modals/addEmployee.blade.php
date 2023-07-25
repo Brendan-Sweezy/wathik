@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('orgnization/employees/addEmployee') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">add employee</h2>
+        <h2 class="fw-bold">إضافة موظف</h2>
         <div onclick="$('#addEmployee').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -21,22 +21,23 @@
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">name</label>
-                <input type="text" class="form-control form-control-solid" placeholder="name" name="name" required />
+                <label class="required fs-6 fw-semibold mb-2">أسماء الموظفین العاملین بالجمعیة
+الرقم</label>
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="name" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">qualification</label>
-                <input type="text" class="form-control form-control-solid" placeholder="qualification" name="qualification" required />
+                <label class="required fs-6 fw-semibold mb-2">المؤھل العلمي او المھني</label>
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="qualification" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">title</label>
-                <input type="text" class="form-control form-control-solid" placeholder="title" name="title" required />
+                <label class="required fs-6 fw-semibold mb-2">المسمى الوظیفي</label>
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="title" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">gender</label>
-                <select type="text" class="form-control form-control-solid" placeholder="gender" name="gender" required >
-                    <option value='male'>Male</option>
-                    <option value='female'>Female</option>
+                <label class="required fs-6 fw-semibold mb-2">الجنس￼ذكر/ أنثى</label>
+                <select type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="gender" required >
+                    <option value='male'>ذكر</option>
+                    <option value='female'>أنثى</option>
                 </select>
             </div>
             

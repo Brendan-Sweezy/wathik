@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('orgnization/amendInfo') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="infoModal_header" dir="rtl">
-        <h2 class="fw-bold">Amend Organization Information</h2>
+        <h2 class="fw-bold">التعديل على معلومات المؤسسة </h2>
         <div onclick="$('#infoModal').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -23,26 +23,26 @@
             data-kt-scroll-wrappers="#infoModal_scroll" data-kt-scroll-offset="300px">
             
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Organization name</label>
+                <label class="required fs-6 fw-semibold mb-2">اسم الجمعية</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter name" name="name" required 
+                    placeholder="إضغط هنا" name="name" required 
                     value="{{ $orgnization->name }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">ID number</label>
+                <label class="required fs-6 fw-semibold mb-2">الرقم الوطني</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter ID number" name="national_id" required 
+                    placeholder="إضغط هنا" name="national_id" required 
                     value="{{ $orgnization->national_id }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Ministry</label>
+                <label class="required fs-6 fw-semibold mb-2">الوزارة المختصة</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter ministry" name="ministry" required 
+                    placeholder="إضغط هنا" name="ministry" required 
                     value="{{ $orgnization->ministry }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Founding date</label>
-                <input type="datetime-local" class="form-control" name="founding_date" placeholder="Click to select founding date"  value='{{ $orgnization->founding_date }}' required />
+                <label class="required fs-6 fw-semibold mb-2">تاريخ التأسيس</label>
+                <input type="datetime-local" class="form-control" name="founding_date" placeholder="يرجى الضغط لاختيار التاريخ"  value='{{ $orgnization->founding_date }}' required />
             </div>
         </div>
     </div>

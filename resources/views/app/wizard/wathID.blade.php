@@ -43,8 +43,8 @@
     <!--begin hover help button div-->
     <div class="info-container">
         <img src="{{ url('assets/media/Help.png') }}" alt="Image" class="info-image" />
-        <div class="info-popup">Get your organization's original administrator to pull up the associations 
-            page after logging in. Under "The Information" section, use the six-digit code called "Share Code" and enter below!</div>
+        <div class="info-popup">يرجى التواصل مع الشخص الذي أنشئ حساب مؤسستك لدى موقع وثيق و سؤاله عن الرمز الخاص بالمؤسسة لإدخاله هنا.
+يمكن الحصول على الرمز من خلال الدخول على حساب المؤسسة الرئيسي و الضغط على خانة الجمعية ثم على المعلومات و من ثم من خلال الخيار الخامس إختيار خيار مشاركة الرمز و من ثم إدخاله هنا.</div>
     </div>
     <!--end hover help button-->
 
@@ -102,7 +102,7 @@
                                 <!--begin::Heading-->
                                 <div class="text-end mb-10">
                                     <!--begin::Title-->
-                                    <h1 class="text-light text-center mb-3 fs-3x" data-kt-translate="sign-in-code">Enter your organization's unique WathikID:</h1>
+                                    <h1 class="text-light text-center mb-3 fs-3x" data-kt-translate="sign-in-code">:أدخل معرف وثيق هنا</h1>
                                     <!--end::Title-->
                                 </div>
                                 <!--begin::Heading-->
@@ -151,7 +151,7 @@
                                 <!--begin::Submit-->
                                 <button type="Submit" id="join_in" class="btn btn-primary">
                                     <!--begin::Indicator label-->
-                                    <span class="indicator-label" data-kt-translate="two-step-submit">Submit</span>
+                                    <span class="indicator-label" data-kt-translate="two-step-submit">اذخل</span>
                                     <!--end::Indicator label-->
                                 </button>
                                 <!--end::Submit-->
@@ -196,7 +196,7 @@
             left: 10px;
             z-index: 9999; /* To make sure it appears above other elements */}
         </style>
-        <button onclick="history.go(-1);" class="btn btn-primary btn-bottom-left">Back</button>
+        <button onclick="history.go(-1);" class="btn btn-primary btn-bottom-left">الرجوع</button>
         <!-- End of the button element -->
     </div>
     <!--end::Root-->

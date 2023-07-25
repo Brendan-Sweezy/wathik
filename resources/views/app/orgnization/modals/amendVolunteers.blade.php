@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('orgnization/employees/amendVolunteers') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="infoModal_header" dir="rtl">
-        <h2 class="fw-bold">Amend Volunteer Information</h2>
+        <h2 class="fw-bold">تعديل معلومات المتطوعين</h2>
         <div onclick="$('#volunteerModal').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -23,14 +23,14 @@
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
             
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2"># male</label>
+                <label class="required fs-6 fw-semibold mb-2">عدد المتطوعين الذكور</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter male" name="male" required value='{{ $male_volunteers->info }}'/>
+                    placeholder="إضغط هنا" name="male" required value='{{ $male_volunteers->info }}'/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2"># female</label>
+                <label class="required fs-6 fw-semibold mb-2">عدد المتطوعين الإناث</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter female" name="female" required value='{{ $female_volunteers->info }}'/>
+                    placeholder=" إضغط هنا" name="female" required value='{{ $female_volunteers->info }}'/>
             </div>
 
         </div>

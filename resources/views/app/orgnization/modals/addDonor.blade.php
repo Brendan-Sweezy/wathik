@@ -2,7 +2,7 @@
 <form class="form" action="{{ url('orgnization/funding/addDonor') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">Add donor</h2>
+        <h2 class="fw-bold">اضافة ممول</h2>
         <div onclick="$('#addDonor').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -22,28 +22,28 @@
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">name</label>
-                <input type="text" class="form-control form-control-solid" placeholder="name" name="name" required />
+                <label class="required fs-6 fw-semibold mb-2">الجهة الممولة</label>
+                <input type="text" class="form-control form-control-solid" placeholder="الجهة الممولة" name="name" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">nationality</label>
-                <input type="text" class="form-control form-control-solid" placeholder="nationality" name="nationality" required />
+                <label class="required fs-6 fw-semibold mb-2">جنسية الجهة</label>
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="nationality" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">governmental?</label>
-                <input type="text" class="form-control form-control-solid" placeholder="type" name="type" required />
+                <label class="required fs-6 fw-semibold mb-2">حكومي/غير حكومي</label>
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="type" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">financing status</label>
-                <input type="text" class="form-control form-control-solid" placeholder="financing_characteristic" name="financing_characteristic" required />
+                <label class="required fs-6 fw-semibold mb-2">صفة التمويل</label>
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="financing_characteristic" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">approval date</label>
-                <input type="datetime-local" class="form-control" name="date" placeholder="Click to select approval date" required />
+                <label class="required fs-6 fw-semibold mb-2">تاريخ الموافقة على التمويل</label>
+                <input type="datetime-local" class="form-control" name="date" placeholder="يرجى الضغط لاختيار التاريخ " required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">value (jod)</label>
-                <input type="text" class="form-control form-control-solid" placeholder="amount" name="amount"
+                <label class="required fs-6 fw-semibold mb-2">قيمة التمويل بالدينار</label>
+                <input type="text" class="form-control form-control-solid" placeholder="أدخل بالدينار" name="amount"
                     required />
             </div>
             

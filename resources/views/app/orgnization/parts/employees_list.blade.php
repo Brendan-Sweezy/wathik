@@ -1,7 +1,7 @@
 <div class="card card-flush h-xl-100" dir="rtl">
     <div class="card-header py-7">
         <div class="card-title pt-3 mb-0 gap-4 gap-lg-10 gap-xl-15 nav nav-tabs border-bottom-0">
-            Employees
+        ملخص بأسماء الموظفین العاملین بأجر في الجمعیة
         </div>
         
 
@@ -15,7 +15,7 @@
         </div>
         <div class="card-toolbar">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-                data-bs-target="#addEmployee">add</button>
+                data-bs-target="#addEmployee">تعديل</button>
         </div> 
 
 
@@ -25,10 +25,11 @@
             <thead>
                 <tr class="text-end text-gray-400 fw-bold fs-7 text-uppercase gs-0">
                     
-                    <th class="min-w-125px">name</th>
-                    <th class="min-w-125px">qualification</th>
-                    <th class="min-w-125px">title</th>
-                    <th class="min-w-125px">gender</th>
+                    <th class="min-w-125px">أسماء الموظفین العاملین بالجمعیة
+الرقم</th>
+                    <th class="min-w-125px">المؤھل العلمي او المھني</th>
+                    <th class="min-w-125px">المسمى الوظیفي</th>
+                    <th class="min-w-125px">الجنس￼ذكر/ أنثى</th>
                     <th class="text-start min-w-70px"></th>
                 </tr>
             </thead>

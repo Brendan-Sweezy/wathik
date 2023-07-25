@@ -1,7 +1,8 @@
 <div class="card card-flush h-xl-100" dir="rtl">
     <div class="card-header py-7">
         <div class="card-title pt-3 mb-0 gap-4 gap-lg-10 gap-xl-15 nav nav-tabs border-bottom-0">
-            اجتماعات الهيئة العامة
+        نبذة عن اجتماعات الھیئة العامة (خلال العام الخاص بالتقریر) <br />
+(عدد اجتماعات الھیئة العامة كما ورد في نظام الجمعیة الأساسي):
         </div>
         <!-- MODAL -->
         <div class="modal fade" id="addMeeting" tabindex="-1" aria-hidden="true">
@@ -13,16 +14,16 @@
         </div>
         <div class="card-toolbar">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-                data-bs-target="#addMeeting">add</button>
+                data-bs-target="#addMeeting">تعديل</button>
         </div> 
     </div>
     <div class="card-body pt-1">
         <table class="table align-middle table-row-dashed fs-6 gy-5" dir="rtl">
             <thead>
                 <tr class="text-end text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-                    <th class="min-w-125px">Meeting #</th>
-                    <th class="min-w-125px">تاريخ انعقاد الاجتماع</th>
-                    <th class="min-w-125px">نوع الاجتماع</th>
+                    <th class="min-w-125px">الرقم</th>
+                    <th class="min-w-125px">تاریخ انعقاد اجتماع الھیئة العامة</th>
+                    <th class="min-w-125px">نوع الاجتماع عادي / غیر عادي </th>
                     <th class="min-w-125px">عدد الحضور</th>
                     <th class="min-w-125px">عدد الانابة</th>
                     <th class="min-w-125px">اهم القرارات</th>

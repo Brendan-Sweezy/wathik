@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('orgnization/managment/addMember') }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">add member</h2>
+        <h2 class="fw-bold">إضافة عضو مجلس إدارة</h2>
         <div onclick="$('#boardInfo').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -21,47 +21,47 @@
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">name</label>
-                <input type="text" class="form-control form-control-solid" placeholder="name" name="name" required />
+                <label class="required fs-6 fw-semibold mb-2">الاسم من أربعة مقاطع</label>
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="name" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">id number</label>
-                <input type="text" class="form-control form-control-solid" placeholder="national_id" name="national_id" required />
+                <label class="required fs-6 fw-semibold mb-2">الرقم الوطني</label>
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="national_id" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">gender</label>
-                <select type="text" class="form-control form-control-solid" placeholder="gender" name="gender" required>
+                <label class="required fs-6 fw-semibold mb-2">الجنس</label>
+                <select type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="gender" required>
                     <option value='male'>Male</option>
                     <option value='female'>Female</option>
                 </select>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">date of birth</label>
-                <input type="datetime-local" class="form-control" name="birthday" placeholder="click to select birthday" required />
+                <label class="required fs-6 fw-semibold mb-2">تاريخ الميلاد</label>
+                <input type="datetime-local" class="form-control" name="birthday" placeholder="يرجى الضغط لاختيار التاريخ" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">profession</label>
-                <input type="text" class="form-control form-control-solid" placeholder="work" name="work"
+                <label class="required fs-6 fw-semibold mb-2">العمل/المهنة</label>
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="work"
                     required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">degree</label>
-                <input type="text" class="form-control form-control-solid" placeholder="degree" name="degree"
+                <label class="required fs-6 fw-semibold mb-2">الدرجة العملية</label>
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="degree"
                     required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">major</label>
-                <input type="text" class="form-control form-control-solid" placeholder="major" name="major"
+                <label class="required fs-6 fw-semibold mb-2">التخصص</label>
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="major"
                     required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">phone</label>
-                <input type="text" class="form-control form-control-solid" placeholder="phone" name="phone"
+                <label class="required fs-6 fw-semibold mb-2">رقم الهاتف</label>
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="phone"
                     required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">election date</label>
-                <input type="datetime-local" class="form-control" name="election_date" placeholder="click to select election date" required />
+                <label class="required fs-6 fw-semibold mb-2">تاريخ انتخاب في الهيئة الإدارية</label>
+                <input type="datetime-local" class="form-control" name="election_date" placeholder="يرجى الضغط لاختيار التاريخ" required />
             </div>
         </div>
     </div>

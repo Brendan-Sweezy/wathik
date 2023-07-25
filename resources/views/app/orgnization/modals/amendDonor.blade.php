@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('orgnization/funding/amendDonor/' . $donor->id)}}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">Amend Donor Information</h2>
+        <h2 class="fw-bold">التعديل على معلومات الممول</h2>
         <div onclick="$('#amendDonor{{ $donor->id }}').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -22,37 +22,37 @@
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
             
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">name</label>
+                <label class="required fs-6 fw-semibold mb-2">الجهة الممولة</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter name" name="name" required 
+                    placeholder="إضغط هنا" name="name" required 
                     value="{{ $donor->name }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">nationality</label>
+                <label class="required fs-6 fw-semibold mb-2">	جنسية الجهة</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter nationality" name="nationality" required 
+                    placeholder="إضغط هنا" name="nationality" required 
                     value="{{ $donor->nationality }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">type</label>
+                <label class="required fs-6 fw-semibold mb-2">حكومي/غير حكومي</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter type" name="type" required 
+                    placeholder="إضغط هنا" name="type" required 
                     value="{{ $donor->type }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">status</label>
+                <label class="required fs-6 fw-semibold mb-2">صفة التمويل</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter status" name="financing_characteristic" required 
+                    placeholder="إضغط هنا" name="financing_characteristic" required 
                     value="{{ $donor->financing_characteristic }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">date</label>
+                <label class="required fs-6 fw-semibold mb-2">تاريخ الموافقة على التمويل</label>
                 <input type="datetime-local" class="form-control" name="date" placeholder="Click to select approval date" value="{{ $donor->date }}" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">amount</label>
+                <label class="required fs-6 fw-semibold mb-2">قيمة التمويل بالدينار</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter amount (jod)" name="amount" required 
+                    placeholder="أدخل بالدينار" name="amount" required 
                     value="{{ $donor->amount }}"/>
             </div>
             

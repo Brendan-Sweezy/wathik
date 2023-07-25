@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('orgnization/employees/amendEmployee/' . $employee->id)}}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">Amend Employee Information</h2>
+        <h2 class="fw-bold">التعديل على معلومات الموظفين</h2>
         <div onclick="$('#amendEmployee{{ $employee->id }}').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -22,27 +22,28 @@
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
             
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">name</label>
+                <label class="required fs-6 fw-semibold mb-2">أسماء الموظفین العاملین بالجمعیة
+الرقم</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter name" name="name" required 
+                    placeholder="إضغط هنا" name="name" required 
                     value="{{ $employee->name }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">qualification</label>
+                <label class="required fs-6 fw-semibold mb-2">المؤھل العلمي او المھني</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter qualification" name="qualification" required 
+                    placeholder="إضغط هنا" name="qualification" required 
                     value="{{ $employee->qualification }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">title</label>
+                <label class="required fs-6 fw-semibold mb-2">المسمى الوظیفي</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter title" name="title" required 
+                    placeholder="إضغط هنا" name="title" required 
                     value="{{ $employee->title }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">gender</label>
+                <label class="required fs-6 fw-semibold mb-2">الجنس￼ذكر/ أنثى</label>
                 <select type="text" class="form-control form-control-solid" 
-                    placeholder="Enter gender" name="gender" required 
+                    placeholder="إضغط هنا" name="gender" required 
                     value="{{ $employee->gender }}">
                     <option value='male'>Male</option>
                     <option value='female'>Female</option>

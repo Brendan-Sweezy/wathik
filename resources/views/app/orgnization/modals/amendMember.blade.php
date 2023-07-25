@@ -1,7 +1,7 @@
 <form class="form" action="{{ url('orgnization/managment/amendMember/' . $member->id)}}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">Amend Member Information</h2>
+        <h2 class="fw-bold">تعديل معلومات عضو مجلس الإدارة</h2>
         <div onclick="$('#editMember{{ $member->id }}').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -21,57 +21,57 @@
             data-kt-scroll-dependencies="#kt_modal_add_customer_header"
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Member name</label>
+                <label class="required fs-6 fw-semibold mb-2">الاسم من أربعة مقاطع</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter name" name="name" required 
+                    placeholder="إضغط هنا" name="name" required 
                     value="{{ $member->name }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">ID number</label>
+                <label class="required fs-6 fw-semibold mb-2">الرقم الوطني</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter ID number" name="national_id" required 
+                    placeholder="إضغط هنا" name="national_id" required 
                     value="{{ $member->national_id }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Gender</label>
+                <label class="required fs-6 fw-semibold mb-2">الجنس</label>
                 <select type="text" class="form-control form-control-solid" 
-                    placeholder="Enter gender" name="gender" required 
+                    placeholder="إضغط هنا" name="gender" required 
                     value="{{ $member->gender }}">
                     <option value='male'>Male</option>
                     <option value='female'>Female</option>
                 </select>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Date of Birth</label>
-                <input type="datetime-local" class="form-control" name="birthday" placeholder="click to select birthday" value='{{ $member->birthday }}' required />
+                <label class="required fs-6 fw-semibold mb-2">تاريخ الميلاد</label>
+                <input type="datetime-local" class="form-control" name="birthday" placeholder="يرجى الضغط لاختيار التاريخ" value='{{ $member->birthday }}' required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Work</label>
+                <label class="required fs-6 fw-semibold mb-2">العمل/المهنة</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter work" name="work" required 
+                    placeholder="إضغط هنا" name="work" required 
                     value="{{ $member->work }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Degree</label>
+                <label class="required fs-6 fw-semibold mb-2">الدرجة العملية</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter degree" name="degree" required 
+                    placeholder="إضغط هنا" name="degree" required 
                     value="{{ $member->degree }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Major</label>
+                <label class="required fs-6 fw-semibold mb-2">التخصص</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter major" name="major" required 
+                    placeholder="إضغط هنا" name="major" required 
                     value="{{ $member->major }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Phone</label>
+                <label class="required fs-6 fw-semibold mb-2">رقم الهاتف</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter phone" name="phone" required 
+                    placeholder="إضغط هنا" name="phone" required 
                     value="{{ $member->phone }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Election date</label>
-                <input type="datetime-local" class="form-control" name="election_date" placeholder="click to select election_date" value='{{ $member->election_date }}' required />
+                <label class="required fs-6 fw-semibold mb-2">تاريخ انتخاب في الهيئة الإدارية</label>
+                <input type="datetime-local" class="form-control" name="election_date" placeholder="يرجى الضغط لاختيار التاريخ" value='{{ $member->election_date }}' required />
             </div>
         </div>
     </div>

@@ -14,7 +14,7 @@
         </div>
         <div class="card-toolbar">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-                data-bs-target="#addDonor">add</button>
+                data-bs-target="#addDonor">تعديل</button>
         </div> 
 
 
