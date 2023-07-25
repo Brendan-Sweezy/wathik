@@ -18,10 +18,10 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Orgnization::class);
             $table->string('name')->nullable();
-            $table->string('date')->nullable();
+            $table->dateTime('date')->nullable();
             $table->string('title')->nullable();
             $table->string('status')->nullable();
-            $table->string('beneficiaries')->nullable();
+            $table->integer('beneficiaries')->nullable();
             $table->string('budget')->nullable();
             $table->timestamps();
         });

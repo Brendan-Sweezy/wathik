@@ -20,6 +20,7 @@
         <!--begin::Table row-->
         <tr class="text-end text-gray-400 fw-bold fs-7 text-uppercase gs-0">
             <th class="min-w-50px">الاسم</th>
+            <th class="min-w-50px">Gender</th>
             <th class="min-w-50px">القسم</th>
             <th class="min-w-50px">الرقم الوطني</th>
             <th class="min-w-50px">العنوان</th>
@@ -36,6 +37,9 @@
             <tr>
                 <td>
                     {{ $participant->name }}
+                </td>
+                <td>
+                    {{ $participant->gender }}
                 </td>
                 <td>
                     {{ $participant->department }}

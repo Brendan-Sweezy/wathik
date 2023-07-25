@@ -18,9 +18,9 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Project::class);
             $table->string('name')->nullable();
-            $table->string('date')->nullable();
+            $table->dateTime('date')->nullable();
             $table->string('time')->nullable();
-            $table->string('beneficiaries')->nullable();
+            $table->integer('beneficiaries')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
         });

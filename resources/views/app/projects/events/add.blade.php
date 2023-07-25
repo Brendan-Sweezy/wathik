@@ -1,4 +1,4 @@
-<form class="form" action="{{ url('events/add') }}" method="POST">
+<form class="form" action="{{ url('events/add') }}" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <input type="hidden" name="backto" value="{{ isset($step) ? 'wizard' : 'view' }}" />
     <input type="hidden" name="project_id" value="{{ $id }}" />
@@ -26,21 +26,24 @@
                 <input type="text" class="form-control form-control-solid" placeholder="" name="name" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">تاريخ النشاط</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="date" required />
+                <label class="required fs-6 fw-semibold mb-2">date</label>
+                <input type="datetime-local" class="form-control" name="date" 
+                    placeholder="click to select date" required />
             </div>
+
+            
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">وقت النشاط</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="time" required />
+                <input type="text" class="form-control form-control-solid" placeholder="insert event time" name="time" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">عدد المستفيدين</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="beneficiaries"
+                <input type="text" class="form-control form-control-solid" placeholder="insert # of beneficiaries" name="beneficiaries"
                     required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">عدد المستفيدين</label>
-                <input type="file" class="form-control form-control-solid" name="photo" id='photo'/>
+                <label class="required fs-6 fw-semibold mb-2">attach image</label>
+                <input type="file" class="form-control form-control-solid" name="image" id='image' accept='images/*'/>
             </div>
         </div>
     </div>
@@ -52,3 +55,10 @@
         </button>
     </div>
 </form>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("input[type=datetime-local]");
+</script>

@@ -35,12 +35,12 @@
             </div>
         </div>
         <div class="modal fade" id="weeklyReport" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered mw-650px">
-                    <div class="modal-content">
-                        @include('app.reports.modals.weeklyReport')
-                    </div>
+            <div class="modal-dialog modal-dialog-centered mw-650px">
+                <div class="modal-content">
+                    @include('app.reports.modals.weeklyReport')
                 </div>
             </div>
+        </div>
     </div>
 </div>
 @endsection

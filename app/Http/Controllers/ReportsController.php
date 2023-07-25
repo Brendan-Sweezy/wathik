@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use mikehaertl\pdftk\Pdf;
 use Barryvdh\DomPDF\Facade\Pdf as Pdf2;
+use Elibyy\TCPDF\Facades\TCPDF;
+use Barryvdh\Dompdf\Font;
 use App\Models\Orgnization;
 use App\Models\OrgnizationContact;
 use App\Models\OrgnizationAddress;
@@ -28,7 +30,85 @@ class ReportsController extends Controller
 {
     public function generateDonor(Request $request) {
 
+        $oneWeekAfter = date('Y-m-d', strtotime('+1 week', strtotime($request->date)));
+        $oneWeekBeforeNextDay = date('Y-m-d', strtotime('-1 day', strtotime($oneWeekAfter)));
+        
         $organization = Orgnization::find(session('orgnization_id'));
+        $project = Project::where('orgnization_id', $organization->id)->where('id', $request->id)->first();
+        $events = Event::where('project_id', $project->id)->whereDate('date', '>=', $request->date)->whereDate('date', '<', $oneWeekAfter)->get(); 
+        $beneficiaries = 0;
+        $images = [];
+        foreach($events as $event) {
+            $beneficiaries += $event->beneficiaries;
+
+            if($event->picture != null) {
+                array_push($images, $event->picture);
+            }
+        }
+
+    	if($request->language == 'arabic') {
+        
+            $filename = 'donorReportArabic.pdf';
+
+    	    $data = [
+    		    'project' => $project,
+                'organization' => $organization,
+                'events' => $events,
+                'beneficiaries_sum' => $beneficiaries,
+                'start_date' => $request->date,
+                'end_date' => $oneWeekBeforeNextDay,
+                'pictures' => $images
+    	    ];
+
+    	    $view = \View::make('pdf.donorReportArabic', $data);
+            $html = $view->render();
+
+    	    $pdf = new TCPDF;
+        
+        
+            $pdf::SetTitle('Hello World');
+
+            // set some language dependent data:
+            $lg = Array();
+            $lg['a_meta_charset'] = 'UTF-8';
+            $lg['a_meta_dir'] = 'rtl';
+            $lg['a_meta_language'] = 'fa';
+            $lg['w_page'] = 'page';
+
+            // set some language-dependent strings (optional)
+            $pdf::setLanguageArray($lg);
+
+            // ---------------------------------------------------------
+
+            // set font
+            $pdf::SetFont('dejavusans', '', 12);
+
+            $pdf::AddPage();
+
+            $logoPath = public_path('assets/media/wathikLogo.png');
+            $pdf::Image($logoPath, 40, 10, 30, 30, 'PNG');
+
+            $pdf::writeHTML($html, true, false, true, false, '');
+
+            $pdf::Output(public_path($filename), 'F');
+
+            return response()->download(public_path($filename));
+        } else {
+            $pdf = Pdf2::loadView('pdf.donorReportEnglish', [
+                'project' => $project,
+                'organization' => $organization,
+                'events' => $events,
+                'beneficiaries_sum' => $beneficiaries,
+                'start_date' => $request->date,
+                'end_date' => $oneWeekBeforeNextDay,
+                'pictures' => $images
+            ]);
+    
+            return $pdf->download('donorReport.pdf');
+        }
+    
+        
+        /*$organization = Orgnization::find(session('orgnization_id'));
         $project = Project::where('orgnization_id', $organization->id)->where('id', $request->id)->first();
         $events = Event::where('project_id', $project->id)->get(); 
         $beneficiaries = 0;
@@ -51,14 +131,17 @@ class ReportsController extends Controller
             'organization' => $organization,
             'events' => $events,
             'beneficiaries_sum' => $beneficiaries
-        ]);
+        ]);*/
     }
     
     public function generate() {
         
         //SQL Queries First Page
         $organization = Orgnization::find(session('orgnization_id'));
-        $id = $organization->national_id;
+        $id = 0000000000000;
+        for($i = 0; $i < count($organization->national_id); $i++) {
+            $id[$i] = $organization->national_id[$i];
+        }
         $mobile_number = OrgnizationContact::where('orgnization_id', $organization->id)->where('type', 'mobile')->value('contact');
         $landline_number = OrgnizationContact::where('orgnization_id', $organization->id)->where('type', 'phone')->value('contact');
         $mailbox = OrgnizationContact::where('orgnization_id', $organization->id)->where('type', 'mail')->value('contact');

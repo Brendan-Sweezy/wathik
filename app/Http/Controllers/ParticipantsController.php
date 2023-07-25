@@ -13,6 +13,7 @@ class ParticipantsController extends Controller
         Participant::Create([
             'project_id' => $request->project_id,
             'name' => $request->name,
+            'gender' => $request->gender,
             'department' => $request->department,
             'national_id' => $request->national_id,
             'address' => $request->address,
@@ -30,6 +31,7 @@ class ParticipantsController extends Controller
         $participant = Participant::find($id);
 
         $participant->name = $request->name;
+        $participant->gender = $request->gender;
         $participant->department = $request->department;
         $participant->national_id = $request->national_id;
         $participant->address = $request->address;
