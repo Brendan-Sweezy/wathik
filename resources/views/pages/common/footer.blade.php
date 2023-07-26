@@ -18,12 +18,14 @@
                     <li class="menu-item">
                         <a href="{{ url('') }}" class="menu-link px-2">Home</a>
                     </li>
+                    <!--/>
                     <li class="menu-item mx-5">
                         <a href="{{ url('ownership') }}" class="menu-link px-2">Ownership</a>
                     </li>
                     <li class="menu-item mx-5">
                         <a href="{{ url('documentation') }}" class="menu-link px-2">Documentation</a>
                     </li>
+                    </!-->
                     <li class="menu-item mx-5">
                         <a href="{{ url('privacyPolicy') }}" class="menu-link px-2">Privacy Policy</a>
                     </li>

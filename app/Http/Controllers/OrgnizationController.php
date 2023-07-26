@@ -208,13 +208,13 @@ class OrgnizationController extends Controller
         $male_mems = count(Member::where('gender','male')->get());
         $female_mems = count(Member::where('gender','female')->get());
 
-        $num_members->info = $request->num_members;
+        //$num_members->info = $request->num_members;
         $mentioned_members->info = $request->mentioned_members;
         $quorum->info = $request->quorum;
         $term->info = $request->term;
         $election_date->info = $request->election_date;
 
-        $num_members->save();
+        //$num_members->save();
         $mentioned_members->save();
         $quorum->save();
         $term->save();

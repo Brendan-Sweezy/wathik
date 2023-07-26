@@ -70,6 +70,7 @@ class ProjectsController extends Controller
     public function save(Request $request){
         switch ($request->step) {
             case 'info':
+                
                 $project = Project::create([
                     'orgnization_id' => session('orgnization_id'),
                     'name' => $request->name,

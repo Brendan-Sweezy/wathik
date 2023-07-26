@@ -65,7 +65,7 @@
       
     </table>
 
-    <img class='topright' alt="Logo" src="{{'data:image/png;base64,'.base64_encode(file_get_contents(public_path('assets/media/wathikLogo.png')))}}" width="100" height="100"/>
+    
 
     <br>
     
@@ -74,8 +74,9 @@
       <br>
     @endforeach
 
+
     <br>
-    <p class='bottom'>Supported by Wathiq ©2023 - Product of ILearn</p>
+  <p class='bottom'>------------------------------Powered by Wathiq ©2023 - Product of ILearn----------------------------- </p>
   </body>
 </html>
 

@@ -48,7 +48,7 @@
                         {{ $member->gender }}
                     </td>
                     <td>
-                        {{ $member->birthday }}
+                        {{ substr($member->birthday, 0, 10) }}
                     </td>
                     <td>
                         {{ $member->work }}
@@ -63,7 +63,7 @@
                         {{ $member->phone }}
                     </td>
                     <td>
-                        {{ $member->election_date }}
+                        {{ substr($member->election_date, 0, 10) }}
                     </td>
                     
                     <!--begin::menu=-->

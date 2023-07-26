@@ -48,7 +48,7 @@
                         {{ $donor->financing_characteristic }}
                     </td>
                     <td>
-                        {{ $donor->date }}
+                        {{ substr($donor->date, 0, 10) }}
                     </td>
                     <td>
                         {{ $donor->amount }}

@@ -30,10 +30,12 @@
                         </button>
                         <!--end::Mobile menu toggle-->
                         <!--begin::Logo image-->
+                        <!--/>
                         <a href="{{ url('') }}">
                             <img alt="Logo" src="{{ asset('assets/media/wathikLogo.png') }}"
                                 class="logo-default h-75px h-lg-100px p-1" />
                         </a>
+                        </!-->
                         <!--end::Logo image-->
                     </div>
                     <!--end::Logo-->

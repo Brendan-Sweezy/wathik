@@ -41,7 +41,7 @@
                                         {{ $meeting->meeting_num }}
                                     </td>    
                                     <td>
-                                        {{ $meeting->date }}
+                                        {{ substr($meeting->date, 0, 10) }}
                                     </td>
                                     <td>
                                         {{ $meeting->type }}
