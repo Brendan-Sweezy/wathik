@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Orgnization;
 use App\Models\OrgnizationManager;
 use App\Models\OrgnizationInfo;
@@ -20,6 +21,7 @@ class OrgnizationController extends Controller
 {
     public function home(Request $request)
     {
+        $user = User::with(['orgnization'])->find(session('user_id'));
         $orgnization = Orgnization::find(session('orgnization_id'));
         $projects = Project::where('orgnization_id', session('orgnization_id'))->where('status', '!=', 'Upcoming')->get();
         $id = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president_national_id')->first();
@@ -50,6 +52,7 @@ class OrgnizationController extends Controller
         }
         
         return view('app.orgnization.home', [
+            'user' => $user,
             'orgnization' => Orgnization::find(session('orgnization_id')), 
             'target' => 'main',
             'project_num' => $project_num,
@@ -60,6 +63,7 @@ class OrgnizationController extends Controller
 
     public function view(Request $request, $target)
     {
+        $user = User::with(['orgnization'])->find(session('user_id'));
         $orgnization = Orgnization::find(session('orgnization_id'));
         $projects = Project::where('orgnization_id', session('orgnization_id'))->where('status', '!=', 'Upcoming')->get();
         $president = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president')->first();
@@ -93,6 +97,7 @@ class OrgnizationController extends Controller
         }
 
         return view('app.orgnization.home', [
+            'user' => $user,
             'orgnization' => $orgnization, 
             'target' => $target,
             'president' => $president,
@@ -125,6 +130,7 @@ class OrgnizationController extends Controller
 
 //MAIN PAGE ------------------------------------------------------------------
     public function amendInfo(Request $request){
+        $user = User::with(['orgnization'])->find(session('user_id'));
         $info = Orgnization::find(session('orgnization_id'));
 
         $info->name = $request->name;
@@ -208,13 +214,13 @@ class OrgnizationController extends Controller
         $male_mems = count(Member::where('gender','male')->get());
         $female_mems = count(Member::where('gender','female')->get());
 
-        $num_members->info = $request->num_members;
+        //$num_members->info = $request->num_members;
         $mentioned_members->info = $request->mentioned_members;
         $quorum->info = $request->quorum;
         $term->info = $request->term;
         $election_date->info = $request->election_date;
 
-        $num_members->save();
+        //$num_members->save();
         $mentioned_members->save();
         $quorum->save();
         $term->save();

@@ -38,7 +38,7 @@
             <div class="separator separator-dashed my-3"></div>
             <div class="row">
                 <div class="col-3">تاريخ التأسيس</div>
-                <div class="col">{{ $orgnization->founding_date }}</div>
+                <div class="col">{{ substr($orgnization->founding_date, 0, 10) }}</div>
             </div>
             <div class="separator separator-dashed my-3"></div>
             <div class="row">

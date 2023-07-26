@@ -23,12 +23,18 @@ class HomeController extends Controller
 
     public function home(Request $request)
     {
+        
         $user = User::with(['orgnization'])->find(session('user_id'));
         if (empty($user->orgnization)) {
             return redirect()->to('existingOrg');
         }
         Session::put('orgnization_id', $user->orgnization->orgnization_id);
-        return view('app.home', ['user' => $user, 'projects' => Project::where('orgnization_id', $user->orgnization->orgnization_id)->get()]);
+        $orgnization = Orgnization::find(session('orgnization_id'));
+
+        return view('app.home', [
+            'user' => $user, 
+            'orgnization' => $orgnization,
+            'projects' => Project::where('orgnization_id', $user->orgnization->orgnization_id)->get()]);
     }
     public function wizard(Request $request)
     {

@@ -7,6 +7,7 @@ use mikehaertl\pdftk\Pdf;
 use Barryvdh\DomPDF\Facade\Pdf as Pdf2;
 use Elibyy\TCPDF\Facades\TCPDF;
 use Barryvdh\Dompdf\Font;
+use App\Models\User;
 use App\Models\Orgnization;
 use App\Models\OrgnizationContact;
 use App\Models\OrgnizationAddress;
@@ -29,6 +30,7 @@ use App\Models\Event;
 class ReportsController extends Controller
 {
     public function generateDonor(Request $request) {
+        $user = User::with(['orgnization'])->find(session('user_id'));
 
         $oneWeekAfter = date('Y-m-d', strtotime('+1 week', strtotime($request->date)));
         $oneWeekBeforeNextDay = date('Y-m-d', strtotime('-1 day', strtotime($oneWeekAfter)));
@@ -41,14 +43,14 @@ class ReportsController extends Controller
         foreach($events as $event) {
             $beneficiaries += $event->beneficiaries;
 
-            if($event->picture != null) {
-                array_push($images, $event->picture);
+            if($event->photo != null) {
+                array_push($images, $event->photo);
             }
         }
 
-    	if($request->language == 'arabic') {
+    	
         
-            $filename = 'donorReportArabic.pdf';
+            
 
     	    $data = [
     		    'project' => $project,
@@ -60,13 +62,18 @@ class ReportsController extends Controller
                 'pictures' => $images
     	    ];
 
-    	    $view = \View::make('pdf.donorReportArabic', $data);
+    	    if($request->language == 'arabic') {
+                $view = \View::make('pdf.donorReportArabic', $data);
+            } else {
+                $view = \View::make('pdf.donorReportEnglish', $data);
+            }
+
             $html = $view->render();
 
     	    $pdf = new TCPDF;
         
         
-            $pdf::SetTitle('Hello World');
+            
 
             // set some language dependent data:
             $lg = Array();
@@ -76,7 +83,15 @@ class ReportsController extends Controller
             $lg['w_page'] = 'page';
 
             // set some language-dependent strings (optional)
-            $pdf::setLanguageArray($lg);
+            
+            if($request->language == 'arabic') {
+                $pdf::setLanguageArray($lg);
+                $filename = 'تقرير أسبوعي.pdf';
+                $pdf::SetTitle('تقرير أسبوعي');
+            } else {
+                $filename = 'Weekly_Report.pdf';
+                $pdf::SetTitle('Weekly Report');
+            }
 
             // ---------------------------------------------------------
 
@@ -86,14 +101,20 @@ class ReportsController extends Controller
             $pdf::AddPage();
 
             $logoPath = public_path('assets/media/wathikLogo.png');
-            $pdf::Image($logoPath, 40, 10, 30, 30, 'PNG');
+            
+            if($request->language == 'arabic') {
+                $pdf::Image($logoPath, 40, 10, 30, 30, 'PNG');
+            } else {
+                $pdf::Image($logoPath, 170, 10, 30, 30, 'PNG');
+            }
 
             $pdf::writeHTML($html, true, false, true, false, '');
 
             $pdf::Output(public_path($filename), 'F');
 
             return response()->download(public_path($filename));
-        } else {
+        /*} else {
+            
             $pdf = Pdf2::loadView('pdf.donorReportEnglish', [
                 'project' => $project,
                 'organization' => $organization,
@@ -105,7 +126,7 @@ class ReportsController extends Controller
             ]);
     
             return $pdf->download('donorReport.pdf');
-        }
+        }*/
     
         
         /*$organization = Orgnization::find(session('orgnization_id'));
@@ -135,11 +156,12 @@ class ReportsController extends Controller
     }
     
     public function generate() {
+        $user = User::with(['orgnization'])->find(session('user_id'));
         
         //SQL Queries First Page
         $organization = Orgnization::find(session('orgnization_id'));
-        $id = 0000000000000;
-        for($i = 0; $i < count($organization->national_id); $i++) {
+        $id = '*************';
+        for($i = 0; $i < strlen($organization->national_id); $i++) {
             $id[$i] = $organization->national_id[$i];
         }
         $mobile_number = OrgnizationContact::where('orgnization_id', $organization->id)->where('type', 'mobile')->value('contact');
@@ -860,10 +882,12 @@ class ReportsController extends Controller
 
     public function home(Request $request)
     {
+        $user = User::with(['orgnization'])->find(session('user_id'));
         $projects = Project::where('orgnization_id', session('orgnization_id'))->get();
         
         return view('app.reports.home', [
-            'projects' => $projects
+            'projects' => $projects,
+            'user' => $user,
         ]);
     }
 }  

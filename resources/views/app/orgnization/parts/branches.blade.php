@@ -43,7 +43,7 @@
 
                                 <tr>
                                     <td>
-                                        {{ $branch->date }}
+                                        {{ substr($branch->date, 0, 10) }}
                                     </td>
                                     <td>
                                         {{ $branch->name }}

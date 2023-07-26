@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Event;
 use App\Models\Participant;
 use App\Models\Project;
@@ -12,13 +13,16 @@ use Illuminate\Http\Request;
 class ProjectsController extends Controller
 {
     public function home(Request $request){
+        $user = User::with(['orgnization'])->find(session('user_id'));
         return view('app.projects.home', [
+            'user' => $user,
             'projects' => Project::with(['threats', 'events', 'participants'])
                 ->where('orgnization_id', session('orgnization_id'),)
                 ->get()]);}
 
 
     public function view(Request $request, int $id){
+        $user = User::with(['orgnization'])->find(session('user_id'));
         $project = Project::with(['threats'])->find($id);
         $participants = Participant::where('project_id', $id)->get();
         $num_participants = count($participants);
@@ -33,6 +37,7 @@ class ProjectsController extends Controller
         
         return view('app.projects.view', [
             'id' => $id,
+            'user' => $user,
             'project' => Project::with(['threats'])->find($id),
             'participants' => Participant::where('project_id', $id)->get(),
             'events' => Event::where('project_id', $id)->get(),
@@ -70,6 +75,7 @@ class ProjectsController extends Controller
     public function save(Request $request){
         switch ($request->step) {
             case 'info':
+                
                 $project = Project::create([
                     'orgnization_id' => session('orgnization_id'),
                     'name' => $request->name,

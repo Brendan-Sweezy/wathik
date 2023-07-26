@@ -97,7 +97,7 @@
                                         {{ $project->name }}
                                     </td>
                                     <td>
-                                        {{ $project->date->format('Y-m-d') }}
+                                        {{ substr($project->date, 0, 10) }}
                                     </td>
                                     <td>
                                         {{ $project->title }}

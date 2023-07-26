@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Orgnization;
 use App\Models\OrgnizationInfo;
 use App\Models\revenue;
@@ -14,6 +15,7 @@ class BudgetController extends Controller
 {
     public function home(Request $request)
     {
+        $user = User::with(['orgnization'])->find(session('user_id'));
         $organization = Orgnization::find(session('orgnization_id'));
         $beginning_balance = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'beginning_balance')->value('info');
         $final_balance = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'final_balance')->value('info');
@@ -40,6 +42,7 @@ class BudgetController extends Controller
         $q4Ex->salaries + $q4Ex->deprications + $q4Ex->office_expenses + $q4Ex->rent + $q4Ex->maintenance + $q4Ex->other;
 
         return view('app.budget.home', [
+            'user' => $user,
             'orgnization' => $organization, 
             'target' => 'main', 
             'beginning_balance' => $beginning_balance,
@@ -52,6 +55,7 @@ class BudgetController extends Controller
 
     public function view(Request $request, $target)
     {
+        $user = User::with(['orgnization'])->find(session('user_id'));
         $organization = Orgnization::find(session('orgnization_id'));
         $beginning_balance = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'beginning_balance')->value('info');
         $final_balance = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'final_balance')->value('info');
@@ -78,6 +82,7 @@ class BudgetController extends Controller
         $q4Ex->salaries + $q4Ex->deprications + $q4Ex->office_expenses + $q4Ex->rent + $q4Ex->maintenance + $q4Ex->other;
 
         return view('app.budget.home', [
+            'user' => $user,
             'orgnization' => $organization, 
             'target' => $target,
             'beginning_balance' => $beginning_balance,
