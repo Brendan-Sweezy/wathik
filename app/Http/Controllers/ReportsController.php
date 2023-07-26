@@ -7,6 +7,7 @@ use mikehaertl\pdftk\Pdf;
 use Barryvdh\DomPDF\Facade\Pdf as Pdf2;
 use Elibyy\TCPDF\Facades\TCPDF;
 use Barryvdh\Dompdf\Font;
+use App\Models\User;
 use App\Models\Orgnization;
 use App\Models\OrgnizationContact;
 use App\Models\OrgnizationAddress;
@@ -29,6 +30,7 @@ use App\Models\Event;
 class ReportsController extends Controller
 {
     public function generateDonor(Request $request) {
+        $user = User::with(['orgnization'])->find(session('user_id'));
 
         $oneWeekAfter = date('Y-m-d', strtotime('+1 week', strtotime($request->date)));
         $oneWeekBeforeNextDay = date('Y-m-d', strtotime('-1 day', strtotime($oneWeekAfter)));
@@ -154,6 +156,7 @@ class ReportsController extends Controller
     }
     
     public function generate() {
+        $user = User::with(['orgnization'])->find(session('user_id'));
         
         //SQL Queries First Page
         $organization = Orgnization::find(session('orgnization_id'));
@@ -879,10 +882,12 @@ class ReportsController extends Controller
 
     public function home(Request $request)
     {
+        $user = User::with(['orgnization'])->find(session('user_id'));
         $projects = Project::where('orgnization_id', session('orgnization_id'))->get();
         
         return view('app.reports.home', [
-            'projects' => $projects
+            'projects' => $projects,
+            'user' => $user,
         ]);
     }
 }  

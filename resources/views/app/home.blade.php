@@ -32,163 +32,30 @@
                 style="background-color: #F1416C;background-image:url('assets/media/patterns/vector-1.png');">
                 <div class="card-body ps-xl-15">
                     <div class="m-0">
-                        <div class="position-relative fs-2x z-index-2 fw-bold text-white mb-7">
+                        <div class="position-relative fs-2 z-index-2 fw-bold text-white mb-7">
                             هل قمتم بأي نشاط في
                             الفترة الماضية؟ أو
                             تخططون لنشاط قريب؟
                         </div>
-                    </div>
+                    </div> 
                     <div class="mb-3">
                         <a href="{{ url('projects') }}"
                             class="btn btn-color-white bg-white bg-opacity-15 bg-hover-opacity-25 fw-semibold">قم بتعبئته من
                             خلال خطوات بسيطة.</a>
                     </div>
-                    <img src="{{ asset('assets/media/illustrations/sigma-1/17-dark.png') }}"
-                        class="position-absolute me-3 bottom-0 start-0 h-200px" alt="" />
                 </div>
             </div>
         </div>
         <div class="col-6" style="direction: rtl">
             <div class="card h-300px">
-                <div class="card-header border-0 pt-5">
-                    <h3 class="card-title align-items-start flex-column">
-                        <span class="card-label fw-bold text-dark">الفعاليات القادمة</span>
-                    </h3>
-                </div>
-                <div class="card-body pt-7 px-0">
-                    <ul
-                        class="nav nav-stretch nav-pills nav-pills-custom nav-pills-active-custom d-flex justify-content-between mb-8 px-5">
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_1">
-                                <span class="fs-7 fw-semibold">Fr</span>
-                                <span class="fs-6 fw-bold">20</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_2">
-                                <span class="fs-7 fw-semibold">Sa</span>
-                                <span class="fs-6 fw-bold">21</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_3">
-                                <span class="fs-7 fw-semibold">Su</span>
-                                <span class="fs-6 fw-bold">22</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger active"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_4">
-                                <span class="fs-7 fw-semibold">Tu</span>
-                                <span class="fs-6 fw-bold">23</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_5">
-                                <span class="fs-7 fw-semibold">Tu</span>
-                                <span class="fs-6 fw-bold">24</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_6">
-                                <span class="fs-7 fw-semibold">We</span>
-                                <span class="fs-6 fw-bold">25</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_7">
-                                <span class="fs-7 fw-semibold">Th</span>
-                                <span class="fs-6 fw-bold">26</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_8">
-                                <span class="fs-7 fw-semibold">Fri</span>
-                                <span class="fs-6 fw-bold">27</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_9">
-                                <span class="fs-7 fw-semibold">Sa</span>
-                                <span class="fs-6 fw-bold">28</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_10">
-                                <span class="fs-7 fw-semibold">Su</span>
-                                <span class="fs-6 fw-bold">29</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_11">
-                                <span class="fs-7 fw-semibold">Mo</span>
-                                <span class="fs-6 fw-bold">30</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                    </ul>
-                    <div class="tab-content mb-2 px-9">
+                <div class="card-body d-flex flex-column flex-center">
+                    <div class="mb-2">
+                        <h1 class="fw-semibold text-gray-800 text-center lh-lg">Welcome, {{ $user->username }}!</h1>
+                        <div class="py-10 text-center fs-2">
+                            Current organization: {{ $orgnization->name }}
+                        </div>
                     </div>
-                    <div class="float-end d-none">
-                        <a href="#" class="btn btn-sm btn-light me-2" data-bs-toggle="modal"
-                            data-bs-target="#kt_modal_create_project">Add Lesson</a>
-                        <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#kt_modal_create_app">Call Sick for Today</a>
-                    </div>
-                </div>
+                </div> 
             </div>
         </div>
     </div>
