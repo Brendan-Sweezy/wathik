@@ -45,19 +45,26 @@ class ProjectsController extends Controller
             'num_events' => $num_events]);}
 
     public function add(Request $request){
-        return view('app.projects.add', ['step' => 'info']);}
+        $user = User::with(['orgnization'])->find(session('user_id'));
+        return view('app.projects.add', [
+            'user' => $user,
+            'step' => 'info']);}
     
     public function addThreats(Request $request, int $id){
+        $user = User::with(['orgnization'])->find(session('user_id'));
         return view('app.projects.add', [
+            'user' => $user,
             'step' => 'threats',
             'id' => $id,
             'threats' => Threat::all()]);}
 
 
     public function addParticipants(Request $request, int $id){
+        $user = User::with(['orgnization'])->find(session('user_id'));
 
 
         return view('app.projects.add', [
+            'user' => $user,
             'step' => 'participants',
             'id' => $id,
             'participants' => Participant::where('project_id', $id)->get()]);}
@@ -65,8 +72,10 @@ class ProjectsController extends Controller
 
 
     public function addEvents(Request $request, int $id){
+        $user = User::with(['orgnization'])->find(session('user_id'));
 
         return view('app.projects.add', [
+            'user' => $user,
             'step' => 'events',
             'id' => $id,
             'events' => Event::where('project_id', $id)->get()]);}
