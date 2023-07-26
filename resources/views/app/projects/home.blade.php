@@ -50,7 +50,7 @@
             <div class="card card-flush h-xl-100">
                 <div class="card-header py-7">
                     <div class="card-title pt-3 mb-0 gap-4 gap-lg-10 gap-xl-15 nav nav-tabs border-bottom-0">
-                        المشاريع
+                    ملخص عن مشاریع وبرامج الجمعیة وأنشطتھا وإنجازاتھا والتي تساھم في تحقیق أھداف الجمعیة
                     </div>
                     <div class="card-toolbar">
                         <a href="{{ url('projects/add') }}" type="button" class="btn btn-primary">اضافة مشروع</a>
@@ -63,7 +63,7 @@
                         <thead>
                             <!--begin::Table row-->
                             <tr class="text-end text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-                                <th class="min-w-125px">اسم المشروع</th>
+                                <th class="min-w-125px">اسم المشروع / النشاط</th>
                                 <th class="min-w-125px">تاريخ المشروع</th>
                                 <th class="min-w-125px">عنوان المشروع</th>
                                 <th class="min-w-125px">حالة المشروع</th>
