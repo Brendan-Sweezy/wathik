@@ -124,6 +124,7 @@ Route::middleware(['userSession'])
         Route::post("save", 'save');
         Route::get("view/{id}", 'view');
         Route::post("delete/{id}", 'deleteProject');
+        Route::post("info/amend/{id}", 'amend');
     });
 
 Route::middleware(['userSession'])

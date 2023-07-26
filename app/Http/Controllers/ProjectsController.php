@@ -49,6 +49,17 @@ class ProjectsController extends Controller
         return view('app.projects.add', [
             'user' => $user,
             'step' => 'info']);}
+
+    public function amend(Request $request, $id){
+        $user = User::with(['orgnization'])->find(session('user_id'));
+        $project = Project::find($id);
+        $project->name = $request->name;
+        $project->date = $request->date;
+        $project->title = $request->title;
+        $project->status = $request->status;
+        $project->budget = $request->budget;
+        $project->save();
+        return redirect('/projects/view/' . $request->project_id);}     
     
     public function addThreats(Request $request, int $id){
         $user = User::with(['orgnization'])->find(session('user_id'));

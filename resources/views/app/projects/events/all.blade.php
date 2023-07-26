@@ -35,7 +35,7 @@
                     {{ $event->name }}
                 </td>
                 <td>
-                    {{ $event->date }}
+                    {{ substr($event->date, 0, 10) }}
                 </td>
                 <td>
                     {{ $event->time }}
@@ -44,7 +44,7 @@
                     {{ $event->beneficiaries }}
                 </td>
                 <td>
-                    <img src="{{ asset('storage/app/public/' . $event->photo) }}" width="100%" />
+                    <img alt="Image" src="{{asset('storage/' . $event->photo)}}" height='100'/>
                 </td>
                 <td class="text-start">
                     <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click"
@@ -90,7 +90,3 @@
 
     </tbody>
 </table>
-
-@section('modals')
-    
-@stop
