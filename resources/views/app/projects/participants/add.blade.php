@@ -23,38 +23,38 @@
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">اسم المشارك</label>
-                <input type="text" class="form-control form-control-solid" placeholder="enter participant name" name="name" required />
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="name" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Gender</label>
+                <label class="required fs-6 fw-semibold mb-2">الجنس</label>
                 <select type="text" class="form-control form-control-solid" 
                     placeholder="Enter gender" name="gender" required >
-                    <option value='male'>Male</option>
-                    <option value='female'>Female</option>
+                    <option value='male'>ذكر</option>
+                    <option value='female'>أنثى</option>
                 </select>
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">القسم</label>
-                <input type="text" class="form-control form-control-solid" placeholder="enter participant department" name="department"
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="department"
                     required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">الرقم الوطني</label>
-                <input type="text" class="form-control form-control-solid" placeholder="enter participant national id" name="national_id"
+                <label class="required fs-6 fw-semibold mb-2">رقم الهوية</label>
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="national_id"
                     required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">العنوان</label>
-                <input type="text" class="form-control form-control-solid" placeholder="enter participant address" name="address" required />
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="address" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">رقم الهاتف</label>
-                <input type="text" class="form-control form-control-solid" placeholder="enter participant phone number" name="phone" required />
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="phone" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">birthday</label>
+                <label class="required fs-6 fw-semibold mb-2">تاريخ الميلاد</label>
                 <input type="datetime-local" class="form-control" name="birthday" 
-                    placeholder="click to select birthday" required />
+                    placeholder="يرجى الضغط لاختيار التاريخ" required />
             </div>
         </div>
     </div>

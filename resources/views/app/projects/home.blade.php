@@ -65,8 +65,8 @@
                             <tr class="text-end text-gray-400 fw-bold fs-7 text-uppercase gs-0">
                                 <th class="min-w-125px">اسم المشروع / النشاط</th>
                                 <th class="min-w-125px">تاريخ المشروع</th>
-                                <th class="min-w-125px">عنوان المشروع</th>
-                                <th class="min-w-125px">حالة المشروع</th>
+                                <th class="min-w-125px">موقع المشروع</th>
+                                <th class="min-w-125px">حالة النشاط</th>
                                 <th class="min-w-125px">عدد المستفيدين</th>
                                 <th class="min-w-125px">اكتمال المعلومات</th>
                                 <th class="text-start min-w-70px"></th>

@@ -199,36 +199,38 @@ class HomeController extends Controller
         if(Threat::find(1) == NULL) {
             Threat::create([
                 'id' => 1,
-                'threat' => 'لیومتلا صقن ةیعمجلا ىدل'
+                'threat' => 'نقص التمویل لدى الجمعیة'
             ]);
             Threat::create([
                 'id' => 2,
-                'threat' => 'تاربخلا صقن'
+                'threat' => 'نقص الخبرات'
             ]);
             Threat::create([
                 'id' => 3,
-                'threat' => 'لاا قطانم يف لمعلا ارقف دش ً'
+                'threat' => 'العمل في مناطق الاشد فقراً'
             ]);
             Threat::create([
                 'id' => 4,
-                'threat' => 'ةیلاع ةیناكس ةفاثك تاذ قطانم يف لمعلا'
+                'threat' => 'العمل في مناطق ذات كثافة سكانیة عالیة'
             ]);
             Threat::create([
                 'id' => 5,
-                'threat' => 'نیعوطتملا ةلق'
+                'threat' => 'قلة المتطوعین'
             ]);
             Threat::create([
                 'id' => 6,
-                'threat' => 'ةصتخملا ةرازولا عم ةقلاعلا'
+                'threat' => 'العلاقة مع الوزارة المختصة'
             ]);
 
             OrgnizationInfo::create([
                 'type' => 'auditor',
-                'info' => ''
+                'info' => '',
+                'orgnization_id' => $orgnization->id
             ]);
             OrgnizationInfo::create([
                 'type' => 'beginning_balance',
-                'info' => ''
+                'info' => '',
+                'orgnization_id' => $orgnization->id
             ]);
         /*OrgnizationInfo::create([
             'type' => 'final_balance',

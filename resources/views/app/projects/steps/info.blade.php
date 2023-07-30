@@ -3,30 +3,30 @@
     <input type="hidden" name="step" value="{{ $step }}" />
     <div class="fv-row mb-7" style="direction: rtl">
         <label class="required fs-6 fw-semibold mb-2">اسم المشروع</label>
-        <input type="text" class="form-control form-control-solid" placeholder="insert project name" name="name" required />
+        <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="name" required />
     </div>
     <div class="fv-row mb-7" style="direction: rtl">
-                <label class="required fs-6 fw-semibold mb-2">تاريخ المشروع</label>
+                <label class="required fs-6 fw-semibold mb-2">يرجى الضغط لاختيار التاريخ</label>
                 <input type="datetime-local" class="form-control" name="date" 
-                    placeholder="click to select تاريخ المشروع" required />
+                    placeholder="تاريخ المشروع" required />
             </div>
     <div class="fv-row mb-7" style="direction: rtl">
-        <label class="required fs-6 fw-semibold mb-2">عنوان المشروع</label>
-        <input type="text" class="form-control form-control-solid" placeholder="insert projecta title" name="title" required />
+        <label class="required fs-6 fw-semibold mb-2">مكان تنفیذ المشروع /النشاط</label>
+        <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="title" required />
     </div>
     <div class="fv-row mb-7" style="direction: rtl">
-        <label class="required fs-6 fw-semibold mb-2">حالة المشروع</label>
-        <select type="text" class="form-control form-control-solid" placeholder="select project status" name="status" required>
+        <label class="required fs-6 fw-semibold mb-2">حالة المشروع / النشاط</label>
+        <select type="text" class="form-control form-control-solid" name="status" required>
             <option value="لم يبدأ ">لم يبدأ</option>
-            <option value="في تَقَدم">في تَقَدم</option>
-            <option value="مكتمل">مكتمل</option>
+            <option value="في تَقَدم">قائم</option>
+            <option value="مكتمل">منتھي</option>
             <option value="Upcoming">القادمة</option>
         </select>
     </div>
     
     <div class="fv-row mb-7" style="direction: rtl">
         <label class="required fs-6 fw-semibold mb-2">ميزانية</label>
-        <input type="text" class="form-control form-control-solid" placeholder="insert project budget" name="budget" required />
+        <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="budget" required />
     </div>
     <button type="submit" class="btn btn-primary">
         <span class="indicator-label">التالي</span>

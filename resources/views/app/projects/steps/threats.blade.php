@@ -15,7 +15,7 @@
     <div class="fv-row form-check form-check-custom form-check-solid m-4" style="direction: rtl">
         <input class="form-check-input" name="other" type="checkbox" id="other" value="1" />
         <label class="form-check-label px-3" for="other">
-            <input type="text" class="form-control form-control-solid" placeholder="غير ذلك ، اذكر"
+            <input type="text" class="form-control form-control-solid" placeholder="اذكر مخاطر أخرى"
                 name="otherThreat" />
         </label>
     </div>

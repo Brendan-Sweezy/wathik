@@ -23,18 +23,18 @@
             data-kt-scroll-dependencies="#kt_modal_add_customer_header"
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Participant name</label>
+                <label class="required fs-6 fw-semibold mb-2">>اسم المشارك<</label>
                 <input type="text" class="form-control form-control-solid" 
                     placeholder="Enter name" name="name" required 
                     value="{{ $participant->name }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">Gender</label>
+                <label class="required fs-6 fw-semibold mb-2">الجنس</label>
                 <select type="text" class="form-control form-control-solid" 
                     placeholder="Enter gender" name="gender" required
                     value="{{ $participant->gender }}">
-                    <option value='male'>Male</option>
-                    <option value='female'>Female</option>
+                    <option value='male'>ذكر</option>
+                    <option value='female'>أنثى</option>
                 </select>
             </div>
             <div class="fv-row mb-7">

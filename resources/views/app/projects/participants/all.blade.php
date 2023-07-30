@@ -1,6 +1,13 @@
 <!-- begin: Button to open "add participants" popup -->
-<button type="button" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal"
-    data-bs-target="#addParticipant">اضافة مشاركين</button>
+<div class="d-flex align-items-center justify-content-between mb-3">
+    <!-- Button to open "add participants" popup -->
+    <button type="button" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal"
+        data-bs-target="#addParticipant">اضافة مشاركين</button>
+
+    <!-- H1 heading aligned with the button -->
+    <h1 class="fw-bold">يرجى ادخال المتطوعين لهذا المشروع</h1>
+</div>
+
 <div class="modal fade" id="addParticipant" tabindex="-1" aria-hidden="true">
     <!--begin::Modal dialog-->
     <div class="modal-dialog modal-dialog-centered mw-650px">
@@ -20,7 +27,7 @@
         <!--begin::Table row-->
         <tr class="text-end text-gray-400 fw-bold fs-7 text-uppercase gs-0">
             <th class="min-w-50px">الاسم</th>
-            <th class="min-w-50px">Gender</th>
+            <th class="min-w-50px">الجنس</th>
             <th class="min-w-50px">القسم</th>
             <th class="min-w-50px">الرقم الوطني</th>
             <th class="min-w-50px">العنوان</th>
