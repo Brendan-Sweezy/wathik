@@ -2,7 +2,7 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <input type="hidden" name="project_id" value="{{ $id }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">Amend Event Information</h2>
+        <h2 class="fw-bold">تعديل نشاط</h2>
         <div onclick="$('#amendEvents{{ $event->id }}').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -22,31 +22,31 @@
             data-kt-scroll-dependencies="#kt_modal_add_customer_header"
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">event name</label>
+                <label class="required fs-6 fw-semibold mb-2">اسم النشاط</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter name" name="name" required 
+                    placeholder="إضغط هنا  " name="name" required 
                     value="{{ $event->name }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">date</label>
+                <label class="required fs-6 fw-semibold mb-2">تاريخ النشاط</label>
                 <input type="datetime-local" class="form-control" name="date" 
-                    placeholder="click to select date" value='{{ $event->date }}' required />
+                    placeholder="يرجى الضغط لاختيار التاريخ" value='{{ $event->date }}' required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">time</label>
+                <label class="required fs-6 fw-semibold mb-2">وقت النشاط</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter time" name="time" required 
+                    placeholder="إضغط هنا" name="time" required 
                     value="{{ $event->time }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">beneficiaries</label>
+                <label class="required fs-6 fw-semibold mb-2">عدد المستفيدين</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter beneficiaries" name="beneficiaries" required 
+                    placeholder="إضغط هنا" name="beneficiaries" required 
                     value="{{ $event->beneficiaries }}"/>
             </div>
 
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">attach image</label>
+                <label class="required fs-6 fw-semibold mb-2">تحميل صورة</label>
                 <input type="file" class="form-control form-control-solid" name="image" id='image' accept='images/*'/>
             </div>
             

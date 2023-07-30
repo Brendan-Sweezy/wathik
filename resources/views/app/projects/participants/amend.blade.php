@@ -3,7 +3,7 @@
     <input type="hidden" name="project_id" value="{{ $id }}" />
     <input type="hidden" name="backto" value="{{ isset($step) ? 'wizard' : 'view' }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">Amend Participant Information</h2>
+        <h2 class="fw-bold">تعديل معلومات المشاركين</h2>
         <div onclick="$('#amendParticipant{{ $participant->id }}').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -25,45 +25,45 @@
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">>اسم المشارك<</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter name" name="name" required 
+                    placeholder="إضغط هنا" name="name" required 
                     value="{{ $participant->name }}"/>
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">الجنس</label>
                 <select type="text" class="form-control form-control-solid" 
-                    placeholder="Enter gender" name="gender" required
+                    placeholder="إضغط هنا" name="gender" required
                     value="{{ $participant->gender }}">
                     <option value='male'>ذكر</option>
                     <option value='female'>أنثى</option>
                 </select>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">department</label>
+                <label class="required fs-6 fw-semibold mb-2">القسم</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter department" name="department" required 
+                    placeholder="إضغط هنا" name="department" required 
                     value="{{ $participant->department }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">national id</label>
+                <label class="required fs-6 fw-semibold mb-2">رقم الهوية</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter national id" name="national_id" required 
+                    placeholder="إضغط هنا" name="national_id" required 
                     value="{{ $participant->national_id }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">address</label>
+                <label class="required fs-6 fw-semibold mb-2">العنوان</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter address" name="address" required 
+                    placeholder="إضغط هنا" name="address" required 
                     value="{{ $participant->address }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">phone</label>
+                <label class="required fs-6 fw-semibold mb-2">رقم الهاتف</label>
                 <input type="text" class="form-control form-control-solid" 
-                    placeholder="Enter phone" name="phone" required 
+                    placeholder="إضغط هنا " name="phone" required 
                     value="{{ $participant->phone }}"/>
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">birthday</label>
-                <input type="datetime-local" class="form-control" name="birthday" placeholder="click to select birthday" value='{{ $participant->birthday }}' required />
+                <label class="required fs-6 fw-semibold mb-2">تاريخ الميلاد</label>
+                <input type="datetime-local" class="form-control" name="birthday" placeholder="يرجى الضغط لاختيار التاريخ" value='{{ $participant->birthday }}' required />
             </div>
             
         </div>

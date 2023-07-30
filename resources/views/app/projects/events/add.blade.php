@@ -23,26 +23,26 @@
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">اسم النشاط</label>
-                <input type="text" class="form-control form-control-solid" placeholder="" name="name" required />
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="name" required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">date</label>
+                <label class="required fs-6 fw-semibold mb-2">>تاريخ النشاط<</label>
                 <input type="datetime-local" class="form-control" name="date" 
-                    placeholder="click to select date" required />
+                    placeholder="يرجى الضغط لاختيار التاريخ" required />
             </div>
 
             
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">وقت النشاط</label>
-                <input type="text" class="form-control form-control-solid" placeholder="insert event time" name="time" required />
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="time" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">عدد المستفيدين</label>
-                <input type="text" class="form-control form-control-solid" placeholder="insert # of beneficiaries" name="beneficiaries"
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="beneficiaries"
                     required />
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">attach image</label>
+                <label class="required fs-6 fw-semibold mb-2">تحميل صورة</label>
                 <input type="file" class="form-control form-control-solid" name="image" id='image' accept='images/*'/>
             </div>
         </div>

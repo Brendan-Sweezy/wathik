@@ -1,6 +1,6 @@
 <!-- begin: Button to open "amend info" popup -->
 <button type="button" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal"
-    data-bs-target="#amendInfo">Amend Info</button>
+    data-bs-target="#amendInfo">تعديل معلومات</button>
 <div class="modal fade" id="amendInfo" tabindex="-1" aria-hidden="true">
     <!--begin::Modal dialog-->
     <div class="modal-dialog modal-dialog-centered mw-650px">
@@ -19,11 +19,11 @@
     <thead>
         <!--begin::Table row-->
         <tr class="text-end text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-            <th class="min-w-50px">name</th>
-            <th class="min-w-50px">start date</th>
-            <th class="min-w-50px">title</th>
-            <th class="min-w-50px">state</th>
-            <th class="min-w-50px">budget</th>
+            <th class="min-w-50px">اسم المشروع</th>
+            <th class="min-w-50px">يرجى الضغط لاختيار التاريخ</th>
+            <th class="min-w-50px">مكان تنفیذ المشروع /النشاط</th>
+            <th class="min-w-50px">حالة المشروع / النشاط</th>
+            <th class="min-w-50px">ميزانية</th>
             <th class="text-start min-w-50px"></th>
         </tr>
         <!--end::Table row-->

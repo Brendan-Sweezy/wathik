@@ -2,7 +2,7 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <input type="hidden" name="project_id" value="{{ $id }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
-        <h2 class="fw-bold">PERMANENTLY DELETE PROJECT</h2>
+        <h2 class="fw-bold">حذف هذا المشروع بشكل دائم</h2>
         <div onclick="$('#deleteProject{{ $id }}').modal('hide')" class="btn btn-icon btn-sm btn-active-icon-primary">
             <span class="svg-icon svg-icon-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -22,21 +22,22 @@
             data-kt-scroll-dependencies="#kt_modal_add_customer_header"
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
             <div class="fv-row mb-7">
-                Are you sure that you want to permanently delete {{ $project->name }}? This action cannot be undone.
+            هل انت متاكد من الحذف ؟ علما انه عند الحذف لا يمكن اعادته
+                
             </div>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="confirmCheckbox">
-                <label class="form-check-label" for="confirmCheckbox">I confirm that I want to permanently delete {{ $project->name }}. This action cannot be undone.</label>
+                <label class="form-check-label" for="confirmCheckbox">اوافق على الحذف بشكل دائم. علما انه عند الحذف لا يمكن اعادته</label>
             </div>
         </div>
     </div>
     
     <div class="modal-footer flex-center">
         <button type="reset" onclick="$('#deleteProject{{ $id }}').modal('hide')"
-            class="btn btn-primary me-3">cancel and return to safety</button>
+            class="btn btn-primary me-3">الغاء</button>
         <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-light" disabled>
             <a href="{{ url('projects/deleteProject/' . $project->id) }}" class="menu-link px-3"
-                data-kt-customer-table-filter="delete_row">confirm</a>
+                data-kt-customer-table-filter="delete_row">تأكيد</a>
         </button>
     </div>
 

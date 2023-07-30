@@ -30,14 +30,14 @@
                                 <div class="d-flex align-items-center">
                                     <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="{{ $project->beneficiaries }}">0</div>
                                 </div>
-                                <div class="fw-semibold fs-6 text-gray-400"># of beneficiaries</div>
+                                <div class="fw-semibold fs-6 text-gray-400">عدد المستفيدين</div>
                             </div>
                             
                             <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
                                 <li class="nav-item mt-2">
                                     <a class="nav-link text-active-primary ms-0 me-10 py-5"
                                         href="{{ url('projects') }}">
-                                        return to other projects
+                                        الرجوع الى صفحة المشاريع
                                     </a>
                                 </li>                                
                             </ul>
@@ -45,7 +45,7 @@
                                 <li class="nav-item mt-2">
                                     <a href="{{ url('participants/amend/' . $project->id) }}" 
                                         data-bs-toggle="modal" data-bs-target="#deleteProject{{ $project->id }}" 
-                                        class="nav-link text-active-primary ms-0 me-10 py-5">permanently delete this project</a>   
+                                        class="nav-link text-active-primary ms-0 me-10 py-5">حذف هذا المشروع بشكل دائم</a>   
                                 </li>                                
                             </ul>
                             <div class="modal fade" id="deleteProject{{ $id }}" tabindex="-1" aria-hidden="true">
