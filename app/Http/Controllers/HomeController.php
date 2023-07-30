@@ -91,8 +91,8 @@ class HomeController extends Controller
             "orgnization_ministry" => 'required|string',
             "orgnization_founding_date" => 'required|date',
             "email" => 'required|email',
-            "phone" => 'required|integer',
-            "mobile" => 'required|integer',
+            "phone" => 'required|string',
+            "mobile" => 'string',
             "mail" => 'required|string',
             "zipcode" => 'required|integer',
             "website" => 'required|string',
@@ -104,7 +104,7 @@ class HomeController extends Controller
             "residential_type" => 'required|string',
             "manager_name" => 'required|string',
             "manager_national_id" => 'required|integer',
-            "manager_phone" => 'required|integer',
+            "manager_phone" => 'required|string',
             "manager_email" => 'required|email'
         ]);
         

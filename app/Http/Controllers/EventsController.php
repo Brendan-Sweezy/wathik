@@ -12,6 +12,11 @@ class EventsController extends Controller
 
     public function add(Request $request)
     {
+        $project = Project::find($request->project_id);
+        if(session('orgnization_id') != $project->orgnization_id) {
+            return redirect()->back();
+        }
+
         $request->validate([
             'image' => 'required|file',
             'project_id' => 'required|integer',
@@ -51,6 +56,11 @@ class EventsController extends Controller
 
     public function amend(Request $request, $id){   
 
+        $project = Project::find($request->project_id);
+        if(session('orgnization_id') != $project->orgnization_id) {
+            return redirect()->back();
+        }
+
         $request->validate([
             'image' => 'required|file',
             'project_id' => 'required|integer',
@@ -80,6 +90,11 @@ class EventsController extends Controller
         return redirect('/projects/view/' . $request->project_id);}
 
     public function delete($id){
+
+        $project = Project::find($request->project_id);
+        if(session('orgnization_id') != $project->orgnization_id) {
+            return redirect()->back();
+        }
         $event = Event::find($id);
         $event->delete();
         return redirect('/projects/view/' . $event->project_id);}

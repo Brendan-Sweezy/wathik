@@ -10,6 +10,11 @@ class ParticipantsController extends Controller
 
     public function add(Request $request)
     {
+        $project = Project::find($request->project_id);
+        if(session('orgnization_id') != $project->orgnization_id) {
+            return redirect()->back();
+        }
+
         $request->validate([
             'project_id' => 'required|integer',
             'name' => 'required|string',
@@ -40,6 +45,11 @@ class ParticipantsController extends Controller
     }
 
     public function amend(Request $request, $id){   
+
+        $project = Project::find($request->project_id);
+        if(session('orgnization_id') != $project->orgnization_id) {
+            return redirect()->back();
+        }
         $request->validate([
             'project_id' => 'required|integer',
             'name' => 'required|string',
@@ -70,6 +80,12 @@ class ParticipantsController extends Controller
             return redirect('/projects/view/' . $request->project_id);}}
 
     public function delete($id){
+
+        $project = Project::find($request->project_id);
+        if(session('orgnization_id') != $project->orgnization_id) {
+            return redirect()->back();
+        }
+
         $participant = Participant::find($id);
         $participant->delete();
         return redirect('/projects/view/' . $participant->project_id);}
