@@ -151,6 +151,8 @@ class ProjectsController extends Controller
 
     public function deleteProject($id){
         $project = Project::find($id);
+        if(session('orgnization_id') != $project->orgnization_id) {
+            return redirect()->back();}
         $project->delete();
         return redirect('projects/');}
 }

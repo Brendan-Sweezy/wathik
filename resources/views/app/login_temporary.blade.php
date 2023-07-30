@@ -84,11 +84,18 @@
                                 </div>
                                 <!--end::Input group=-->
                                 
-                                
-                                <!--end::Input group=-->
-                                <!--begin::Wrapper-->
-                                
-                                <!--end::Wrapper-->
+                                <!--begin::Display errors-->
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                <!--end::Display errors-->
+
                                 <!--begin::Actions-->
                                 <div class="d-grid gap-2 mb-2">
                                     <!--begin::Submit-->
