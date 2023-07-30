@@ -1,4 +1,4 @@
-<form class="form" action="{{ url('orgnization/addBranch') }}" method="POST">
+<form class="form" action="{{ url('orgnization/addBranch') }}" method="POST" id='addBranchForm'>
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
         <h2 class="fw-bold">إضافة فرع</h2>
@@ -60,4 +60,38 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
     flatpickr("input[type=datetime-local]");
+</script>
+
+<script>
+    flatpickr("input[type=datetime-local]");
+
+    document.getElementById('kt_modal_add_customer_submit').addEventListener('click', function (event) {
+        event.preventDefault();
+
+        // Get the form element
+        var form = document.getElementById('addBranchForm');
+
+        // Perform manual validation by checking if the required fields are not empty
+        var dateInput = form.elements.date;
+        var nameInput = form.elements.name;
+        var governorateInput = form.elements.governorate;
+        var majorGeneralInput = form.elements.major_general;
+        var eleminateInput = form.elements.eleminate;
+        var populationInput = form.elements.population;
+
+        if (
+            dateInput.value.trim() === '' ||
+            nameInput.value.trim() === '' ||
+            governorateInput.value.trim() === '' ||
+            majorGeneralInput.value.trim() === '' ||
+            eleminateInput.value.trim() === '' ||
+            populationInput.value.trim() === ''
+        ) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        // If all fields are filled, submit the form
+        form.submit();
+    });
 </script>

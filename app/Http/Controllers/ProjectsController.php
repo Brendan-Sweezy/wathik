@@ -73,9 +73,21 @@ class ProjectsController extends Controller
 
 
     public function save(Request $request){
+        $request->validate([
+            'step' => 'required|string'
+        ]);
+        
         switch ($request->step) {
             case 'info':
                 
+                $request->validate([
+                    'name' => 'required|string',
+                    'date' => 'required|date',
+                    'title' => 'required|string',
+                    'status' => 'required|string',
+                    'budget' => 'required|decimal:0,3'
+                ]);
+
                 $project = Project::create([
                     'orgnization_id' => session('orgnization_id'),
                     'name' => $request->name,

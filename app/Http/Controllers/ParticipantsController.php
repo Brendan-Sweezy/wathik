@@ -10,6 +10,18 @@ class ParticipantsController extends Controller
 
     public function add(Request $request)
     {
+        $request->validate([
+            'project_id' => 'required|integer',
+            'name' => 'required|string',
+            'gender' => 'required|string',
+            'department' => 'required|string',
+            'national_id' => 'required|integer',
+            'address' => 'required|string',
+            'phone' => 'required|integer',
+            'birthday' => 'required|date',
+            'backto' => 'require|string'
+        ]);
+        
         Participant::Create([
             'project_id' => $request->project_id,
             'name' => $request->name,
@@ -28,6 +40,18 @@ class ParticipantsController extends Controller
     }
 
     public function amend(Request $request, $id){   
+        $request->validate([
+            'project_id' => 'required|integer',
+            'name' => 'required|string',
+            'gender' => 'required|string',
+            'department' => 'required|string',
+            'national_id' => 'required|integer',
+            'address' => 'required|string',
+            'phone' => 'required|integer',
+            'birthday' => 'required|date',
+            'backto' => 'require|string'
+        ]);
+        
         $participant = Participant::find($id);
 
         $participant->name = $request->name;

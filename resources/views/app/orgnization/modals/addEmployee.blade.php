@@ -1,4 +1,4 @@
-<form class="form" action="{{ url('orgnization/employees/addEmployee') }}" method="POST">
+<form class="form" action="{{ url('orgnization/employees/addEmployee') }}" method="POST" id="addEmployeeForm">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
         <h2 class="fw-bold">إضافة موظف</h2>
@@ -52,3 +52,32 @@
         </button>
     </div>
 </form>
+
+<script>
+    document.getElementById('addEmployeeForm').addEventListener('submit', function (event) {
+        // Prevent the form from submitting by default
+        event.preventDefault();
+
+        // Get the form element
+        var form = event.target;
+
+        // Perform manual validation by checking if the required fields are not empty
+        var nameInput = form.elements.name;
+        var qualificationInput = form.elements.qualification;
+        var titleInput = form.elements.title;
+        var genderInput = form.elements.gender;
+
+        if (
+            nameInput.value.trim() === '' ||
+            qualificationInput.value.trim() === '' ||
+            titleInput.value.trim() === '' ||
+            genderInput.value.trim() === ''
+        ) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        // If all fields are filled, submit the form
+        form.submit();
+    });
+</script>
