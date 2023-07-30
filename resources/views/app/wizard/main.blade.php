@@ -161,6 +161,19 @@
                                         <!--end::Svg Icon-->السابق
                                     </button>
                                 </div>
+
+                                <!--begin::Display errors-->
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                <!--end::Display errors-->
+                                
                                 <div>
                                     <button type="button" class="btn btn-lg btn-primary"
                                         data-kt-stepper-action="submit">

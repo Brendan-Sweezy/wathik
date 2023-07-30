@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Twilio\Rest\Client;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 
 class LoginController extends Controller
@@ -31,11 +32,18 @@ class LoginController extends Controller
             return redirect()->route('home');
         }
 
-        $request->validate([
+
+        $validator = Validator::make($request->all(), [
             'username' => 'required|string',
-            'password' => 'required|string'
+            'password' => 'required|string',
+        ], [
+            'username.required' => 'Username is required',
+            'password.required' => 'Password is required',
         ]);
-    
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
         // Get the user by the provided username
         $user = User::where('username', $request->username)->first();
     
@@ -64,14 +72,36 @@ class LoginController extends Controller
 
     public function authenticateNewAccount(Request $request){
         
+
+        $validator = Validator::make($request->all(), [
+            'username' => 'required|string',
+            'password' => 'required|string',
+            'password_confirm' => 'required|string',
+            'email' => 'required|email',
+            'phone_number' => 'required|string'
+        ], [
+            'username.required' => 'Username is required',
+            'password.required' => 'Password is required',
+            'password_confirm.required' => 'Password confirmation is required',
+            'email.required' => 'Email address is required',
+            'email.email' => 'Email address must be valid',
+            'phone_number.required' => 'Phone number is required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+      
+
+/*
         $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
             'password_confirm' => 'required|string',
             'email' => 'required|email',
             'phone_number' => 'required|string'
-        ]);
-        
+        ]);*/
+
         $username = User::where('username', $request->username)->first();
 
         if ($username) {
