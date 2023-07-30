@@ -95,13 +95,12 @@
                                         <!--end::Indicator label-->
                                       </a>
 
+                                    <!-- TODO: forgot password button
                                     <button type='button' id="forgot_password__button"
                                         class="btn btn-secondary btn-block me-2 flex-shrink-0">
-                                        <!--begin::Indicator label-->
                                         <span class="indicator-label" data-kt-translate="sign-in-submit">هل نسيت كلمة السر</span>
-                                        <!--end::Indicator label-->
                                     </button>
-                                    <!--end::Submit-->
+                                    -->
                                 </div>
                                 <!--end::Actions-->
                             </div>
