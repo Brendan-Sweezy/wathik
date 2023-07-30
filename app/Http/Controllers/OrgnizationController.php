@@ -130,6 +130,13 @@ class OrgnizationController extends Controller
 
 //MAIN PAGE ------------------------------------------------------------------
     public function amendInfo(Request $request){
+        $request->validate([
+            "name" => "required|string",
+            "national_id" => "required|integer",
+            "ministry" => "required|string",
+            "founding_date" => "required|date"
+        ]);
+        
         $user = User::with(['orgnization'])->find(session('user_id'));
         $info = Orgnization::find(session('orgnization_id'));
 
@@ -143,6 +150,13 @@ class OrgnizationController extends Controller
 
 
     public function amendManager(Request $request){
+        $request->validate([
+            "name" => "required|string",
+            "national_id" => "required|integer",
+            "phone" => "required|integer",
+            "email" => "required|email",
+        ]);
+        
         $manager = OrgnizationManager::find(session('orgnization_id'));
 
         $manager->name = $request->name;
@@ -156,6 +170,15 @@ class OrgnizationController extends Controller
 
     //list of branches
         public function addBranch(Request $request){
+            $request->validate([
+                "date" => 'required|date',
+                "name" => 'required|string',
+                "governorate" => 'required|string',
+                "major_general" => 'required|string',
+                "eleminate" => 'required|string',
+                "population" => 'required|integer'
+            ]);
+            
             Branch::Create([
                 'orgnization_id' => session('orgnization_id'),
                 'date' => $request->date,
@@ -170,6 +193,15 @@ class OrgnizationController extends Controller
 
 
         public function amendBranch(Request $request, $id){     
+            $request->validate([
+                "date" => 'required|date',
+                "name" => 'required|string',
+                "governorate" => 'required|string',
+                "major_general" => 'required|string',
+                "eleminate" => 'required|string',
+                "population" => 'required|integer'
+            ]);
+            
             $branch = Branch::find($id);
 
             $branch->date = $request->date;
@@ -192,6 +224,11 @@ class OrgnizationController extends Controller
 
 //ADMINISTRATIVE BOARD PAGE --------------------------------------------------
     public function amendPresident(Request $request){
+        $request->validate([
+            "name" => 'required|string',
+            "national_id" => 'required|integer'
+        ]);
+        
         $orgnization = Orgnization::find(session('orgnization_id'));
         $president = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president')->first();
         $president_national_id = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president_national_id')->first();
@@ -205,6 +242,13 @@ class OrgnizationController extends Controller
 
 
     public function amendAdminInfo(Request $request){
+        $request->validate([
+            "mentioned_members" => 'required|integer',
+            "quorum" => 'required|integer',
+            "term" => 'required|integer',
+            "election_date" => 'required|date'
+        ]);
+        
         $orgnization = Orgnization::find(session('orgnization_id'));
         $num_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'num_members')->first();
         $mentioned_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'mentioned_members')->first();
@@ -230,6 +274,18 @@ class OrgnizationController extends Controller
 
     //list of board members
         public function addMember(Request $request){
+            $request->validate([
+                "name" => 'required|string',
+                "national_id" => 'required|integer',
+                "gender" => 'required|string',
+                "birthday" => 'required|date',
+                "work" => 'required|string',
+                "degree" => 'required|string',
+                "major" => 'required|string',
+                "phone" => 'required|integer',
+                "election_date" => 'required|date'
+            ]);
+            
             Member::Create([
                 'orgnization_id' => session('orgnization_id'),
                 'name' => $request->name,
@@ -247,6 +303,18 @@ class OrgnizationController extends Controller
 
 
         public function amendMember(Request $request, $id){     
+            $request->validate([
+                "name" => 'required|string',
+                "national_id" => 'required|integer',
+                "gender" => 'required|string',
+                "birthday" => 'required|date',
+                "work" => 'required|string',
+                "degree" => 'required|string',
+                "major" => 'required|string',
+                "phone" => 'required|integer',
+                "election_date" => 'required|date'
+            ]);
+            
             $member = Member::find($id);
 
             $member->name = $request->name;
@@ -271,6 +339,11 @@ class OrgnizationController extends Controller
 
 //GENERAL AUTHORITY PAGE -----------------------------------------------------
     public function amendAssemblyInfo(Request $request){
+        $request->validate([
+            "assembly_male" => 'required|integer',
+            "assembly_female" => 'required|integer'
+        ]);
+        
         $orgnization = Orgnization::find(session('orgnization_id'));
         $assembly_male = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_male')->first();
         $assembly_female = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_female')->first();
@@ -285,6 +358,16 @@ class OrgnizationController extends Controller
 
     //list of general assembly meetings
         public function addMeeting(Request $request){
+            
+            $request->validate([
+                "num" => "required|integer",
+                "date" => "required|date",
+                "type" => "required|string",
+                "attendees" => "required|integer",
+                "alternate_number" => "required|integer",
+                "decisions" => "required|string"
+            ]);
+            
             $meeting = AuthorityMeeting::Create([
                 'orgnization_id' => session('orgnization_id'),
                 'meeting_num' => $request->num,
@@ -294,10 +377,21 @@ class OrgnizationController extends Controller
                 'alternate' => $request->alternate_number,
                 'decisions' => $request->decisions, ]);
 
-                return redirect('orgnization/authority');}
+            return redirect('orgnization/authority');}
 
                 
         public function amendMeeting(Request $request, $id){   
+
+            
+            $request->validate([
+                "num" => "required|integer",
+                "date" => "required|date",
+                "type" => "required|string",
+                "attendees" => "required|integer",
+                "alternate_number" => "required|integer",
+                "decisions" => "required|string"
+            ]);
+            
             $meeting = AuthorityMeeting::find($id);
 
             $meeting->meeting_num = $request->num;
@@ -320,6 +414,11 @@ class OrgnizationController extends Controller
 //EMPLOYEES PAGE -------------------------------------------------------------
 
     public function amendVolunteers(Request $request){
+        $request->validate([
+            "male" => 'required|integer',
+            "female" => "required|integer"
+        ]);
+        
         $orgnization = Orgnization::find(session('orgnization_id'));
         $male_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_volunteers')->first();
         $female_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_volunteers')->first();
@@ -334,6 +433,13 @@ class OrgnizationController extends Controller
 
     //list of salaried employees
         public function addEmployee(Request $request){
+            $request->validate([
+                "name" => "required|string",
+                "qualification" => "required|string",
+                "title" => "required|string",
+                "gender" => "required|string"
+            ]);
+            
             Employee::Create([
                 'orgnization_id' => session('orgnization_id'),
                 'name' => $request->name,
@@ -345,6 +451,13 @@ class OrgnizationController extends Controller
 
 
         public function amendEmployee(Request $request, $id){  
+            $request->validate([
+                "name" => "required|string",
+                "qualification" => "required|string",
+                "title" => "required|string",
+                "gender" => "required|string"
+            ]);
+            
             $employee = Employee::find($id);
             $employee->name = $request->name;
             $employee->qualification = $request->qualification;
@@ -363,6 +476,16 @@ class OrgnizationController extends Controller
     
 //DONORS PAGE ----------------------------------------------------------------
     public function addDonor(Request $request){
+
+        $request->validate([
+            "name" => 'required|string',
+            "nationality" => 'required|string',
+            "type" => 'required|string',
+            "financing_characteristic" => 'required|string',
+            "date" => 'required|date',
+            "amount" => 'required|integer',
+        ]);
+        
         FinancingEntity::Create([
             'orgnization_id' => session('orgnization_id'),
             'name' => $request->name,
@@ -377,6 +500,15 @@ class OrgnizationController extends Controller
 
 
     public function amendDonor(Request $request, $id){         
+        $request->validate([
+            "name" => 'required|string',
+            "nationality" => 'required|string',
+            "type" => 'required|string',
+            "financing_characteristic" => 'required|string',
+            "date" => 'required|date',
+            "amount" => 'required|integer',
+        ]);
+        
         $donor = FinancingEntity::find($id);
 
         $donor->name = $request->name;

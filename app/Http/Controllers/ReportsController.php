@@ -30,6 +30,12 @@ use App\Models\Event;
 class ReportsController extends Controller
 {
     public function generateDonor(Request $request) {
+        $request->validate([
+            'id' => 'required|integer',
+            'date' => 'required|date',
+            'language' => 'required|string'
+        ]);
+        
         $user = User::with(['orgnization'])->find(session('user_id'));
 
         $oneWeekAfter = date('Y-m-d', strtotime('+1 week', strtotime($request->date)));

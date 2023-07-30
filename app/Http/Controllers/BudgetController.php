@@ -103,6 +103,11 @@ class BudgetController extends Controller
 
     public function amendInfo(Request $request)
     {
+        $request->validate([
+            "beginning_balance" => "required|integer",
+            "auditor" => "required|string"
+        ]);
+        
         $organization = Orgnization::find(session('orgnization_id'));
         $beginning_balance = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'beginning_balance')->first();
         //$final_balance = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'final_balance')->first();
@@ -120,6 +125,16 @@ class BudgetController extends Controller
 
     public function amendRev(Request $request, $target)
     {
+        $request->validate([
+            "local_financing" => "required|decimal:0,3",
+            "foreign_financing" => "required|decimal:0,3",
+            "project_revenue" => "required|decimal:0,3",
+            "subscriptions" => "required|decimal:0,3",
+            "bank_interest" => "required|decimal:0,3",
+            "immoveable_properties" => "required|decimal:0,3",
+            "other" => "required|decimal:0,3"
+        ]);
+        
         $organization = Orgnization::find(session('orgnization_id'));
         $rev = revenue::where('organization_id', $organization->id)->where('quarter', $target)->first();
         
@@ -137,6 +152,15 @@ class BudgetController extends Controller
 
     public function amendEx(Request $request, $target)
     {
+        $request->validate([
+            "salaries" => "required|decimal:0,3",
+            "deprications" => "required|decimal:0,3",
+            "office_expenses" => "required|decimal:0,3",
+            "rent" => "required|decimal:0,3",
+            "maintenance" => "required|decimal:0,3",
+            "other" => "required|decimal:0,3"
+        ]);
+        
         $organization = Orgnization::find(session('orgnization_id'));
         $ex = expenses::where('organization_id', $organization->id)->where('quarter', $target)->first();
         

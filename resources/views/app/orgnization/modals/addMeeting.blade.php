@@ -1,4 +1,4 @@
-<form class="form" action="{{ url('orgnization/authority/addMeeting') }}" method="POST">
+<form class="form" action="{{ url('orgnization/authority/addMeeting') }}" method="POST" id="addMeetingForm">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
         <h2 class="fw-bold">إضافة إجتماع</h2>
@@ -61,4 +61,35 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
     flatpickr("input[type=datetime-local]");
+
+    document.getElementById('addMeetingForm').addEventListener('submit', function (event) {
+        // Prevent the form from submitting by default
+        event.preventDefault();
+
+        // Get the form element
+        var form = event.target;
+
+        // Perform manual validation by checking if the required fields are not empty
+        var numInput = form.elements.num;
+        var dateInput = form.elements.date;
+        var typeInput = form.elements.type;
+        var attendeesInput = form.elements.attendees;
+        var alternateNumberInput = form.elements.alternate_number;
+        var decisionsInput = form.elements.decisions;
+
+        if (
+            numInput.value.trim() === '' ||
+            dateInput.value.trim() === '' ||
+            typeInput.value.trim() === '' ||
+            attendeesInput.value.trim() === '' ||
+            alternateNumberInput.value.trim() === '' ||
+            decisionsInput.value.trim() === ''
+        ) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        // If all fields are filled, submit the form
+        form.submit();
+    });
 </script>
