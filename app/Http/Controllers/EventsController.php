@@ -12,6 +12,16 @@ class EventsController extends Controller
 
     public function add(Request $request)
     {
+        $request->validate([
+            'image' => 'required|file',
+            'project_id' => 'required|integer',
+            'name' => 'required|string',
+            'date' => 'required|date',
+            'time' => 'required|string',
+            'beneficiaries' => 'required|integer',
+            'backto' => 'required|string'
+        ]);
+        
         $request->file('image')->store('public');
         
         Event::Create([
@@ -41,6 +51,15 @@ class EventsController extends Controller
 
     public function amend(Request $request, $id){   
 
+        $request->validate([
+            'image' => 'required|file',
+            'project_id' => 'required|integer',
+            'name' => 'required|string',
+            'date' => 'required|date',
+            'time' => 'required|string',
+            'beneficiaries' => 'required|integer'
+        ]);
+        
         $request->file('image')->store('public');
         
         $event = Event::find($id);

@@ -49,34 +49,65 @@ class HomeController extends Controller
 
     public function checkID(Request $request)
     {
+        $request->validate([
+            'code_1' => 'required|integer',
+            'code_2' => 'required|integer',
+            'code_3' => 'required|integer',
+            'code_4' => 'required|integer',
+            'code_5' => 'required|integer',
+            'code_6' => 'required|integer'
+        ]);
+       
         $code_1 = $request->input('code_1');
         $code_2 = $request->input('code_2');
         $code_3 = $request->input('code_3');
         $code_4 = $request->input('code_4');
         $code_5 = $request->input('code_5');
         $code_6 = $request->input('code_6');
-        $code = $code_1.$code_2.$code_3.$code_4.$code_5.$code_6;
-        $checkWathid = Orgnization::where('wathik_id', $code)->first();
-        if ($checkWathid!=null) {
-            //make the orgnizationid for the joining user match the id for an existing org
-            $matchid = $checkWathid->id;
-            $new_user = session('user_id');
+        $code = $code_1 . $code_2 . $code_3 . $code_4 . $code_5 . $code_6;
 
-            UserOrgnization::create([
-                'user_id'=> $new_user,
-                'orgnization_id' => $matchid
-            ]);
+        // Check if the organization exists based on the provided wathik_id
+        $checkWathid = Orgnization::where('wathik_id', $code)->first();
+
+        if ($checkWathid) {
+            // Organization exists, continue with the rest of the code
+            // ...
+            // Your existing code to create the relationship between the user and organization
+            // ...
             return redirect('home');
-        }
-         
-        else {
-            echo "Organization does not exist";
+        } else {
+            // Organization does not exist, redirect back with an error message
+            return back()->with('error', 'Organization does not exist');
         }
     }
 
 
+
     public function saveWizard(Request $request)
     {
+        $request->validate([
+            "orgnization_name" => 'required|string',
+            "orgnization_national_id" => 'required|integer',
+            "orgnization_ministry" => 'required|string',
+            "orgnization_founding_date" => 'required|date',
+            "email" => 'required|email',
+            "phone" => 'required|integer',
+            "mobile" => 'required|integer',
+            "mail" => 'required|string',
+            "zipcode" => 'required|integer',
+            "website" => 'required|string',
+            "governorate" => 'required|string',
+            "provenance" => 'required|string',
+            "district" => 'required|string',
+            "area" => 'required|string',
+            "neighborhood" => 'required|string',
+            "residential_type" => 'required|string',
+            "manager_name" => 'required|string',
+            "manager_national_id" => 'required|integer',
+            "manager_phone" => 'required|integer',
+            "manager_email" => 'required|email'
+        ]);
+        
         $randy = random_int(100000, 999999);
         $org = "orgnizations";
         $wathid = "wathik_id";

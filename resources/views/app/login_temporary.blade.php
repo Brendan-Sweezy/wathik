@@ -40,7 +40,24 @@
                 <div class="d-flex flex-center flex-column flex-lg-row-fluid">
                     <!--begin::Wrapper-->
                     <div class="w-lg-500px p-10">
-                        <form class="form w-100" novalidate="novalidate" id="loginForm"
+                    <!-- Your view content here -->
+
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <!-- Your view content here -->
+    
+                    
+                    <form class="form w-100" novalidate="novalidate" id="loginForm"
                         method='POST' action="{{ url('/authenticate')}}" encrypt='multipart/form-data'>
                             <!--begin::Body-->
                             {{ csrf_field()}}
@@ -95,13 +112,12 @@
                                         <!--end::Indicator label-->
                                       </a>
 
+                                    <!-- TODO: forgot password button
                                     <button type='button' id="forgot_password__button"
                                         class="btn btn-secondary btn-block me-2 flex-shrink-0">
-                                        <!--begin::Indicator label-->
                                         <span class="indicator-label" data-kt-translate="sign-in-submit">هل نسيت كلمة السر</span>
-                                        <!--end::Indicator label-->
                                     </button>
-                                    <!--end::Submit-->
+                                    -->
                                 </div>
                                 <!--end::Actions-->
                             </div>

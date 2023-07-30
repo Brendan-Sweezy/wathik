@@ -1,4 +1,4 @@
-<form class="form" action="{{ url('orgnization/managment/addMember') }}" method="POST">
+<form class="form" action="{{ url('orgnization/managment/addMember') }}" method="POST" id="addMemberForm">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <div class="modal-header" id="kt_modal_add_customer_header" dir="rtl">
         <h2 class="fw-bold">إضافة عضو مجلس إدارة</h2>
@@ -79,4 +79,44 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
     flatpickr("input[type=datetime-local]");
+</script>
+
+
+<script>
+    document.getElementById('addMemberForm').addEventListener('submit', function (event) {
+        // Prevent the form from submitting by default
+        event.preventDefault();
+
+        // Get the form element
+        var form = event.target;
+
+        // Perform manual validation by checking if the required fields are not empty
+        var nameInput = form.elements.name;
+        var nationalIdInput = form.elements.national_id;
+        var genderInput = form.elements.gender;
+        var birthdayInput = form.elements.birthday;
+        var workInput = form.elements.work;
+        var degreeInput = form.elements.degree;
+        var majorInput = form.elements.major;
+        var phoneInput = form.elements.phone;
+        var electionDateInput = form.elements.election_date;
+
+        if (
+            nameInput.value.trim() === '' ||
+            nationalIdInput.value.trim() === '' ||
+            genderInput.value.trim() === '' ||
+            birthdayInput.value.trim() === '' ||
+            workInput.value.trim() === '' ||
+            degreeInput.value.trim() === '' ||
+            majorInput.value.trim() === '' ||
+            phoneInput.value.trim() === '' ||
+            electionDateInput.value.trim() === ''
+        ) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        // If all fields are filled, submit the form
+        form.submit();
+    });
 </script>

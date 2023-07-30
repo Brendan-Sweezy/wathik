@@ -26,17 +26,32 @@ class LoginController extends Controller
     }
 
     public function authenticate(Request $request) {
-        //TODO: Error messages
-        $user = User::where('username', $request->username)->get();
-        if(count($user)) {
-            if(password_verify($request->password, $user[0]->password)) {
-                Session::put('user_id', $user[0]->id);
+        // Check if the user is already logged in
+        if (session('user_id')) {
+            return redirect()->route('home');
+        }
+
+        $request->validate([
+            'username' => 'required|string',
+            'password' => 'required|string'
+        ]);
+    
+        // Get the user by the provided username
+        $user = User::where('username', $request->username)->first();
+    
+        if ($user) {
+            // User exists, check if the password is correct
+            if (password_verify($request->password, $user->password)) {
+                // Password is correct, set the user_id in the session and redirect to the home page
+                Session::put('user_id', $user->id);
                 return redirect('home');
             } else {
-                echo "incorrect password";
+                // Password is incorrect, display error message
+                return back()->with('error', 'Incorrect password');
             }
         } else {
-            echo 'no user found';
+            // User does not exist, display error message
+            return back()->with('error', 'No user found');
         }
     }
 
@@ -47,21 +62,37 @@ class LoginController extends Controller
         return view('app.create_account');
     }
 
-    public function authenticateNewAccount(Request $request) {
-        $username = User::where('username', $request->username)->get();
-        if(count($username)) {
-            echo "Username Taken";
-        } else if($request->password != $request->password_confirm) {
-            echo "Passwords do not match";
-        } else {
-            $password = password_hash($request->password, PASSWORD_DEFAULT);        
+    public function authenticateNewAccount(Request $request){
+        
+        $request->validate([
+            'username' => 'required|string',
+            'password' => 'required|string',
+            'password_confirm' => 'required|string',
+            'email' => 'required|email',
+            'phone_number' => 'required|string'
+        ]);
+        
+        $username = User::where('username', $request->username)->first();
+
+        if ($username) {
+            // Username Taken
+            return redirect()->back()->with('error', 'Username already taken');
+        } elseif ($request->password != $request->password_confirm) {
+            // Passwords do not match
+            return redirect()->back()->with('error', 'Passwords do not match');
+        }else {
+            // Create the user
+            $password = password_hash($request->password, PASSWORD_DEFAULT);
+
             User::create([
                 'username' => $request->username,
                 'password' => $password,
                 'email' => $request->email,
                 'phone' => $request->phone_number
             ]);
-            return redirect('/login');
+
+            // Redirect with success message
+            return redirect('/login')->with('success', 'Account created successfully! You can now log in.');
         }
     }
 
@@ -70,64 +101,4 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect('/login');
     }
-    
-    
-    /*public function login(Request $request)
-    {
-        if (session('user_id')) {
-            return redirect()->route('home');
-        }
-        return view('app.login');
-    }*/
-
-
-
-    
-    /*public function authenticate(Request $request)
-    {
-        $user = User::where('mobile', $request->phone)->first();
-        if (empty($user)) {
-            $user = User::create(['mobile' => $request->phone]);
-        }
-        $user->otp = rand(100000, 999999);
-        // $user->otp = 123456;
-        $user->save();
-        try {
-            $sid = getenv("TWILIO_ACCOUNT_SID");
-            $token = getenv("TWILIO_AUTH_TOKEN");
-            $from = getenv("TWILIO_SENDER");
-            $twilio = new Client($sid, $token);
-            $message = $twilio->messages
-                ->create(
-                    "whatsapp:" . $user->mobile, // to
-                    [
-                        "from" => "whatsapp:" . $from,
-                        "body" => "اهلا بك في وثيق ، بامكانك استخدام الرمز " . $user->otp . " لتسجيل الدخول"
-                    ]
-                );
-            return json_encode(['status' => true]);
-        } catch (Exception $e) {
-            // echo $e->getCode() . ' : ' . $e->getMessage() . "<br>";
-            // die();
-            return json_encode(['status' => false]);
-        }
-    }
-
-    public function otplogin(Request $request)
-    {
-        $user = User::where('mobile', $request->phone)->first();
-        if ($user->otp == $request->code) {
-            Session::put('user_id', $user->id);
-            return json_encode(['status' => true]);
-        } else {
-            return json_encode(['status' => false, 'msg' => 'الرمز المدخل غير صحيح']);
-        }
-    }*/
-
-    /*public function logout(Request $request)
-    {
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/login');
-    }*/
 }

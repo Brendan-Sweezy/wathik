@@ -61,7 +61,7 @@
                     {{ $participant->phone }}
                 </td>
                 <td>
-                    {{ $participant->birthday }}
+                    {{ substr($participant->birthday, 0, 10) }}
                 </td>
                 <!--end::Name=-->
                 <!--begin::Action=-->

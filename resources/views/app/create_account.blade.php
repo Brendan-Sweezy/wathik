@@ -39,7 +39,20 @@
                 <div class="d-flex flex-center flex-column flex-lg-row-fluid">
                     <!--begin::Wrapper-->
                     <div class="w-lg-500px p-10">
-                        <form class="form w-100" novalidate="novalidate" id="loginForm"
+                        
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    
+                    <form class="form w-100" novalidate="novalidate" id="loginForm"
                         method='POST' action="{{ url('/createAccountAuthenticate')}}" encrypt='multipart/form-data'>
                             <!--begin::Body-->
                             {{ csrf_field()}}
@@ -141,6 +154,14 @@
         <!--end::Authentication - Two-stes-->
     </div>
     <!--end::Root-->
+
+    <!-- Your view content here -->
+
+    
+
+<!-- Your view content here -->
+
+
     <!--begin::Javascript-->
     <script>
         var hostUrl = "{{ asset('assets') }}/";
