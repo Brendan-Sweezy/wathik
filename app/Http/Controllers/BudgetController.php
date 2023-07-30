@@ -17,7 +17,7 @@ class BudgetController extends Controller
     {
         $user = User::with(['orgnization'])->find(session('user_id'));
         $organization = Orgnization::find(session('orgnization_id'));
-        $beginning_balance = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'beginning_balance')->value('info');
+        $beginning_balance = floatval(OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'beginning_balance')->value('info'));
         $final_balance = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'final_balance')->value('info');
         $auditor = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'auditor')->value('info');
 
@@ -57,7 +57,7 @@ class BudgetController extends Controller
     {
         $user = User::with(['orgnization'])->find(session('user_id'));
         $organization = Orgnization::find(session('orgnization_id'));
-        $beginning_balance = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'beginning_balance')->value('info');
+        $beginning_balance = floatval(OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'beginning_balance')->value('info'));
         $final_balance = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'final_balance')->value('info');
         $auditor = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'auditor')->value('info');
         

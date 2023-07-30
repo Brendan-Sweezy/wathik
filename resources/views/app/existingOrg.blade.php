@@ -89,11 +89,11 @@
                                     <!--end::Submit-->
                                 </div>
 
-
+                                <br>
                                 <div class="d-grid gap-2 mb-2">
                                     <!--begin::Wiz-->
                                     <a href='/wizard' id="create_account_button"
-                                        class="btn btn-secondary btn-block me-2 flex-shrink-0">
+                                        class="btn btn-primary btn-block me-2 flex-shrink-0">
                                         <!--begin::Indicator label-->
                                         <span class="indicator-label" data-kt-translate="sign-in-submit">لا, اود اضافة مؤسسة جديدة</span>
                                         <!--end::Indicator label-->

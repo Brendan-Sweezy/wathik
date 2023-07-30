@@ -8,6 +8,7 @@ use App\Models\Participant;
 use App\Models\Project;
 use App\Models\ProjectThreat;
 use App\Models\Threat;
+use App\Models\Orgnization;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
@@ -35,6 +36,10 @@ class ProjectsController extends Controller
         $project->beneficiaries = $beneficiary_num;
         $project->save();
         
+        if(session('orgnization_id') != $project->orgnization_id) {
+            return redirect()->back();
+        }
+
         return view('app.projects.view', [
             'id' => $id,
             'user' => $user,
@@ -53,6 +58,9 @@ class ProjectsController extends Controller
     public function amend(Request $request, $id){
         $user = User::with(['orgnization'])->find(session('user_id'));
         $project = Project::find($id);
+        if(session('orgnization_id') != $project->orgnization_id) {
+            return redirect()->back();
+        }
         $project->name = $request->name;
         $project->date = $request->date;
         $project->title = $request->title;

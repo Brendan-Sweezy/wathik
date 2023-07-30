@@ -392,7 +392,7 @@ class ReportsController extends Controller
 
         $auditor = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'auditor')->value('info');
 
-        $balance_beginning = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'beginning_balance')->value('info');;
+        $balance_beginning = floatval(OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'beginning_balance')->value('info'));
         $revenue = array_sum($budget_revenue_totals);
         $expenses = array_sum($budget_expenses_totals);
         $balance_ending = $balance_beginning + $revenue - $expenses;

@@ -13,8 +13,9 @@
                     </div>
                 </div>
                 <div class="text-center mb-1">
-                    <a href="/reports/generate" class="btn btn-sm btn-primary me-2">إصدار التقرير السنوي</a>
-                </div>
+                    <button type="button" class="btn btn-sm btn-primary me-2" data-bs-toggle="modal" 
+                        data-bs-target="#annualReport">إصدار التقرير السنوي</button>
+                </div> 
             </div>
         </div>
     </div>
@@ -38,6 +39,13 @@
             <div class="modal-dialog modal-dialog-centered mw-650px">
                 <div class="modal-content">
                     @include('app.reports.modals.weeklyReport')
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="annualReport" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered mw-650px">
+                <div class="modal-content">
+                    @include('app.reports.modals.annualReport')
                 </div>
             </div>
         </div>

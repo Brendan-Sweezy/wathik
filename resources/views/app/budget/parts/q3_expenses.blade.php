@@ -52,7 +52,7 @@
             </div>
             <div class="separator separator-dashed my-3"></div>
             <div class="row">
-                <div class="col-3">مجموع المصاریف￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼ التشغیلیة</div>
+                <div class="col-3">مجموع المصاریف التشغیلیة</div>
                 <div class="col">{{ $q3Ex->salaries + $q3Ex->deprications + $q3Ex->office_expenses + $q3Ex->rent + $q3Ex->maintenance + $q3Ex->other }}</div>
             </div>
         </div>
