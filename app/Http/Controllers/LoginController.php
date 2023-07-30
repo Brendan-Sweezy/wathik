@@ -62,14 +62,14 @@ class LoginController extends Controller
         return view('app.create_account');
     }
 
-    public function authenticateNewAccount(Request $request)
-    {
+    public function authenticateNewAccount(Request $request){
+        
         $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
             'password_confirm' => 'required|string',
-            'email' => 'required|string',
-            'phone' => 'required|string'
+            'email' => 'required|email',
+            'phone_number' => 'required|string'
         ]);
         
         $username = User::where('username', $request->username)->first();
