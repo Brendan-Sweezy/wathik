@@ -32,7 +32,7 @@
                                 <div class="d-flex align-items-center">
                                     <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="{{ $beneficiary_num }}">0</div>
                                 </div>
-                                <div class="fw-semibold fs-6 text-gray-400">Benficiaries</div>
+                                <div class="fw-semibold fs-6 text-gray-400">المشاركين</div>
                             </div>
                         </div>
                     </div>
