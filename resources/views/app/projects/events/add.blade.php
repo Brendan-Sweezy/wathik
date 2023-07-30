@@ -24,26 +24,31 @@
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">اسم النشاط</label>
                 <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="name" required />
+                @error('name')<span class="text-danger">{{ $message }}</span>@enderror
             </div>
             <div class="fv-row mb-7">
-                <label class="required fs-6 fw-semibold mb-2">>تاريخ النشاط<</label>
+                <label class="required fs-6 fw-semibold mb-2">تاريخ النشاط</label>
                 <input type="datetime-local" class="form-control" name="date" 
                     placeholder="يرجى الضغط لاختيار التاريخ" required />
+                    @error('name')<span class="text-danger">{{ $message }}</span>@enderror
             </div>
 
             
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">وقت النشاط</label>
                 <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="time" required />
+                @error('name')<span class="text-danger">{{ $message }}</span>@enderror
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">عدد المستفيدين</label>
                 <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="beneficiaries"
                     required />
+                    @error('name')<span class="text-danger">{{ $message }}</span>@enderror
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">تحميل صورة</label>
                 <input type="file" class="form-control form-control-solid" name="image" id='image' accept='images/*'/>
+                @error('name')<span class="text-danger">{{ $message }}</span>@enderror
             </div>
         </div>
     </div>

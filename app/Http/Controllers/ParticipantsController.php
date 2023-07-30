@@ -19,7 +19,7 @@ class ParticipantsController extends Controller
             'address' => 'required|string',
             'phone' => 'required|integer',
             'birthday' => 'required|date',
-            'backto' => 'require|string'
+            'backto' => 'required|string'
         ]);
         
         Participant::Create([
@@ -49,7 +49,7 @@ class ParticipantsController extends Controller
             'address' => 'required|string',
             'phone' => 'required|integer',
             'birthday' => 'required|date',
-            'backto' => 'require|string'
+            'backto' => 'required|string'
         ]);
         
         $participant = Participant::find($id);

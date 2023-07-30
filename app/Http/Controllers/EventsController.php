@@ -6,12 +6,30 @@ use App\Models\User;
 use App\Models\Event;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class EventsController extends Controller
 {
 
     public function add(Request $request)
     {
+
+        $validator = Validator::make($request->all(), [
+            'image' => 'required|file',
+            'project_id' => 'required|integer',
+            'name' => 'required|string',
+            'date' => 'required|date',
+            'time' => 'required|string',
+            'beneficiaries' => 'required|integer',
+            'backto' => 'required|string'
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $request->validate([
             'image' => 'required|file',
             'project_id' => 'required|integer',
@@ -50,6 +68,23 @@ class EventsController extends Controller
 
 
     public function amend(Request $request, $id){   
+
+
+        $validator = Validator::make($request->all(), [
+            'image' => 'required|file',
+            'project_id' => 'required|integer',
+            'name' => 'required|string',
+            'date' => 'required|date',
+            'time' => 'required|string',
+            'beneficiaries' => 'required|integer'
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+    
 
         $request->validate([
             'image' => 'required|file',
