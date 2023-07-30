@@ -1,5 +1,8 @@
+<div class="d-flex align-items-center justify-content-between mb-3">
 <button type="button" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal"
     data-bs-target="#addEvent">اضافة فعالية</button>
+    <h1 class="fw-bold">تفاصيل الانشطة لهذا المشروع</h1>
+</div>
 <div class="modal fade" id="addEvent" tabindex="-1" aria-hidden="true">
     <!--begin::Modal dialog-->
     <div class="modal-dialog modal-dialog-centered mw-650px">
@@ -21,7 +24,7 @@
             <th class="min-w-125px">تاريخ النشاط</th>
             <th class="min-w-125px">وقت النشاط</th>
             <th class="min-w-125px">عدد المستفيدين</th>
-            <th class="min-w-125px">images</th>
+            <th class="min-w-125px">صورة</th>
             <th class="text-start min-w-70px"></th>
         </tr>
         <!--end::Table row-->
