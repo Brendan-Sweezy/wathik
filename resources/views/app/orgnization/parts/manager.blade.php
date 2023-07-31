@@ -44,7 +44,13 @@
     </div>
 </div>
 
-<!-- popup to amend management info -->
-@section('managerModal')
 
-@endsection
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var triggerEditButton = {!! json_encode(session('trigger_edit_button')) !!};
+        if (triggerEditButton) {
+            $('#managerModal').modal('show');
+        }
+    });
+</script>

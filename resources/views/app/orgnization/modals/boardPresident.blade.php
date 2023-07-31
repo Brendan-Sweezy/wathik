@@ -30,13 +30,13 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">الرقم الوطني</label>
-                <input type="text" class="form-control form-control-solid" 
+                <input type="number" class="form-control form-control-solid" 
                     placeholder="الرقم الوطني" name="national_id" required
                     value='{{ $president_national_id->info }}'/>
             </div>
         </div>
     </div>
-    
+
     <div class="modal-footer flex-center">
         <button type="reset" onclick="$('#kt_modal_add_customer').modal('hide')"
             class="btn btn-light me-3">الغاء</button>

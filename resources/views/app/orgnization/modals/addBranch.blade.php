@@ -42,12 +42,12 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">التجمع السكاني</label>
-                <input type="text" class="form-control form-control-solid" name="population" required />
+                <input type="number" class="form-control form-control-solid" name="population" required />
             </div>
             
         </div>
     </div>
-    
+
     <div class="modal-footer flex-center">
         <button type="reset" onclick="$('#addBranch').modal('hide')"
             class="btn btn-light me-3">الغاء</button>

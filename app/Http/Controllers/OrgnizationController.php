@@ -80,6 +80,7 @@ class OrgnizationController extends Controller
         $assembly_female = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_female')->first();
         $male_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_volunteers')->first();
         $female_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_volunteers')->first();
+        $member = Member::find(0);
         
         $male_mems = count(Member::where('gender','male')->get());
         $female_mems = count(Member::where('gender','female')->get());
@@ -119,13 +120,14 @@ class OrgnizationController extends Controller
             'project_num' => $project_num,
             'event_num' => $event_num,
             'beneficiary_num' => $beneficiary_num,
+            'member' => $member
         ]);
     }
 
 
 /** ___________________________________________________________________     
  * 
- *      ALL THE STUPID ORGANIZATION EDITING THINGS ARE BELOW
+ *      ALL THE ORGANIZATION EDITING THINGS ARE BELOW
  *  ___________________________________________________________________ */
 
 
@@ -134,26 +136,12 @@ class OrgnizationController extends Controller
         $user = User::with(['orgnization'])->find(session('user_id'));
         $info = Orgnization::find(session('orgnization_id'));
 
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             "name" => "required|string",
             "national_id" => "required|integer",
             "ministry" => "required|string",
             "founding_date" => "required|date"
-        ], [
-            //required
-            'name.required' => 'Organization name is required',
-            'national_id.required' => 'Organization national ID is required',
-            'ministry.required' => 'Ministry is required',
-            'founding_date.required' => 'Founding date is required',
-            //valid format
-            'national_id.integer' => 'Organization national ID must be a number',
-            'founding_date.date' => 'Founding date must be a valid date',
         ]);
-
-        if ($validator->fails()) {
-            $request->session()->flash('trigger_edit_button', true);
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
         
 
         $info->name = $request->name;
@@ -166,14 +154,14 @@ class OrgnizationController extends Controller
 
 
     public function amendManager(Request $request){
+        $manager = OrgnizationManager::find(session('orgnization_id'));
+
         $request->validate([
             "name" => "required|string",
             "national_id" => "required|integer",
-            "phone" => "required|integer",
+            "phone" => "required|string",
             "email" => "required|email",
         ]);
-        
-        $manager = OrgnizationManager::find(session('orgnization_id'));
 
         $manager->name = $request->name;
         $manager->national_id = $request->national_id;
@@ -194,7 +182,7 @@ class OrgnizationController extends Controller
                 "eleminate" => 'required|string',
                 "population" => 'required|integer'
             ]);
-            
+
             Branch::Create([
                 'orgnization_id' => session('orgnization_id'),
                 'date' => $request->date,
@@ -217,7 +205,7 @@ class OrgnizationController extends Controller
                 "eleminate" => 'required|string',
                 "population" => 'required|integer'
             ]);
-            
+
             $branch = Branch::find($id);
 
             $branch->date = $request->date;
@@ -240,15 +228,18 @@ class OrgnizationController extends Controller
 
 //ADMINISTRATIVE BOARD PAGE --------------------------------------------------
     public function amendPresident(Request $request){
+        $orgnization = Orgnization::find(session('orgnization_id'));
+        $president = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president')->first();
+        $president_national_id = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president_national_id')->first();
+        
+        
         $request->validate([
             "name" => 'required|string',
             "national_id" => 'required|integer'
         ]);
-        
-        $orgnization = Orgnization::find(session('orgnization_id'));
-        $president = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president')->first();
-        $president_national_id = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president_national_id')->first();
 
+        
+        
         $president->info = $request->name;
         $president_national_id->info = $request->national_id;
 
@@ -258,13 +249,6 @@ class OrgnizationController extends Controller
 
 
     public function amendAdminInfo(Request $request){
-        $request->validate([
-            "mentioned_members" => 'required|integer',
-            "quorum" => 'required|integer',
-            "term" => 'required|integer',
-            "election_date" => 'required|date'
-        ]);
-        
         $orgnization = Orgnization::find(session('orgnization_id'));
         $num_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'num_members')->first();
         $mentioned_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'mentioned_members')->first();
@@ -274,13 +258,35 @@ class OrgnizationController extends Controller
         $male_mems = count(Member::where('gender','male')->get());
         $female_mems = count(Member::where('gender','female')->get());
 
-        //$num_members->info = $request->num_members;
+
+        $validator = Validator::make($request->all(), [
+            "mentioned_members" => 'required|integer',
+            "quorum" => 'required|integer',
+            "term" => 'required|integer',
+            "election_date" => 'required|date'
+        ], [
+            //required
+            'mentioned_members.required' => 'Mentioned members is required',
+            'quorum.required' => 'Quorum is required',
+            'term.required' => 'Term is required',
+            'election_date.required' => 'Election date is required',
+            //valid format
+            'mentioned_members.integer' => 'Mentioned members must be a number',
+            'quorum.integer' => 'Quorum must be a number',
+            'term.integer' => 'Term must be a number',
+            'election_date.date' => 'Election date must be in YYYY-MM-DD format',
+        ]);
+
+        if ($validator->fails()) {
+            $request->session()->flash('trigger_edit_button', true);
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+    
         $mentioned_members->info = $request->mentioned_members;
         $quorum->info = $request->quorum;
         $term->info = $request->term;
         $election_date->info = $request->election_date;
 
-        //$num_members->save();
         $mentioned_members->save();
         $quorum->save();
         $term->save();
@@ -298,7 +304,7 @@ class OrgnizationController extends Controller
                 "work" => 'required|string',
                 "degree" => 'required|string',
                 "major" => 'required|string',
-                "phone" => 'required|integer',
+                "phone" => 'required|string',
                 "election_date" => 'required|date'
             ]);
             
@@ -319,6 +325,9 @@ class OrgnizationController extends Controller
 
 
         public function amendMember(Request $request, $id){     
+            
+            $member = Member::find($id);
+
             $request->validate([
                 "name" => 'required|string',
                 "national_id" => 'required|integer',
@@ -327,11 +336,10 @@ class OrgnizationController extends Controller
                 "work" => 'required|string',
                 "degree" => 'required|string',
                 "major" => 'required|string',
-                "phone" => 'required|integer',
+                "phone" => 'required|string',
                 "election_date" => 'required|date'
             ]);
             
-            $member = Member::find($id);
 
             $member->name = $request->name;
             $member->national_id = $request->national_id;

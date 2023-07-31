@@ -51,7 +51,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">قيمة التمويل بالدينار</label>
-                <input type="text" class="form-control form-control-solid" 
+                <input type="number" class="form-control form-control-solid" 
                     placeholder="أدخل بالدينار" name="amount" required 
                     value="{{ $donor->amount }}"/>
             </div>

@@ -22,7 +22,7 @@
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">الرقم</label>
-                <input type="text" class="form-control form-control-solid" 
+                <input type="number" class="form-control form-control-solid" 
                     placeholder="Enter number" name="num" value='{{ $meeting->meeting_num }}' required/>
             </div>
             <div class="fv-row mb-7">
@@ -36,12 +36,12 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">عدد الحضور</label>
-                <input type="text" class="form-control form-control-solid" 
+                <input type="number" class="form-control form-control-solid" 
                     placeholder="Enter number of attendees" name="attendees" required value='{{ $meeting->attendees }}'/>
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">عدد الانابة</label>
-                <input type="text" class="form-control form-control-solid" 
+                <input type="number" class="form-control form-control-solid" 
                     placeholder="Enter number" name="alternate_number" required value='{{ $meeting->alternate }}'/>
             </div>
             <div class="fv-row mb-7">

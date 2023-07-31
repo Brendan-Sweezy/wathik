@@ -22,7 +22,7 @@
 
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">الرقم</label>
-                <input type="text" class="form-control form-control-solid" name="num" required />
+                <input type="number" class="form-control form-control-solid" name="num" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">تاریخ انعقاد اجتماع الھیئة العامة</label>
@@ -34,11 +34,11 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">عدد الحضور</label>
-                <input type="text" class="form-control form-control-solid" name="attendees" required />
+                <input type="number" class="form-control form-control-solid" name="attendees" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">عدد الانابة</label>
-                <input type="text" class="form-control form-control-solid" name="alternate_number"
+                <input type="number" class="form-control form-control-solid" name="alternate_number"
                     required />
             </div>
             <div class="fv-row mb-7">

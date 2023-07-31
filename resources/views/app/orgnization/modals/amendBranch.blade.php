@@ -50,7 +50,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">التجمع السكاني</label>
-                <input type="text" class="form-control form-control-solid" 
+                <input type="number" class="form-control form-control-solid" 
                     placeholder="Enter population" name="population" required 
                     value="{{ $branch->population }}"/>
             </div>

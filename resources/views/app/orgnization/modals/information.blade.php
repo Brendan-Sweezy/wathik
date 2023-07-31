@@ -30,7 +30,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">الرقم الوطني</label>
-                <input type="text" class="form-control form-control-solid" 
+                <input type="number" class="form-control form-control-solid" 
                     placeholder="إضغط هنا" name="national_id" required 
                     value="{{ $orgnization->national_id }}"/>
             </div>
@@ -46,19 +46,6 @@
             </div>
         </div>
     </div>
-
-    <!--begin::Display errors-->
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    <!--end::Display errors-->
-    <input type="hidden" name="trigger_edit_button" value="{{ session('trigger_edit_button') }}">
 
     
     <div class="modal-footer flex-center">

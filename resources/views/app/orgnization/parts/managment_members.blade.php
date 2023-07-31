@@ -86,7 +86,6 @@
                                 data-kt-menu="true">
 
 
-<!-- THIS PART DOESNT WORK I HATE MYSELF: -->
 
     <!-- EDIT MEMBER -->
         <div class="menu-item px-3">

@@ -26,13 +26,13 @@
 
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">عدد أعضاء الهية الإدارية الواردة في النظام الأساسي</label>
-                <input type="text" class="form-control form-control-solid" 
+                <input type="number" class="form-control form-control-solid" 
                     placeholder="إضغط هنا  " name="mentioned_members" required
                     value='{{ $mentioned_members->info }}'/>
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">النصاب القانوني</label>
-                <input type="text" class="form-control form-control-solid" 
+                <input type="number" class="form-control form-control-solid" 
                     placeholder="إضغط هنا  " name="quorum" required
                     value='{{ $quorum->info }}'/>
             </div>

@@ -119,7 +119,26 @@
     </div>
     
 </div>
+</div>
 
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var triggerEditButton = {!! json_encode(session('trigger_add_button')) !!};
+        if (triggerEditButton) {
+            $('#addBranch').modal('show');
+        }
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var triggerEditButton = {!! json_encode(session('trigger_edit_button')) !!};
+        if (triggerEditButton) {
+            $('#amendBranch{{ $branch->id }}').modal('show');
+        }
+    });
+</script>
 
 
 

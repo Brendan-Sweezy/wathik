@@ -26,7 +26,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">الرقم الوطني</label>
-                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="national_id" required />
+                <input type="number" class="form-control form-control-solid" placeholder="إضغط هنا" name="national_id" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">الجنس</label>
@@ -65,7 +65,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="modal-footer flex-center">
         <button type="reset" onclick="$('#boardInfo').modal('hide')"
             class="btn btn-light me-3">الغاء</button>

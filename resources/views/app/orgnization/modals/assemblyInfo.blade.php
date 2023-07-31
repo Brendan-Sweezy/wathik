@@ -24,14 +24,14 @@
 
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">عدد أعضاء الهيئة العامة الحالي (المسددين اشتراكاتهم)</label>
-                <input type="text" class="form-control form-control-solid" 
+                <input type="number" class="form-control form-control-solid" 
                     placeholder= "# أدخل" name="assembly_male" required
                     value='{{ $assembly_male->info }}'/>
             </div>
 
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">عدد أعضاء الهيئة العامة الذكور</label>
-                <input type="text" class="form-control form-control-solid" 
+                <input type="number" class="form-control form-control-solid" 
                     placeholder="# أدخل" name="assembly_female" required
                     value='{{ $assembly_female->info }}'/>
             </div>
