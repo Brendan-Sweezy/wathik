@@ -13,6 +13,7 @@ use App\Models\Employee;
 use App\Models\Project;
 use App\Models\Event;
 use App\Models\Branch;
+use Illuminate\Support\Facades\Validator;
 
 
 use Illuminate\Http\Request;
@@ -130,15 +131,30 @@ class OrgnizationController extends Controller
 
 //MAIN PAGE ------------------------------------------------------------------
     public function amendInfo(Request $request){
-        $request->validate([
+        $user = User::with(['orgnization'])->find(session('user_id'));
+        $info = Orgnization::find(session('orgnization_id'));
+
+        $validator = Validator::make($request->all(), [
             "name" => "required|string",
             "national_id" => "required|integer",
             "ministry" => "required|string",
             "founding_date" => "required|date"
+        ], [
+            //required
+            'name.required' => 'Organization name is required',
+            'national_id.required' => 'Organization national ID is required',
+            'ministry.required' => 'Ministry is required',
+            'founding_date.required' => 'Founding date is required',
+            //valid format
+            'national_id.integer' => 'Organization national ID must be a number',
+            'founding_date.date' => 'Founding date must be a valid date',
         ]);
+
+        if ($validator->fails()) {
+            $request->session()->flash('trigger_edit_button', true);
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
         
-        $user = User::with(['orgnization'])->find(session('user_id'));
-        $info = Orgnization::find(session('orgnization_id'));
 
         $info->name = $request->name;
         $info->national_id = $request->national_id;

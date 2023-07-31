@@ -18,7 +18,7 @@
                     data-bs-target="#infoModal">تعديل</button>
             </div>
         </div>
-
+        
         <!-- CONTENT -->
         <div class="card-body pt-1">
             <div class="row">
@@ -48,3 +48,14 @@
         </div>
     </div>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var triggerEditButton = {!! json_encode(session('trigger_edit_button')) !!};
+        if (triggerEditButton) {
+            $('#infoModal').modal('show');
+        }
+    });
+</script>

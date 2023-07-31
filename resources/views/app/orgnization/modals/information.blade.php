@@ -46,6 +46,20 @@
             </div>
         </div>
     </div>
+
+    <!--begin::Display errors-->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <!--end::Display errors-->
+    <input type="hidden" name="trigger_edit_button" value="{{ session('trigger_edit_button') }}">
+
     
     <div class="modal-footer flex-center">
         <button type="reset" onclick="$('#infoModal').modal('hide')"
