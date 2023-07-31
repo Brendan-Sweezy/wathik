@@ -109,3 +109,14 @@
 
     </tbody>
 </table>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script>
+     $(document).ready(function() {
+         var triggerEditButton = {!! json_encode(session('trigger_edit_button')) !!};
+         if (triggerEditButton) {
+             $('#addParticipant').modal('show');
+         }
+     });
+ </script>
+

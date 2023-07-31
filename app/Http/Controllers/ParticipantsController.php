@@ -17,6 +17,37 @@ class ParticipantsController extends Controller
             return redirect()->back();
         }
 
+        $validator = Validator::make($request->all(),[
+            'project_id' => 'required|integer',
+            'name' => 'required|string',
+            'gender' => 'required|string',
+            'department' => 'required|string',
+            'national_id' => 'required|integer',
+            'address' => 'required|string',
+            'phone' => 'required|integer',
+            'birthday' => 'required|date',
+            'backto' => 'required|string'
+        ], [
+            //required
+            'project_id.required' => 'Project ID is required',
+            'name.required' => 'Name is required',
+            'gender.required' => 'Gender is required',
+            'department.required' => 'Department is required',
+            'national_id.required' => 'National ID is required',
+            'address.required' => 'Address is required',
+            'phone.required' => 'Phone Number is required',
+            'birthday.required' => 'Birthdate is required',
+            //valid input
+            'project_id.integer' => 'Project ID is a number',
+            'national_id.integer' => 'National ID is number',
+            'phone.integer' => 'Phone Number is a number'
+        ]);
+
+        if ($validator->fails()) {
+            $request->session()->flash('trigger_edit_button', true);
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        
         $request->validate([
             'project_id' => 'required|integer',
             'name' => 'required|string',
@@ -28,6 +59,7 @@ class ParticipantsController extends Controller
             'birthday' => 'required|date',
             'backto' => 'required|string'
         ]);
+
         
         Participant::Create([
             'project_id' => $request->project_id,
@@ -39,6 +71,9 @@ class ParticipantsController extends Controller
             'phone' => $request->phone,
             'birthday' => $request->birthday,
         ]);
+
+
+
         if ($request->backto == 'wizard') {
             return redirect('/projects/addParticipants/' . $request->project_id);
         } else {
@@ -63,6 +98,7 @@ class ParticipantsController extends Controller
             'birthday' => 'required|date',
             'backto' => 'required|string'
         ]);
+        
         
         $participant = Participant::find($id);
 
