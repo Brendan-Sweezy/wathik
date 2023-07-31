@@ -23,35 +23,45 @@
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">اسم النشاط</label>
-                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="name" required />
-                @error('name')<span class="text-danger">{{ $message }}</span>@enderror
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="name" 
+                value="{{ old('name') }}" kl_vkbd_parsed="true"required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">تاريخ النشاط</label>
                 <input type="datetime-local" class="form-control" name="date" 
-                    placeholder="يرجى الضغط لاختيار التاريخ" required />
-                    @error('name')<span class="text-danger">{{ $message }}</span>@enderror
+                    placeholder="يرجى الضغط لاختيار التاريخ" 
+                    value="{{ old('date') }}" kl_vkbd_parsed="true"required />
             </div>
 
             
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">وقت النشاط</label>
-                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="time" required />
-                @error('name')<span class="text-danger">{{ $message }}</span>@enderror
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="time" 
+                value="{{ old('time') }}" kl_vkbd_parsed="true"required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">عدد المستفيدين</label>
                 <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="beneficiaries"
-                    required />
-                    @error('name')<span class="text-danger">{{ $message }}</span>@enderror
+                value="{{ old('beneficiaries') }}" kl_vkbd_parsed="true" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">تحميل صورة</label>
                 <input type="file" class="form-control form-control-solid" name="image" id='image' accept='images/*'/>
-                @error('name')<span class="text-danger">{{ $message }}</span>@enderror
             </div>
         </div>
     </div>
+    <!--begin::Display errors-->
+    @if ($errors->any())
+         <div class="alert alert-danger">
+             <ul>
+                 @foreach ($errors->all() as $error)
+                     <li>{{ $error }}</li>
+                 @endforeach
+             </ul>
+         </div>
+     @endif
+     <!--end::Display errors-->
+     <input type="hidden" name="trigger_edit_button" value="{{ session('trigger_edit_button') }}">
     <div class="modal-footer flex-center">
         <button type="reset" onclick="$('#addEvent').modal('hide')"
             class="btn btn-light me-3">الغاء</button>

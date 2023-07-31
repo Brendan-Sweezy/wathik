@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Participant;
 use Illuminate\Http\Request;
+use App\Models\Project;
+use Illuminate\Support\Facades\Validator;
 
 class ParticipantsController extends Controller
 {

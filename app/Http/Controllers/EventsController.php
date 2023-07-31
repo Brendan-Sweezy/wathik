@@ -27,12 +27,24 @@ class EventsController extends Controller
             'time' => 'required|string',
             'beneficiaries' => 'required|integer',
             'backto' => 'required|string'
+
+        ],[
+            //required
+            //'image.required' => 'required|file',
+            'project_id.required' => 'Project ID is required',
+            'name.required' => 'Project name is required',
+            'date.required' => 'Project start date is required',
+            'time.required' => 'Project length is required',
+            'beneficiaries.required' => '# of Beneficiaries is required',
+            //valid format
+            'project_id.integer' => 'Project ID is must be a number',
+            'time.integer' => 'Project length must be a number',
+            'beneficiaries.integer' => '# of Beneficiaries must be a number',
         ]);
     
         if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
+            $request->session()->flash('trigger_edit_button', true);
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
         $request->validate([
@@ -90,9 +102,8 @@ class EventsController extends Controller
         ]);
     
         if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
+            $request->session()->flash('trigger_edit_button', true);
+            return redirect()->back()->withErrors($validator)->withInput();
         }
     
 
