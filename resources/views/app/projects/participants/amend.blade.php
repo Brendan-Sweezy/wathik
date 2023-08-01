@@ -45,7 +45,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">رقم الهوية</label>
-                <input type="text" class="form-control form-control-solid" 
+                <input type="number" class="form-control form-control-solid" 
                     placeholder="إضغط هنا" name="national_id" required 
                     value="{{ $participant->national_id }}"/>
             </div>

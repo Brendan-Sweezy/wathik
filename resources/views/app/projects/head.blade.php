@@ -47,14 +47,14 @@
                                         data-bs-toggle="modal" data-bs-target="#deleteProject{{ $project->id }}" 
                                         class="nav-link text-active-primary ms-0 me-10 py-5">حذف هذا المشروع بشكل دائم</a>   
                                 </li>                                
-                            </ul>
-                            <div class="modal fade" id="deleteProject{{ $id }}" tabindex="-1" aria-hidden="true">
+                            </ul><!-- TODO: fix project deletion-->
+                            <!-- <div class="modal fade" id="deleteProject{{ $id }}" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered mw-650px">
                                     <div class="modal-content">
-                                        @include('app.projects.deleteProject')
+                                        //include('app.projects.deleteProject')//
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>   
                 </div>

@@ -41,7 +41,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">عدد المستفيدين</label>
-                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="beneficiaries"
+                <input type="number" class="form-control form-control-solid" placeholder="إضغط هنا" name="beneficiaries"
                 value="{{ old('beneficiaries') }}" kl_vkbd_parsed="true" required />
             </div>
             <div class="fv-row mb-7">

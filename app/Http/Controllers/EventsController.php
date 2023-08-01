@@ -137,11 +137,7 @@ class EventsController extends Controller
 
     public function delete($id){
 
-        $project = Project::find($request->project_id);
-        if(session('orgnization_id') != $project->orgnization_id) {
-            return redirect()->back();
-        }
         $event = Event::find($id);
         $event->delete();
-        return redirect('/projects/view/' . $event->project_id);}
+        return redirect()->back();}
 }

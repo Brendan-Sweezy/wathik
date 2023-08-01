@@ -40,7 +40,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">عدد المستفيدين</label>
-                <input type="text" class="form-control form-control-solid" 
+                <input type="number" class="form-control form-control-solid" 
                     placeholder="إضغط هنا" name="beneficiaries" required 
                     value="{{ $event->beneficiaries }}"/>
             </div>

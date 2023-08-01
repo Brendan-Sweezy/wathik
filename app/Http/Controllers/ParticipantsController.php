@@ -24,7 +24,7 @@ class ParticipantsController extends Controller
             'department' => 'required|string',
             'national_id' => 'required|integer',
             'address' => 'required|string',
-            'phone' => 'required|integer',
+            'phone' => 'required|string',
             'birthday' => 'required|date',
             'backto' => 'required|string'
         ], [
@@ -38,9 +38,7 @@ class ParticipantsController extends Controller
             'phone.required' => 'Phone Number is required',
             'birthday.required' => 'Birthdate is required',
             //valid input
-            'project_id.integer' => 'Project ID is a number',
             'national_id.integer' => 'National ID is number',
-            'phone.integer' => 'Phone Number is a number'
         ]);
 
         if ($validator->fails()) {
@@ -55,7 +53,7 @@ class ParticipantsController extends Controller
             'department' => 'required|string',
             'national_id' => 'required|integer',
             'address' => 'required|string',
-            'phone' => 'required|integer',
+            'phone' => 'required|string',
             'birthday' => 'required|date',
             'backto' => 'required|string'
         ]);
@@ -119,12 +117,8 @@ class ParticipantsController extends Controller
 
     public function delete($id){
 
-        $project = Project::find($request->project_id);
-        if(session('orgnization_id') != $project->orgnization_id) {
-            return redirect()->back();
-        }
 
         $participant = Participant::find($id);
         $participant->delete();
-        return redirect('/projects/view/' . $participant->project_id);}
+        return redirect()->back();}
 }

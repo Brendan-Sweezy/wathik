@@ -26,7 +26,7 @@
     
     <div class="fv-row mb-7" style="direction: rtl">
         <label class="required fs-6 fw-semibold mb-2">ميزانية</label>
-        <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="budget" required />
+        <input type="number" class="form-control form-control-solid" placeholder="إضغط هنا" name="budget" required />
     </div>
     <button type="submit" class="btn btn-primary">
         <span class="indicator-label">التالي</span>
