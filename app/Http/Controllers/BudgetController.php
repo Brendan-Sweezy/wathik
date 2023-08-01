@@ -103,10 +103,30 @@ class BudgetController extends Controller
 
     public function amendInfo(Request $request)
     {
-        $request->validate([
+        /*$request->validate([
             "beginning_balance" => "required|integer",
             "auditor" => "required|string"
         ]);
+        
+        $organization = Orgnization::find(session('orgnization_id'));
+        $beginning_balance = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'beginning_balance')->first();
+        $final_balance = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'final_balance')->first();
+        $auditor = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'auditor')->first();
+       
+        if ($beginning_balance !== null) {
+            $beginning_balance->info = $request->beginning_balance;
+            $beginning_balance->save();
+        }
+        
+        if ($auditor !== null) {
+            $auditor->info = $request->auditor;
+            $auditor->save();
+        }
+
+        //$beginning_balance->save();
+        //$final_balance->save();
+        //$auditor->save();
+        return redirect('budget/main');*/
         
         $organization = Orgnization::find(session('orgnization_id'));
         $beginning_balance = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'beginning_balance')->first();
@@ -114,7 +134,7 @@ class BudgetController extends Controller
         $auditor = OrgnizationInfo::where('orgnization_id', $organization->id)->where('type', 'auditor')->first();
        
         $beginning_balance->info = $request->beginning_balance;
-        $final_balance->info = $request->final_balance;
+        //$final_balance->info = $request->final_balance;
         $auditor->info = $request->auditor;
 
         $beginning_balance->save();

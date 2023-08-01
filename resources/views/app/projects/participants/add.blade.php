@@ -23,7 +23,8 @@
             data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">اسم المشارك</label>
-                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="name" required />
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="name" 
+                value="{{ old('name') }}" kl_vkbd_parsed="true"required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">الجنس</label>
@@ -36,28 +37,44 @@
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">القسم</label>
                 <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="department"
-                    required />
+                value="{{ old('department') }}" kl_vkbd_parsed="true" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">رقم الهوية</label>
                 <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="national_id"
-                    required />
+                value="{{ old('national_id') }}" kl_vkbd_parsed="true" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">العنوان</label>
-                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="address" required />
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="address" 
+                value="{{ old('address') }}" kl_vkbd_parsed="true" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">رقم الهاتف</label>
-                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="phone" required />
+                <input type="text" class="form-control form-control-solid" placeholder="إضغط هنا" name="phone" 
+                value="{{ old('phone') }}" kl_vkbd_parsed="true" required />
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">تاريخ الميلاد</label>
                 <input type="datetime-local" class="form-control" name="birthday" 
-                    placeholder="يرجى الضغط لاختيار التاريخ" required />
+                    placeholder="يرجى الضغط لاختيار التاريخ" value="{{ old('birthday') }}" kl_vkbd_parsed="true" required />
             </div>
         </div>
     </div>
+
+    <!--begin::Display errors-->
+    @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
+      <!--end::Display errors-->
+      <input type="hidden" name="trigger_edit_button" value="{{ session('trigger_edit_button') }}">
+
     <div class="modal-footer flex-center">
         <button type="reset" onclick="$('#addParticipant').modal('hide')"
             class="btn btn-light me-3">الغاء</button>

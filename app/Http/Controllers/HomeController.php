@@ -256,6 +256,8 @@ class HomeController extends Controller
         OrgnizationInfo::create(['orgnization_id' => $orgnization->id, 'type' => 'assembly_female', 'info' => '']);
         OrgnizationInfo::create(['orgnization_id' => $orgnization->id, 'type' => 'male_volunteers', 'info' => '']);
         OrgnizationInfo::create(['orgnization_id' => $orgnization->id, 'type' => 'female_volunteers', 'info' => '']);
+        OrgnizationInfo::create(['orgnization_id' => $orgnization->id, 'type' => 'beginning_balance', 'info' => '']);
+        OrgnizationInfo::create(['orgnization_id' => $orgnization->id, 'type' => 'auditor', 'info' => '']);
         
 
         for($i = 1; $i < 5; $i++) {
