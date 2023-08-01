@@ -163,6 +163,8 @@ class ReportsController extends Controller
     }
     
     public function generate() {
+       
+        
         $user = User::with(['orgnization'])->find(session('user_id'));
         
         //SQL Queries First Page
@@ -411,6 +413,7 @@ class ReportsController extends Controller
             $upcoming_project_beneficiaries[$i] = $upcoming_projects[$i]->beneficiaries;
             $upcoming_project_budgets[$i] = $upcoming_projects[$i]->budget;
         }
+
 
         
         
