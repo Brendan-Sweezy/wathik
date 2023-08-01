@@ -25,6 +25,7 @@ class OrgnizationController extends Controller
         $user = User::with(['orgnization'])->find(session('user_id'));
         $orgnization = Orgnization::find(session('orgnization_id'));
         $projects = Project::where('orgnization_id', session('orgnization_id'))->where('status', '!=', 'Upcoming')->get();
+        $branch = Branch::find(0);
         $id = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president_national_id')->first();
         $num_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'num_members')->first();
         $mentioned_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'mentioned_members')->first();
@@ -35,7 +36,7 @@ class OrgnizationController extends Controller
         $assembly_female = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'assembly_female')->first();
         $male_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'male_volunteers')->first();
         $female_volunteers = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'female_volunteers')->first();
-
+        
         $male_mems = count(Member::where('gender','male')->get());
         $female_mems = count(Member::where('gender','female')->get());
         $male_employees = count(Employee::where('orgnization_id', session('orgnization_id'))->where('gender','male')->get());
@@ -58,7 +59,8 @@ class OrgnizationController extends Controller
             'target' => 'main',
             'project_num' => $project_num,
             'event_num' => $event_num,
-            'beneficiary_num' => $beneficiary_num
+            'beneficiary_num' => $beneficiary_num,
+            'branch' => $branch,
         ]);
     }
 
@@ -67,6 +69,7 @@ class OrgnizationController extends Controller
         $user = User::with(['orgnization'])->find(session('user_id'));
         $orgnization = Orgnization::find(session('orgnization_id'));
         $projects = Project::where('orgnization_id', session('orgnization_id'))->where('status', '!=', 'Upcoming')->get();
+        $branch = Branch::find(0);
         $president = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president')->first();
         $id = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president_national_id')->first();
         $num_members = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'num_members')->first();
@@ -120,7 +123,8 @@ class OrgnizationController extends Controller
             'project_num' => $project_num,
             'event_num' => $event_num,
             'beneficiary_num' => $beneficiary_num,
-            'member' => $member
+            'member' => $member,
+            'branch' => $branch,
         ]);
     }
 
@@ -136,13 +140,23 @@ class OrgnizationController extends Controller
         $user = User::with(['orgnization'])->find(session('user_id'));
         $info = Orgnization::find(session('orgnization_id'));
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             "name" => "required|string",
             "national_id" => "required|integer",
             "ministry" => "required|string",
             "founding_date" => "required|date"
+        ], [
+            //required
+            'name.required' => 'Organization name is required',
+            'national_id.required' => 'Organization national ID is required',
+            'ministry.required' => 'Ministry is required',
+            'founding_date.required' => 'Founding date is required',
         ]);
         
+        if ($validator->fails()) {
+            $request->session()->flash('edit_information', true);
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $info->name = $request->name;
         $info->national_id = $request->national_id;
@@ -156,12 +170,25 @@ class OrgnizationController extends Controller
     public function amendManager(Request $request){
         $manager = OrgnizationManager::find(session('orgnization_id'));
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             "name" => "required|string",
             "national_id" => "required|integer",
             "phone" => "required|string",
-            "email" => "required|email",
+            "email" => "required|email"
+        ], [
+            //required
+            'name.required' => 'Organization name is required',
+            'national_id.required' => 'Organization national ID is required',
+            'phone.required' => 'Phone is required',
+            'email.required' => 'Email is required',
+            //valid format
+            'email.email' => 'Email must be a valid email address',
         ]);
+
+        if ($validator->fails()) {
+            $request->session()->flash('edit_management', true);
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $manager->name = $request->name;
         $manager->national_id = $request->national_id;
@@ -196,17 +223,31 @@ class OrgnizationController extends Controller
             return redirect('orgnization/main');}
 
 
-        public function amendBranch(Request $request, $id){     
-            $request->validate([
+        public function amendBranch(Request $request, $id){   
+            
+            $branch = Branch::find($id);
+
+            $validator = Validator::make($request->all(), [
                 "date" => 'required|date',
                 "name" => 'required|string',
                 "governorate" => 'required|string',
                 "major_general" => 'required|string',
                 "eleminate" => 'required|string',
                 "population" => 'required|integer'
+            ], [
+                //required
+                'date.required' => 'Date is required',
+                'name.required' => 'Name is required',
+                'governorate.required' => 'Governorate is required',
+                'major_general.required' => 'Major general is required',
+                'eleminate.required' => 'Eleminate is required',
+                'population.required' => 'Population is required',
+                
             ]);
-
-            $branch = Branch::find($id);
+            if ($validator->fails()) {
+                $request->session()->flash('edit_branches', true);
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
 
             $branch->date = $request->date;
             $branch->name = $request->name;
@@ -264,17 +305,6 @@ class OrgnizationController extends Controller
             "quorum" => 'required|integer',
             "term" => 'required|integer',
             "election_date" => 'required|date'
-        ], [
-            //required
-            'mentioned_members.required' => 'Mentioned members is required',
-            'quorum.required' => 'Quorum is required',
-            'term.required' => 'Term is required',
-            'election_date.required' => 'Election date is required',
-            //valid format
-            'mentioned_members.integer' => 'Mentioned members must be a number',
-            'quorum.integer' => 'Quorum must be a number',
-            'term.integer' => 'Term must be a number',
-            'election_date.date' => 'Election date must be in YYYY-MM-DD format',
         ]);
 
         if ($validator->fails()) {

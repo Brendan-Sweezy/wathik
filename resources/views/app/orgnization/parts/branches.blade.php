@@ -5,6 +5,12 @@
         </div>
         
 
+        <div class="alert alert-danger" id="errorAlert" style="display: none;">
+    <ul>
+        <li>New input was not saved due to errors</li>
+    </ul>
+</div>
+
     <!-- MODAL -->
         <div class="modal fade" id="addBranch" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered mw-650px">
@@ -122,23 +128,15 @@
 </div>
 
 
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        var triggerEditButton = {!! json_encode(session('trigger_add_button')) !!};
+        var triggerEditButton = {!! json_encode(session('edit_branches')) !!};
         if (triggerEditButton) {
-            $('#addBranch').modal('show');
+            // Show the error alert
+            $('#errorAlert').show();
         }
     });
 </script>
-<script>
-    $(document).ready(function() {
-        var triggerEditButton = {!! json_encode(session('trigger_edit_button')) !!};
-        if (triggerEditButton) {
-            $('#amendBranch{{ $branch->id }}').modal('show');
-        }
-    });
-</script>
-
-
 

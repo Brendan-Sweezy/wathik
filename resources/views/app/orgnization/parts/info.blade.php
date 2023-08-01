@@ -53,7 +53,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        var triggerEditButton = {!! json_encode(session('trigger_edit_button')) !!};
+        var triggerEditButton = {!! json_encode(session('edit_information')) !!};
         if (triggerEditButton) {
             $('#infoModal').modal('show');
         }

@@ -56,6 +56,19 @@
             </div>
         </div>
     </div>
+
+    <!--begin::Display errors-->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <!--end::Display errors-->
+    
     
     <div class="modal-footer flex-center">
         <button type="reset" onclick="$('#amendBranch{{ $branch->id }}').modal('hide')"
