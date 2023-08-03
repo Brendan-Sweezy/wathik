@@ -11,7 +11,7 @@
         "blade-ui-kit/blade-heroicons": "^2.1",
         "doctrine/dbal": "^3.6",
         "dompdf/dompdf": "^2.0",
-        "elibyy/tcpdf-laravel": "^10.0",
+        "elibyy/tcpdf-laravel": "*",
         "guzzlehttp/guzzle": "^7.2",
         "khaled.alshamaa/ar-php": "^6.3",
         "laravel/framework": "^9.19",

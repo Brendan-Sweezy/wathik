@@ -30,7 +30,7 @@
             </div>
             <div class="fv-row mb-7">
                 <label class="required fs-6 fw-semibold mb-2">الرقم الوطني</label>
-                <input type="number" class="form-control form-control-solid" 
+                <input type="text" class="form-control form-control-solid" 
                     placeholder="إضغط هنا" name="national_id" required 
                     value="{{ $orgnization->manager->national_id }}"/>
             </div>

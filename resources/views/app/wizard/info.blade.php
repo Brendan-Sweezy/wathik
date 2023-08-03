@@ -5,21 +5,22 @@
             </h2>
         </div>
         <div class="mb-10 fv-row fv-plugins-icon-container">
-            <label class="form-label mb-3">اسم الجمعية</label>
+            <label class="form-label mb-3 required">اسم الجمعية</label>
             <input type="text" class="form-control form-control-lg form-control-solid" name="orgnization_name"
-                placeholder="" value="{{ old('orgnization_name') }}" kl_vkbd_parsed="true" required>
+                placeholder="organization name" value="{{ old('orgnization_name') }}" kl_vkbd_parsed="true" required>
             <div class="fv-plugins-message-container invalid-feedback"></div>
         </div>
         <div class="mb-10 fv-row fv-plugins-icon-container">
-            <label class="form-label mb-3">الرقم الوطني</label>
-            <input type="number" class="form-control form-control-lg form-control-solid" name="orgnization_national_id"
-                placeholder="" value="{{ old('orgnization_national_id') }}" kl_vkbd_parsed="true" required>
+            <label class="form-label mb-3 required">الرقم الوطني</label>
+            <input type="text" class="form-control form-control-lg form-control-solid" name="orgnization_national_id"
+                placeholder="organization national id" value="{{ old('orgnization_national_id') }}" kl_vkbd_parsed="true" required>
             <div class="fv-plugins-message-container invalid-feedback"></div>
         </div>
         <div class="mb-10 fv-row fv-plugins-icon-container">
-            <label class="form-label mb-3">الوزارة المختصة</label>
+            <label class="form-label mb-3 required">الوزارة المختصة</label>
             <select type="text" class="form-control form-control-lg form-control-solid" name="orgnization_ministry"
-                placeholder="" value="{{ old('orgnization_ministry') }}" kl_vkbd_parsed="true" required>
+                value="{{ old('orgnization_ministry') }}" kl_vkbd_parsed="true" required>
+                <option value="" disabled selected>select an option</option>
                 <option value="وزارة التعليم العالي والبحث العلمي">وزارة التعليم العالي والبحث العلمي</option>
                 <option value="وزارة المالية">وزارة المالية</option>
                 <option value="وزارة الخارجية وشؤون المغتربين">وزارة الخارجية وشؤون المغتربين</option>
@@ -46,9 +47,9 @@
             <div class="fv-plugins-message-container invalid-feedback"></div>
         </div>
         <div class="mb-10 fv-row fv-plugins-icon-container">
-            <label class="form-label mb-3">تاريخ التأسيس</label>
+            <label class="form-label mb-3 required">تاريخ التأسيس</label>
             <input type="datetime-local" class="form-control form-control-lg form-control-solid"
-                name="orgnization_founding_date" placeholder="" value="{{ old('orgnization_founding_date') }}" kl_vkbd_parsed="true">
+                name="orgnization_founding_date" placeholder="founding date" value="{{ old('orgnization_founding_date') }}" kl_vkbd_parsed="true">
             <div class="fv-plugins-message-container invalid-feedback"></div>
             <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
             <script>

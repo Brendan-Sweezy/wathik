@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Orgnization;
 use App\Models\OrgnizationManager;
 use App\Models\OrgnizationInfo;
+use App\Models\OrgnizationContact;
+use App\Models\OrgnizationAddress;
 use App\Models\Member;
 use App\Models\AuthorityMeeting;
 use App\Models\FinancingEntity;
@@ -24,6 +26,16 @@ class OrgnizationController extends Controller
     {
         $user = User::with(['orgnization'])->find(session('user_id'));
         $orgnization = Orgnization::find(session('orgnization_id'));
+
+        //contacts
+        $orgEmail = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'email')->first();
+        $orgPhone = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'phone')->first();
+        $orgMobile = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'mobile')->first();
+        $orgMail = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'mail')->first();
+        $orgZipcode = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'zipcode')->first();
+        $orgWebsite = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'website')->first();
+
+        $address = OrgnizationAddress::where('orgnization_id', session('orgnization_id'))->first();
         $projects = Project::where('orgnization_id', session('orgnization_id'))->where('status', '!=', 'Upcoming')->get();
         $branch = Branch::find(0);
         $id = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president_national_id')->first();
@@ -61,6 +73,13 @@ class OrgnizationController extends Controller
             'event_num' => $event_num,
             'beneficiary_num' => $beneficiary_num,
             'branch' => $branch,
+            'orgEmail' => $orgEmail,
+            'orgPhone' => $orgPhone,
+            'orgMobile' => $orgMobile,
+            'orgMail' => $orgMail,
+            'orgZipcode' => $orgZipcode,
+            'orgWebsite' => $orgWebsite, 
+            'address' => $address,   
         ]);
     }
 
@@ -68,6 +87,17 @@ class OrgnizationController extends Controller
     {
         $user = User::with(['orgnization'])->find(session('user_id'));
         $orgnization = Orgnization::find(session('orgnization_id'));
+
+        //contacts
+        
+        $orgEmail = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'email')->first();
+        $orgPhone = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'phone')->first();
+        $orgMobile = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'mobile')->first();
+        $orgMail = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'mail')->first();
+        $orgZipcode = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'zipcode')->first();
+        $orgWebsite = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'website')->first();
+
+        $address = OrgnizationAddress::where('orgnization_id', session('orgnization_id'))->first();
         $projects = Project::where('orgnization_id', session('orgnization_id'))->where('status', '!=', 'Upcoming')->get();
         $branch = Branch::find(0);
         $president = OrgnizationInfo::where('orgnization_id', $orgnization->id)->where('type', 'president')->first();
@@ -125,6 +155,13 @@ class OrgnizationController extends Controller
             'beneficiary_num' => $beneficiary_num,
             'member' => $member,
             'branch' => $branch,
+            'orgEmail' => $orgEmail,
+            'orgPhone' => $orgPhone,
+            'orgMobile' => $orgMobile,
+            'orgMail' => $orgMail,
+            'orgZipcode' => $orgZipcode,
+            'orgWebsite' => $orgWebsite,  
+            'address' => $address,
         ]);
     }
 
@@ -196,6 +233,85 @@ class OrgnizationController extends Controller
         $manager->email = $request->email;
 
         $manager->save();
+        return redirect('orgnization/main');}
+
+    public function amendContact(Request $request){
+        $user = User::with(['orgnization'])->find(session('user_id'));
+
+        //contacts
+        $orgEmail = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'email')->first();
+        $orgPhone = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'phone')->first();
+        $orgMobile = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'mobile')->first();
+        $orgMail = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'mail')->first();
+        $orgZipcode = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'zipcode')->first();
+        $orgWebsite = OrgnizationContact::where('orgnization_id', session('orgnization_id'))->where('type', 'website')->first();
+
+        $validator = Validator::make($request->all(), [
+            "email" => "required|email",
+            "phone" => "required|string",
+        ], [
+            //required
+            'email.required' => 'Organization email is required',
+            'phone.required' => 'Organization phone number is required',
+
+            //valid format
+            'email.email' => 'Email must be a valid email address',
+        ]);
+        
+        if ($validator->fails()) {
+            $request->session()->flash('edit_contact', true);
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $orgEmail->contact = $request->email;
+        $orgPhone->contact = $request->phone;
+        $orgMobile->contact = $request->mobile;
+        $orgMail->contact = $request->mail;
+        $orgZipcode->contact = $request->zipcode;
+        $orgWebsite->contact = $request->website;
+
+        $orgEmail->save();
+        $orgPhone->save();
+        $orgMobile->save();
+        $orgMail->save();
+        $orgZipcode->save();
+        $orgWebsite->save();
+
+        return redirect('orgnization/main');}
+
+    public function amendAddress(Request $request){
+        $user = User::with(['orgnization'])->find(session('user_id'));
+        $address = OrgnizationAddress::where('orgnization_id', session('orgnization_id'))->first();
+
+        $validator = Validator::make($request->all(), [
+            "governorate" => "required|string",
+            "provenance" => "string",
+            "district" => "string",
+            "area" => "string",
+            "neighborhood" => "required|string",
+            "residential_type" => "required|string",
+        ], [
+            //required
+            'governorate.required' => 'governorate is required',
+            'neighborhood.required' => 'neighborhood is required',
+            'residential_type.required' => 'residential type is required',
+        ]);
+        
+        if ($validator->fails()) {
+            $request->session()->flash('edit_address', true);
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $address->governorate = $request->governorate;
+        $address->provenance = $request->provenance;
+        $address->district = $request->district;
+        $address->area = $request->area;
+        $address->neighborhood = $request->neighborhood;
+        $address->residential_type = $request->residential_type;
+
+        $address->save();
+        
+
         return redirect('orgnization/main');}
 
 

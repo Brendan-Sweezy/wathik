@@ -77,6 +77,8 @@ Route::middleware(['userSession'])
         Route::get("/", 'home')->name('orgnization');
         Route::get("/{target}", 'view')->name('orgnization');
         Route::post("/amendManager", 'amendManager');
+        Route::post("/amendContact", 'amendContact');
+        Route::post("/amendAddress", 'amendAddress');
         Route::post("/amendInfo", 'amendInfo');
         Route::post("/addBranch", 'addBranch');
         Route::get("/delete/{id}", 'deleteBranch');
@@ -90,7 +92,7 @@ Route::middleware(['userSession'])
         Route::post("/authority/addMeeting", 'addMeeting');
         Route::post("/authority/amendMeeting/{id}", 'amendMeeting');
         Route::get("/authority/delete/{id}", 'deleteMeeting');
-        //Route::post("/employees/amendEmployees", 'amendEmployees');
+        Route::post("/employees/amendEmployees", 'amendEmployees');
         Route::post("/employees/amendVolunteers", 'amendVolunteers');
         Route::post("/funding/addDonor", 'addDonor');
         Route::post("/funding/amendDonor/{id}", 'amendDonor');

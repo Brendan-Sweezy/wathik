@@ -88,22 +88,19 @@ class HomeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             "orgnization_name" => 'required|string',
-            "orgnization_national_id" => 'required|integer',
+            "orgnization_national_id" => 'required|string',
             "orgnization_ministry" => 'required|string',
             "orgnization_founding_date" => 'required|date',
+
             "email" => 'required|email',
             "phone" => 'required|string',
-            "mail" => 'required|string',
-            "zipcode" => 'required|integer',
-            "website" => 'required|string',
+
             "governorate" => 'required|string',
-            "provenance" => 'required|string',
-            "district" => 'required|string',
-            "area" => 'required|string',
             "neighborhood" => 'required|string',
             "residential_type" => 'required|string',
+
             "manager_name" => 'required|string',
-            "manager_national_id" => 'required|integer',
+            "manager_national_id" => 'required|string',
             "manager_phone" => 'required|string',
             "manager_email" => 'required|email'
         ], [
@@ -112,27 +109,22 @@ class HomeController extends Controller
             'orgnization_national_id.required' => 'Organization national ID is required',
             'orgnization_ministry.required' => 'Ministry is required',
             'orgnization_founding_date.required' => 'Founding date is required',
+
             'email.required' => 'Organization email is required',
             'phone.required' => 'Organization phone number is required',
-            'mail.required' => 'Mailbox is required',
-            'zipcode.required' => 'Zipcode is required',
-            'website.required' => 'Website is required',
+
             'governorate.required' => 'Governorate is required',
-            'provenance.required' => 'Provenance is required',
-            'district.required' => 'District is required',
-            'area.required' => 'Area is required',
             'neighborhood.required' => 'Neighborhood is required',
             'residential_type.required' => 'Residential type is required',
+
             'manager_name.required' => 'Manager name is required',
             'manager_national_id.required' => 'Manager national ID is required',
             'manager_phone.required' => 'Manager phone is required',
             'manager_email.required' => 'Manager email is required',
             //valid format
-            'orgnization_national_id.integer' => 'Organization national ID must be a number',
             'orgnization_founding_date.date' => 'Organization founding date must be in YYYY-MM-DD format',
             'email.email' => 'Organization email must be a valid email address',
-            'zipcode.integer' => 'Organization zipcode must be a number',
-            'manager_national_id.integer' => 'Manager national ID must be a number',
+
             'manager_email.email' => 'Manager email must be a valid email address',
         ]);
 
@@ -140,30 +132,6 @@ class HomeController extends Controller
             $errors = $validator->errors()->all();
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
-
-        /*$request->validate([
-            "orgnization_name" => 'required|string',
-            "orgnization_national_id" => 'required|integer',
-            "orgnization_ministry" => 'required|string',
-            "orgnization_founding_date" => 'required|date',
-            "email" => 'required|email',
-            "phone" => 'required|string',
-            "mobile" => 'string',
-            "mail" => 'required|string',
-            "zipcode" => 'required|integer',
-            "website" => 'required|string',
-            "governorate" => 'required|string',
-            "provenance" => 'required|string',
-            "district" => 'required|string',
-            "area" => 'required|string',
-            "neighborhood" => 'required|string',
-            "residential_type" => 'required|string',
-            "manager_name" => 'required|string',
-            "manager_national_id" => 'required|integer',
-            "manager_phone" => 'required|string',
-            "manager_email" => 'required|email'
-        ]);*/
         
         $randy = random_int(100000, 999999);
         $org = "orgnizations";
@@ -187,6 +155,8 @@ class HomeController extends Controller
             'founding_date' => $request->orgnization_founding_date,
             'wathik_id' => $randy
         ]);
+
+        //CONTACTS
         UserOrgnization::create([
             'user_id' => session('user_id'),
             'orgnization_id' => $orgnization->id
@@ -201,34 +171,33 @@ class HomeController extends Controller
             'type' => 'phone',
             'contact' => $request->phone,
         ]);
-        if (!empty($request->mobile)) {
-            OrgnizationContact::create([
-                'orgnization_id' => $orgnization->id,
-                'type' => 'mobile',
-                'contact' => $request->mobile,
-            ]);
-        }
-        if (!empty($request->mail)) {
-            OrgnizationContact::create([
-                'orgnization_id' => $orgnization->id,
-                'type' => 'mail',
-                'contact' => $request->mail,
-            ]);
-        }
-        if (!empty($request->mobile)) {
-            OrgnizationContact::create([
-                'orgnization_id' => $orgnization->id,
-                'type' => 'zipcode',
-                'contact' => $request->zipcode,
-            ]);
-        }
-        if (!empty($request->mobile)) {
-            OrgnizationContact::create([
-                'orgnization_id' => $orgnization->id,
-                'type' => 'website',
-                'contact' => $request->website,
-            ]);
-        }
+        $mobile = OrgnizationContact::create([
+            'orgnization_id' => $orgnization->id,
+            'type' => 'mobile',
+            'contact' => null,
+        ]);
+        $mail = OrgnizationContact::create([
+            'orgnization_id' => $orgnization->id,
+            'type' => 'mail',
+            'contact' => null,
+        ]);
+        $zipcode = OrgnizationContact::create([
+            'orgnization_id' => $orgnization->id,
+            'type' => 'zipcode',
+            'contact' => null,
+        ]);
+        $website = OrgnizationContact::create([
+            'orgnization_id' => $orgnization->id,
+            'type' => 'website',
+            'contact' => null,
+        ]);
+        if (!empty($request->mobile)) {$mobile->contact = $request->mobile;}
+        if (!empty($request->mail)) {$mail->contact = $request->mail;}
+        if (!empty($request->zipcode)) {$zipcode->contact = $request->zipcode;}
+        if (!empty($request->website)) {$website->contact = $request->website;}
+
+
+        //ADDRESS
         OrgnizationAddress::create([
             'orgnization_id' => $orgnization->id,
             'governorate' => $request->governorate,

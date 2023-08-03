@@ -5,46 +5,47 @@
             </h2>
         </div>
         <div class="mb-10 fv-row fv-plugins-icon-container">
-            <label class="form-label mb-3">المحافظة</label>
-            <input type="text" class="form-control form-control-lg form-control-solid" name="governorate" placeholder=""
-                value="{{ old('governorate') }}" kl_vkbd_parsed="true" required>
+            <label class="form-label mb-3 required">المحافظة</label>
+            <input type="text" class="form-control form-control-lg form-control-solid" name="governorate" placeholder="governorate"
+                value="{{ old('governorate') }}" kl_vkbd_parsed="true" required/>
             <div class="fv-plugins-message-container invalid-feedback"></div>
         </div>
         <div class="mb-10 fv-row row fv-plugins-icon-container">
             <div class="col-6">
-                <label class="form-label mb-3">اللواء</label>
+                <label class="form-label mb-3 required">اللواء</label>
                 <input type="text" class="form-control form-control-lg form-control-solid" name="provenance"
-                    placeholder="" value="{{ old('provenance') }}" kl_vkbd_parsed="true" required>
+                    placeholder="provenance" value="{{ old('provenance') }}" kl_vkbd_parsed="true" >
                 <div class="fv-plugins-message-container invalid-feedback"></div>
             </div>
             <div class="col-6">
-                <label class="form-label mb-3">القضاء</label>
+                <label class="form-label mb-3 required">القضاء</label>
                 <input type="text" class="form-control form-control-lg form-control-solid" name="district"
-                    placeholder="" value="{{ old('district') }}" kl_vkbd_parsed="true" required>
+                    placeholder="district" value="{{ old('district') }}" kl_vkbd_parsed="true" >
                 <div class="fv-plugins-message-container invalid-feedback"></div>
             </div>
         </div>
         <div class="mb-10 fv-row row fv-plugins-icon-container">
             <div class="col-6">
-                <label class="form-label mb-3">المنطقة</label>
+                <label class="form-label mb-3 required">المنطقة</label>
                 <input type="text" class="form-control form-control-lg form-control-solid" name="area"
-                    placeholder="" value="{{ old('area') }}" kl_vkbd_parsed="true" required>
+                    placeholder="area" value="{{ old('area') }}" kl_vkbd_parsed="true" >
                 <div class="fv-plugins-message-container invalid-feedback"></div>
             </div>
             <div class="col-6">
-                <label class="form-label mb-3">الحي</label>
+                <label class="form-label mb-3 required">الحي</label>
                 <input type="text" class="form-control form-control-lg form-control-solid" name="neighborhood"
-                    placeholder="" value="{{ old('neighborhood') }}" kl_vkbd_parsed="true" required>
+                    placeholder="neighborhood" value="{{ old('neighborhood') }}" kl_vkbd_parsed="true" required>
                 <div class="fv-plugins-message-container invalid-feedback"></div>
             </div>
         </div>
         <div class="mb-10 fv-row fv-plugins-icon-container">
-            <label class="form-label mb-3">نوع التجمع السكني</label> 
+            <label class="form-label mb-3 required">نوع التجمع السكني</label> 
             <select type="text" class="form-control form-control-lg form-control-solid" name="residential_type"
-                placeholder="" value="{{ old('residential_type') }}" kl_vkbd_parsed="true" required>
-                <option value="volvo">حضر</option>
-                <option value="saab">ريف</option>
-                <option value="fiat">بادية</option>
+                value="{{ old('residential_type') }}" kl_vkbd_parsed="true" required>
+                <option value="" disabled selected>select an option</option>
+                <option value="حضر">حضر</option>
+                <option value="ريف">ريف</option>
+                <option value="بادية">بادية</option>
             </select>
             <div class="fv-plugins-message-container invalid-feedback"></div>
         </div>
